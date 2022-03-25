@@ -18,6 +18,17 @@
 		A579424B27EDF3CD000F233A /* FilmRecordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579424A27EDF3CD000F233A /* FilmRecordUITests.swift */; };
 		A579424D27EDF3CD000F233A /* FilmRecordUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579424C27EDF3CD000F233A /* FilmRecordUITestsLaunchTests.swift */; };
 		A579425B27EDF6FB000F233A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579425A27EDF6FB000F233A /* HomePresenter.swift */; };
+		A579425E27EDFB27000F233A /* SearchMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579425D27EDFB27000F233A /* SearchMovieViewController.swift */; };
+		A579426027EDFB45000F233A /* SearchMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579425F27EDFB45000F233A /* SearchMoviePresenter.swift */; };
+		A579426427EE07A7000F233A /* SearchMovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579426327EE07A7000F233A /* SearchMovieManager.swift */; };
+		A579426827EE07EF000F233A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A579426727EE07EF000F233A /* Alamofire */; };
+		A579426A27EE0817000F233A /* SearchMovieRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579426927EE0817000F233A /* SearchMovieRequestModel.swift */; };
+		A579426C27EE0822000F233A /* SearchMovieResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579426B27EE0822000F233A /* SearchMovieResponseModel.swift */; };
+		A579426F27EE0884000F233A /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579426E27EE0884000F233A /* Movie.swift */; };
+		A579427127EE08C8000F233A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579427027EE08C8000F233A /* String+.swift */; };
+		A579427327EE0B9C000F233A /* SearchMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579427227EE0B9C000F233A /* SearchMovieCollectionViewCell.swift */; };
+		A579427627EE0D84000F233A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A579427527EE0D84000F233A /* SnapKit */; };
+		A579427927EE0DAB000F233A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A579427827EE0DAB000F233A /* Kingfisher */; };
 		B189199CBFFEB0B44319BCA1 /* Pods_FilmRecordTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F573B33ACBFDCF01170FD98 /* Pods_FilmRecordTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +69,14 @@
 		A579424A27EDF3CD000F233A /* FilmRecordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRecordUITests.swift; sourceTree = "<group>"; };
 		A579424C27EDF3CD000F233A /* FilmRecordUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRecordUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A579425A27EDF6FB000F233A /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		A579425D27EDFB27000F233A /* SearchMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewController.swift; sourceTree = "<group>"; };
+		A579425F27EDFB45000F233A /* SearchMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviePresenter.swift; sourceTree = "<group>"; };
+		A579426327EE07A7000F233A /* SearchMovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieManager.swift; sourceTree = "<group>"; };
+		A579426927EE0817000F233A /* SearchMovieRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieRequestModel.swift; sourceTree = "<group>"; };
+		A579426B27EE0822000F233A /* SearchMovieResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieResponseModel.swift; sourceTree = "<group>"; };
+		A579426E27EE0884000F233A /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		A579427027EE08C8000F233A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		A579427227EE0B9C000F233A /* SearchMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		B381680C404AA68A42D97F11 /* Pods-FilmRecord-FilmRecordUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilmRecord-FilmRecordUITests.debug.xcconfig"; path = "Target Support Files/Pods-FilmRecord-FilmRecordUITests/Pods-FilmRecord-FilmRecordUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBCD18786F2A450A22417FA9 /* Pods_FilmRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilmRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC220A1C4F67F66A6481B979 /* Pods-FilmRecord-FilmRecordUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilmRecord-FilmRecordUITests.release.xcconfig"; path = "Target Support Files/Pods-FilmRecord-FilmRecordUITests/Pods-FilmRecord-FilmRecordUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,7 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A579427927EE0DAB000F233A /* Kingfisher in Frameworks */,
+				A579427627EE0D84000F233A /* SnapKit in Frameworks */,
 				409995154B5D0A532C364FBE /* Pods_FilmRecord.framework in Frameworks */,
+				A579426827EE07EF000F233A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,10 +140,13 @@
 			children = (
 				A579422927EDF3CC000F233A /* AppDelegate.swift */,
 				A579422B27EDF3CC000F233A /* SceneDelegate.swift */,
+				A579426527EE07AC000F233A /* Manager */,
+				A579426D27EE0827000F233A /* Model */,
 				A579425927EDF6D4000F233A /* Scene */,
 				A579423227EDF3CC000F233A /* Assets.xcassets */,
 				A579423427EDF3CC000F233A /* LaunchScreen.storyboard */,
 				A579423727EDF3CC000F233A /* Info.plist */,
+				A579427027EE08C8000F233A /* String+.swift */,
 			);
 			path = FilmRecord;
 			sourceTree = "<group>";
@@ -147,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				A579425C27EDF6FF000F233A /* Home */,
+				A579426127EDFB49000F233A /* SearchMovie */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -158,6 +184,34 @@
 				A579425A27EDF6FB000F233A /* HomePresenter.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		A579426127EDFB49000F233A /* SearchMovie */ = {
+			isa = PBXGroup;
+			children = (
+				A579425D27EDFB27000F233A /* SearchMovieViewController.swift */,
+				A579425F27EDFB45000F233A /* SearchMoviePresenter.swift */,
+				A579427227EE0B9C000F233A /* SearchMovieCollectionViewCell.swift */,
+			);
+			path = SearchMovie;
+			sourceTree = "<group>";
+		};
+		A579426527EE07AC000F233A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A579426327EE07A7000F233A /* SearchMovieManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		A579426D27EE0827000F233A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A579426E27EE0884000F233A /* Movie.swift */,
+				A579426927EE0817000F233A /* SearchMovieRequestModel.swift */,
+				A579426B27EE0822000F233A /* SearchMovieResponseModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EE8F8CB4DF2413474654762D /* Frameworks */ = {
@@ -180,7 +234,6 @@
 				6B0FFA8A20824560C0CF4E25 /* Pods-FilmRecordTests.debug.xcconfig */,
 				0B56D071920236C3847CBE7B /* Pods-FilmRecordTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -195,12 +248,18 @@
 				A579422227EDF3CC000F233A /* Sources */,
 				A579422327EDF3CC000F233A /* Frameworks */,
 				A579422427EDF3CC000F233A /* Resources */,
+				A579426227EE013C000F233A /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = FilmRecord;
+			packageProductDependencies = (
+				A579426727EE07EF000F233A /* Alamofire */,
+				A579427527EE0D84000F233A /* SnapKit */,
+				A579427827EE0DAB000F233A /* Kingfisher */,
+			);
 			productName = FilmRecord;
 			productReference = A579422627EDF3CC000F233A /* FilmRecord.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +334,11 @@
 				Base,
 			);
 			mainGroup = A579421D27EDF3CC000F233A;
+			packageReferences = (
+				A579426627EE07EF000F233A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A579427427EE0D84000F233A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A579427727EE0DAB000F233A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = A579422727EDF3CC000F233A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -379,6 +443,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A579426227EE013C000F233A /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -386,10 +468,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A579426A27EE0817000F233A /* SearchMovieRequestModel.swift in Sources */,
 				A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */,
 				A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
+				A579426F27EE0884000F233A /* Movie.swift in Sources */,
+				A579426027EDFB45000F233A /* SearchMoviePresenter.swift in Sources */,
+				A579426427EE07A7000F233A /* SearchMovieManager.swift in Sources */,
+				A579427327EE0B9C000F233A /* SearchMovieCollectionViewCell.swift in Sources */,
+				A579427127EE08C8000F233A /* String+.swift in Sources */,
 				A579425B27EDF6FB000F233A /* HomePresenter.swift in Sources */,
+				A579426C27EE0822000F233A /* SearchMovieResponseModel.swift in Sources */,
+				A579425E27EDFB27000F233A /* SearchMovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +817,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A579426627EE07EF000F233A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.5.0;
+			};
+		};
+		A579427427EE0D84000F233A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		A579427727EE0DAB000F233A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A579426727EE07EF000F233A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A579426627EE07EF000F233A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A579427527EE0D84000F233A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A579427427EE0D84000F233A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		A579427827EE0DAB000F233A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A579427727EE0DAB000F233A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A579421E27EDF3CC000F233A /* Project object */;
 }
