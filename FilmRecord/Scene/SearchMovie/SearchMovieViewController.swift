@@ -41,7 +41,14 @@ final class SearchMovieViewController: UIViewController {
             forCellWithReuseIdentifier: SearchMovieCollectionViewCell.identifier
         )
 
+        collectionView.refreshControl = refreshControl
         return collectionView
+    }()
+
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        return refreshControl
     }()
 
     override func viewDidLoad() {
@@ -54,6 +61,10 @@ final class SearchMovieViewController: UIViewController {
         super.viewDidAppear(animated)
 
         presenter.viewDidAppear()
+    }
+
+    @objc func pullToRefresh() {
+        presenter.pullToRefresh()
     }
 }
 
@@ -82,5 +93,9 @@ extension SearchMovieViewController: SearchMovieProtocol {
 
     func keyboardDown() {
         searchController.searchBar.endEditing(true)
+    }
+
+    func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 }

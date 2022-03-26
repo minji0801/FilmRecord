@@ -9,14 +9,24 @@ import Alamofire
 import Foundation
 
 protocol SearchMovieManagerProtocol {
-    func request(from keywork: String, completionHandler: @escaping ([Movie]) -> Void)
+    func request(
+        from keyword: String,
+        start: Int,
+        display: Int,
+        completionHandler: @escaping ([Movie]) -> Void
+    )
 }
 
 struct SearchMovieManager: SearchMovieManagerProtocol {
-    func request(from keywork: String, completionHandler: @escaping ([Movie]) -> Void) {
+    func request(
+        from keyword: String,
+        start: Int,
+        display: Int,
+        completionHandler: @escaping ([Movie]) -> Void
+    ) {
         guard let url = URL(string: "https://openapi.naver.com/v1/search/movie.json") else { return }
 
-        let parameters = MovieSearchRequestModel(query: keywork)
+        let parameters = MovieSearchRequestModel(start: start, display: display, query: keyword)
         let headers: HTTPHeaders = [
             "X-Naver-Client-Id": "vG95SRrIYs7muxvV4t19",
             "X-Naver-Client-Secret": "nZkbphXlYx"
@@ -34,6 +44,6 @@ struct SearchMovieManager: SearchMovieManagerProtocol {
             case .failure(let error):
                 print(error)
             }
-        }
+        }.resume()
     }
 }

@@ -14,6 +14,7 @@ protocol SearchMovieProtocol: AnyObject {
     func reloadCollectionView()
     func activeSearchController()
     func keyboardDown()
+    func endRefreshing()
 }
 
 final class SearchMoviePresenter: NSObject {
@@ -21,6 +22,10 @@ final class SearchMoviePresenter: NSObject {
     private let searchMovieManager: SearchMovieManagerProtocol
 
     private var movies: [Movie] = []
+    
+    private var currentKeyword = ""
+    private var currentPage: Int = 0
+    private let display: Int = 15
 
     init(
         viewController: SearchMovieProtocol,
@@ -38,18 +43,18 @@ final class SearchMoviePresenter: NSObject {
     func viewDidAppear() {
         viewController?.activeSearchController()
     }
+
+    func pullToRefresh() {
+        requestMovieList(isNeededToReset: true)
+    }
 }
 
 // MARK: - UISearchBarDelegate, UISearchControllerDelegate
 extension SearchMoviePresenter: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-
-        searchMovieManager.request(from: searchText) { [weak self] movies in
-            guard let self = self else { return }
-            self.movies = movies
-            self.viewController?.reloadCollectionView()
-        }
+        currentKeyword = searchText
+        requestMovieList(isNeededToReset: true)
     }
 
     func didPresentSearchController(_ searchController: UISearchController) {
@@ -100,5 +105,39 @@ extension SearchMoviePresenter: UICollectionViewDataSource, UICollectionViewDele
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         viewController?.keyboardDown()
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        let currentRow = indexPath.row
+
+        guard (currentPage * display) - currentRow == 3 else { return }
+
+        requestMovieList(isNeededToReset: false)
+    }
+}
+
+private extension SearchMoviePresenter {
+    func requestMovieList(isNeededToReset: Bool) {
+        if isNeededToReset {
+            currentPage = 0
+            movies = []
+        }
+
+        searchMovieManager.request(
+            from: currentKeyword,
+            start: (currentPage * display) + 1,
+            display: display
+        ) { [weak self] newValue in
+            guard let self = self else { return }
+
+            self.movies += newValue
+            self.currentPage += 1
+            self.viewController?.reloadCollectionView()
+            self.viewController?.endRefreshing()
+        }
     }
 }
