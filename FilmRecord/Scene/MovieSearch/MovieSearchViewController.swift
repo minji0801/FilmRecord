@@ -1,5 +1,5 @@
 //
-//  SearchMovieViewController.swift
+//  MovieSearchViewController.swift
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/03/25.
@@ -8,10 +8,8 @@
 import SnapKit
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-final class SearchMovieViewController: UIViewController {
-    private lazy var presenter = SearchMoviePresenter(viewController: self)
+final class MovieSearchViewController: UIViewController {
+    private lazy var presenter = MovieSearchPresenter(viewController: self)
 
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
@@ -37,8 +35,8 @@ final class SearchMovieViewController: UIViewController {
         collectionView.delegate = presenter
 
         collectionView.register(
-            SearchMovieCollectionViewCell.self,
-            forCellWithReuseIdentifier: SearchMovieCollectionViewCell.identifier
+            MovieSearchCollectionViewCell.self,
+            forCellWithReuseIdentifier: MovieSearchCollectionViewCell.identifier
         )
 
         collectionView.refreshControl = refreshControl
@@ -69,7 +67,7 @@ final class SearchMovieViewController: UIViewController {
 }
 
 // MARK: - SearchMovieProtocol Function
-extension SearchMovieViewController: SearchMovieProtocol {
+extension MovieSearchViewController: MovieSearchProtocol {
     func setupNavigationBar() {
         navigationController?.navigationBar.topItem?.title = ""
         navigationItem.titleView = searchController.searchBar

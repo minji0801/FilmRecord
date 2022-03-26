@@ -1,5 +1,5 @@
 //
-//  SearchMovieManager.swift
+//  MovieSearchManager.swift
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/03/25.
@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-protocol SearchMovieManagerProtocol {
+protocol MovieSearchManagerProtocol {
     func request(
         from keyword: String,
         start: Int,
@@ -17,7 +17,7 @@ protocol SearchMovieManagerProtocol {
     )
 }
 
-struct SearchMovieManager: SearchMovieManagerProtocol {
+struct MovieSearchManager: MovieSearchManagerProtocol {
     func request(
         from keyword: String,
         start: Int,

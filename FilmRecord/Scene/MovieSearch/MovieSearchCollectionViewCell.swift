@@ -1,5 +1,5 @@
 //
-//  SearchMovieCollectionViewCell.swift
+//  MovieSearchCollectionViewCell.swift
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/03/25.
@@ -9,8 +9,8 @@ import Kingfisher
 import SnapKit
 import UIKit
 
-final class SearchMovieCollectionViewCell: UICollectionViewCell {
-    static let identifier = "SearchMovieCollectionViewCell"
+final class MovieSearchCollectionViewCell: UICollectionViewCell {
+    static let identifier = "MovieSearchCollectionViewCell"
 
     private lazy var verticalStactView: UIStackView = {
         let stackView = UIStackView()
@@ -57,7 +57,7 @@ final class SearchMovieCollectionViewCell: UICollectionViewCell {
     }
 }
 
-private extension SearchMovieCollectionViewCell {
+private extension MovieSearchCollectionViewCell {
     func setupView() {
         self.addSubview(verticalStactView)
 
@@ -72,9 +72,5 @@ private extension SearchMovieCollectionViewCell {
         thumbnailImageView.snp.makeConstraints {
             $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.5)
         }
-
-//        dateLabel.snp.makeConstraints {
-//            $0.height.equalTo(10)
-//        }
     }
 }

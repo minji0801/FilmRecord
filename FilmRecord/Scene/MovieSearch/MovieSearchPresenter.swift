@@ -1,5 +1,5 @@
 //
-//  SearchMoviePresenter.swift
+//  MovieSearchPresenter.swift
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/03/25.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol SearchMovieProtocol: AnyObject {
+protocol MovieSearchProtocol: AnyObject {
     func setupNavigationBar()
     func setupView()
     func reloadCollectionView()
@@ -17,19 +17,19 @@ protocol SearchMovieProtocol: AnyObject {
     func endRefreshing()
 }
 
-final class SearchMoviePresenter: NSObject {
-    private weak var viewController: SearchMovieProtocol?
-    private let searchMovieManager: SearchMovieManagerProtocol
+final class MovieSearchPresenter: NSObject {
+    private weak var viewController: MovieSearchProtocol?
+    private let searchMovieManager: MovieSearchManagerProtocol
 
     private var movies: [Movie] = []
-    
+
     private var currentKeyword = ""
     private var currentPage: Int = 0
     private let display: Int = 15
 
     init(
-        viewController: SearchMovieProtocol,
-        searchMovieManager: SearchMovieManagerProtocol = SearchMovieManager()
+        viewController: MovieSearchProtocol,
+        searchMovieManager: MovieSearchManagerProtocol = MovieSearchManager()
     ) {
         self.viewController = viewController
         self.searchMovieManager = searchMovieManager
@@ -50,7 +50,7 @@ final class SearchMoviePresenter: NSObject {
 }
 
 // MARK: - UISearchBarDelegate, UISearchControllerDelegate
-extension SearchMoviePresenter: UISearchBarDelegate, UISearchControllerDelegate {
+extension MovieSearchPresenter: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
         currentKeyword = searchText
@@ -65,7 +65,7 @@ extension SearchMoviePresenter: UISearchBarDelegate, UISearchControllerDelegate 
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension SearchMoviePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
@@ -75,9 +75,9 @@ extension SearchMoviePresenter: UICollectionViewDataSource, UICollectionViewDele
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SearchMovieCollectionViewCell.identifier,
+            withReuseIdentifier: MovieSearchCollectionViewCell.identifier,
             for: indexPath
-        ) as? SearchMovieCollectionViewCell else { return UICollectionViewCell() }
+        ) as? MovieSearchCollectionViewCell else { return UICollectionViewCell() }
 
         cell.update(movie: movies[indexPath.row])
         return cell
@@ -120,7 +120,7 @@ extension SearchMoviePresenter: UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
-private extension SearchMoviePresenter {
+private extension MovieSearchPresenter {
     func requestMovieList(isNeededToReset: Bool) {
         if isNeededToReset {
             currentPage = 0

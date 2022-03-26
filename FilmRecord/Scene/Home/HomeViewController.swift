@@ -48,7 +48,7 @@ extension HomeViewController: HomeProtocol {
     }
 
     func goToSearchMovieViewController() {
-        let searchMovieViewController = SearchMovieViewController()
+        let searchMovieViewController = MovieSearchViewController()
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
 }
