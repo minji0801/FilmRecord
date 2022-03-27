@@ -27,6 +27,7 @@ final class LabelHorizontalStackView: UIStackView {
         let label = UILabel()
         label.text = content
         label.font = .systemFont(ofSize: 14.0, weight: .medium)
+        label.numberOfLines = 0
 
         return label
     }()
@@ -38,7 +39,7 @@ final class LabelHorizontalStackView: UIStackView {
         super.init(frame: .zero)
 
         axis = .horizontal
-        alignment = .fill
+        alignment = .top
         distribution = .fill
         spacing = 10.0
 

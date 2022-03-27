@@ -13,20 +13,29 @@ protocol ReviewWriteProtocol: AnyObject {
     func setupView()
     func showDatePicker()
     func keyboardDown()
+    func popViewController()
 }
 
 final class ReviewWritePresenter: NSObject {
     private weak var viewController: ReviewWriteProtocol?
 
-    private var date: Date = Date()
+    private var movie: Movie
+    private var rating: Double
 
-    init(viewController: ReviewWriteProtocol) {
+    init(
+        viewController: ReviewWriteProtocol,
+        movie: Movie,
+        rating: Double
+    ) {
         self.viewController = viewController
+        self.movie = movie
+        self.rating = rating
     }
 
     func viewDidLoad() {
         viewController?.setupNavigationBar()
         viewController?.setupView()
+        print(movie, rating)
     }
 
     func touchesBegan() {
@@ -34,7 +43,7 @@ final class ReviewWritePresenter: NSObject {
     }
 
     func didTappedLeftBarButton() {
-        // pop
+        viewController?.popViewController()
     }
 
     func didTappedRightBarButton() {

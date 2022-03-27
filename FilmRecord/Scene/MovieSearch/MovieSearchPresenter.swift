@@ -15,6 +15,7 @@ protocol MovieSearchProtocol: AnyObject {
     func activeSearchController()
     func keyboardDown()
     func endRefreshing()
+    func pushToEnterRatingViewController(movie: Movie)
 }
 
 final class MovieSearchPresenter: NSObject {
@@ -117,6 +118,11 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
         guard (currentPage * display) - currentRow == 3 else { return }
 
         requestMovieList(isNeededToReset: false)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        viewController?.pushToEnterRatingViewController(movie: movie)
     }
 }
 

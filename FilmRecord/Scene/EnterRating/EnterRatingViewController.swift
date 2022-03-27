@@ -11,14 +11,23 @@ import SnapKit
 import UIKit
 
 final class EnterRatingViewController: UIViewController {
-    private lazy var presenter = EnterRatingPresenter(viewController: self)
+    private var presenter: EnterRatingPresenter!
+
+    init(movie: Movie) {
+        super.init(nibName: nil, bundle: nil)
+        presenter = EnterRatingPresenter(viewController: self, movie: movie)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "xmark"),
             style: .plain,
             target: self,
-            action: #selector(didTappedRightBarButton)
+            action: #selector(didTappedLeftBarButton)
         )
 
         return leftBarButtonItem
@@ -49,9 +58,6 @@ final class EnterRatingViewController: UIViewController {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 5.0
-        let url = URL(string: "https://movie-phinf.pstatic.net/20170110_166/1484038104926uPjpU_JPEG/movie_image.jpg")
-        imageView.kf.setImage(with: url)
 
         return imageView
     }()
@@ -61,30 +67,21 @@ final class EnterRatingViewController: UIViewController {
         label.font = .boldSystemFont(ofSize: 17.0)
         label.textAlignment = .center
         label.numberOfLines = 3
-        label.text = "짱구는 못말려 극장판: 폭풍수면! 꿈꾸는 세계 대돌격"
 
         return label
     }()
 
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
-        cosmosView.settings.starSize = 30
+        cosmosView.settings.starSize = 25
         cosmosView.settings.starMargin = 8
         cosmosView.settings.fillMode = .full
 
         cosmosView.rating = 3
 
+        // TODO: 빨간 하트 이미지로 바꾸기
         cosmosView.settings.filledImage = UIImage(systemName: "heart.fill")
         cosmosView.settings.emptyImage = UIImage(systemName: "heart")
-
-        cosmosView.settings.filledColor = UIColor.red
-        cosmosView.settings.emptyBorderColor = UIColor.red
-        cosmosView.settings.filledBorderColor = UIColor.red
-
-        cosmosView.didFinishTouchingCosmos = { rating in
-            print(rating)
-            // rating : 사용자가 선택한 평점 (1.0, 2.0, 3.0, 4.0, 5.0)
-        }
 
         return cosmosView
     }()
@@ -103,10 +100,15 @@ extension EnterRatingViewController: EnterRatingProtocol {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
-    func setupView() {
-        let pubDateStackView = LabelHorizontalStackView(title: "개봉", content: "2016")
-        let directorStackView = LabelHorizontalStackView(title: "감독", content: "타카하시 와타루")
-        let actorStackView = LabelHorizontalStackView(title: "배우", content: "야자마 아키코, 나라하지 미키, 후지와라 케이지")
+    func setupView(movie: Movie) {
+        view.backgroundColor = .systemBackground
+
+        titleLabel.text = movie.title.htmlEscaped
+        thumbnailImageView.kf.setImage(with: movie.imageURL)
+
+        let pubDateStackView = LabelHorizontalStackView(title: "개봉", content: movie.pubDate)
+        let directorStackView = LabelHorizontalStackView(title: "감독", content: movie.director.withComma)
+        let actorStackView = LabelHorizontalStackView(title: "배우", content: movie.actor.withComma)
         let infoStackView = MovieInfoVerticalStackView(
             row1: pubDateStackView,
             row2: directorStackView,
@@ -126,11 +128,17 @@ extension EnterRatingViewController: EnterRatingProtocol {
             $0.centerY.equalToSuperview()
         }
 
-        thumbnailImageView.snp.makeConstraints {
-//            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.5)
-            $0.width.equalTo(100)
-            $0.height.equalTo(150)
-        }    }
+        thumbnailImageView.snp.makeConstraints { $0.width.equalTo(150) }
+    }
+
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+
+    func pushToReviewWriteViewController(movie: Movie, rating: Double) {
+        let reviewWriteViewController = ReviewWriteViewController(movie: movie, rating: rating)
+        navigationController?.pushViewController(reviewWriteViewController, animated: true)
+    }
 }
 
 // MARK: - @objc Function
@@ -138,11 +146,11 @@ extension EnterRatingViewController {
 
     /// Left  bar button was tapped.
     @objc func didTappedLeftBarButton() {
-//        
+        presenter.didTappedLeftBarButton()
     }
 
     /// Right bar button was tapped.
     @objc func didTappedRightBarButton() {
-        presenter.didTappedRightBarButton()
+        presenter.didTappedRightBarButton(rating: ratingView.rating)
     }
 }

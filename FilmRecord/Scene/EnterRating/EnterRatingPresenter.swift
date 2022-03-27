@@ -9,23 +9,34 @@ import Foundation
 
 protocol EnterRatingProtocol: AnyObject {
     func setupNavigationBar()
-    func setupView()
+    func setupView(movie: Movie)
+    func popViewController()
+    func pushToReviewWriteViewController(movie: Movie, rating: Double)
 }
 
 final class EnterRatingPresenter: NSObject {
     private weak var viewController: EnterRatingProtocol?
 
-    init(viewController: EnterRatingProtocol) {
+    private var movie: Movie
+
+    init(
+        viewController: EnterRatingProtocol,
+        movie: Movie
+    ) {
         self.viewController = viewController
+        self.movie = movie
     }
 
     func viewDidLoad() {
         viewController?.setupNavigationBar()
-        viewController?.setupView()
+        viewController?.setupView(movie: movie)
     }
 
-    func didTappedRightBarButton() {
-        // 리뷰 작성 화면으로 이동하기
-        // 평점도 같이 넘겨주기
+    func didTappedLeftBarButton() {
+        viewController?.popViewController()
+    }
+
+    func didTappedRightBarButton(rating: Double) {
+        viewController?.pushToReviewWriteViewController(movie: movie, rating: rating)
     }
 }

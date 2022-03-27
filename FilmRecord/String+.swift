@@ -27,4 +27,8 @@ extension String {
             return self
         }
     }
+
+    var withComma: String {
+        return self.split(separator: "|").joined(separator: ", ")
+    }
 }

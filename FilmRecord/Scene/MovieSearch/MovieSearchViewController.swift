@@ -74,6 +74,8 @@ extension MovieSearchViewController: MovieSearchProtocol {
     }
 
     func setupView() {
+        view.backgroundColor = .systemBackground
+
         view.addSubview(collectionView)
 
         collectionView.snp.makeConstraints {
@@ -95,5 +97,10 @@ extension MovieSearchViewController: MovieSearchProtocol {
 
     func endRefreshing() {
         refreshControl.endRefreshing()
+    }
+
+    func pushToEnterRatingViewController(movie: Movie) {
+        let enterRagingViewController = EnterRatingViewController(movie: movie)
+        navigationController?.pushViewController(enterRagingViewController, animated: true)
     }
 }

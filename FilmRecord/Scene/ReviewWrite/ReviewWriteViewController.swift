@@ -8,7 +8,16 @@
 import UIKit
 
 final class ReviewWriteViewController: UIViewController {
-    private lazy var presenter = ReviewWritePresenter(viewController: self)
+    private var presenter: ReviewWritePresenter!
+
+    init(movie: Movie, rating: Double) {
+        super.init(nibName: nil, bundle: nil)
+        presenter = ReviewWritePresenter(viewController: self, movie: movie, rating: rating)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -120,6 +129,8 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
     }
 
     func setupView() {
+        view.backgroundColor = .systemBackground
+
         let placeStackView = TextFieldHorizontalStackView(title: "WHERE.", placehorder: "어디서")
         let withStackView = TextFieldHorizontalStackView(title: "WITH.", placehorder: "누구랑")
 
@@ -152,6 +163,10 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
 
     func keyboardDown() {
         view.endEditing(true)
+    }
+
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
