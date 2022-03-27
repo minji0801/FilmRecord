@@ -14,6 +14,7 @@ protocol ReviewWriteProtocol: AnyObject {
     func showDatePicker()
     func keyboardDown()
     func popViewController()
+    func showAlertController()
 }
 
 final class ReviewWritePresenter: NSObject {
@@ -35,7 +36,6 @@ final class ReviewWritePresenter: NSObject {
     func viewDidLoad() {
         viewController?.setupNavigationBar()
         viewController?.setupView()
-        print(movie, rating)
     }
 
     func touchesBegan() {
@@ -46,12 +46,29 @@ final class ReviewWritePresenter: NSObject {
         viewController?.popViewController()
     }
 
-    func didTappedRightBarButton() {
-        // 리뷰 저장
+    func didTappedRightBarButton(date: String, place: String?, with: String?, review: String?) {
+        guard let place = place,
+              let with = with,
+              let review = review else { return }
+
+        if review == "리뷰를 작성해주세요." {
+            viewController?.showAlertController()
+        } else {
+            // TODO: 리뷰 저장하기
+        }
     }
 
     func didTappedDateLabel() {
         viewController?.showDatePicker()
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension ReviewWritePresenter: UITextFieldDelegate {
+    /// Text Felid Return 클릭: 키보드 내리기
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

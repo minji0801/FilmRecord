@@ -12,7 +12,7 @@ import UIKit
 /// Fill / Fill / 10
 final class TextFieldHorizontalStackView: UIStackView {
     private let title: String
-    private let placehorder: String
+    private let textField: UITextField
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -25,19 +25,9 @@ final class TextFieldHorizontalStackView: UIStackView {
         return label
     }()
 
-    private lazy var textField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = placehorder
-        textField.font = .systemFont(ofSize: 14.0, weight: .regular)
-        textField.returnKeyType = .done
-        textField.delegate = self
-
-        return textField
-    }()
-
-    init(title: String, placehorder: String) {
+    init(title: String, textField: UITextField) {
         self.title = title
-        self.placehorder = placehorder
+        self.textField = textField
 
         super.init(frame: .zero)
 

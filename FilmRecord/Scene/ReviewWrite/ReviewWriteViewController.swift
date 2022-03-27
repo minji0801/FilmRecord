@@ -67,7 +67,27 @@ final class ReviewWriteViewController: UIViewController {
         return label
     }()
 
-    private lazy var textView: UITextView = {
+    private lazy var whereTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "어디서"
+        textField.font = .systemFont(ofSize: 14.0, weight: .regular)
+        textField.returnKeyType = .done
+        textField.delegate = presenter
+
+        return textField
+    }()
+
+    private lazy var whoTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "누구랑"
+        textField.font = .systemFont(ofSize: 14.0, weight: .regular)
+        textField.returnKeyType = .done
+        textField.delegate = presenter
+
+        return textField
+    }()
+
+    private lazy var reviewTextView: UITextView = {
         let textView = UITextView()
         textView.text = "리뷰를 작성해주세요."
         textView.textColor = .systemGray3
@@ -92,10 +112,10 @@ final class ReviewWriteViewController: UIViewController {
     }()
 
     private lazy var datePickerAlert: UIAlertController = {
-        let dateChooserAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let dateChooserAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
 
         dateChooserAlert.view.addSubview(datePicker)
-        dateChooserAlert.view.heightAnchor.constraint(equalToConstant: 250).isActive = true
+//        dateChooserAlert.view.heightAnchor.constraint(equalToConstant: 250).isActive = true
 
         datePicker.snp.makeConstraints {
             $0.leading.trailing.top.equalToSuperview()
@@ -131,10 +151,10 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
     func setupView() {
         view.backgroundColor = .systemBackground
 
-        let placeStackView = TextFieldHorizontalStackView(title: "WHERE.", placehorder: "어디서")
-        let withStackView = TextFieldHorizontalStackView(title: "WITH.", placehorder: "누구랑")
+        let placeStackView = TextFieldHorizontalStackView(title: "WHERE.", textField: whereTextField)
+        let withStackView = TextFieldHorizontalStackView(title: "WITH.", textField: whoTextField)
 
-        [verticalStactView, textView].forEach {
+        [verticalStactView, reviewTextView].forEach {
             view.addSubview($0)
         }
 
@@ -149,7 +169,7 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(spacing)
         }
 
-        textView.snp.makeConstraints {
+        reviewTextView.snp.makeConstraints {
             $0.leading.equalTo(verticalStactView.snp.leading)
             $0.trailing.equalTo(verticalStactView.snp.trailing)
             $0.top.equalTo(verticalStactView.snp.bottom).offset(spacing)
@@ -168,6 +188,17 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
+
+    func showAlertController() {
+        let alertController = UIAlertController(
+            title: nil,
+            message: "리뷰를 작성해주세요.",
+            preferredStyle: .alert
+        )
+
+        alertController.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alertController, animated: true)
+    }
 }
 
 // MARK: - @objc Function
@@ -178,7 +209,13 @@ extension ReviewWriteViewController {
     }
 
     @objc func didTappedRightBarButton() {
-        presenter.didTappedRightBarButton()
+        // Where, who, review는 비어있을 수 있다.
+        presenter.didTappedRightBarButton(
+            date: dateLabel.text!,
+            place: whereTextField.text ?? "",
+            with: whoTextField.text ?? "",
+            review: reviewTextView.text ?? ""
+        )
     }
 
     @objc func didTappedDateLabel() {

@@ -75,6 +75,7 @@ extension MovieSearchViewController: MovieSearchProtocol {
 
     func setupView() {
         view.backgroundColor = .systemBackground
+        definesPresentationContext = true   // 다른 VC을 push해도 최상단에 UISearchController가 있지 않도록!
 
         view.addSubview(collectionView)
 
