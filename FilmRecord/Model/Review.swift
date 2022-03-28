@@ -16,7 +16,7 @@ struct Review: Codable {
     let review: String      // 영화 리뷰 내용
     let rating: Double      // 영화 평점(사용자가 지정한)
     var favorite: Bool      // 좋아하는 영화인지
-    
+
     init(
         id: Int,
         date: String,

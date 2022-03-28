@@ -70,7 +70,7 @@ private extension MovieSearchCollectionViewCell {
         }
 
         thumbnailImageView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.5)
+            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
         }
     }
 }

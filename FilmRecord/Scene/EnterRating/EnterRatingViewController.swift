@@ -64,7 +64,7 @@ final class EnterRatingViewController: UIViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 17.0)
+        label.font = .boldSystemFont(ofSize: 20.0)
         label.textAlignment = .center
         label.numberOfLines = 3
 
@@ -73,15 +73,14 @@ final class EnterRatingViewController: UIViewController {
 
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
-        cosmosView.settings.starSize = 25
-        cosmosView.settings.starMargin = 8
+        cosmosView.settings.starSize = 40
+        cosmosView.settings.starMargin = 5
         cosmosView.settings.fillMode = .full
 
         cosmosView.rating = 3
 
-        // TODO: 빨간 하트 이미지로 바꾸기
-        cosmosView.settings.filledImage = UIImage(systemName: "heart.fill")
-        cosmosView.settings.emptyImage = UIImage(systemName: "heart")
+        cosmosView.settings.filledImage = UIImage(named: "heart_fill")
+        cosmosView.settings.emptyImage = UIImage(named: "heart")
 
         return cosmosView
     }()

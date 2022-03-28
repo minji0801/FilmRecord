@@ -21,7 +21,9 @@ final class ReviewWriteViewController: UIViewController {
 
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 M월 d일 E요일"
+        formatter.dateFormat = "yyyy년 M월 d일 EEEE"
+        formatter.locale = Locale(identifier: "ko_KR")
+
         return formatter
     }()
 
@@ -187,17 +189,6 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
 
     func popViewController() {
         navigationController?.popViewController(animated: true)
-    }
-
-    func showAlertController() {
-        let alertController = UIAlertController(
-            title: nil,
-            message: "리뷰를 작성해주세요.",
-            preferredStyle: .alert
-        )
-
-        alertController.addAction(UIAlertAction(title: "확인", style: .default))
-        present(alertController, animated: true)
     }
 
     func popToRootViewController() {

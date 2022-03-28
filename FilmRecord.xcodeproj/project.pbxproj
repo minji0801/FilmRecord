@@ -11,6 +11,7 @@
 		5B936E43BD36F31CD75B9B91 /* Pods_FilmRecord_FilmRecordUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050C9511F0F994FE0381A9CD /* Pods_FilmRecord_FilmRecordUITests.framework */; };
 		A511197927F15B5A0061BBAD /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511197827F15B5A0061BBAD /* Review.swift */; };
 		A511197B27F1601C0061BBAD /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511197A27F1601C0061BBAD /* UserDefaultsManager.swift */; };
+		A511197D27F1658D0061BBAD /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511197C27F1658D0061BBAD /* HomeCollectionViewCell.swift */; };
 		A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422927EDF3CC000F233A /* AppDelegate.swift */; };
 		A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422B27EDF3CC000F233A /* SceneDelegate.swift */; };
 		A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422D27EDF3CC000F233A /* HomeViewController.swift */; };
@@ -68,6 +69,7 @@
 		6B0FFA8A20824560C0CF4E25 /* Pods-FilmRecordTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilmRecordTests.debug.xcconfig"; path = "Target Support Files/Pods-FilmRecordTests/Pods-FilmRecordTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A511197827F15B5A0061BBAD /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		A511197A27F1601C0061BBAD /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		A511197C27F1658D0061BBAD /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A579422627EDF3CC000F233A /* FilmRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579422927EDF3CC000F233A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A579422B27EDF3CC000F233A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				A579422D27EDF3CC000F233A /* HomeViewController.swift */,
 				A579425A27EDF6FB000F233A /* HomePresenter.swift */,
+				A511197C27F1658D0061BBAD /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				A579426C27EE0822000F233A /* SearchMovieResponseModel.swift in Sources */,
 				A579425E27EDFB27000F233A /* MovieSearchViewController.swift in Sources */,
 				A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */,
+				A511197D27F1658D0061BBAD /* HomeCollectionViewCell.swift in Sources */,
 				A511197B27F1601C0061BBAD /* UserDefaultsManager.swift in Sources */,
 				A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */,
 				A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */,

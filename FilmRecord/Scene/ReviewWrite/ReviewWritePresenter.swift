@@ -14,7 +14,6 @@ protocol ReviewWriteProtocol: AnyObject {
     func showDatePicker()
     func keyboardDown()
     func popViewController()
-    func showAlertController()
     func popToRootViewController()
 }
 
@@ -53,29 +52,26 @@ final class ReviewWritePresenter: NSObject {
     func didTappedRightBarButton(date: String, place: String?, with: String?, review: String?) {
         guard let place = place,
               let with = with,
-              let review = review else { return }
+              var review = review else { return }
 
         if review == "리뷰를 작성해주세요." {
-            viewController?.showAlertController()
-        } else {
-            // TODO: 리뷰 저장하기
-            
-            let movieReview = Review(
-                id: userDefaultsManager.getReviewId(),
-                date: date,
-                movie: movie,
-                place: place,
-                with: with,
-                review: review,
-                rating: rating,
-                favorite: false
-            )
-            
-            userDefaultsManager.setReview(movieReview)
-            userDefaultsManager.setReviewId()
-            viewController?.popToRootViewController()
-            print(movieReview, "저장했어요!")
+            review = ""
         }
+
+        let movieReview = Review(
+            id: userDefaultsManager.getReviewId(),
+            date: date,
+            movie: movie,
+            place: place,
+            with: with,
+            review: review,
+            rating: rating,
+            favorite: false
+        )
+
+        userDefaultsManager.setReview(movieReview)
+        userDefaultsManager.setReviewId()
+        viewController?.popToRootViewController()
     }
 
     func didTappedDateLabel() {
