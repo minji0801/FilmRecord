@@ -199,6 +199,10 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
         alertController.addAction(UIAlertAction(title: "확인", style: .default))
         present(alertController, animated: true)
     }
+
+    func popToRootViewController() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 // MARK: - @objc Function

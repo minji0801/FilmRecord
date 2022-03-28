@@ -15,20 +15,24 @@ protocol ReviewWriteProtocol: AnyObject {
     func keyboardDown()
     func popViewController()
     func showAlertController()
+    func popToRootViewController()
 }
 
 final class ReviewWritePresenter: NSObject {
     private weak var viewController: ReviewWriteProtocol?
+    private let userDefaultsManager: UserDefaultsManagerProtocol
 
     private var movie: Movie
     private var rating: Double
 
     init(
         viewController: ReviewWriteProtocol,
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager(),
         movie: Movie,
         rating: Double
     ) {
         self.viewController = viewController
+        self.userDefaultsManager = userDefaultsManager
         self.movie = movie
         self.rating = rating
     }
@@ -55,6 +59,22 @@ final class ReviewWritePresenter: NSObject {
             viewController?.showAlertController()
         } else {
             // TODO: 리뷰 저장하기
+            
+            let movieReview = Review(
+                id: userDefaultsManager.getReviewId(),
+                date: date,
+                movie: movie,
+                place: place,
+                with: with,
+                review: review,
+                rating: rating,
+                favorite: false
+            )
+            
+            userDefaultsManager.setReview(movieReview)
+            userDefaultsManager.setReviewId()
+            viewController?.popToRootViewController()
+            print(movieReview, "저장했어요!")
         }
     }
 

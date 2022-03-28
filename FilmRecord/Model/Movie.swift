@@ -14,6 +14,7 @@ struct Movie: Codable {
     let director: String            // 감독
     let actor: String               // 출연 배우
     let userRating: String          // 유저 평점
+    let link: String                // 영화 하이퍼텍스트 링크
 
     var imageURL: URL? { URL(string: image) }
 
@@ -23,7 +24,8 @@ struct Movie: Codable {
         pubDate: String,
         director: String,
         actor: String,
-        userRating: String
+        userRating: String,
+        link: String
     ) {
         self.title = title
         self.image = imageURL
@@ -31,5 +33,6 @@ struct Movie: Codable {
         self.director = director
         self.actor = actor
         self.userRating = userRating
+        self.link = link
     }
 }
