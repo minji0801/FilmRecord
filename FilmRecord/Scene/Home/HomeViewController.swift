@@ -67,7 +67,7 @@ extension HomeViewController: HomeProtocol {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
-    
+
     func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)

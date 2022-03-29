@@ -75,7 +75,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         let inset: CGFloat = 16.0
         let spacing: CGFloat = 10.0
         let width: CGFloat = (collectionView.frame.width - (inset * 2) - (spacing * 2)) / 3
-        return CGSize(width: width, height: width * 2.2)
+        return CGSize(width: width, height: width * 2)
     }
 
     func collectionView(
