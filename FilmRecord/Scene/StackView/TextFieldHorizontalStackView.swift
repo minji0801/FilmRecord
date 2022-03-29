@@ -38,7 +38,7 @@ final class TextFieldHorizontalStackView: UIStackView {
 
         [titleLabel, textField].forEach { self.addArrangedSubview($0) }
 
-        titleLabel.snp.makeConstraints { $0.width.equalTo(50.0) }
+        titleLabel.snp.makeConstraints { $0.width.equalTo(70.0) }
     }
 
     required init(coder: NSCoder) {

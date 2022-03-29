@@ -24,7 +24,7 @@ final class MovieInfoVerticalStackView: UIStackView {
         axis = .vertical
         alignment = .fill
         distribution = .fill
-        spacing = 8.0
+        spacing = 16.0
 
         [row1, row2, row3].forEach { self.addArrangedSubview($0) }
     }

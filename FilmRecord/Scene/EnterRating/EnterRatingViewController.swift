@@ -24,7 +24,7 @@ final class EnterRatingViewController: UIViewController {
 
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "xmark"),
+            image: UIImage(systemName: "arrow.left"),
             style: .plain,
             target: self,
             action: #selector(didTappedLeftBarButton)
@@ -35,7 +35,7 @@ final class EnterRatingViewController: UIViewController {
 
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.right"),
+            image: UIImage(systemName: "checkmark"),
             style: .plain,
             target: self,
             action: #selector(didTappedRightBarButton)
@@ -79,8 +79,8 @@ final class EnterRatingViewController: UIViewController {
 
         cosmosView.rating = 3
 
-        cosmosView.settings.filledImage = UIImage(named: "heart_fill")
-        cosmosView.settings.emptyImage = UIImage(named: "heart")
+        cosmosView.settings.filledImage = UIImage(named: "star.fill")
+        cosmosView.settings.emptyImage = UIImage(named: "star")
 
         return cosmosView
     }()
@@ -102,8 +102,11 @@ extension EnterRatingViewController: EnterRatingProtocol {
     func setupView(movie: Movie) {
         view.backgroundColor = .systemBackground
 
-        titleLabel.text = movie.title.htmlEscaped
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
+        view.addGestureRecognizer(swipeLeft)
+
         thumbnailImageView.kf.setImage(with: movie.imageURL)
+        titleLabel.text = movie.title.htmlEscaped
 
         let pubDateStackView = LabelHorizontalStackView(title: "개봉", content: movie.pubDate)
         let directorStackView = LabelHorizontalStackView(title: "감독", content: movie.director.withComma)

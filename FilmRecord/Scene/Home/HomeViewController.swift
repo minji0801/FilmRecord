@@ -85,4 +85,9 @@ extension HomeViewController: HomeProtocol {
     func reloadCollectionView() {
         collectionView.reloadData()
     }
+
+    func pushToDetailViewController(review: Review) {
+        let detailViewController = DetailViewController(review: review)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }

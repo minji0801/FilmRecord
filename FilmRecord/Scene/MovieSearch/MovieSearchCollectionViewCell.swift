@@ -15,9 +15,9 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
     private lazy var verticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .top
+        stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 5.0
+        stackView.spacing = 7.0
 
         return stackView
     }()
@@ -26,7 +26,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 5.0
+        imageView.layer.cornerRadius = 12.0
         imageView.backgroundColor = .secondarySystemBackground
 
         return imageView
@@ -34,8 +34,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
-        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 12.0, weight: .semibold)
         label.numberOfLines = 3
 
         return label
@@ -43,7 +42,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
 
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        label.font = .systemFont(ofSize: 12.0, weight: .semibold)
 
         return label
     }()
@@ -59,14 +58,27 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
 
 private extension MovieSearchCollectionViewCell {
     func setupView() {
+        layer.cornerRadius = 12.0
+
+        layer.shadowColor = UIColor.systemGray.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 12.0
+
+        backgroundColor = .systemBackground
+
         self.addSubview(verticalStactView)
 
-        [thumbnailImageView, titleLabel, dateLabel].forEach {
+        [thumbnailImageView, dateLabel, titleLabel].forEach {
             verticalStactView.addArrangedSubview($0)
         }
 
         verticalStactView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(10.0)
+            $0.top.bottom.equalToSuperview().inset(10.0)
+        }
+
+        dateLabel.snp.makeConstraints {
+            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(0.1)
         }
 
         thumbnailImageView.snp.makeConstraints {

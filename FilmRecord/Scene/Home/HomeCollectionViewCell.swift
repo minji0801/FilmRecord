@@ -28,15 +28,9 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 12.0
+        imageView.backgroundColor = .secondarySystemBackground
 
         return imageView
-    }()
-
-    private lazy var dottedLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray
-
-        return view
     }()
 
     private lazy var titleLabel: UILabel = {
@@ -53,8 +47,8 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         cosmosView.settings.starMargin = 0
         cosmosView.settings.fillMode = .full
 
-        cosmosView.settings.filledImage = UIImage(named: "heart_fill")
-        cosmosView.settings.emptyImage = UIImage(named: "heart")
+        cosmosView.settings.filledImage = UIImage(named: "star.fill")
+        cosmosView.settings.emptyImage = UIImage(named: "star")
 
         return cosmosView
     }()
@@ -69,7 +63,6 @@ final class HomeCollectionViewCell: UICollectionViewCell {
 }
 
 private extension HomeCollectionViewCell {
-    // View 구성
     func setupView() {
         layer.cornerRadius = 12.0
 

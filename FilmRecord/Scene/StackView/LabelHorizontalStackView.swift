@@ -17,7 +17,7 @@ final class LabelHorizontalStackView: UIStackView {
         label.text = title
         label.font = .systemFont(ofSize: 14.0, weight: .regular)
         label.textColor = .systemGray2
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
 
         return label
@@ -45,7 +45,7 @@ final class LabelHorizontalStackView: UIStackView {
 
         [titleLabel, textLabel].forEach { self.addArrangedSubview($0) }
 
-        titleLabel.snp.makeConstraints { $0.width.equalTo(50.0) }
+        titleLabel.snp.makeConstraints { $0.width.equalTo(70.0) }
     }
 
     required init(coder: NSCoder) {

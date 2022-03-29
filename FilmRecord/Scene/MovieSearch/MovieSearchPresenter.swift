@@ -15,6 +15,7 @@ protocol MovieSearchProtocol: AnyObject {
     func activeSearchController()
     func keyboardDown()
     func endRefreshing()
+    func popViewController()
     func pushToEnterRatingViewController(movie: Movie)
 }
 
@@ -47,6 +48,10 @@ final class MovieSearchPresenter: NSObject {
 
     func pullToRefresh() {
         requestMovieList(isNeededToReset: true)
+    }
+
+    func didTappedLeftBarButton() {
+        viewController?.popViewController()
     }
 }
 
@@ -92,7 +97,7 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
         let inset: CGFloat = 16.0
         let spacing: CGFloat = 10.0
         let width: CGFloat = (collectionView.frame.width - (inset * 2) - (spacing * 2)) / 3
-        return CGSize(width: width, height: width * 2.2)
+        return CGSize(width: width, height: width * 2)
     }
 
     func collectionView(

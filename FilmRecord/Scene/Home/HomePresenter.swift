@@ -13,6 +13,7 @@ protocol HomeProtocol: AnyObject {
     func setupView()
     func pushSearchMovieViewController()
     func reloadCollectionView()
+    func pushToDetailViewController(review: Review)
 }
 
 final class HomePresenter: NSObject {
@@ -36,7 +37,6 @@ final class HomePresenter: NSObject {
 
     func viewWillAppear() {
         reviews = userDefaultsManager.getReviews()
-        print(reviews)
         viewController?.reloadCollectionView()
     }
 
@@ -88,6 +88,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: 작성한 리뷰 보여주기
+        let review = reviews[indexPath.row]
+        viewController?.pushToDetailViewController(review: review)
     }
 }

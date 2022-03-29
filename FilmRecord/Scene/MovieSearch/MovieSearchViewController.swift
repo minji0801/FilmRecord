@@ -11,6 +11,17 @@ import UIKit
 final class MovieSearchViewController: UIViewController {
     private lazy var presenter = MovieSearchPresenter(viewController: self)
 
+    private lazy var leftBarButtonItem: UIBarButtonItem = {
+        let leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.left"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedLeftBarButton)
+        )
+
+        return leftBarButtonItem
+    }()
+
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "영화 검색"
@@ -69,13 +80,16 @@ final class MovieSearchViewController: UIViewController {
 // MARK: - SearchMovieProtocol Function
 extension MovieSearchViewController: MovieSearchProtocol {
     func setupNavigationBar() {
-        navigationController?.navigationBar.topItem?.title = ""
+        navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.titleView = searchController.searchBar
     }
 
     func setupView() {
         view.backgroundColor = .systemBackground
         definesPresentationContext = true   // 다른 VC을 push해도 최상단에 UISearchController가 있지 않도록!
+
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
+        view.addGestureRecognizer(swipeLeft)
 
         view.addSubview(collectionView)
 
@@ -100,8 +114,20 @@ extension MovieSearchViewController: MovieSearchProtocol {
         refreshControl.endRefreshing()
     }
 
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+
     func pushToEnterRatingViewController(movie: Movie) {
         let enterRagingViewController = EnterRatingViewController(movie: movie)
         navigationController?.pushViewController(enterRagingViewController, animated: true)
+    }
+}
+
+// MARK: - @objc Function
+extension MovieSearchViewController {
+    
+    @objc func didTappedLeftBarButton() {
+        presenter.didTappedLeftBarButton()
     }
 }

@@ -153,6 +153,9 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
     func setupView() {
         view.backgroundColor = .systemBackground
 
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
+        view.addGestureRecognizer(swipeLeft)
+
         let placeStackView = TextFieldHorizontalStackView(title: "WHERE.", textField: whereTextField)
         let withStackView = TextFieldHorizontalStackView(title: "WITH.", textField: whoTextField)
 
