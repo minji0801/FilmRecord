@@ -48,6 +48,14 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         presenter.viewDidLoad()
+        // 폰트 체크 하기
+        UIFont.familyNames.sorted().forEach { familyName in
+            print("*** \(familyName) ***")
+            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+                print("\(fontName)")
+            }
+            print("---------------------")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +74,10 @@ extension HomeViewController: HomeProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.title = "Film Record"
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: FontManager().largeFont()
+        ]
     }
 
     func setupView() {

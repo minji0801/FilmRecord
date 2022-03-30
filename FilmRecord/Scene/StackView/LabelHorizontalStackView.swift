@@ -15,7 +15,7 @@ final class LabelHorizontalStackView: UIStackView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
-        label.font = .systemFont(ofSize: 14.0, weight: .regular)
+        label.font = FontManager().mediumFont()
         label.textColor = .systemGray2
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -26,7 +26,7 @@ final class LabelHorizontalStackView: UIStackView {
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = content
-        label.font = .systemFont(ofSize: 14.0, weight: .medium)
+        label.font = FontManager().mediumFont()
         label.numberOfLines = 0
 
         return label

@@ -37,8 +37,13 @@
 		A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */; };
 		A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */; };
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
-		A594B0F227EF4EAD001344A2 /* MovieInfoVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0F127EF4EAD001344A2 /* MovieInfoVerticalStackView.swift */; };
+		A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */; };
 		A594B0F527EF5833001344A2 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = A594B0F427EF5833001344A2 /* Cosmos */; };
+		A5C6678527F3EDA60090B617 /* 강원교육새음.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678127F3EDA60090B617 /* 강원교육새음.otf */; };
+		A5C6678627F3EDA60090B617 /* 온글잎 민혜체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */; };
+		A5C6678727F3EDA60090B617 /* Kyobo Handwriting 2019.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */; };
+		A5C6678827F3EDA60090B617 /* LeeSeoyun.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */; };
+		A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6678927F3EE290090B617 /* FontManager.swift */; };
 		A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */; };
 		A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */; };
 		A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */; };
@@ -98,7 +103,12 @@
 		A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingViewController.swift; sourceTree = "<group>"; };
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
-		A594B0F127EF4EAD001344A2 /* MovieInfoVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoVerticalStackView.swift; sourceTree = "<group>"; };
+		A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeRowVerticalStackView.swift; sourceTree = "<group>"; };
+		A5C6678127F3EDA60090B617 /* 강원교육새음.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "강원교육새음.otf"; sourceTree = "<group>"; };
+		A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "온글잎 민혜체.ttf"; sourceTree = "<group>"; };
+		A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kyobo Handwriting 2019.otf"; sourceTree = "<group>"; };
+		A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeeSeoyun.otf; sourceTree = "<group>"; };
+		A5C6678927F3EE290090B617 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenter.swift; sourceTree = "<group>"; };
 		A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -175,6 +185,7 @@
 			children = (
 				A579422927EDF3CC000F233A /* AppDelegate.swift */,
 				A579422B27EDF3CC000F233A /* SceneDelegate.swift */,
+				A5C6678027F3ED5B0090B617 /* Font */,
 				A579426527EE07AC000F233A /* Manager */,
 				A579426D27EE0827000F233A /* Model */,
 				A579425927EDF6D4000F233A /* Scene */,
@@ -241,6 +252,7 @@
 			children = (
 				A579426327EE07A7000F233A /* MovieSearchManager.swift */,
 				A511197A27F1601C0061BBAD /* UserDefaultsManager.swift */,
+				A5C6678927F3EE290090B617 /* FontManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -265,11 +277,22 @@
 			path = EnterRating;
 			sourceTree = "<group>";
 		};
+		A5C6678027F3ED5B0090B617 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A5C6678127F3EDA60090B617 /* 강원교육새음.otf */,
+				A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */,
+				A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */,
+				A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		A5FACB4327F0381D00DAB3AA /* StackView */ = {
 			isa = PBXGroup;
 			children = (
 				A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */,
-				A594B0F127EF4EAD001344A2 /* MovieInfoVerticalStackView.swift */,
+				A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */,
 				A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */,
 			);
 			path = StackView;
@@ -428,7 +451,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A579423627EDF3CC000F233A /* LaunchScreen.storyboard in Resources */,
+				A5C6678827F3EDA60090B617 /* LeeSeoyun.otf in Resources */,
 				A579423327EDF3CC000F233A /* Assets.xcassets in Resources */,
+				A5C6678727F3EDA60090B617 /* Kyobo Handwriting 2019.otf in Resources */,
+				A5C6678527F3EDA60090B617 /* 강원교육새음.otf in Resources */,
+				A5C6678627F3EDA60090B617 /* 온글잎 민혜체.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,9 +572,10 @@
 				A50E507F27F2BAA90079AFEB /* DetailViewController.swift in Sources */,
 				A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */,
 				A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */,
+				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
-				A594B0F227EF4EAD001344A2 /* MovieInfoVerticalStackView.swift in Sources */,
+				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
 				A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */,
 				A579426F27EE0884000F233A /* Movie.swift in Sources */,
 				A579426027EDFB45000F233A /* MovieSearchPresenter.swift in Sources */,

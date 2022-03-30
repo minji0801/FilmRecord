@@ -35,7 +35,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 12.0)
+        label.font = FontManager().smallFont()
         label.numberOfLines = 3
 
         return label

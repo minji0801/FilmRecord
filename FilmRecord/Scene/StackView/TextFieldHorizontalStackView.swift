@@ -17,7 +17,7 @@ final class TextFieldHorizontalStackView: UIStackView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
-        label.font = .systemFont(ofSize: 14.0, weight: .regular)
+        label.font = FontManager().mediumFont()
         label.textColor = .systemGray2
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -38,7 +38,7 @@ final class TextFieldHorizontalStackView: UIStackView {
 
         [titleLabel, textField].forEach { self.addArrangedSubview($0) }
 
-        titleLabel.snp.makeConstraints { $0.width.equalTo(70.0) }
+        titleLabel.snp.makeConstraints { $0.width.equalTo(55.0) }
     }
 
     required init(coder: NSCoder) {

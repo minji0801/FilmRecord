@@ -9,6 +9,8 @@ import UIKit
 
 final class ReviewWriteViewController: UIViewController {
     private var presenter: ReviewWritePresenter!
+    private let inset: CGFloat = 16.0
+    private let cornerRadius: CGFloat = 12.0
 
     init(movie: Movie, rating: Double) {
         super.init(nibName: nil, bundle: nil)
@@ -52,9 +54,19 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var verticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .leading
+        stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 16.0
+        stackView.spacing = inset
+
+        stackView.backgroundColor = .systemBackground
+        stackView.layer.cornerRadius = cornerRadius
+
+        stackView.layer.shadowColor = UIColor.systemGray.cgColor
+        stackView.layer.shadowOpacity = 0.3
+        stackView.layer.shadowRadius = cornerRadius
+
+        stackView.layoutMargins = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        stackView.isLayoutMarginsRelativeArrangement = true
 
         return stackView
     }()
@@ -62,7 +74,7 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = formatter.string(from: Date())
-        label.font = .boldSystemFont(ofSize: 14.0)
+        label.font = FontManager().mediumFont()
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTappedDateLabel)))
         label.isUserInteractionEnabled = true
 
@@ -72,7 +84,7 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var whereTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "어디서"
-        textField.font = .systemFont(ofSize: 14.0, weight: .regular)
+        textField.font = FontManager().mediumFont()
         textField.returnKeyType = .done
         textField.delegate = presenter
 
@@ -82,7 +94,7 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var whoTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "누구랑"
-        textField.font = .systemFont(ofSize: 14.0, weight: .regular)
+        textField.font = FontManager().mediumFont()
         textField.returnKeyType = .done
         textField.delegate = presenter
 
@@ -93,11 +105,7 @@ final class ReviewWriteViewController: UIViewController {
         let textView = UITextView()
         textView.text = "리뷰를 작성해주세요."
         textView.textColor = .systemGray3
-        textView.font = .systemFont(ofSize: 14.0, weight: .regular)
-
-        textView.layer.cornerRadius = 5.0
-        textView.layer.borderWidth = 0.6
-        textView.layer.borderColor = UIColor.systemGray5.cgColor
+        textView.font = FontManager().mediumFont()
 
         textView.delegate = presenter
 
@@ -151,7 +159,7 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
     }
 
     func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
@@ -159,11 +167,11 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
         let placeStackView = TextFieldHorizontalStackView(title: "WHERE.", textField: whereTextField)
         let withStackView = TextFieldHorizontalStackView(title: "WITH.", textField: whoTextField)
 
-        [verticalStactView, reviewTextView].forEach {
+        [verticalStactView].forEach {
             view.addSubview($0)
         }
 
-        [dateLabel, placeStackView, withStackView].forEach {
+        [dateLabel, placeStackView, withStackView, reviewTextView].forEach {
             verticalStactView.addArrangedSubview($0)
         }
 
@@ -175,9 +183,6 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
         }
 
         reviewTextView.snp.makeConstraints {
-            $0.leading.equalTo(verticalStactView.snp.leading)
-            $0.trailing.equalTo(verticalStactView.snp.trailing)
-            $0.top.equalTo(verticalStactView.snp.bottom).offset(spacing)
             $0.height.equalTo(150)
         }
     }

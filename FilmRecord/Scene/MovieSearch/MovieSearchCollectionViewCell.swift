@@ -34,7 +34,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12.0, weight: .semibold)
+        label.font = FontManager().mediumFont()
         label.numberOfLines = 3
 
         return label
@@ -42,7 +42,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
 
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12.0, weight: .semibold)
+        label.font = FontManager().smallFont()
 
         return label
     }()

@@ -25,6 +25,7 @@ final class MovieSearchViewController: UIViewController {
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "영화 검색"
+        searchController.searchBar.searchTextField.font = FontManager().largeFont()
         searchController.searchBar.keyboardType = .default
         searchController.searchBar.autocorrectionType = .no
         searchController.searchBar.spellCheckingType = .no

@@ -10,6 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     private var presenter: DetailPresenter!
+    private let inset: CGFloat = 16.0
+    private let cornerRadius: CGFloat = 12.0
 
     init(review: Review) {
         super.init(nibName: nil, bundle: nil)
@@ -50,12 +52,32 @@ class DetailViewController: UIViewController {
         return rightBarButtonItem
     }()
 
+    private lazy var topHorizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = inset
+
+        stackView.backgroundColor = .systemBackground
+        stackView.layer.cornerRadius = cornerRadius
+
+        stackView.layer.shadowColor = UIColor.systemGray.cgColor
+        stackView.layer.shadowOpacity = 0.3
+        stackView.layer.shadowRadius = cornerRadius
+
+        stackView.layoutMargins = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        stackView.isLayoutMarginsRelativeArrangement = true
+
+        return stackView
+    }()
+
     private lazy var topVerticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = 16.0
+        stackView.spacing = inset
 
         return stackView
     }()
@@ -68,9 +90,16 @@ class DetailViewController: UIViewController {
         return imageView
     }()
 
+    private lazy var separatorLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+
+        return view
+    }()
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 20.0)
+        label.font = FontManager().extraLargeFont()
         label.textAlignment = .center
         label.numberOfLines = 3
 
@@ -96,7 +125,7 @@ class DetailViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .fill
-        stackView.spacing = 16.0
+        stackView.spacing = inset
 
         return stackView
     }()
@@ -104,8 +133,8 @@ class DetailViewController: UIViewController {
     private lazy var reviewTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .label
-        textView.font = .systemFont(ofSize: 14.0, weight: .regular)
-
+        textView.font = FontManager().mediumFont()
+        textView.backgroundColor = .clear
         textView.isEditable = false
 
         return textView
@@ -126,59 +155,61 @@ extension DetailViewController: DetailProtocol {
     }
 
     func setupView(review: Review) {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
-
-        navigationItem.title = review.date
 
         thumbnailImageView.kf.setImage(with: review.movie.imageURL)
         titleLabel.text = review.movie.title.htmlEscaped
         ratingView.rating = review.rating
 
-        let pubDateStackView = LabelHorizontalStackView(title: "YEAR.", content: review.movie.pubDate)
+        let yearStackView = LabelHorizontalStackView(title: "YEAR.", content: review.movie.pubDate)
         let directorStackView = LabelHorizontalStackView(title: "DIRECTOR.", content: review.movie.director.withComma)
-        let actorStackView = LabelHorizontalStackView(title: "ACTOR.", content: review.movie.actor.withComma)
-        let infoStackView = MovieInfoVerticalStackView(
-            row1: pubDateStackView,
-            row2: directorStackView,
-            row3: actorStackView
-        )
+        let castStackView = LabelHorizontalStackView(title: "ACTOR.", content: review.movie.actor.withComma)
+        let infoStackView = ThreeRowVerticalStackView(row1: yearStackView, row2: directorStackView, row3: castStackView)
 
+        let dateStackView = LabelHorizontalStackView(title: "WHEN.", content: review.date)
         let placeStackView = LabelHorizontalStackView(title: "WHERE.", content: review.place)
         let withStackView = LabelHorizontalStackView(title: "WITH.", content: review.with)
+        let reviewStackView = ThreeRowVerticalStackView(row1: dateStackView, row2: placeStackView, row3: withStackView)
 
         reviewTextView.text = review.review
 
-        [topVerticalStactView, infoStackView, bottomVerticalStactView, reviewTextView].forEach {
+        [topHorizontalStackView, infoStackView, bottomVerticalStactView, reviewTextView].forEach {
             view.addSubview($0)
         }
 
-        [thumbnailImageView, titleLabel, ratingView].forEach {
+        [thumbnailImageView, separatorLineView, topVerticalStactView].forEach {
+            topHorizontalStackView.addArrangedSubview($0)
+        }
+
+        [titleLabel, ratingView].forEach {
             topVerticalStactView.addArrangedSubview($0)
         }
 
-        [infoStackView, placeStackView, withStackView].forEach {
+        [infoStackView, reviewStackView].forEach {
             bottomVerticalStactView.addArrangedSubview($0)
         }
 
         let spacing: CGFloat = 20.0
 
-        topVerticalStactView.snp.makeConstraints {
+        topHorizontalStackView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(spacing)
         }
 
-        bottomVerticalStactView.snp.makeConstraints {
-            $0.leading.equalTo(topVerticalStactView.snp.leading)
-            $0.trailing.equalTo(topVerticalStactView.snp.trailing)
-            $0.top.equalTo(topVerticalStactView.snp.bottom).offset(spacing)
-        }
-
         thumbnailImageView.snp.makeConstraints {
             $0.width.equalTo(100)
-            $0.height.equalTo(topVerticalStactView.snp.width).multipliedBy(0.4)
+            $0.height.equalTo(thumbnailImageView.snp.width).multipliedBy(1.5)
+        }
+
+        separatorLineView.snp.makeConstraints { $0.width.equalTo(0.2) }
+
+        bottomVerticalStactView.snp.makeConstraints {
+            $0.leading.equalTo(topHorizontalStackView.snp.leading)
+            $0.trailing.equalTo(topHorizontalStackView.snp.trailing)
+            $0.top.equalTo(topHorizontalStackView.snp.bottom).offset(spacing)
         }
 
         reviewTextView.snp.makeConstraints {

@@ -12,6 +12,8 @@ import UIKit
 
 final class EnterRatingViewController: UIViewController {
     private var presenter: EnterRatingPresenter!
+    private let inset: CGFloat = 16.0
+    private let cornerRadius: CGFloat = 12.0
 
     init(movie: Movie) {
         super.init(nibName: nil, bundle: nil)
@@ -49,7 +51,17 @@ final class EnterRatingViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = 16.0
+        stackView.spacing = inset
+
+        stackView.backgroundColor = .systemBackground
+        stackView.layer.cornerRadius = cornerRadius
+
+        stackView.layer.shadowColor = UIColor.systemGray.cgColor
+        stackView.layer.shadowOpacity = 0.3
+        stackView.layer.shadowRadius = cornerRadius
+
+        stackView.layoutMargins = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        stackView.isLayoutMarginsRelativeArrangement = true
 
         return stackView
     }()
@@ -64,7 +76,7 @@ final class EnterRatingViewController: UIViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 20.0)
+        label.font = FontManager().extraLargeFont()
         label.textAlignment = .center
         label.numberOfLines = 3
 
@@ -73,7 +85,7 @@ final class EnterRatingViewController: UIViewController {
 
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
-        cosmosView.settings.starSize = 40
+        cosmosView.settings.starSize = 35
         cosmosView.settings.starMargin = 5
         cosmosView.settings.fillMode = .full
 
@@ -100,7 +112,7 @@ extension EnterRatingViewController: EnterRatingProtocol {
     }
 
     func setupView(movie: Movie) {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
@@ -108,10 +120,10 @@ extension EnterRatingViewController: EnterRatingProtocol {
         thumbnailImageView.kf.setImage(with: movie.imageURL)
         titleLabel.text = movie.title.htmlEscaped
 
-        let pubDateStackView = LabelHorizontalStackView(title: "개봉", content: movie.pubDate)
-        let directorStackView = LabelHorizontalStackView(title: "감독", content: movie.director.withComma)
-        let actorStackView = LabelHorizontalStackView(title: "배우", content: movie.actor.withComma)
-        let infoStackView = MovieInfoVerticalStackView(
+        let pubDateStackView = LabelHorizontalStackView(title: "YEAR.", content: movie.pubDate)
+        let directorStackView = LabelHorizontalStackView(title: "DIRECTOR.", content: movie.director.withComma)
+        let actorStackView = LabelHorizontalStackView(title: "ACTOR.", content: movie.actor.withComma)
+        let infoStackView = ThreeRowVerticalStackView(
             row1: pubDateStackView,
             row2: directorStackView,
             row3: actorStackView
@@ -127,7 +139,8 @@ extension EnterRatingViewController: EnterRatingProtocol {
 
         verticalStactView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
-            $0.centerY.equalToSuperview()
+//            $0.centerY.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(spacing)
         }
 
         thumbnailImageView.snp.makeConstraints { $0.width.equalTo(150) }
