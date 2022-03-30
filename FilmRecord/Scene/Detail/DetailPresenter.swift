@@ -11,6 +11,7 @@ protocol DetailProtocol: AnyObject {
     func setupNavigationBar()
     func setupView(review: Review)
     func popViewController()
+    func showPopUp()
 }
 
 final class DetailPresenter: NSObject {
@@ -35,5 +36,7 @@ final class DetailPresenter: NSObject {
         viewController?.popViewController()
     }
 
-    func didTappedRightBarButton() {}
+    func didTappedRightBarButton() {
+        viewController?.showPopUp()
+    }
 }

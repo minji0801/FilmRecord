@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
             image: UIImage(systemName: "ellipsis"),
             style: .plain,
             target: self,
-            action: #selector(didTappedRightBarButton)
+            action: #selector(didTappedRightBarButton(_:))
         )
 
         return rightBarButtonItem
@@ -223,6 +223,19 @@ extension DetailViewController: DetailProtocol {
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
+
+    func showPopUp() {
+        let popUpViewController = PopoverContentController()
+        popUpViewController.modalPresentationStyle = .popover
+        popUpViewController.popoverPresentationController?.barButtonItem = rightBarButtonItem
+
+//        popUpViewController.preferredContentSize = CGSize(width: 100.0, height: 150.0)
+//        popUpViewController.popoverPresentationController?.sourceView = view
+//        popUpViewController.popoverPresentationController?.sourceRect = topVerticalStactView.bounds
+//        popUpViewController.popoverPresentationController?.permittedArrowDirections = .left
+//        popUpViewController.popoverPresentationController!.delegate = self
+        present(popUpViewController, animated: true)
+    }
 }
 
 // MARK: - @objc Function
@@ -232,7 +245,37 @@ extension DetailViewController {
         presenter.didTappedLeftBarButton()
     }
 
-    @objc func didTappedRightBarButton() {
-        presenter.didTappedRightBarButton()
+    @objc func didTappedRightBarButton(_ sender: UIBarButtonItem) {
+//        presenter.didTappedRightBarButton()//get the button frame
+        let popoverContentController = PopoverContentController()
+        popoverContentController.modalPresentationStyle = .popover
+        popoverContentController.preferredContentSize = CGSize(width: 80, height: 100)
+
+        if let popoverPresentationController = popoverContentController.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .right
+//            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.barButtonItem = sender
+            popoverPresentationController.delegate = self
+            present(popoverContentController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension DetailViewController: UIPopoverPresentationControllerDelegate {
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    func popoverPresentationControllerDidDismissPopover(
+        _ popoverPresentationController: UIPopoverPresentationController
+    ) {
+
+    }
+
+    func popoverPresentationControllerShouldDismissPopover(
+        _ popoverPresentationController: UIPopoverPresentationController
+    ) -> Bool {
+        return true
     }
 }

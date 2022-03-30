@@ -160,6 +160,7 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
 
     func setupView() {
         view.backgroundColor = .secondarySystemBackground
+        reviewTextView.becomeFirstResponder()
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
