@@ -15,15 +15,21 @@ final class EnterRatingViewController: UIViewController {
     private let inset: CGFloat = 16.0
     private let cornerRadius: CGFloat = 12.0
 
-    init(movie: Movie) {
+    init(movie: Movie, review: Review, isEditing: Bool) {
         super.init(nibName: nil, bundle: nil)
-        presenter = EnterRatingPresenter(viewController: self, movie: movie)
+        presenter = EnterRatingPresenter(
+            viewController: self,
+            movie: movie,
+            review: review,
+            isEditing: isEditing
+        )
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// 뒤로가기 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.left"),
@@ -35,6 +41,7 @@ final class EnterRatingViewController: UIViewController {
         return leftBarButtonItem
     }()
 
+    /// 체크 버튼
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "checkmark"),
@@ -46,6 +53,7 @@ final class EnterRatingViewController: UIViewController {
         return rightBarButtonItem
     }()
 
+    /// 세로 스택 뷰
     private lazy var verticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -66,6 +74,7 @@ final class EnterRatingViewController: UIViewController {
         return stackView
     }()
 
+    /// 영화 포스터 이미지
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -74,6 +83,7 @@ final class EnterRatingViewController: UIViewController {
         return imageView
     }()
 
+    /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = FontManager().extraLargeFont()
@@ -83,6 +93,7 @@ final class EnterRatingViewController: UIViewController {
         return label
     }()
 
+    /// 영화 평점
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
         cosmosView.settings.starSize = 35
@@ -106,12 +117,14 @@ final class EnterRatingViewController: UIViewController {
 
 // MARK: - ReviewWriteProtocol Function
 extension EnterRatingViewController: EnterRatingProtocol {
+    /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
-    func setupView(movie: Movie) {
+    /// 뷰 구성
+    func setupView(movie: Movie, review: Review, isEditing: Bool) {
         view.backgroundColor = .secondarySystemBackground
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
@@ -119,6 +132,7 @@ extension EnterRatingViewController: EnterRatingProtocol {
 
         thumbnailImageView.kf.setImage(with: movie.imageURL)
         titleLabel.text = movie.title.htmlEscaped
+        if isEditing { ratingView.rating = review.rating }
 
         let pubDateStackView = LabelHorizontalStackView(title: "YEAR.", content: movie.pubDate)
         let directorStackView = LabelHorizontalStackView(title: "DIRECTOR.", content: movie.director.withComma)
@@ -139,32 +153,37 @@ extension EnterRatingViewController: EnterRatingProtocol {
 
         verticalStactView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
-//            $0.centerY.equalToSuperview()
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(spacing)
         }
 
         thumbnailImageView.snp.makeConstraints { $0.width.equalTo(150) }
     }
 
+    /// 현재 뷰 pop
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
 
-    func pushToReviewWriteViewController(movie: Movie, rating: Double) {
-        let reviewWriteViewController = ReviewWriteViewController(movie: movie, rating: rating)
+    /// 리뷰 작성 화면 push
+    func pushToReviewWriteViewController(movie: Movie, rating: Double, review: Review, isEditing: Bool) {
+        let reviewWriteViewController = ReviewWriteViewController(
+            movie: movie,
+            rating: rating,
+            review: review,
+            isEditing: isEditing
+        )
         navigationController?.pushViewController(reviewWriteViewController, animated: true)
     }
 }
 
 // MARK: - @objc Function
 extension EnterRatingViewController {
-
-    /// Left  bar button was tapped.
+    /// 뒤로 가기 버튼 클릭 -> 현재 뷰 pop
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
     }
 
-    /// Right bar button was tapped.
+    /// 체크 버튼 클릭 -> 리뷰 작성 화면 push
     @objc func didTappedRightBarButton() {
         presenter.didTappedRightBarButton(rating: ratingView.rating)
     }

@@ -3,42 +3,46 @@
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/03/30.
-//
+//  팝업(수정, 삭제) 화면
 
 import Foundation
 import SnapKit
 import UIKit
 
-final class PopoverContentController: UIViewController {
+final class PopUpViewController: UIViewController {
+    private var presenter: PopUpPresenter!
 
+    init(review: Review) {
+        super.init(nibName: nil, bundle: nil)
+        presenter = PopUpPresenter(viewController: self, review: review)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    /// 세로 스택 뷰
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-//        stackView.spacing = 16.0
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
 
         return stackView
     }()
 
-//    private lazy var horizontalStackView: UIStackView = {
-//        let stackView = UIStackView()
-//        return stackView
-//    }()
-
-//    private lazy var icon: UIImageView = {
-//        let imageView = UIImageView()
-//        return imageView
-//    }()
-
+    /// 수정 버튼
     private lazy var editButton: UIButton = {
         let button = UIButton()
         button.setTitle("수정", for: .normal)
         button.titleLabel?.font = FontManager().largeFont()
         button.setTitleColor(UIColor.label, for: .normal)
+        button.addTarget(self, action: #selector(didTappedEditButton), for: .touchUpInside)
+
         return button
     }()
 
+    /// 삭제 버튼
     private lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setTitle("삭제", for: .normal)
@@ -50,13 +54,13 @@ final class PopoverContentController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupView()
+        presenter.viewDidLoad()
     }
+}
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dismiss(animated: true)
-    }
-
+// MARK: - PopUpProtocol Function
+extension PopUpViewController: PopUpProtocol {
+    /// 뷰 구성
     func setupView() {
         view.backgroundColor = .secondarySystemBackground
 
@@ -69,5 +73,19 @@ final class PopoverContentController: UIViewController {
         verticalStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    /// 수정 노티피케이션 송신
+    func postEditNotification() {
+        dismiss(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name("Edit"), object: nil)
+    }
+}
+
+// MARK: - @objc Function
+extension PopUpViewController {
+    /// 수정 버튼 클릭 -> DetailViewController로 노티피케이션 송신
+    @objc func didTappedEditButton() {
+        presenter.didTappedEditButton()
     }
 }

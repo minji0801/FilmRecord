@@ -120,14 +120,18 @@ extension MovieSearchViewController: MovieSearchProtocol {
     }
 
     func pushToEnterRatingViewController(movie: Movie) {
-        let enterRagingViewController = EnterRatingViewController(movie: movie)
+        let enterRagingViewController = EnterRatingViewController(
+            movie: movie,
+            review: Review.EMPTY,
+            isEditing: false
+        )
         navigationController?.pushViewController(enterRagingViewController, animated: true)
     }
 }
 
 // MARK: - @objc Function
 extension MovieSearchViewController {
-    
+
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
     }

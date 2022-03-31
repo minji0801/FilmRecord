@@ -10,7 +10,7 @@ import UIKit
 
 protocol ReviewWriteProtocol: AnyObject {
     func setupNavigationBar()
-    func setupView()
+    func setupView(review: Review, isEditing: Bool)
     func showDatePicker()
     func keyboardDown()
     func popViewController()
@@ -24,21 +24,28 @@ final class ReviewWritePresenter: NSObject {
     private var movie: Movie
     private var rating: Double
 
+    var review: Review
+    var isEditing: Bool
+
     init(
         viewController: ReviewWriteProtocol,
         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager(),
         movie: Movie,
-        rating: Double
+        rating: Double,
+        review: Review,
+        isEditing: Bool
     ) {
         self.viewController = viewController
         self.userDefaultsManager = userDefaultsManager
         self.movie = movie
         self.rating = rating
+        self.review = review
+        self.isEditing = isEditing
     }
 
     func viewDidLoad() {
         viewController?.setupNavigationBar()
-        viewController?.setupView()
+        viewController?.setupView(review: review, isEditing: isEditing)
     }
 
     func touchesBegan() {
@@ -49,28 +56,43 @@ final class ReviewWritePresenter: NSObject {
         viewController?.popViewController()
     }
 
-    func didTappedRightBarButton(date: String, place: String?, with: String?, review: String?) {
+    func didTappedRightBarButton(
+        date: String,
+        place: String?,
+        with: String?,
+        content: String?
+    ) {
         guard let place = place,
               let with = with,
-              var review = review else { return }
+              var content = content else { return }
 
-        if review == "리뷰를 작성해주세요." {
-            review = ""
+        if content == "리뷰를 작성해주세요." { content = "" }
+
+        var id: Int
+        if isEditing {
+            id = review.id
+        } else {
+            id = userDefaultsManager.getReviewId()
         }
 
         let movieReview = Review(
-            id: userDefaultsManager.getReviewId(),
+            id: id,
             date: date,
             movie: movie,
             place: place,
             with: with,
-            review: review,
+            review: content,
             rating: rating,
             favorite: false
         )
+        // isEditing 값 가져와서 편집 중이면 현재 review id에 덮어쓰고, 아니라면 새로 저장하기
 
-        userDefaultsManager.setReview(movieReview)
-        userDefaultsManager.setReviewId()
+        if isEditing {
+            userDefaultsManager.editReview(id: id, newValue: movieReview)
+        } else {
+            userDefaultsManager.setReview(movieReview)
+            userDefaultsManager.setReviewId()
+        }
         viewController?.popToRootViewController()
     }
 

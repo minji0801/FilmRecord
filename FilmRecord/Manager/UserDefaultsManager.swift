@@ -10,6 +10,7 @@ import Foundation
 protocol UserDefaultsManagerProtocol {
     func getReviews() -> [Review]                  // 영화 리뷰 가져오기
     func setReview(_ newValue: Review)             // 영화 리뷰 저장하기
+    func editReview(id: Int, newValue: Review)                      // 리뷰 수정하기
     func overwriteReview(_ value: [Review])        // 영화 리뷰 덮어쓰기
 
     func getReviewId() -> Int                           // 리뷰 아이디 가져오기
@@ -43,6 +44,13 @@ struct UserDefaultsManager: UserDefaultsManagerProtocol {
     func setReview(_ newValue: Review) {
         var currentReviews: [Review] = getReviews()
         currentReviews.insert(newValue, at: 0)
+        UserDefaults.standard.setValue(try? PropertyListEncoder().encode(currentReviews), forKey: Key.review.rawValue)
+    }
+
+    /// 리뷰 수정하기
+    func editReview(id: Int, newValue: Review) {
+        var currentReviews: [Review] = getReviews()
+        currentReviews[currentReviews.count - id - 1] = newValue
         UserDefaults.standard.setValue(try? PropertyListEncoder().encode(currentReviews), forKey: Key.review.rawValue)
     }
 

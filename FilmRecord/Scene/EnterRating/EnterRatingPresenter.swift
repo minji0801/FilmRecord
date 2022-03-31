@@ -9,27 +9,34 @@ import Foundation
 
 protocol EnterRatingProtocol: AnyObject {
     func setupNavigationBar()
-    func setupView(movie: Movie)
+    func setupView(movie: Movie, review: Review, isEditing: Bool)
     func popViewController()
-    func pushToReviewWriteViewController(movie: Movie, rating: Double)
+    func pushToReviewWriteViewController(movie: Movie, rating: Double, review: Review, isEditing: Bool)
 }
 
 final class EnterRatingPresenter: NSObject {
     private weak var viewController: EnterRatingProtocol?
 
     private var movie: Movie
+    private var review: Review
+    private var isEditing: Bool
 
     init(
         viewController: EnterRatingProtocol,
-        movie: Movie
+        movie: Movie,
+        review: Review,
+        isEditing: Bool
     ) {
         self.viewController = viewController
         self.movie = movie
+        self.review = review
+        self.isEditing = isEditing
     }
 
     func viewDidLoad() {
         viewController?.setupNavigationBar()
-        viewController?.setupView(movie: movie)
+        viewController?.setupView(movie: movie, review: review, isEditing: isEditing)
+        print(review, isEditing)
     }
 
     func didTappedLeftBarButton() {
@@ -37,6 +44,11 @@ final class EnterRatingPresenter: NSObject {
     }
 
     func didTappedRightBarButton(rating: Double) {
-        viewController?.pushToReviewWriteViewController(movie: movie, rating: rating)
+        viewController?.pushToReviewWriteViewController(
+            movie: movie,
+            rating: rating,
+            review: review,
+            isEditing: isEditing
+        )
     }
 }

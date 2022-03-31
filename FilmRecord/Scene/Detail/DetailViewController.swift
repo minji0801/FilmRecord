@@ -154,6 +154,15 @@ extension DetailViewController: DetailProtocol {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
+    func setupNoti() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(editNotification(_:)),
+            name: NSNotification.Name("Edit"),
+            object: nil
+        )
+    }
+
     func setupView(review: Review) {
         view.backgroundColor = .secondarySystemBackground
 
@@ -224,17 +233,14 @@ extension DetailViewController: DetailProtocol {
         navigationController?.popViewController(animated: true)
     }
 
-    func showPopUp() {
-        let popUpViewController = PopoverContentController()
-        popUpViewController.modalPresentationStyle = .popover
-        popUpViewController.popoverPresentationController?.barButtonItem = rightBarButtonItem
-
-//        popUpViewController.preferredContentSize = CGSize(width: 100.0, height: 150.0)
-//        popUpViewController.popoverPresentationController?.sourceView = view
-//        popUpViewController.popoverPresentationController?.sourceRect = topVerticalStactView.bounds
-//        popUpViewController.popoverPresentationController?.permittedArrowDirections = .left
-//        popUpViewController.popoverPresentationController!.delegate = self
-        present(popUpViewController, animated: true)
+    func pushToEnterRatingViewController() {
+        let review = presenter.review
+        let enterRagingViewController = EnterRatingViewController(
+            movie: review.movie,
+            review: review,
+            isEditing: true
+        )
+        navigationController?.pushViewController(enterRagingViewController, animated: true)
     }
 }
 
@@ -246,21 +252,24 @@ extension DetailViewController {
     }
 
     @objc func didTappedRightBarButton(_ sender: UIBarButtonItem) {
-//        presenter.didTappedRightBarButton()//get the button frame
-        let popoverContentController = PopoverContentController()
+        let popoverContentController = PopUpViewController(review: presenter.review)
         popoverContentController.modalPresentationStyle = .popover
         popoverContentController.preferredContentSize = CGSize(width: 80, height: 100)
 
         if let popoverPresentationController = popoverContentController.popoverPresentationController {
             popoverPresentationController.permittedArrowDirections = .right
-//            popoverPresentationController.sourceView = self.view
             popoverPresentationController.barButtonItem = sender
             popoverPresentationController.delegate = self
             present(popoverContentController, animated: true, completion: nil)
         }
     }
+
+    @objc func editNotification(_ notification: Notification) {
+        presenter.editNotification()
+    }
 }
 
+// MARK: - UIPopoverPresentationControllerDelegate
 extension DetailViewController: UIPopoverPresentationControllerDelegate {
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

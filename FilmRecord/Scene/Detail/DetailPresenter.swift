@@ -9,15 +9,16 @@ import Foundation
 
 protocol DetailProtocol: AnyObject {
     func setupNavigationBar()
+    func setupNoti()
     func setupView(review: Review)
     func popViewController()
-    func showPopUp()
+    func pushToEnterRatingViewController()
 }
 
 final class DetailPresenter: NSObject {
     private weak var viewController: DetailProtocol?
 
-    private var review: Review
+    var review: Review
 
     init(
         viewController: DetailProtocol?,
@@ -29,6 +30,7 @@ final class DetailPresenter: NSObject {
 
     func viewDidLoad() {
         viewController?.setupNavigationBar()
+        viewController?.setupNoti()
         viewController?.setupView(review: review)
     }
 
@@ -36,7 +38,7 @@ final class DetailPresenter: NSObject {
         viewController?.popViewController()
     }
 
-    func didTappedRightBarButton() {
-        viewController?.showPopUp()
+    func editNotification() {
+        viewController?.pushToEnterRatingViewController()
     }
 }

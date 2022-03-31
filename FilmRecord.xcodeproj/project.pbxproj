@@ -34,6 +34,7 @@
 		A579427327EE0B9C000F233A /* MovieSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579427227EE0B9C000F233A /* MovieSearchCollectionViewCell.swift */; };
 		A579427627EE0D84000F233A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A579427527EE0D84000F233A /* SnapKit */; };
 		A579427927EE0DAB000F233A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A579427827EE0DAB000F233A /* Kingfisher */; };
+		A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */; };
 		A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */; };
 		A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */; };
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
@@ -101,6 +102,7 @@
 		A579426E27EE0884000F233A /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A579427027EE08C8000F233A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		A579427227EE0B9C000F233A /* MovieSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPresenter.swift; sourceTree = "<group>"; };
 		A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingViewController.swift; sourceTree = "<group>"; };
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -225,7 +227,7 @@
 				A579426127EDFB49000F233A /* MovieSearch */,
 				A5FACB4327F0381D00DAB3AA /* StackView */,
 				A5FACB4827F0384800DAB3AA /* ReviewWrite */,
-				A5C6678B27F413480090B617 /* PopUpViewController.swift */,
+				A5828A6827F5548C00DC89D3 /* PopUp */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -269,6 +271,15 @@
 				A511197827F15B5A0061BBAD /* Review.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A5828A6827F5548C00DC89D3 /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				A5C6678B27F413480090B617 /* PopUpViewController.swift */,
+				A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */,
+			);
+			path = PopUp;
 			sourceTree = "<group>";
 		};
 		A594B0EC27EF3829001344A2 /* EnterRating */ = {
@@ -578,6 +589,7 @@
 				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
 				A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */,
+				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
 				A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */,
