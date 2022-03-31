@@ -35,6 +35,8 @@
 		A579427627EE0D84000F233A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A579427527EE0D84000F233A /* SnapKit */; };
 		A579427927EE0DAB000F233A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A579427827EE0DAB000F233A /* Kingfisher */; };
 		A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */; };
+		A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */; };
+		A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */; };
 		A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */; };
 		A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */; };
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
@@ -103,6 +105,8 @@
 		A579427027EE08C8000F233A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		A579427227EE0B9C000F233A /* MovieSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPresenter.swift; sourceTree = "<group>"; };
+		A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertViewController.swift; sourceTree = "<group>"; };
+		A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertPresenter.swift; sourceTree = "<group>"; };
 		A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingViewController.swift; sourceTree = "<group>"; };
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 		A579425927EDF6D4000F233A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A5828A6D27F58C6B00DC89D3 /* DeleteAlert */,
 				A50E508227F2BAB50079AFEB /* Detail */,
 				A594B0EC27EF3829001344A2 /* EnterRating */,
 				A579425C27EDF6FF000F233A /* Home */,
@@ -280,6 +285,15 @@
 				A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */,
 			);
 			path = PopUp;
+			sourceTree = "<group>";
+		};
+		A5828A6D27F58C6B00DC89D3 /* DeleteAlert */ = {
+			isa = PBXGroup;
+			children = (
+				A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */,
+				A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */,
+			);
+			path = DeleteAlert;
 			sourceTree = "<group>";
 		};
 		A594B0EC27EF3829001344A2 /* EnterRating */ = {
@@ -589,11 +603,13 @@
 				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
 				A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */,
+				A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */,
 				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
 				A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */,
 				A579426F27EE0884000F233A /* Movie.swift in Sources */,
+				A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */,
 				A579426027EDFB45000F233A /* MovieSearchPresenter.swift in Sources */,
 				A50E508127F2BAB10079AFEB /* DetailPresenter.swift in Sources */,
 				A579426427EE07A7000F233A /* MovieSearchManager.swift in Sources */,

@@ -48,6 +48,8 @@ final class PopUpViewController: UIViewController {
         button.setTitle("삭제", for: .normal)
         button.titleLabel?.font = FontManager().largeFont()
         button.setTitleColor(UIColor.systemRed, for: .normal)
+        button.addTarget(self, action: #selector(didTappedDeleteButton), for: .touchUpInside)
+
         return button
     }()
 
@@ -80,6 +82,12 @@ extension PopUpViewController: PopUpProtocol {
         dismiss(animated: true)
         NotificationCenter.default.post(name: NSNotification.Name("Edit"), object: nil)
     }
+
+    /// 삭제 노티피케이션 송신
+    func postDeleteNotification() {
+        dismiss(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name("Delete"), object: nil)
+    }
 }
 
 // MARK: - @objc Function
@@ -87,5 +95,10 @@ extension PopUpViewController {
     /// 수정 버튼 클릭 -> DetailViewController로 노티피케이션 송신
     @objc func didTappedEditButton() {
         presenter.didTappedEditButton()
+    }
+
+    /// 삭제 버튼 클릭 -> DetailViewController로 노티피케이션 송신
+    @objc func didTappedDeleteButton() {
+        presenter.didTappedDeleteButton()
     }
 }

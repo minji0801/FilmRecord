@@ -13,18 +13,22 @@ protocol DetailProtocol: AnyObject {
     func setupView(review: Review)
     func popViewController()
     func pushToEnterRatingViewController()
+    func showDeleteAlert()
 }
 
 final class DetailPresenter: NSObject {
     private weak var viewController: DetailProtocol?
+    private let userDefaultsManager: UserDefaultsManagerProtocol
 
     var review: Review
 
     init(
         viewController: DetailProtocol?,
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager(),
         review: Review
     ) {
         self.viewController = viewController
+        self.userDefaultsManager = userDefaultsManager
         self.review = review
     }
 
@@ -40,5 +44,15 @@ final class DetailPresenter: NSObject {
 
     func editNotification() {
         viewController?.pushToEnterRatingViewController()
+    }
+
+    func deleteNotification() {
+        viewController?.showDeleteAlert()
+    }
+
+    func deleteReviewNotification() {
+        let id = review.id
+        userDefaultsManager.deleteReview(id: id)
+        viewController?.popViewController()
     }
 }

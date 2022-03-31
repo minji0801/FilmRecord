@@ -161,6 +161,18 @@ extension DetailViewController: DetailProtocol {
             name: NSNotification.Name("Edit"),
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(deleteNotification(_:)),
+            name: NSNotification.Name("Delete"),
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(deleteReviewNotification(_:)),
+            name: NSNotification.Name("DeleteReview"),
+            object: nil
+        )
     }
 
     func setupView(review: Review) {
@@ -242,6 +254,12 @@ extension DetailViewController: DetailProtocol {
         )
         navigationController?.pushViewController(enterRagingViewController, animated: true)
     }
+
+    func showDeleteAlert() {
+        let deleteAlertViewController = DeleteAlertViewController()
+        deleteAlertViewController.modalPresentationStyle = .overCurrentContext
+        present(deleteAlertViewController, animated: false)
+    }
 }
 
 // MARK: - @objc Function
@@ -266,6 +284,14 @@ extension DetailViewController {
 
     @objc func editNotification(_ notification: Notification) {
         presenter.editNotification()
+    }
+
+    @objc func deleteNotification(_ notification: Notification) {
+        presenter.deleteNotification()
+    }
+
+    @objc func deleteReviewNotification(_ notification: Notification) {
+        presenter.deleteReviewNotification()
     }
 }
 

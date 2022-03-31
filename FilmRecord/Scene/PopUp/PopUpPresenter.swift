@@ -10,6 +10,7 @@ import Foundation
 protocol PopUpProtocol: AnyObject {
     func setupView()
     func postEditNotification()
+    func postDeleteNotification()
 }
 
 final class PopUpPresenter: NSObject {
@@ -31,5 +32,9 @@ final class PopUpPresenter: NSObject {
 
     func didTappedEditButton() {
         viewController?.postEditNotification()
+    }
+
+    func didTappedDeleteButton() {
+        viewController?.postDeleteNotification()
     }
 }
