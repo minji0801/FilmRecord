@@ -45,6 +45,9 @@
 		A5C2A87527F697D500225640 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = A5C2A87427F697D500225640 /* SideMenu */; };
 		A5C2A87727F6984D00225640 /* MenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87627F6984D00225640 /* MenuNavigationController.swift */; };
 		A5C2A87927F69A9D00225640 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87827F69A9D00225640 /* MenuViewController.swift */; };
+		A5C2A87C27F6BE8300225640 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87B27F6BE8300225640 /* MenuTableViewCell.swift */; };
+		A5C2A87E27F6C10C00225640 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87D27F6C10C00225640 /* AppsTableViewCell.swift */; };
+		A5C2A88027F6D25800225640 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87F27F6D25800225640 /* MenuPresenter.swift */; };
 		A5C6678527F3EDA60090B617 /* 강원교육새음.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678127F3EDA60090B617 /* 강원교육새음.otf */; };
 		A5C6678627F3EDA60090B617 /* 온글잎 민혜체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */; };
 		A5C6678727F3EDA60090B617 /* Kyobo Handwriting 2019.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */; };
@@ -116,6 +119,9 @@
 		A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeRowVerticalStackView.swift; sourceTree = "<group>"; };
 		A5C2A87627F6984D00225640 /* MenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationController.swift; sourceTree = "<group>"; };
 		A5C2A87827F69A9D00225640 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		A5C2A87B27F6BE8300225640 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		A5C2A87D27F6C10C00225640 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
+		A5C2A87F27F6D25800225640 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		A5C6678127F3EDA60090B617 /* 강원교육새음.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "강원교육새음.otf"; sourceTree = "<group>"; };
 		A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "온글잎 민혜체.ttf"; sourceTree = "<group>"; };
 		A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kyobo Handwriting 2019.otf"; sourceTree = "<group>"; };
@@ -239,8 +245,7 @@
 				A5FACB4327F0381D00DAB3AA /* StackView */,
 				A5FACB4827F0384800DAB3AA /* ReviewWrite */,
 				A5828A6827F5548C00DC89D3 /* PopUp */,
-				A5C2A87627F6984D00225640 /* MenuNavigationController.swift */,
-				A5C2A87827F69A9D00225640 /* MenuViewController.swift */,
+				A5C2A87A27F6BE6A00225640 /* Menu */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -311,6 +316,18 @@
 				A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */,
 			);
 			path = EnterRating;
+			sourceTree = "<group>";
+		};
+		A5C2A87A27F6BE6A00225640 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A5C2A87627F6984D00225640 /* MenuNavigationController.swift */,
+				A5C2A87827F69A9D00225640 /* MenuViewController.swift */,
+				A5C2A87F27F6D25800225640 /* MenuPresenter.swift */,
+				A5C2A87B27F6BE8300225640 /* MenuTableViewCell.swift */,
+				A5C2A87D27F6C10C00225640 /* AppsTableViewCell.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		A5C6678027F3ED5B0090B617 /* Font */ = {
@@ -615,6 +632,7 @@
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
 				A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */,
 				A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */,
+				A5C2A87C27F6BE8300225640 /* MenuTableViewCell.swift in Sources */,
 				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
@@ -629,9 +647,11 @@
 				A579425B27EDF6FB000F233A /* HomePresenter.swift in Sources */,
 				A579426C27EE0822000F233A /* SearchMovieResponseModel.swift in Sources */,
 				A579425E27EDFB27000F233A /* MovieSearchViewController.swift in Sources */,
+				A5C2A88027F6D25800225640 /* MenuPresenter.swift in Sources */,
 				A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */,
 				A511197D27F1658D0061BBAD /* HomeCollectionViewCell.swift in Sources */,
 				A511197B27F1601C0061BBAD /* UserDefaultsManager.swift in Sources */,
+				A5C2A87E27F6C10C00225640 /* AppsTableViewCell.swift in Sources */,
 				A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */,
 				A5C2A87727F6984D00225640 /* MenuNavigationController.swift in Sources */,
 				A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */,

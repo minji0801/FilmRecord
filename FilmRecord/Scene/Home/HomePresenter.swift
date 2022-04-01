@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeProtocol: AnyObject {
     func setupNavigationBar()
+    func setupNoti()
     func setupView()
     func pushToMenuViewController()
     func pushToSearchMovieViewController()
@@ -33,6 +34,7 @@ final class HomePresenter: NSObject {
 
     func viewDidLoad() {
         viewController?.setupNavigationBar()
+        viewController?.setupNoti()
         viewController?.setupView()
     }
 
