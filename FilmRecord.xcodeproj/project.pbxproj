@@ -42,6 +42,9 @@
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
 		A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */; };
 		A594B0F527EF5833001344A2 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = A594B0F427EF5833001344A2 /* Cosmos */; };
+		A5C2A87527F697D500225640 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = A5C2A87427F697D500225640 /* SideMenu */; };
+		A5C2A87727F6984D00225640 /* MenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87627F6984D00225640 /* MenuNavigationController.swift */; };
+		A5C2A87927F69A9D00225640 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87827F69A9D00225640 /* MenuViewController.swift */; };
 		A5C6678527F3EDA60090B617 /* 강원교육새음.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678127F3EDA60090B617 /* 강원교육새음.otf */; };
 		A5C6678627F3EDA60090B617 /* 온글잎 민혜체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */; };
 		A5C6678727F3EDA60090B617 /* Kyobo Handwriting 2019.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */; };
@@ -111,6 +114,8 @@
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
 		A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeRowVerticalStackView.swift; sourceTree = "<group>"; };
+		A5C2A87627F6984D00225640 /* MenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationController.swift; sourceTree = "<group>"; };
+		A5C2A87827F69A9D00225640 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A5C6678127F3EDA60090B617 /* 강원교육새음.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "강원교육새음.otf"; sourceTree = "<group>"; };
 		A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "온글잎 민혜체.ttf"; sourceTree = "<group>"; };
 		A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kyobo Handwriting 2019.otf"; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 				A579427927EE0DAB000F233A /* Kingfisher in Frameworks */,
 				A579427627EE0D84000F233A /* SnapKit in Frameworks */,
 				409995154B5D0A532C364FBE /* Pods_FilmRecord.framework in Frameworks */,
+				A5C2A87527F697D500225640 /* SideMenu in Frameworks */,
 				A579426827EE07EF000F233A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +239,8 @@
 				A5FACB4327F0381D00DAB3AA /* StackView */,
 				A5FACB4827F0384800DAB3AA /* ReviewWrite */,
 				A5828A6827F5548C00DC89D3 /* PopUp */,
+				A5C2A87627F6984D00225640 /* MenuNavigationController.swift */,
+				A5C2A87827F69A9D00225640 /* MenuViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 				A579427527EE0D84000F233A /* SnapKit */,
 				A579427827EE0DAB000F233A /* Kingfisher */,
 				A594B0F427EF5833001344A2 /* Cosmos */,
+				A5C2A87427F697D500225640 /* SideMenu */,
 			);
 			productName = FilmRecord;
 			productReference = A579422627EDF3CC000F233A /* FilmRecord.app */;
@@ -461,6 +470,7 @@
 				A579427427EE0D84000F233A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A579427727EE0DAB000F233A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				A594B0F327EF5833001344A2 /* XCRemoteSwiftPackageReference "Cosmos" */,
+				A5C2A87327F697D500225640 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = A579422727EDF3CC000F233A /* Products */;
 			projectDirPath = "";
@@ -598,6 +608,7 @@
 				A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */,
 				A579426A27EE0817000F233A /* SearchMovieRequestModel.swift in Sources */,
 				A50E507F27F2BAA90079AFEB /* DetailViewController.swift in Sources */,
+				A5C2A87927F69A9D00225640 /* MenuViewController.swift in Sources */,
 				A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */,
 				A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */,
 				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
@@ -622,6 +633,7 @@
 				A511197D27F1658D0061BBAD /* HomeCollectionViewCell.swift in Sources */,
 				A511197B27F1601C0061BBAD /* UserDefaultsManager.swift in Sources */,
 				A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */,
+				A5C2A87727F6984D00225640 /* MenuNavigationController.swift in Sources */,
 				A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */,
 				A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */,
 			);
@@ -995,6 +1007,14 @@
 				minimumVersion = 23.0.0;
 			};
 		};
+		A5C2A87327F697D500225640 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1017,6 +1037,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A594B0F327EF5833001344A2 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
+		};
+		A5C2A87427F697D500225640 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5C2A87327F697D500225640 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

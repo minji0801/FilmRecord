@@ -12,8 +12,12 @@ final class HomeViewController: UIViewController {
     private lazy var presenter = HomePresenter(viewController: self)
 
     private lazy var leftBarButtonItem: UIBarButtonItem = {
-        let leftBarButtonItem = UIBarButtonItem()
-        leftBarButtonItem.image = UIImage(systemName: "line.3.horizontal")
+        let leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "line.3.horizontal"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedLeftBarButton)
+        )
 
         return leftBarButtonItem
     }()
@@ -62,11 +66,6 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
     }
-
-    /// Right bar button was tapped.
-    @objc func didTappedRightBarButton() {
-        presenter.didTappedRightBarButton()
-    }
 }
 
 // MARK: - HomeProtocol Function
@@ -89,7 +88,12 @@ extension HomeViewController: HomeProtocol {
         }
     }
 
-    func pushSearchMovieViewController() {
+    func pushToMenuViewController() {
+        let menuNavigationController = MenuNavigationController(rootViewController: MenuViewController())
+        present(menuNavigationController, animated: true)
+    }
+
+    func pushToSearchMovieViewController() {
         let searchMovieViewController = MovieSearchViewController()
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
@@ -101,5 +105,17 @@ extension HomeViewController: HomeProtocol {
     func pushToDetailViewController(review: Review) {
         let detailViewController = DetailViewController(review: review)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+// MARK: - @objc Function
+extension HomeViewController {
+
+    @objc func didTappedLeftBarButton() {
+        presenter.didTappedLeftBarButton()
+    }
+
+    @objc func didTappedRightBarButton() {
+        presenter.didTappedRightBarButton()
     }
 }

@@ -103,6 +103,7 @@ final class DeleteAlertViewController: UIViewController {
 
 // MARK: - DeleteAlertProtocol Function
 extension DeleteAlertViewController: DeleteAlertProtocol {
+    /// 뷰 구성
     func setupView() {
         view.backgroundColor = .black.withAlphaComponent(0.5)
 

@@ -11,7 +11,8 @@ import UIKit
 protocol HomeProtocol: AnyObject {
     func setupNavigationBar()
     func setupView()
-    func pushSearchMovieViewController()
+    func pushToMenuViewController()
+    func pushToSearchMovieViewController()
     func reloadCollectionView()
     func pushToDetailViewController(review: Review)
 }
@@ -40,8 +41,12 @@ final class HomePresenter: NSObject {
         viewController?.reloadCollectionView()
     }
 
+    func didTappedLeftBarButton() {
+        viewController?.pushToMenuViewController()
+    }
+
     func didTappedRightBarButton() {
-        viewController?.pushSearchMovieViewController()
+        viewController?.pushToSearchMovieViewController()
     }
 }
 
