@@ -5,7 +5,6 @@
 //  Created by 김민지 on 2022/03/30.
 //  팝업(수정, 삭제) 화면
 
-import Foundation
 import SnapKit
 import UIKit
 
@@ -21,7 +20,7 @@ final class PopUpViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    /// 세로 스택 뷰
+    /// 세로 스택 뷰: 수정 버튼, 삭제 버튼
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical

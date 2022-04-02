@@ -272,6 +272,7 @@ extension DetailViewController: DetailProtocol {
         navigationController?.pushViewController(enterRagingViewController, animated: true)
     }
 
+    /// 삭제 Alert 창 보여주기
     func showDeleteAlert() {
         let deleteAlertViewController = DeleteAlertViewController()
         deleteAlertViewController.modalPresentationStyle = .overCurrentContext
@@ -282,10 +283,12 @@ extension DetailViewController: DetailProtocol {
 // MARK: - @objc Function
 extension DetailViewController {
 
+    /// 뒤로 가기 버튼 클릭 -> 현재 뷰 pop
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
     }
 
+    /// ... 버튼 클릭 -> 수정/삭제 팝업 창 보여주기
     @objc func didTappedRightBarButton(_ sender: UIBarButtonItem) {
         let popoverContentController = PopUpViewController(review: presenter.review)
         popoverContentController.modalPresentationStyle = .popover
@@ -299,14 +302,17 @@ extension DetailViewController {
         }
     }
 
+    /// 팝업 창으로 부터 수정 노티 받은 후 -> 평점 입력 화면 보여주기
     @objc func editNotification(_ notification: Notification) {
         presenter.editNotification()
     }
 
+    /// 팝업 창으로 부터 삭제 노티 받은 후 -> Alert 창 보여주기
     @objc func deleteNotification(_ notification: Notification) {
         presenter.deleteNotification()
     }
 
+    /// 리뷰 삭제 노티 받은 후 -> 해당 리뷰 삭제하기
     @objc func deleteReviewNotification(_ notification: Notification) {
         presenter.deleteReviewNotification()
     }
