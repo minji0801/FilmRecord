@@ -3,7 +3,7 @@
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/04/02.
-//
+//  보고 싶은 영화 화면
 
 import SnapKit
 import UIKit
@@ -64,6 +64,7 @@ final class ToWatchViewController: UIViewController {
 
 // MARK: - ToWatchProtocol Function
 extension ToWatchViewController: ToWatchProtocol {
+    /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -83,12 +84,13 @@ extension ToWatchViewController: ToWatchProtocol {
         )
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(didDismissSearchViewController),
-            name: NSNotification.Name("DismissSearchView"),
+            selector: #selector(didSelectedMovie),
+            name: NSNotification.Name("SelectedMovie"),
             object: nil
         )
     }
 
+    /// 뷰 구성
     func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
@@ -110,7 +112,7 @@ extension ToWatchViewController: ToWatchProtocol {
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
 
-    /// TableView Reload
+    /// 테이블 뷰 다시 로드하기
     func reloadTableView() {
         tableView.reloadData()
     }
@@ -119,17 +121,19 @@ extension ToWatchViewController: ToWatchProtocol {
 // MARK: - @objc Function
 extension ToWatchViewController {
 
+    /// 메뉴 버튼 클릭: 메뉴 화면 보여주기
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
     }
 
+    /// + 버튼 클릭: 영화 검색 화면 보여주기
     @objc func didTappedRightBarButton() {
         presenter.didTappedRightBarButton()
     }
 
-    /// Table Reload Notification
-    @objc func didDismissSearchViewController() {
-        presenter.didDismissSearchViewController()
+    /// 영화 검색 화면에서 영화 선택 후 받는 노티
+    @objc func didSelectedMovie() {
+        presenter.didSelectedMovie()
     }
 
     /// 메뉴 뷰 사라지고 받는 노티

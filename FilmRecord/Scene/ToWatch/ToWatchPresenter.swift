@@ -3,7 +3,7 @@
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/04/02.
-//
+//  보고 싶은 영화 Presenter
 
 import UIKit
 
@@ -20,8 +20,8 @@ final class ToWatchPresenter: NSObject {
     private weak var viewController: ToWatchProtocol?
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    private var movies: [Watch] = []
-    private var watch: Watch = Watch.EMPTY
+    private var movies: [Watch] = []        // 보고 싶은 영화들
+    private var watch: Watch = Watch.EMPTY  // 영화 검색 화면에서 선택한 영화
 
     init(
         viewController: ToWatchProtocol?,
@@ -51,7 +51,7 @@ final class ToWatchPresenter: NSObject {
     }
 
     /// 영화 선택하고 나서
-    func didDismissSearchViewController() {
+    func didSelectedMovie() {
         // UserDefaults 내용 업데이트하기
         movies = userDefaultsManager.getMovieToWatch()
         print("보고 싶은 영화: \(movies)")
@@ -59,7 +59,7 @@ final class ToWatchPresenter: NSObject {
     }
 }
 
-// MARK: - SearchMovieDelegate
+// MARK: - MovieSearchDelegate
 extension ToWatchPresenter: MovieSearchDelegate {
     /// 영화 검색 화면에서 선택한 영화 정보를 UserDefaults에 저장하고 TableView reload하기
     func selectMovie(_ movie: Movie) {
@@ -67,7 +67,7 @@ extension ToWatchPresenter: MovieSearchDelegate {
         userDefaultsManager.setMovieToWatch(watch)
 
         // TableView로 Noti 보내기
-        NotificationCenter.default.post(name: NSNotification.Name("DismissSearchView"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("SelectedMovie"), object: nil)
     }
 }
 
