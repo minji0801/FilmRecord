@@ -19,17 +19,13 @@ protocol MovieSearchProtocol: AnyObject {
     func pushToEnterRatingViewController(movie: Movie)
 }
 
-/// 검색한 영화 중에서 선택한 영화의 정보를 가져오기 위한 Delegate
-protocol MovieSearchDelegate {
-    func selectMovie(_ movie: Movie)
-}
-
 final class MovieSearchPresenter: NSObject {
     private weak var viewController: MovieSearchProtocol?
     private let searchMovieManager: MovieSearchManagerProtocol
+    private let userDefaultsManager: UserDefaultsManagerProtocol
 
     private var movies: [Movie] = []
-    private var movieSearchDelegate: MovieSearchDelegate
+    private var fromHome: Bool
 
     private var currentKeyword = ""
     private var currentPage: Int = 0
@@ -38,11 +34,13 @@ final class MovieSearchPresenter: NSObject {
     init(
         viewController: MovieSearchProtocol,
         searchMovieManager: MovieSearchManagerProtocol = MovieSearchManager(),
-        movieSearchDelegate: MovieSearchDelegate
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager(),
+        fromHome: Bool
     ) {
         self.viewController = viewController
         self.searchMovieManager = searchMovieManager
-        self.movieSearchDelegate = movieSearchDelegate
+        self.userDefaultsManager = userDefaultsManager
+        self.fromHome = fromHome
     }
 
     func viewDidLoad() {
@@ -135,16 +133,14 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let movie = movies[indexPath.row]
-        movieSearchDelegate.selectMovie(movie)
-        viewController?.popViewController()
-//        if fromHome {
-//            // Home에서 왔을 때
-//            let movie = movies[indexPath.row]
-//            viewController?.pushToEnterRatingViewController(movie: movie)
-//        } else {
-//            // 보고싶은 영화에서 왔을 떄 : 돌아가기
-//            viewController?.popToRootViewController()
-//        }
+        if fromHome {
+            // Home에서 왔을 때: 선택한 영화 평점 입력 화면으로 넘겨주기
+            viewController?.pushToEnterRatingViewController(movie: movie)
+        } else {
+            // 보고싶은 영화에서 왔을 떄: 선택한 영화 UserDefaults에 저장하고 pop하기
+            userDefaultsManager.setMovieToWatch(Watch(movie: movie, watched: false))
+            viewController?.popViewController()
+        }
     }
 }
 

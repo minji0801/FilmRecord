@@ -82,12 +82,6 @@ extension ToWatchViewController: ToWatchProtocol {
             name: NSNotification.Name("DismissMenu"),
             object: nil
         )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didSelectedMovie),
-            name: NSNotification.Name("SelectedMovie"),
-            object: nil
-        )
     }
 
     /// 뷰 구성
@@ -108,7 +102,7 @@ extension ToWatchViewController: ToWatchProtocol {
 
     /// 영화 검색 화면 push
     func pushToSearchMovieViewController() {
-        let searchMovieViewController = MovieSearchViewController(movieSearchDelegate: presenter)
+        let searchMovieViewController = MovieSearchViewController(fromHome: false)
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
 
@@ -129,11 +123,6 @@ extension ToWatchViewController {
     /// + 버튼 클릭: 영화 검색 화면 보여주기
     @objc func didTappedRightBarButton() {
         presenter.didTappedRightBarButton()
-    }
-
-    /// 영화 검색 화면에서 영화 선택 후 받는 노티
-    @objc func didSelectedMovie() {
-        presenter.didSelectedMovie()
     }
 
     /// 메뉴 뷰 사라지고 받는 노티

@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// 시간 포맷
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 M월 d일 EEEE"
@@ -30,6 +31,7 @@ class DetailViewController: UIViewController {
         return formatter
     }()
 
+    /// Left Bar Button: 뒤로가기 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.left"),
@@ -41,6 +43,7 @@ class DetailViewController: UIViewController {
         return leftBarButtonItem
     }()
 
+    /// Right Bar Button: ... 버튼
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "ellipsis"),
@@ -52,6 +55,7 @@ class DetailViewController: UIViewController {
         return rightBarButtonItem
     }()
 
+    /// 상단 가로 스택 뷰: 영화 썸네일 이미지, 영화 제목, 사용자 평점 (카드 형태로 구성)
     private lazy var topHorizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -72,6 +76,7 @@ class DetailViewController: UIViewController {
         return stackView
     }()
 
+    /// 상단 세로 스택 뷰: 영화 제목, 사용자 평점
     private lazy var topVerticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -82,6 +87,7 @@ class DetailViewController: UIViewController {
         return stackView
     }()
 
+    /// 영화 썸네일 이미지
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -90,6 +96,7 @@ class DetailViewController: UIViewController {
         return imageView
     }()
 
+    /// 중간 선
     private lazy var separatorLineView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray
@@ -97,6 +104,7 @@ class DetailViewController: UIViewController {
         return view
     }()
 
+    /// 영화 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = FontManager().extraLargeFont()
@@ -106,6 +114,7 @@ class DetailViewController: UIViewController {
         return label
     }()
 
+    /// 사용자 평점 뷰
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
         cosmosView.settings.starSize = 30
@@ -120,6 +129,7 @@ class DetailViewController: UIViewController {
         return cosmosView
     }()
 
+    /// 하단 세로 스택 뷰: 영화 정보, 리뷰 정보
     private lazy var bottomVerticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -130,6 +140,7 @@ class DetailViewController: UIViewController {
         return stackView
     }()
 
+    /// 리뷰 텍스트 뷰
     private lazy var reviewTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .label
@@ -149,11 +160,13 @@ class DetailViewController: UIViewController {
 
 // MARK: - DetailProtocol Function
 extension DetailViewController: DetailProtocol {
+    /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
+    /// 노티피케이션 구성
     func setupNoti() {
         NotificationCenter.default.addObserver(
             self,
@@ -175,9 +188,11 @@ extension DetailViewController: DetailProtocol {
         )
     }
 
+    /// 뷰 구성
     func setupView(review: Review) {
         view.backgroundColor = .secondarySystemBackground
 
+        // 뒤로가기 제스처 등록
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
 
@@ -241,10 +256,12 @@ extension DetailViewController: DetailProtocol {
         }
     }
 
+    /// 현재 뷰 pop
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
 
+    /// 영화 평점 입력 화면 push
     func pushToEnterRatingViewController() {
         let review = presenter.review
         let enterRagingViewController = EnterRatingViewController(

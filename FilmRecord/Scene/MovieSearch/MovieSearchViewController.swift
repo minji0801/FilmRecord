@@ -11,9 +11,9 @@ import UIKit
 final class MovieSearchViewController: UIViewController {
     private var presenter: MovieSearchPresenter!
 
-    init(movieSearchDelegate: MovieSearchDelegate) {
+    init(fromHome: Bool) {
         super.init(nibName: nil, bundle: nil)
-        presenter = MovieSearchPresenter(viewController: self, movieSearchDelegate: movieSearchDelegate)
+        presenter = MovieSearchPresenter(viewController: self, fromHome: fromHome)
     }
 
     required init?(coder: NSCoder) {

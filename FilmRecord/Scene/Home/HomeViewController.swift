@@ -113,7 +113,7 @@ extension HomeViewController: HomeProtocol {
 
     /// 영화 검색 화면 push
     func pushToSearchMovieViewController() {
-        let searchMovieViewController = MovieSearchViewController(movieSearchDelegate: presenter)
+        let searchMovieViewController = MovieSearchViewController(fromHome: true)
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
 
@@ -126,16 +126,6 @@ extension HomeViewController: HomeProtocol {
     func pushToDetailViewController(review: Review) {
         let detailViewController = DetailViewController(review: review)
         navigationController?.pushViewController(detailViewController, animated: true)
-    }
-
-    /// 평점 입력 화면 보여주기
-    func pushToEnterRatingViewController(movie: Movie) {
-        let enterRagingViewController = EnterRatingViewController(
-            movie: movie,
-            review: Review.EMPTY,
-            isEditing: false
-        )
-        navigationController?.pushViewController(enterRagingViewController, animated: true)
     }
 }
 

@@ -40,6 +40,7 @@ final class ToWatchPresenter: NSObject {
     func viewWillAppear() {
         movies = userDefaultsManager.getMovieToWatch()
         print("보고 싶은 영화: \(movies)")
+        viewController?.reloadTableView()
     }
 
     func didTappedLeftBarButton() {
@@ -48,26 +49,6 @@ final class ToWatchPresenter: NSObject {
 
     func didTappedRightBarButton() {
         viewController?.pushToSearchMovieViewController()
-    }
-
-    /// 영화 선택하고 나서
-    func didSelectedMovie() {
-        // UserDefaults 내용 업데이트하기
-        movies = userDefaultsManager.getMovieToWatch()
-        print("보고 싶은 영화: \(movies)")
-        viewController?.reloadTableView()
-    }
-}
-
-// MARK: - MovieSearchDelegate
-extension ToWatchPresenter: MovieSearchDelegate {
-    /// 영화 검색 화면에서 선택한 영화 정보를 UserDefaults에 저장하고 TableView reload하기
-    func selectMovie(_ movie: Movie) {
-        let watch = Watch(movie: movie, watched: false)
-        userDefaultsManager.setMovieToWatch(watch)
-
-        // TableView로 Noti 보내기
-        NotificationCenter.default.post(name: NSNotification.Name("SelectedMovie"), object: nil)
     }
 }
 
