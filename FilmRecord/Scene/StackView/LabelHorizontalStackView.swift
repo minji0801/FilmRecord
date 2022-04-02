@@ -12,6 +12,7 @@ final class LabelHorizontalStackView: UIStackView {
     private let title: String
     private let content: String
 
+    /// 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
@@ -23,6 +24,7 @@ final class LabelHorizontalStackView: UIStackView {
         return label
     }()
 
+    /// 내용 라벨
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = content

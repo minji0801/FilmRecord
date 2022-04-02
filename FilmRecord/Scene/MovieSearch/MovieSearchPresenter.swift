@@ -78,10 +78,12 @@ extension MovieSearchPresenter: UISearchBarDelegate, UISearchControllerDelegate 
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    /// Cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
 
+    /// Cell 구성
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -95,6 +97,7 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
 
+    /// Cell 크기
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -106,6 +109,7 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
         return CGSize(width: width, height: width * 2)
     }
 
+    /// CollectionView Inset 설정
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -115,10 +119,12 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
         return UIEdgeInsets(top: 0.0, left: inset, bottom: 0.0, right: inset)
     }
 
+    /// 스크롤할 때 -> 키보드 내리기
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         viewController?.keyboardDown()
     }
 
+    /// Cell 보여지려고 할 때 -> 다음 페이지 보여주기(페이징)
     func collectionView(
         _ collectionView: UICollectionView,
         willDisplay cell: UICollectionViewCell,
@@ -131,6 +137,7 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
         requestMovieList(isNeededToReset: false)
     }
 
+    /// Cell 선택 시
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let movie = movies[indexPath.row]
         if fromHome {

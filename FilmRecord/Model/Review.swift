@@ -39,5 +39,14 @@ struct Review: Codable {
 }
 
 extension Review {
-    static let EMPTY = Review(id: -1, date: "", movie: Movie.EMPTY, place: "", with: "", review: "", rating: 0.0, favorite: false)
+    static let EMPTY = Review(
+        id: -1,
+        date: "",
+        movie: Movie.EMPTY,
+        place: "",
+        with: "",
+        review: "",
+        rating: 0.0,
+        favorite: false
+    )
 }

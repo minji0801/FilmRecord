@@ -12,6 +12,7 @@ final class MenuViewController: UIViewController {
     private lazy var presenter = MenuPresenter(viewController: self)
     private lazy var userDefaultsManager = UserDefaultsManager()
 
+    /// 메뉴 테이블 뷰
     private lazy var menuTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
@@ -28,6 +29,7 @@ final class MenuViewController: UIViewController {
         return tableView
     }()
 
+    /// 가로 스택 뷰: 작성한 리뷰 개수, 저작권
     private lazy var horizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -56,6 +58,7 @@ final class MenuViewController: UIViewController {
         return label
     }()
 
+    /// 앱 테이블 뷰
     private lazy var appsTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .secondarySystemBackground
@@ -81,6 +84,7 @@ final class MenuViewController: UIViewController {
 
 // MARK: - MenuProtocol Function
 extension MenuViewController: MenuProtocol {
+    /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.title = "Film Record"
         navigationController?.navigationBar.titleTextAttributes = [
@@ -88,6 +92,7 @@ extension MenuViewController: MenuProtocol {
         ]
     }
 
+    /// 뷰 구성
     func setupView() {
         view.backgroundColor = .systemBackground
 

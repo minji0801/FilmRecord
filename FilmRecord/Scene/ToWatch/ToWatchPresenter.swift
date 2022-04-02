@@ -101,7 +101,7 @@ extension ToWatchPresenter: UITableViewDataSource, UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .automatic) // 테이블 행 제거
         }
 
-        deleteAction.image = UIImage(named: "delete")
+        deleteAction.image = UIImage(systemName: "trash.fill")
         deleteAction.image?.withTintColor(.white)
         deleteAction.backgroundColor = .systemRed
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])

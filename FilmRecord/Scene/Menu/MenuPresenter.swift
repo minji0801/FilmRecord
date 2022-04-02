@@ -3,7 +3,7 @@
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/04/01.
-//
+//  메뉴 화면 Presenter
 
 import UIKit
 
@@ -30,6 +30,7 @@ final class MenuPresenter: NSObject {
 
 // MARK: - UITableView
 extension MenuPresenter: UITableViewDelegate, UITableViewDataSource {
+    /// Row 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView.tag {
         case 0: return 5
@@ -38,6 +39,7 @@ extension MenuPresenter: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    /// Cell 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableView.tag {
         case 0:
@@ -58,6 +60,7 @@ extension MenuPresenter: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    /// Cell 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewController?.dismiss()
         switch tableView.tag {

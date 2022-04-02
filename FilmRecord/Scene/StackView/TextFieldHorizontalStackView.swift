@@ -4,7 +4,6 @@
 //
 //  Created by 김민지 on 2022/03/27.
 //  텍스트 필드를 포함한 가로 스택 뷰
-//  ex. 이미지 | 텍스트 필드
 
 import SnapKit
 import UIKit
@@ -14,6 +13,7 @@ final class TextFieldHorizontalStackView: UIStackView {
     private let title: String
     private let textField: UITextField
 
+    /// 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title

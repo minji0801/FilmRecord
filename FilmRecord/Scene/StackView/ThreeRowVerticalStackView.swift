@@ -3,7 +3,7 @@
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/03/26.
-//
+//  행을 3개 가지는 세로 스택 뷰
 
 import UIKit
 
