@@ -109,7 +109,7 @@ extension HomeViewController: HomeProtocol {
 
     /// 영화 검색 화면 push
     func pushToSearchMovieViewController() {
-        let searchMovieViewController = MovieSearchViewController()
+        let searchMovieViewController = MovieSearchViewController(movieSearchDelegate: presenter)
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
 
@@ -122,6 +122,16 @@ extension HomeViewController: HomeProtocol {
     func pushToDetailViewController(review: Review) {
         let detailViewController = DetailViewController(review: review)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+
+    /// 평점 입력 화면 보여주기
+    func pushToEnterRatingViewController(movie: Movie) {
+        let enterRagingViewController = EnterRatingViewController(
+            movie: movie,
+            review: Review.EMPTY,
+            isEditing: false
+        )
+        navigationController?.pushViewController(enterRagingViewController, animated: true)
     }
 }
 
@@ -139,38 +149,16 @@ extension HomeViewController {
     /// 메뉴 뷰 사라지고 받는 노티
     @objc func didDismissMenuViewController(_ notification: Notification) {
         guard let object: Int = notification.object as? Int else { return }
-        // row가 0이면 pushToRootViewController, 이외는 해당 뷰 push하기
+        // 자기 자신 제외하고 컨트롤하기
         switch object {
-        case 0:
-            navigationController?.popToRootViewController(animated: true)
 //        case 2:
 //            let favoriteListViewController = FavoriteListViewController()
 //            navigationController?.pushViewController(favoriteListViewController, animated: true)
-//        case 3:
-//            let toWatchListViewController = ToWatchListViewController()
-//            navigationController?.pushViewController(toWatchListViewController, animated: true)
+        case 3:
+            let toWatchViewController = ToWatchViewController()
+            navigationController?.setViewControllers([toWatchViewController], animated: true)
         default:
             break
         }
-    }
-}
-
-// MARK: - SideMenuNavigationControllerDelegate
-extension HomeViewController: SideMenuNavigationControllerDelegate {
-
-    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appearing! (animated: \(animated))")
-    }
-
-    func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appeared! (animated: \(animated))")
-    }
-
-    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappearing! (animated: \(animated))")
-    }
-
-    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappeared! (animated: \(animated))")
     }
 }

@@ -16,6 +16,7 @@ protocol HomeProtocol: AnyObject {
     func pushToSearchMovieViewController()
     func reloadCollectionView()
     func pushToDetailViewController(review: Review)
+    func pushToEnterRatingViewController(movie: Movie)
 }
 
 final class HomePresenter: NSObject {
@@ -23,6 +24,7 @@ final class HomePresenter: NSObject {
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
     private var reviews: [Review] = []
+    private var movie: Movie = Movie.EMPTY
 
     init(
         viewController: HomeProtocol,
@@ -49,6 +51,15 @@ final class HomePresenter: NSObject {
 
     func didTappedRightBarButton() {
         viewController?.pushToSearchMovieViewController()
+    }
+}
+
+// MARK: - SearchMovieDelegate
+extension HomePresenter: MovieSearchDelegate {
+    /// 영화 검색 화면에서 선택한 영화 정보를 평점 입력 화면으로 넘겨주기
+    func selectMovie(_ movie: Movie) {
+        self.movie = movie
+        viewController?.pushToEnterRatingViewController(movie: movie)
     }
 }
 

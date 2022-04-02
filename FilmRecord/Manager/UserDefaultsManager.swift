@@ -21,9 +21,9 @@ protocol UserDefaultsManagerProtocol {
     func setFavoriteMovie(_ newValue: Review)      // 좋아하는 영화 저장하기
     func overwriteFavoriteMovie(_ value: [Review]) // 좋아하는 영화 덮어쓰기
 
-//    func getMovieToWatch() -> [MovieToWatch]            // 보고 싶은 영화 가져오기
-//    func setMovieToWatch(_ newValue: MovieToWatch)      // 보고 싶은 영화 저장하기
-//    func overwriteToWatch(_ value: [MovieToWatch])      // 보고 싶은 영화 덮어쓰기
+    func getMovieToWatch() -> [Watch]            // 보고 싶은 영화 가져오기
+    func setMovieToWatch(_ newValue: Watch)      // 보고 싶은 영화 저장하기
+    func overwriteToWatch(_ value: [Watch])      // 보고 싶은 영화 덮어쓰기
 }
 
 struct UserDefaultsManager: UserDefaultsManagerProtocol {
@@ -100,20 +100,20 @@ struct UserDefaultsManager: UserDefaultsManagerProtocol {
     }
 
     /// UserDefaults에서 보고 싶은 영화 가져오기
-//    func getMovieToWatch() -> [MovieToWatch] {
-//        guard let data = UserDefaults.standard.data(forKey: Key.towatch.rawValue) else { return [] }
-//        return (try? PropertyListDecoder().decode([MovieToWatch].self, from: data)) ?? []
-//    }
+    func getMovieToWatch() -> [Watch] {
+        guard let data = UserDefaults.standard.data(forKey: Key.towatch.rawValue) else { return [] }
+        return (try? PropertyListDecoder().decode([Watch].self, from: data)) ?? []
+    }
 
     /// UserDefaults에 보고 싶은 영화 저장하기
-//    func setMovieToWatch(_ newValue: MovieToWatch) {
-//        var currentToWatchs: [MovieToWatch] = getMovieToWatch()
-//        currentToWatchs.insert(newValue, at: 0)
-//        UserDefaults.standard.setValue(try? PropertyListEncoder().encode(currentToWatchs), forKey: Key.towatch.rawValue)
-//    }
+    func setMovieToWatch(_ newValue: Watch) {
+        var currentToWatchs: [Watch] = getMovieToWatch()
+        currentToWatchs.insert(newValue, at: 0)
+        UserDefaults.standard.setValue(try? PropertyListEncoder().encode(currentToWatchs), forKey: Key.towatch.rawValue)
+    }
 
     /// UserDefaults에 보고 싶은 영화 덮어쓰기
-//    func overwriteToWatch(_ value: [MovieToWatch]) {
-//        UserDefaults.standard.setValue(try? PropertyListEncoder().encode(value), forKey: Key.towatch.rawValue)
-//    }
+    func overwriteToWatch(_ value: [Watch]) {
+        UserDefaults.standard.setValue(try? PropertyListEncoder().encode(value), forKey: Key.towatch.rawValue)
+    }
 }

@@ -9,7 +9,16 @@ import SnapKit
 import UIKit
 
 final class MovieSearchViewController: UIViewController {
-    private lazy var presenter = MovieSearchPresenter(viewController: self)
+    private var presenter: MovieSearchPresenter!
+
+    init(movieSearchDelegate: MovieSearchDelegate) {
+        super.init(nibName: nil, bundle: nil)
+        presenter = MovieSearchPresenter(viewController: self, movieSearchDelegate: movieSearchDelegate)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(

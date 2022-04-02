@@ -59,6 +59,7 @@ extension MenuPresenter: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewController?.dismiss()
         switch tableView.tag {
         case 0:
             viewController?.didTappedMenu(indexPath.row)
@@ -66,6 +67,5 @@ extension MenuPresenter: UITableViewDelegate, UITableViewDataSource {
             viewController?.didTappedApps(indexPath.row)
         default: break
         }
-        viewController?.dismiss()
     }
 }
