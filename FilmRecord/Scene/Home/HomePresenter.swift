@@ -66,10 +66,12 @@ extension HomePresenter: MovieSearchDelegate {
 // MARK: - UICollectionView
 extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    /// Cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return reviews.count
     }
 
+    /// Cell 구성
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -85,6 +87,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         return cell
     }
 
+    /// Cell 사이즈
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -96,6 +99,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         return CGSize(width: width, height: width * 2)
     }
 
+    /// CollectionView Inset 설정
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -105,6 +109,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         return UIEdgeInsets(top: inset, left: inset, bottom: 0.0, right: inset)
     }
 
+    /// Cell 클릭: 해당 영화의 리뷰 정보 보여주기
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let review = reviews[indexPath.row]
         viewController?.pushToDetailViewController(review: review)

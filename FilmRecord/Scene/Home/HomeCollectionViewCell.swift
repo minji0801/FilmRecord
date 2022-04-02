@@ -13,6 +13,7 @@ import UIKit
 final class HomeCollectionViewCell: UICollectionViewCell {
     static let identifier = "HomeCollectionViewCell"
 
+    /// 세로 스택 뷰: 영화 썸네일, 사용자 평점, 영화 제목
     private lazy var verticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -23,6 +24,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
 
+    /// 영화 썸네일 이미지
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -33,14 +35,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = FontManager().smallFont()
-        label.numberOfLines = 3
-
-        return label
-    }()
-
+    /// 사용자 평점 뷰
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
         cosmosView.settings.starSize = 15
@@ -53,6 +48,16 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         return cosmosView
     }()
 
+    /// 영화 제목
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = FontManager().smallFont()
+        label.numberOfLines = 3
+
+        return label
+    }()
+
+    /// Cell UI Update
     func update(_ review: Review) {
         setupView()
 
@@ -63,6 +68,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
 }
 
 private extension HomeCollectionViewCell {
+    /// 뷰 구성
     func setupView() {
         layer.cornerRadius = 12.0
 

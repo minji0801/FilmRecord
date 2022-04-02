@@ -12,6 +12,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     private lazy var presenter = HomePresenter(viewController: self)
 
+    /// Left Bar Button: 메뉴 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "line.3.horizontal"),
@@ -23,6 +24,7 @@ final class HomeViewController: UIViewController {
         return leftBarButtonItem
     }()
 
+    /// Right Bar Button: + 버튼
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "plus"),
@@ -34,6 +36,7 @@ final class HomeViewController: UIViewController {
         return rightBarButtonItem
     }()
 
+    /// Collection View
     private lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -54,17 +57,18 @@ final class HomeViewController: UIViewController {
 
         presenter.viewDidLoad()
         // 폰트 체크 하기
-        UIFont.familyNames.sorted().forEach { familyName in
-            print("*** \(familyName) ***")
-            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-                print("\(fontName)")
-            }
-            print("---------------------")
-        }
+//        UIFont.familyNames.sorted().forEach { familyName in
+//            print("*** \(familyName) ***")
+//            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+//                print("\(fontName)")
+//            }
+//            print("---------------------")
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         presenter.viewWillAppear()
     }
 }
@@ -75,10 +79,10 @@ extension HomeViewController: HomeProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
-//        navigationItem.title = "Film Record"
-//        navigationController?.navigationBar.titleTextAttributes = [
-//            NSAttributedString.Key.font: FontManager().largeFont()
-//        ]
+        navigationItem.title = "My Review"
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: FontManager().largeFont()
+        ]
     }
 
     /// 노티피케이션 구성
@@ -138,15 +142,17 @@ extension HomeViewController: HomeProtocol {
 // MARK: - @objc Function
 extension HomeViewController {
 
+    /// 메뉴 버튼 클릭: 메뉴 화면 보여주기
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
     }
 
+    /// + 버튼 클릭: 영화 검색 화면 보여주기
     @objc func didTappedRightBarButton() {
         presenter.didTappedRightBarButton()
     }
 
-    /// 메뉴 뷰 사라지고 받는 노티
+    /// 메뉴 화면 사라지고 받는 노티
     @objc func didDismissMenuViewController(_ notification: Notification) {
         guard let object: Int = notification.object as? Int else { return }
         // 자기 자신 제외하고 컨트롤하기
