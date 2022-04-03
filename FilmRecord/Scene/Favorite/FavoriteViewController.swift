@@ -1,16 +1,14 @@
 //
-//  HomeViewController.swift
+//  FavoriteViewController.swift
 //  FilmRecord
 //
-//  Created by 김민지 on 2022/03/25.
-//  홈 화면
+//  Created by 김민지 on 2022/04/03.
+//  좋아하는 영화 화면
 
-import SideMenu
-import SnapKit
 import UIKit
 
-final class HomeViewController: UIViewController {
-    private lazy var presenter = HomePresenter(viewController: self)
+final class FavoriteViewController: UIViewController {
+    private lazy var presenter = FavoritePresenter(viewController: self)
 
     /// Left Bar Button: 메뉴 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
@@ -24,17 +22,17 @@ final class HomeViewController: UIViewController {
         return leftBarButtonItem
     }()
 
-    /// Right Bar Button: + 버튼
-    private lazy var rightBarButtonItem: UIBarButtonItem = {
-        let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "plus"),
-            style: .plain,
-            target: self,
-            action: #selector(didTappedRightBarButton)
-        )
-
-        return rightBarButtonItem
-    }()
+    /// Right Bar Button
+//    private lazy var rightBarButtonItem: UIBarButtonItem = {
+//        let rightBarButtonItem = UIBarButtonItem(
+//            image: UIImage(systemName: "plus"),
+//            style: .plain,
+//            target: self,
+//            action: #selector(didTappedRightBarButton)
+//        )
+//
+//        return rightBarButtonItem
+//    }()
 
     /// Collection View
     private lazy var collectionView: UICollectionView = {
@@ -45,8 +43,8 @@ final class HomeViewController: UIViewController {
         collectionView.delegate = presenter
 
         collectionView.register(
-            HomeCollectionViewCell.self,
-            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier
+            FavoriteCollectionViewCell.self,
+            forCellWithReuseIdentifier: FavoriteCollectionViewCell.identifier
         )
 
         return collectionView
@@ -56,16 +54,8 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         presenter.viewDidLoad()
-        // 폰트 체크 하기
-//        UIFont.familyNames.sorted().forEach { familyName in
-//            print("*** \(familyName) ***")
-//            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-//                print("\(fontName)")
-//            }
-//            print("---------------------")
-//        }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -73,13 +63,12 @@ final class HomeViewController: UIViewController {
     }
 }
 
-// MARK: - HomeProtocol Function
-extension HomeViewController: HomeProtocol {
+extension FavoriteViewController: FavoriteProtocol {
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "My Review"
+//        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.title = "favorite movie"
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: FontManager().largeFont()
         ]
@@ -94,7 +83,7 @@ extension HomeViewController: HomeProtocol {
             object: nil
         )
     }
-
+    
     /// 뷰 구성
     func setupView() {
         view.backgroundColor = .systemBackground
@@ -110,18 +99,12 @@ extension HomeViewController: HomeProtocol {
         let menuNavigationController = MenuNavigationController(rootViewController: MenuViewController())
         present(menuNavigationController, animated: true)
     }
-
-    /// 영화 검색 화면 push
-    func pushToSearchMovieViewController() {
-        let searchMovieViewController = MovieSearchViewController(fromHome: true)
-        navigationController?.pushViewController(searchMovieViewController, animated: true)
-    }
-
+    
     /// CollectionView Reload
     func reloadCollectionView() {
         collectionView.reloadData()
     }
-
+    
     /// 리뷰 상세 화면 push
     func pushToDetailViewController(review: Review) {
         let detailViewController = DetailViewController(review: review)
@@ -130,7 +113,7 @@ extension HomeViewController: HomeProtocol {
 }
 
 // MARK: - @objc Function
-extension HomeViewController {
+extension FavoriteViewController {
 
     /// 메뉴 버튼 클릭: 메뉴 화면 보여주기
     @objc func didTappedLeftBarButton() {
@@ -138,18 +121,18 @@ extension HomeViewController {
     }
 
     /// + 버튼 클릭: 영화 검색 화면 보여주기
-    @objc func didTappedRightBarButton() {
-        presenter.didTappedRightBarButton()
-    }
+//    @objc func didTappedRightBarButton() {
+//        presenter.didTappedRightBarButton()
+//    }
 
-    /// 메뉴 화면 사라지고 받는 노티
+    /// 메뉴 뷰 사라지고 받는 노티
     @objc func didDismissMenuViewController(_ notification: Notification) {
         guard let object: Int = notification.object as? Int else { return }
         // 자기 자신 제외하고 컨트롤하기
         switch object {
-        case 2:
-            let favoriteViewController = FavoriteViewController()
-            navigationController?.setViewControllers([favoriteViewController], animated: true)
+        case 0:
+            let homeViewContoller = HomeViewController()
+            navigationController?.setViewControllers([homeViewContoller], animated: true)
         case 3:
             let toWatchViewController = ToWatchViewController()
             navigationController?.setViewControllers([toWatchViewController], animated: true)

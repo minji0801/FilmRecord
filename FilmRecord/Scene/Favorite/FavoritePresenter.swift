@@ -1,32 +1,30 @@
 //
-//  HomePresenter.swift
+//  FavoritePresenter.swift
 //  FilmRecord
 //
-//  Created by 김민지 on 2022/03/25.
-//  홈 Presenter
+//  Created by 김민지 on 2022/04/03.
+//  좋아하는 영화 Presenter
 
 import Foundation
 import UIKit
 
-protocol HomeProtocol: AnyObject {
+protocol FavoriteProtocol: AnyObject {
     func setupNavigationBar()
     func setupNoti()
     func setupView()
     func pushToMenuViewController()
-    func pushToSearchMovieViewController()
     func reloadCollectionView()
     func pushToDetailViewController(review: Review)
 }
 
-final class HomePresenter: NSObject {
-    private let viewController: HomeProtocol?
+final class FavoritePresenter: NSObject {
+    private weak var viewController: FavoriteProtocol?
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
     private var reviews: [Review] = []
-    private var movie: Movie = Movie.EMPTY
 
     init(
-        viewController: HomeProtocol?,
+        viewController: FavoriteProtocol?,
         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()
     ) {
         self.viewController = viewController
@@ -38,33 +36,19 @@ final class HomePresenter: NSObject {
         viewController?.setupNoti()
         viewController?.setupView()
     }
-
+    
     func viewWillAppear() {
-        reviews = userDefaultsManager.getReviews()
+        reviews = userDefaultsManager.getReviews().filter { $0.favorite }
         viewController?.reloadCollectionView()
     }
 
     func didTappedLeftBarButton() {
         viewController?.pushToMenuViewController()
     }
-
-    func didTappedRightBarButton() {
-        viewController?.pushToSearchMovieViewController()
-    }
-
-    @objc func didTappedLikeButton(_ sender: UIButton) {
-        if reviews[sender.tag].favorite {
-            reviews[sender.tag].favorite = false
-        } else {
-            reviews[sender.tag].favorite = true
-        }
-        userDefaultsManager.overwriteReview(reviews)
-        viewController?.reloadCollectionView()
-    }
 }
 
 // MARK: - UICollectionView
-extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FavoritePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     /// Cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,15 +61,12 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: HomeCollectionViewCell.identifier,
+            withReuseIdentifier: FavoriteCollectionViewCell.identifier,
             for: indexPath
-        ) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+        ) as? FavoriteCollectionViewCell else { return UICollectionViewCell() }
 
         let review = reviews[indexPath.item]
         cell.update(review)
-
-        cell.likeButton.tag = indexPath.row
-        cell.likeButton.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
 
         return cell
     }

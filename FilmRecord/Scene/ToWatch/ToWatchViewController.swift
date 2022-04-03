@@ -133,9 +133,9 @@ extension ToWatchViewController {
         case 0:
             let homeViewContoller = HomeViewController()
             navigationController?.setViewControllers([homeViewContoller], animated: true)
-            //        case 2:
-            //            let favoriteListViewController = FavoriteListViewController()
-            //            navigationController?.pushViewController(favoriteListViewController, animated: true)
+        case 2:
+            let favoriteViewController = FavoriteViewController()
+            navigationController?.setViewControllers([favoriteViewController], animated: true)
         default:
             break
         }
