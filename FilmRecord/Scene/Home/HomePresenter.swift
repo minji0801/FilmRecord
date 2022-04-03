@@ -51,6 +51,16 @@ final class HomePresenter: NSObject {
     func didTappedRightBarButton() {
         viewController?.pushToSearchMovieViewController()
     }
+
+    @objc func didTappedLikeButton(_ sender: UIButton) {
+        if reviews[sender.tag].favorite {
+            reviews[sender.tag].favorite = false
+        } else {
+            reviews[sender.tag].favorite = true
+        }
+        userDefaultsManager.overwriteReview(reviews)
+        viewController?.reloadCollectionView()
+    }
 }
 
 // MARK: - UICollectionView
@@ -73,6 +83,9 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
 
         let review = reviews[indexPath.item]
         cell.update(review)
+
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
 
         return cell
     }
