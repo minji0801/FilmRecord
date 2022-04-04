@@ -44,12 +44,24 @@ class DetailViewController: UIViewController {
     }()
 
     /// Right Bar Button: ... 버튼
-    private lazy var rightBarButtonItem: UIBarButtonItem = {
+    private lazy var rightBarMenuButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "ellipsis"),
             style: .plain,
             target: self,
-            action: #selector(didTappedRightBarButton(_:))
+            action: #selector(didTappedRightBarMenuButton(_:))
+        )
+
+        return rightBarButtonItem
+    }()
+
+    /// Right Bar Button: 하트 버튼
+    private lazy var rightBarLikeButtonItem: UIBarButtonItem = {
+        let rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "heart"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedRightBarLikeButton)
         )
 
         return rightBarButtonItem
@@ -163,7 +175,7 @@ extension DetailViewController: DetailProtocol {
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.rightBarButtonItems = [rightBarMenuButtonItem, rightBarLikeButtonItem]
     }
 
     /// 노티피케이션 구성
@@ -188,13 +200,15 @@ extension DetailViewController: DetailProtocol {
         )
     }
 
-    /// 뷰 구성
-    func setupView(review: Review) {
-        view.backgroundColor = .secondarySystemBackground
-
+    func setupGesture() {
         // 뒤로가기 제스처 등록
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
+    }
+
+    /// 뷰 구성
+    func setupView(review: Review) {
+        view.backgroundColor = .secondarySystemBackground
 
         thumbnailImageView.kf.setImage(with: review.movie.imageURL)
         titleLabel.text = review.movie.title.htmlEscaped
@@ -278,6 +292,17 @@ extension DetailViewController: DetailProtocol {
         deleteAlertViewController.modalPresentationStyle = .overCurrentContext
         present(deleteAlertViewController, animated: false)
     }
+
+    /// 하트 버튼 UI 업데이트
+    func updateRightBarLikeButton(review: Review) {
+        if review.favorite {
+            rightBarLikeButtonItem.image = UIImage(systemName: "heart.fill")
+            rightBarLikeButtonItem.tintColor = .systemRed
+        } else {
+            rightBarLikeButtonItem.image = UIImage(systemName: "heart")
+            rightBarLikeButtonItem.tintColor = .label
+        }
+    }
 }
 
 // MARK: - @objc Function
@@ -289,7 +314,7 @@ extension DetailViewController {
     }
 
     /// ... 버튼 클릭 -> 수정/삭제 팝업 창 보여주기
-    @objc func didTappedRightBarButton(_ sender: UIBarButtonItem) {
+    @objc func didTappedRightBarMenuButton(_ sender: UIBarButtonItem) {
         let popoverContentController = PopUpViewController(review: presenter.review)
         popoverContentController.modalPresentationStyle = .popover
         popoverContentController.preferredContentSize = CGSize(width: 80, height: 100)
@@ -300,6 +325,11 @@ extension DetailViewController {
             popoverPresentationController.delegate = self
             present(popoverContentController, animated: true, completion: nil)
         }
+    }
+
+    /// 하트 버튼 클릭 -> 리뷰 favorite 값 변경
+    @objc func didTappedRightBarLikeButton() {
+        presenter.didTappedRightBarLikeButton()
     }
 
     /// 팝업 창으로 부터 수정 노티 받은 후 -> 평점 입력 화면 보여주기

@@ -51,7 +51,10 @@ struct UserDefaultsManager: UserDefaultsManagerProtocol {
     /// 영화 리뷰 수정하기
     func editReview(id: Int, newValue: Review) {
         var currentReviews: [Review] = getReviews()
-        currentReviews[currentReviews.count - id - 1] = newValue
+        currentReviews.indices.filter { currentReviews[$0].id == id }.forEach {
+            currentReviews[$0] = newValue
+        }
+
         UserDefaults.standard.setValue(try? PropertyListEncoder().encode(currentReviews), forKey: Key.review.rawValue)
     }
 

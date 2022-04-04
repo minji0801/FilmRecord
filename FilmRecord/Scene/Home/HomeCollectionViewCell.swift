@@ -29,7 +29,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 12.0
+        imageView.layer.cornerRadius = 10.0
         imageView.backgroundColor = .secondarySystemBackground
 
         return imageView
@@ -96,11 +96,11 @@ final class HomeCollectionViewCell: UICollectionViewCell {
 private extension HomeCollectionViewCell {
     /// 뷰 구성
     func setupView() {
-        layer.cornerRadius = 12.0
-
-        layer.shadowColor = UIColor.systemGray.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 12.0
+//        layer.cornerRadius = 12.0
+//
+//        layer.shadowColor = UIColor.systemGray.cgColor
+//        layer.shadowOpacity = 0.3
+//        layer.shadowRadius = 12.0
 
         backgroundColor = .systemBackground
 
@@ -113,8 +113,8 @@ private extension HomeCollectionViewCell {
         }
 
         verticalStactView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(10.0)
-            $0.top.bottom.equalToSuperview().inset(10.0)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
         }
 
         thumbnailImageView.snp.makeConstraints {
@@ -126,8 +126,8 @@ private extension HomeCollectionViewCell {
         }
 
         likeButton.snp.makeConstraints {
-            $0.trailing.equalTo(self.snp.trailing)
-            $0.top.equalTo(self.snp.top)
+            $0.trailing.equalTo(thumbnailImageView.snp.trailing)
+            $0.bottom.equalTo(thumbnailImageView.snp.bottom)
             $0.width.equalTo(self.snp.width).multipliedBy(0.3)
             $0.height.equalTo(likeButton.snp.width)
         }

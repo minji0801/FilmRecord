@@ -10,10 +10,13 @@ import Foundation
 protocol DetailProtocol: AnyObject {
     func setupNavigationBar()
     func setupNoti()
+    func setupGesture()
     func setupView(review: Review)
+
     func popViewController()
     func pushToEnterRatingViewController()
     func showDeleteAlert()
+    func updateRightBarLikeButton(review: Review)
 }
 
 final class DetailPresenter: NSObject {
@@ -35,11 +38,19 @@ final class DetailPresenter: NSObject {
     func viewDidLoad() {
         viewController?.setupNavigationBar()
         viewController?.setupNoti()
+        viewController?.setupGesture()
         viewController?.setupView(review: review)
+        viewController?.updateRightBarLikeButton(review: review)
     }
 
     func didTappedLeftBarButton() {
         viewController?.popViewController()
+    }
+
+    func didTappedRightBarLikeButton() {
+        review.favorite = !review.favorite
+        userDefaultsManager.editReview(id: review.id, newValue: review)
+        viewController?.updateRightBarLikeButton(review: review)
     }
 
     func editNotification() {

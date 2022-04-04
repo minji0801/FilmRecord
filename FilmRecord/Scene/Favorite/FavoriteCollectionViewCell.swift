@@ -70,11 +70,11 @@ final class FavoriteCollectionViewCell: UICollectionViewCell {
 private extension FavoriteCollectionViewCell {
     /// 뷰 구성
     func setupView() {
-        layer.cornerRadius = 12.0
-
-        layer.shadowColor = UIColor.systemGray.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 12.0
+//        layer.cornerRadius = 12.0
+//
+//        layer.shadowColor = UIColor.systemGray.cgColor
+//        layer.shadowOpacity = 0.3
+//        layer.shadowRadius = 12.0
 
         backgroundColor = .systemBackground
 
@@ -87,8 +87,8 @@ private extension FavoriteCollectionViewCell {
         }
 
         verticalStactView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(10.0)
-            $0.top.bottom.equalToSuperview().inset(10.0)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
         }
 
         thumbnailImageView.snp.makeConstraints {

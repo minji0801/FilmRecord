@@ -55,7 +55,7 @@ final class FavoriteViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -83,7 +83,7 @@ extension FavoriteViewController: FavoriteProtocol {
             object: nil
         )
     }
-    
+
     /// 뷰 구성
     func setupView() {
         view.backgroundColor = .systemBackground
@@ -99,12 +99,12 @@ extension FavoriteViewController: FavoriteProtocol {
         let menuNavigationController = MenuNavigationController(rootViewController: MenuViewController())
         present(menuNavigationController, animated: true)
     }
-    
+
     /// CollectionView Reload
     func reloadCollectionView() {
         collectionView.reloadData()
     }
-    
+
     /// 리뷰 상세 화면 push
     func pushToDetailViewController(review: Review) {
         let detailViewController = DetailViewController(review: review)

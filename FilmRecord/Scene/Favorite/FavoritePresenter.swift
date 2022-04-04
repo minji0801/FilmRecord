@@ -36,7 +36,7 @@ final class FavoritePresenter: NSObject {
         viewController?.setupNoti()
         viewController?.setupView()
     }
-    
+
     func viewWillAppear() {
         reviews = userDefaultsManager.getReviews().filter { $0.favorite }
         viewController?.reloadCollectionView()
