@@ -1,15 +1,16 @@
 //
-//  ToWatchViewController.swift
+//  CalendarViewController.swift
 //  FilmRecord
 //
-//  Created by 김민지 on 2022/04/02.
-//  보고 싶은 영화 화면
+//  Created by 김민지 on 2022/04/05.
+//  리뷰 캘린더 화면
 
+import FSCalendar
 import SnapKit
 import UIKit
 
-final class ToWatchViewController: UIViewController {
-    private lazy var presenter = ToWatchPresenter(viewController: self)
+final class CalendarViewController: UIViewController {
+    private lazy var presenter = CalendarPresenter(viewController: self)
 
     /// Left Bar Button: 메뉴 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
@@ -23,10 +24,10 @@ final class ToWatchViewController: UIViewController {
         return leftBarButtonItem
     }()
 
-    /// Right Bar Button: 영화 검색 버튼
+    /// Right Bar Button: 오늘 버튼
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "plus"),
+            title: "오늘",
             style: .plain,
             target: self,
             action: #selector(didTappedRightBarButton)
@@ -35,18 +36,29 @@ final class ToWatchViewController: UIViewController {
         return rightBarButtonItem
     }()
 
-    /// Table View
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.dataSource = presenter
-        tableView.delegate = presenter
+    private lazy var calendarView: UIView = {
+        let view = FSCalendar()
+        view.scope = .month
+        view.locale = Locale(identifier: "ko_KR")
+        view.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesUpperCase
 
-        tableView.register(
-            ToWatchTableViewCell.self,
-            forCellReuseIdentifier: ToWatchTableViewCell.identifier
-        )
+        view.appearance.headerTitleFont = FontManager().largeFont()
+        view.appearance.weekdayFont = FontManager().mediumFont()
+        view.appearance.titleFont = FontManager().mediumFont()
 
-        return tableView
+        view.appearance.headerDateFormat = "YYYY년 M월"
+        view.appearance.headerTitleColor = .label
+        view.appearance.headerMinimumDissolvedAlpha = 0.0
+
+        view.appearance.titleDefaultColor = .label
+        view.appearance.weekdayTextColor = .label
+        view.appearance.todayColor = .systemGray
+        view.appearance.titleWeekendColor = .systemRed
+
+        view.dataSource = presenter
+        view.delegate = presenter
+
+        return view
     }()
 
     override func viewDidLoad() {
@@ -54,21 +66,15 @@ final class ToWatchViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        presenter.viewWillAppear()
-    }
 }
 
-// MARK: - ToWatchProtocol Function
-extension ToWatchViewController: ToWatchProtocol {
-    /// 네비게이션 바 구성
+// MARK: - CalendarProtocol Function
+extension CalendarViewController: CalendarProtocol {
+
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "to-watch list"
+        navigationItem.title = "review calendar"
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: FontManager().largeFont()
         ]
@@ -87,11 +93,25 @@ extension ToWatchViewController: ToWatchProtocol {
     /// 뷰 구성
     func setupView() {
         view.backgroundColor = .systemBackground
-        view.addSubview(tableView)
 
-        tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        [calendarView].forEach {
+            view.addSubview($0)
         }
+
+        calendarView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(CGRect(x: 0, y: 0, width: 320, height: 300).height)
+        }
+    }
+
+    /// 달력 이벤트 구성
+    func setupEvents() -> [Date] {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+        let sampledate = formatter.date(from: "2022-04-08")
+        return [sampledate!]
     }
 
     /// 메뉴 화면 push
@@ -100,27 +120,28 @@ extension ToWatchViewController: ToWatchProtocol {
         present(menuNavigationController, animated: true)
     }
 
-    /// 영화 검색 화면 push
-    func pushToSearchMovieViewController() {
-        let searchMovieViewController = MovieSearchViewController(fromHome: false)
-        navigationController?.pushViewController(searchMovieViewController, animated: true)
+    /// 캘린더에서 오늘 날짜로 이동
+    func moveToToday() {
+//        let formatter = DateFormatter()
+//        calendarView.select
     }
-
-    /// 테이블 뷰 다시 로드하기
-    func reloadTableView() {
-        tableView.reloadData()
+    
+    func moveMonth(next: Bool) {
+        var dateComponents = DateComponents()
+        dateComponents.month = next ? 1 : -1
+        calendarView
     }
 }
 
 // MARK: - @objc Function
-extension ToWatchViewController {
+extension CalendarViewController {
 
     /// 메뉴 버튼 클릭: 메뉴 화면 보여주기
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
     }
 
-    /// + 버튼 클릭: 영화 검색 화면 보여주기
+    /// 오늘 버튼 클릭: 캘린더 오늘 날짜로 이동
     @objc func didTappedRightBarButton() {
         presenter.didTappedRightBarButton()
     }
@@ -133,12 +154,12 @@ extension ToWatchViewController {
         case 0:
             let homeViewContoller = HomeViewController()
             navigationController?.setViewControllers([homeViewContoller], animated: true)
-        case 1:
-            let calendarViewController = CalendarViewController()
-            navigationController?.setViewControllers([calendarViewController], animated: true)
         case 2:
             let favoriteViewController = FavoriteViewController()
             navigationController?.setViewControllers([favoriteViewController], animated: true)
+        case 3:
+            let toWatchViewController = ToWatchViewController()
+            navigationController?.setViewControllers([toWatchViewController], animated: true)
         default:
             break
         }

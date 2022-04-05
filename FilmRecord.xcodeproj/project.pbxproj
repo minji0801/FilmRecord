@@ -61,6 +61,9 @@
 		A5C6678827F3EDA60090B617 /* LeeSeoyun.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */; };
 		A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6678927F3EE290090B617 /* FontManager.swift */; };
 		A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6678B27F413480090B617 /* PopUpViewController.swift */; };
+		A5DA054427FC0FFA00EB3FF8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA054327FC0FFA00EB3FF8 /* CalendarViewController.swift */; };
+		A5DA054627FC100500EB3FF8 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA054527FC100500EB3FF8 /* CalendarPresenter.swift */; };
+		A5DA055027FC179300EB3FF8 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = A5DA054F27FC179300EB3FF8 /* FSCalendar */; };
 		A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */; };
 		A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */; };
 		A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */; };
@@ -142,6 +145,8 @@
 		A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeeSeoyun.otf; sourceTree = "<group>"; };
 		A5C6678927F3EE290090B617 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		A5C6678B27F413480090B617 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		A5DA054327FC0FFA00EB3FF8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		A5DA054527FC100500EB3FF8 /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
 		A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenter.swift; sourceTree = "<group>"; };
 		A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -160,6 +165,7 @@
 				A579427627EE0D84000F233A /* SnapKit in Frameworks */,
 				409995154B5D0A532C364FBE /* Pods_FilmRecord.framework in Frameworks */,
 				A5C2A87527F697D500225640 /* SideMenu in Frameworks */,
+				A5DA055027FC179300EB3FF8 /* FSCalendar in Frameworks */,
 				A579426827EE07EF000F233A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +267,7 @@
 		A579425927EDF6D4000F233A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A5DA054727FC100900EB3FF8 /* Calendar */,
 				A5828A6D27F58C6B00DC89D3 /* DeleteAlert */,
 				A50E508227F2BAB50079AFEB /* Detail */,
 				A594B0EC27EF3829001344A2 /* EnterRating */,
@@ -378,6 +385,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		A5DA054727FC100900EB3FF8 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA054327FC0FFA00EB3FF8 /* CalendarViewController.swift */,
+				A5DA054527FC100500EB3FF8 /* CalendarPresenter.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		A5FACB4327F0381D00DAB3AA /* StackView */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +460,7 @@
 				A579427827EE0DAB000F233A /* Kingfisher */,
 				A594B0F427EF5833001344A2 /* Cosmos */,
 				A5C2A87427F697D500225640 /* SideMenu */,
+				A5DA054F27FC179300EB3FF8 /* FSCalendar */,
 			);
 			productName = FilmRecord;
 			productReference = A579422627EDF3CC000F233A /* FilmRecord.app */;
@@ -525,6 +542,7 @@
 				A579427727EE0DAB000F233A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				A594B0F327EF5833001344A2 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				A5C2A87327F697D500225640 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				A5DA054E27FC179300EB3FF8 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = A579422727EDF3CC000F233A /* Products */;
 			projectDirPath = "";
@@ -669,8 +687,10 @@
 				A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */,
 				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
+				A5DA054627FC100500EB3FF8 /* CalendarPresenter.swift in Sources */,
 				A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */,
 				A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */,
+				A5DA054427FC0FFA00EB3FF8 /* CalendarViewController.swift in Sources */,
 				A5C2A87C27F6BE8300225640 /* MenuTableViewCell.swift in Sources */,
 				A513E84627F9CC870084BD86 /* FavoriteCollectionViewCell.swift in Sources */,
 				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
@@ -1079,6 +1099,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		A5DA054E27FC179300EB3FF8 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1106,6 +1134,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A5C2A87327F697D500225640 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		A5DA054F27FC179300EB3FF8 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5DA054E27FC179300EB3FF8 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

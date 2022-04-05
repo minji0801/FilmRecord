@@ -147,6 +147,9 @@ extension HomeViewController {
         guard let object: Int = notification.object as? Int else { return }
         // 자기 자신 제외하고 컨트롤하기
         switch object {
+        case 1:
+            let calendarViewController = CalendarViewController()
+            navigationController?.setViewControllers([calendarViewController], animated: true)
         case 2:
             let favoriteViewController = FavoriteViewController()
             navigationController?.setViewControllers([favoriteViewController], animated: true)

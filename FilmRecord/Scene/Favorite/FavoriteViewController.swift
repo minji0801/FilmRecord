@@ -133,6 +133,9 @@ extension FavoriteViewController {
         case 0:
             let homeViewContoller = HomeViewController()
             navigationController?.setViewControllers([homeViewContoller], animated: true)
+        case 1:
+            let calendarViewController = CalendarViewController()
+            navigationController?.setViewControllers([calendarViewController], animated: true)
         case 3:
             let toWatchViewController = ToWatchViewController()
             navigationController?.setViewControllers([toWatchViewController], animated: true)
