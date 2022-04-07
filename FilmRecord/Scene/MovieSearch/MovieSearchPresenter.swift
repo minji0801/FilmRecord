@@ -11,6 +11,7 @@ import UIKit
 protocol MovieSearchProtocol: AnyObject {
     func setupNavigationBar()
     func setupView()
+
     func reloadCollectionView()
     func activeSearchController()
     func keyboardDown()
@@ -63,12 +64,14 @@ final class MovieSearchPresenter: NSObject {
 
 // MARK: - UISearchBarDelegate, UISearchControllerDelegate
 extension MovieSearchPresenter: UISearchBarDelegate, UISearchControllerDelegate {
+    /// 영화 검색
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
         currentKeyword = searchText
         requestMovieList(isNeededToReset: true)
     }
 
+    /// 검색 바 보여졌을 때: 자동 포커싱
     func didPresentSearchController(_ searchController: UISearchController) {
         DispatchQueue.main.async {
             searchController.searchBar.becomeFirstResponder()

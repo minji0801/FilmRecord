@@ -81,10 +81,6 @@ final class MovieSearchViewController: UIViewController {
 
         presenter.viewDidAppear()
     }
-
-    @objc func pullToRefresh() {
-        presenter.pullToRefresh()
-    }
 }
 
 // MARK: - SearchMovieProtocol Function
@@ -143,5 +139,9 @@ extension MovieSearchViewController {
 
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
+    }
+
+    @objc func pullToRefresh() {
+        presenter.pullToRefresh()
     }
 }

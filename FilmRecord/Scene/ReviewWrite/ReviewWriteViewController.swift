@@ -132,6 +132,7 @@ final class ReviewWriteViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.locale = Locale(identifier: "ko-KR")
         datePicker.preferredDatePickerStyle = .wheels
+        datePicker.date = formatter.date(from: dateLabel.text!)!
 
         return datePicker
     }()
