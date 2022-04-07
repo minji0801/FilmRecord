@@ -12,9 +12,11 @@ protocol CalendarProtocol: AnyObject {
     func setupNavigationBar()
     func setupNoti()
     func setupView()
-    func setupEvents() -> [Date]
+
     func pushToMenuViewController()
     func moveToToday()
+    func reloadTableView()
+    func pushToDetailViewController(review: Review)
 }
 
 final class CalendarPresenter: NSObject {
@@ -22,6 +24,15 @@ final class CalendarPresenter: NSObject {
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
     private var events: [Date] = []
+    private var reviews: [Review] = []
+
+    private var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy년 M월 d일 EEEE"
+
+        return formatter
+    }()
 
     init(
         viewController: CalendarProtocol?,
@@ -35,7 +46,12 @@ final class CalendarPresenter: NSObject {
         viewController?.setupNavigationBar()
         viewController?.setupNoti()
         viewController?.setupView()
+        viewController?.moveToToday()
+    }
+
+    func viewWillApper() {
         events = setupEvents()
+        getReview(date: Date())
     }
 
     func didTappedLeftBarButton() {
@@ -43,17 +59,24 @@ final class CalendarPresenter: NSObject {
     }
 
     func didTappedRightBarButton() {
+        getReview(date: Date())
         viewController?.moveToToday()
     }
 
-    func setupEvents() -> [Date] {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy년 M월 d일 EEEE"
-
+    private func setupEvents() -> [Date] {
         return userDefaultsManager.getReviews().map { review in
             formatter.date(from: review.date)!
         }
+    }
+
+    /// 선택한 날짜에 해당하는 리뷰 가져오기
+    private func getReview(date: Date) {
+        reviews = userDefaultsManager.getReviews()
+
+        let reviewDate = formatter.string(from: date)
+        reviews = reviews.filter { $0.date == reviewDate }
+
+        viewController?.reloadTableView()
     }
 }
 
@@ -61,12 +84,7 @@ final class CalendarPresenter: NSObject {
 extension CalendarPresenter: FSCalendarDataSource, FSCalendarDelegate {
     /// 날짜 선택
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date, "선택!")
-    }
-
-    /// 날짜 선택 해제
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date, "선택 해제!")
+        getReview(date: date)
     }
 
     /// 달력 이벤트 표시
@@ -76,5 +94,36 @@ extension CalendarPresenter: FSCalendarDataSource, FSCalendarDelegate {
         } else {
             return 0
         }
+    }
+}
+
+// MARK: - UITableView
+extension CalendarPresenter: UITableViewDelegate, UITableViewDataSource {
+    /// Row 개수
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reviews.count
+    }
+
+    /// Cell 구성
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: CalendarTableViewCell.identifier
+        ) as? CalendarTableViewCell else { return UITableViewCell() }
+
+        let review = reviews[indexPath.row]
+        cell.update(review)
+
+        return cell
+    }
+
+    /// Cell 높이
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
+
+    /// Cell 클릭
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let review = reviews[indexPath.row]
+        viewController?.pushToDetailViewController(review: review)
     }
 }

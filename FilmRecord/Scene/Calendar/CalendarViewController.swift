@@ -36,9 +36,9 @@ final class CalendarViewController: UIViewController {
         return rightBarButtonItem
     }()
 
-    private lazy var calendarView: UIView = {
+    private lazy var calendarView: FSCalendar = {
         let view = FSCalendar()
-        view.scope = .month
+        view.scrollDirection = .vertical
         view.locale = Locale(identifier: "ko_KR")
         view.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesUpperCase
 
@@ -61,10 +61,30 @@ final class CalendarViewController: UIViewController {
         return view
     }()
 
+    /// 리뷰 테이블 뷰
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = presenter
+        tableView.delegate = presenter
+
+        tableView.register(
+            CalendarTableViewCell.self,
+            forCellReuseIdentifier: CalendarTableViewCell.identifier
+        )
+
+        return tableView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         presenter.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.viewWillApper()
     }
 }
 
@@ -94,24 +114,21 @@ extension CalendarViewController: CalendarProtocol {
     func setupView() {
         view.backgroundColor = .systemBackground
 
-        [calendarView].forEach {
+        [calendarView, tableView].forEach {
             view.addSubview($0)
         }
 
         calendarView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(CGRect(x: 0, y: 0, width: 320, height: 300).height)
+            $0.height.equalTo(350)
         }
-    }
 
-    /// 달력 이벤트 구성
-    func setupEvents() -> [Date] {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy-MM-dd"
-        let sampledate = formatter.date(from: "2022-04-08")
-        return [sampledate!]
+        tableView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(calendarView.snp.bottom)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 
     /// 메뉴 화면 push
@@ -122,14 +139,18 @@ extension CalendarViewController: CalendarProtocol {
 
     /// 캘린더에서 오늘 날짜로 이동
     func moveToToday() {
-//        let formatter = DateFormatter()
-//        calendarView.select
+        calendarView.select(Date(), scrollToDate: true)
     }
-    
-    func moveMonth(next: Bool) {
-        var dateComponents = DateComponents()
-        dateComponents.month = next ? 1 : -1
-        calendarView
+
+    /// Table view Reload
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+
+    /// 리뷰 상세 화면 push
+    func pushToDetailViewController(review: Review) {
+        let detailViewController = DetailViewController(review: review)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 

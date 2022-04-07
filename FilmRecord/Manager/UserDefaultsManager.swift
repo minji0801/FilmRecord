@@ -61,7 +61,9 @@ struct UserDefaultsManager: UserDefaultsManagerProtocol {
     /// 영화 리뷰 삭제하기
     func deleteReview(id: Int) {
         var currentReviews: [Review] = getReviews()
-        currentReviews.remove(at: currentReviews.count - id - 1)
+        currentReviews.indices.filter { currentReviews[$0].id == id }.forEach {
+            currentReviews.remove(at: $0)
+        }
         UserDefaults.standard.setValue(try? PropertyListEncoder().encode(currentReviews), forKey: Key.review.rawValue)
     }
 
