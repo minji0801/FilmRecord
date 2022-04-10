@@ -11,8 +11,10 @@ protocol ToWatchProtocol: AnyObject {
     func setupNavigationBar()
     func setupNoti()
     func setupView()
+
     func pushToMenuViewController()
     func pushToSearchMovieViewController()
+    func pushToMovieInfoViewController(movie: Movie)
     func reloadTableView()
 }
 
@@ -76,15 +78,18 @@ extension ToWatchPresenter: UITableViewDataSource, UITableViewDelegate {
         return 70.0
     }
 
-    /// Cell 클릭: watched 변경 (체크마크 표시)
+    /// Cell 클릭: watched 변경 (체크마크 표시) -> 영화 정보 화면 보여주기
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var movie = movies[indexPath.row]
-        movie.watched = !movie.watched
-        movies[indexPath.row] = movie
+        let movie = movies[indexPath.row].movie
+//        movie.watched = !movie.watched
+//        movies[indexPath.row] = movie
 
-        print("보고 싶은 영화: \(movies)")
-        userDefaultsManager.overwriteToWatch(movies)
-        viewController?.reloadTableView()
+//        print("보고 싶은 영화: \(movies)")
+//        userDefaultsManager.overwriteToWatch(movies)
+//        viewController?.reloadTableView()
+
+        // TODO: 클릭한 영화 MovieinfoView로 넘겨주기
+        viewController?.pushToMovieInfoViewController(movie: movie)
     }
 
     /// Cell 삭제

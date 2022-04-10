@@ -106,6 +106,12 @@ extension ToWatchViewController: ToWatchProtocol {
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
 
+    /// 영화 정보 화면 push
+    func pushToMovieInfoViewController(movie: Movie) {
+        let movieInfoViewController = MovieInfoViewController(movie: movie)
+        navigationController?.pushViewController(movieInfoViewController, animated: true)
+    }
+
     /// 테이블 뷰 다시 로드하기
     func reloadTableView() {
         tableView.reloadData()
