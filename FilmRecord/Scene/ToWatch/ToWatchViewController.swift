@@ -5,6 +5,7 @@
 //  Created by 김민지 on 2022/04/02.
 //  보고 싶은 영화 화면
 
+import SafariServices
 import SnapKit
 import UIKit
 
@@ -106,15 +107,15 @@ extension ToWatchViewController: ToWatchProtocol {
         navigationController?.pushViewController(searchMovieViewController, animated: true)
     }
 
-    /// 영화 정보 화면 push
-    func pushToMovieInfoViewController(movie: Movie) {
-        let movieInfoViewController = MovieInfoViewController(movie: movie)
-        navigationController?.pushViewController(movieInfoViewController, animated: true)
-    }
-
     /// 테이블 뷰 다시 로드하기
     func reloadTableView() {
         tableView.reloadData()
+    }
+
+    /// 사파리 뷰 보여주기(영화 정보)
+    func presentSafariViewController(url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true)
     }
 }
 

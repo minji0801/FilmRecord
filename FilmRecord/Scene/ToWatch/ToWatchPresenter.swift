@@ -14,8 +14,8 @@ protocol ToWatchProtocol: AnyObject {
 
     func pushToMenuViewController()
     func pushToSearchMovieViewController()
-    func pushToMovieInfoViewController(movie: Movie)
     func reloadTableView()
+    func presentSafariViewController(url: URL)
 }
 
 final class ToWatchPresenter: NSObject {
@@ -81,15 +81,16 @@ extension ToWatchPresenter: UITableViewDataSource, UITableViewDelegate {
     /// Cell 클릭: watched 변경 (체크마크 표시) -> 영화 정보 화면 보여주기
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = movies[indexPath.row].movie
+
+        if let url = URL(string: movie.link) {
+            viewController?.presentSafariViewController(url: url)
+        }
 //        movie.watched = !movie.watched
 //        movies[indexPath.row] = movie
 
 //        print("보고 싶은 영화: \(movies)")
 //        userDefaultsManager.overwriteToWatch(movies)
 //        viewController?.reloadTableView()
-
-        // TODO: 클릭한 영화 MovieinfoView로 넘겨주기
-        viewController?.pushToMovieInfoViewController(movie: movie)
     }
 
     /// Cell 삭제

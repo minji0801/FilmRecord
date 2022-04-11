@@ -41,8 +41,6 @@
 		A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */; };
 		A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */; };
 		A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */; };
-		A589B0D9280303B300BECC62 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589B0D8280303B300BECC62 /* MovieInfoViewController.swift */; };
-		A589B0DB280303C100BECC62 /* MovieInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589B0DA280303C100BECC62 /* MovieInfoPresenter.swift */; };
 		A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */; };
 		A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */; };
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
@@ -130,8 +128,6 @@
 		A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPresenter.swift; sourceTree = "<group>"; };
 		A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertViewController.swift; sourceTree = "<group>"; };
 		A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertPresenter.swift; sourceTree = "<group>"; };
-		A589B0D8280303B300BECC62 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
-		A589B0DA280303C100BECC62 /* MovieInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoPresenter.swift; sourceTree = "<group>"; };
 		A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingViewController.swift; sourceTree = "<group>"; };
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -280,7 +276,6 @@
 				A513E84427F9C95F0084BD86 /* Favorite */,
 				A579425C27EDF6FF000F233A /* Home */,
 				A5C2A87A27F6BE6A00225640 /* Menu */,
-				A589B0DC280303C500BECC62 /* MovieInfo */,
 				A579426127EDFB49000F233A /* MovieSearch */,
 				A5FACB4327F0381D00DAB3AA /* StackView */,
 				A5AFFB0A27F7E09700FA078D /* ToWatch */,
@@ -348,15 +343,6 @@
 				A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */,
 			);
 			path = DeleteAlert;
-			sourceTree = "<group>";
-		};
-		A589B0DC280303C500BECC62 /* MovieInfo */ = {
-			isa = PBXGroup;
-			children = (
-				A589B0D8280303B300BECC62 /* MovieInfoViewController.swift */,
-				A589B0DA280303C100BECC62 /* MovieInfoPresenter.swift */,
-			);
-			path = MovieInfo;
 			sourceTree = "<group>";
 		};
 		A594B0EC27EF3829001344A2 /* EnterRating */ = {
@@ -705,11 +691,9 @@
 				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
 				A5DA054627FC100500EB3FF8 /* CalendarPresenter.swift in Sources */,
-				A589B0D9280303B300BECC62 /* MovieInfoViewController.swift in Sources */,
 				A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */,
 				A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */,
 				A5DA054427FC0FFA00EB3FF8 /* CalendarViewController.swift in Sources */,
-				A589B0DB280303C100BECC62 /* MovieInfoPresenter.swift in Sources */,
 				A5C2A87C27F6BE8300225640 /* MenuTableViewCell.swift in Sources */,
 				A513E84627F9CC870084BD86 /* FavoriteCollectionViewCell.swift in Sources */,
 				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
