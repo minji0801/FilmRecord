@@ -52,6 +52,15 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
 
+    /// 화면이 어두워지는  뷰
+    private lazy var coverView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.isHidden = true
+
+        return view
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -98,15 +107,23 @@ extension HomeViewController: HomeProtocol {
     /// 뷰 구성
     func setupView() {
         view.backgroundColor = .systemBackground
-        view.addSubview(collectionView)
+
+        [collectionView, coverView].forEach {
+            view.addSubview($0)
+        }
 
         collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
+        coverView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
 
     /// 메뉴 화면 push
     func pushToMenuViewController() {
+        coverView.isHidden = false
         let menuNavigationController = MenuNavigationController(rootViewController: MenuViewController())
         present(menuNavigationController, animated: true)
     }
@@ -159,5 +176,14 @@ extension HomeViewController {
         default:
             break
         }
+    }
+}
+
+// MARK: - SideMenu
+extension HomeViewController: SideMenuNavigationControllerDelegate {
+
+    /// 메뉴가 사라지려고 할 때
+    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        coverView.isHidden = true
     }
 }

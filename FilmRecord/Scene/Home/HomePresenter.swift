@@ -12,6 +12,7 @@ protocol HomeProtocol: AnyObject {
     func setupNavigationBar()
     func setupNoti()
     func setupView()
+
     func pushToMenuViewController()
     func pushToSearchMovieViewController()
     func reloadCollectionView()

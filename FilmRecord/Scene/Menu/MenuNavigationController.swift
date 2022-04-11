@@ -14,7 +14,6 @@ final class MenuNavigationController: SideMenuNavigationController {
         super.viewDidLoad()
 
         presentationStyle = .menuSlideIn
-//        menuWidth = 250
         leftSide = true
     }
 }

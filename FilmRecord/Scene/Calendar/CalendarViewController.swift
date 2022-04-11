@@ -6,6 +6,7 @@
 //  리뷰 캘린더 화면
 
 import FSCalendar
+import SideMenu
 import SnapKit
 import UIKit
 
@@ -36,6 +37,7 @@ final class CalendarViewController: UIViewController {
         return rightBarButtonItem
     }()
 
+    /// 캘린더 뷰
     private lazy var calendarView: FSCalendar = {
         let view = FSCalendar()
         view.scrollDirection = .vertical
@@ -64,6 +66,7 @@ final class CalendarViewController: UIViewController {
     /// 리뷰 테이블 뷰
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = .systemBackground
         tableView.dataSource = presenter
         tableView.delegate = presenter
 
@@ -73,6 +76,15 @@ final class CalendarViewController: UIViewController {
         )
 
         return tableView
+    }()
+
+    /// 화면이 어두워지는  뷰
+    private lazy var coverView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.isHidden = true
+
+        return view
     }()
 
     override func viewDidLoad() {
@@ -114,7 +126,7 @@ extension CalendarViewController: CalendarProtocol {
     func setupView() {
         view.backgroundColor = .systemBackground
 
-        [calendarView, tableView].forEach {
+        [tableView, coverView, calendarView].forEach {
             view.addSubview($0)
         }
 
@@ -129,10 +141,15 @@ extension CalendarViewController: CalendarProtocol {
             $0.top.equalTo(calendarView.snp.bottom)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+
+        coverView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     /// 메뉴 화면 push
     func pushToMenuViewController() {
+        coverView.isHidden = false
         let menuNavigationController = MenuNavigationController(rootViewController: MenuViewController())
         present(menuNavigationController, animated: true)
     }
@@ -184,5 +201,14 @@ extension CalendarViewController {
         default:
             break
         }
+    }
+}
+
+// MARK: - SideMenu
+extension CalendarViewController: SideMenuNavigationControllerDelegate {
+
+    /// 메뉴가 사라지려고 할 때
+    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        coverView.isHidden = true
     }
 }
