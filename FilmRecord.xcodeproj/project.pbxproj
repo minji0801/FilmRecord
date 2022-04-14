@@ -210,6 +210,18 @@
 			path = Favorite;
 			sourceTree = "<group>";
 		};
+		A51575342807EDC400D94EE4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A5828A6D27F58C6B00DC89D3 /* DeleteAlert */,
+				A5C6678027F3ED5B0090B617 /* Font */,
+				A5828A6827F5548C00DC89D3 /* PopUp */,
+				A5FACB4327F0381D00DAB3AA /* StackView */,
+				A579427027EE08C8000F233A /* String+.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		A579421D27EDF3CC000F233A = {
 			isa = PBXGroup;
 			children = (
@@ -237,14 +249,13 @@
 			children = (
 				A579422927EDF3CC000F233A /* AppDelegate.swift */,
 				A579422B27EDF3CC000F233A /* SceneDelegate.swift */,
-				A5C6678027F3ED5B0090B617 /* Font */,
 				A579426527EE07AC000F233A /* Manager */,
 				A579426D27EE0827000F233A /* Model */,
 				A579425927EDF6D4000F233A /* Scene */,
+				A51575342807EDC400D94EE4 /* Util */,
 				A579423227EDF3CC000F233A /* Assets.xcassets */,
 				A579423427EDF3CC000F233A /* LaunchScreen.storyboard */,
 				A579423727EDF3CC000F233A /* Info.plist */,
-				A579427027EE08C8000F233A /* String+.swift */,
 			);
 			path = FilmRecord;
 			sourceTree = "<group>";
@@ -270,17 +281,14 @@
 			isa = PBXGroup;
 			children = (
 				A5DA054727FC100900EB3FF8 /* Calendar */,
-				A5828A6D27F58C6B00DC89D3 /* DeleteAlert */,
 				A50E508227F2BAB50079AFEB /* Detail */,
 				A594B0EC27EF3829001344A2 /* EnterRating */,
 				A513E84427F9C95F0084BD86 /* Favorite */,
 				A579425C27EDF6FF000F233A /* Home */,
 				A5C2A87A27F6BE6A00225640 /* Menu */,
 				A579426127EDFB49000F233A /* MovieSearch */,
-				A5FACB4327F0381D00DAB3AA /* StackView */,
 				A5AFFB0A27F7E09700FA078D /* ToWatch */,
 				A5FACB4827F0384800DAB3AA /* ReviewWrite */,
-				A5828A6827F5548C00DC89D3 /* PopUp */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
