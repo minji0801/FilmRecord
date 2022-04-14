@@ -135,8 +135,8 @@ class DetailViewController: UIViewController {
 
         cosmosView.settings.updateOnTouch = false
 
-        cosmosView.settings.filledImage = UIImage(named: "star.fill")
-        cosmosView.settings.emptyImage = UIImage(named: "star")
+        cosmosView.settings.filledImage = UIImage(named: "heart.fill")
+        cosmosView.settings.emptyImage = UIImage(named: "heart")
 
         return cosmosView
     }()

@@ -88,7 +88,7 @@ extension HomeViewController: HomeProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "My Review"
+        navigationItem.title = "movie review"
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: FontManager().largeFont()
         ]

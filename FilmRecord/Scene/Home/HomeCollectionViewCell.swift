@@ -29,7 +29,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 10.0
+//        imageView.layer.cornerRadius = 10.0
         imageView.backgroundColor = .secondarySystemBackground
 
         return imageView
@@ -103,33 +103,37 @@ private extension HomeCollectionViewCell {
 //        layer.shadowRadius = 12.0
 
         backgroundColor = .systemBackground
-
-        [verticalStactView, likeButton].forEach {
-            self.addSubview($0)
-        }
-
-        [thumbnailImageView, ratingView, titleLabel].forEach {
-            verticalStactView.addArrangedSubview($0)
-        }
-
-        verticalStactView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.bottom.equalToSuperview()
-        }
+        addSubview(thumbnailImageView)
 
         thumbnailImageView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
+            $0.edges.equalToSuperview()
         }
-
-        ratingView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.height).multipliedBy(0.05)
-        }
-
-        likeButton.snp.makeConstraints {
-            $0.trailing.equalTo(thumbnailImageView.snp.trailing)
-            $0.bottom.equalTo(thumbnailImageView.snp.bottom)
-            $0.width.equalTo(self.snp.width).multipliedBy(0.3)
-            $0.height.equalTo(likeButton.snp.width)
-        }
+//        [verticalStactView, likeButton].forEach {
+//            self.addSubview($0)
+//        }
+//
+//        [thumbnailImageView, ratingView, titleLabel].forEach {
+//            verticalStactView.addArrangedSubview($0)
+//        }
+//
+//        verticalStactView.snp.makeConstraints {
+//            $0.leading.trailing.equalToSuperview()
+//            $0.top.bottom.equalToSuperview()
+//        }
+//
+//        thumbnailImageView.snp.makeConstraints {
+//            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
+//        }
+//
+//        ratingView.snp.makeConstraints {
+//            $0.height.equalTo(verticalStactView.snp.height).multipliedBy(0.05)
+//        }
+//
+//        likeButton.snp.makeConstraints {
+//            $0.trailing.equalTo(thumbnailImageView.snp.trailing)
+//            $0.bottom.equalTo(thumbnailImageView.snp.bottom)
+//            $0.width.equalTo(self.snp.width).multipliedBy(0.3)
+//            $0.height.equalTo(likeButton.snp.width)
+//        }
     }
 }
