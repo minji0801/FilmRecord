@@ -15,7 +15,8 @@ final class MenuTableViewCell: UITableViewCell {
 
     func setupCell(row: Int) {
         textLabel?.text = title[row]
-        textLabel?.font = FontManager().extraLargeFont()
+        textLabel?.font = .systemFont(ofSize: 17.0, weight: .regular)
+//        textLabel?.font = FontManager().extraLargeFont()
 
         imageView?.image = UIImage(systemName: image[row])
         imageView?.tintColor = .label

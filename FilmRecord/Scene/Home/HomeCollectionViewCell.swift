@@ -29,8 +29,17 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-//        imageView.layer.cornerRadius = 10.0
+        imageView.layer.borderWidth = 0.2
+        imageView.layer.borderColor = UIColor.black.cgColor
         imageView.backgroundColor = .secondarySystemBackground
+
+        return imageView
+    }()
+
+    /// 영화 포스터 받침대 이미지
+    private lazy var boardImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "poster_board")
 
         return imageView
     }()
@@ -103,10 +112,18 @@ private extension HomeCollectionViewCell {
 //        layer.shadowRadius = 12.0
 
         backgroundColor = .systemBackground
-        addSubview(thumbnailImageView)
+
+        [boardImageView, thumbnailImageView].forEach {
+            addSubview($0)
+        }
 
         thumbnailImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(10.0)
+        }
+
+        boardImageView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(50.0)
         }
 //        [verticalStactView, likeButton].forEach {
 //            self.addSubview($0)

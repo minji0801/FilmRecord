@@ -107,9 +107,6 @@ extension CalendarViewController: CalendarProtocol {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.title = "review calendar"
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: FontManager().largeFont()
-        ]
     }
 
     /// 노티피케이션 구성
@@ -198,6 +195,9 @@ extension CalendarViewController {
         case 3:
             let toWatchViewController = ToWatchViewController()
             navigationController?.setViewControllers([toWatchViewController], animated: true)
+        case 4:
+            let settingsViewController = SettingsViewController()
+            navigationController?.setViewControllers([settingsViewController], animated: true)
         default:
             break
         }

@@ -97,10 +97,10 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let inset: CGFloat = 16.0
+        let inset: CGFloat = 8.0
         let spacing: CGFloat = 10.0
         let width: CGFloat = (collectionView.frame.width - (inset * 2) - (spacing * 2)) / 3
-        return CGSize(width: width, height: width * 1.5)
+        return CGSize(width: width, height: width * 1.4)
     }
 
     /// CollectionView Inset 설정
@@ -109,7 +109,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        let inset: CGFloat = 16.0
+        let inset: CGFloat = 8.0
         return UIEdgeInsets(top: inset, left: inset, bottom: 0.0, right: inset)
     }
 

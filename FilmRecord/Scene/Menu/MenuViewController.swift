@@ -86,7 +86,7 @@ final class MenuViewController: UIViewController {
 extension MenuViewController: MenuProtocol {
     /// 네비게이션 바 구성
     func setupNavigationBar() {
-        navigationItem.title = "Film Record"
+        navigationItem.title = "film record"
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: FontManager().largeFont()
         ]

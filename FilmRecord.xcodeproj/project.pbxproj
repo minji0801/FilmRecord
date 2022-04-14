@@ -17,6 +17,9 @@
 		A513E84127F9C94F0084BD86 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E84027F9C94F0084BD86 /* FavoriteViewController.swift */; };
 		A513E84327F9C9580084BD86 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E84227F9C9580084BD86 /* FavoritePresenter.swift */; };
 		A513E84627F9CC870084BD86 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E84527F9CC870084BD86 /* FavoriteCollectionViewCell.swift */; };
+		A51575362807EF3400D94EE4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51575352807EF3400D94EE4 /* SettingsViewController.swift */; };
+		A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */; };
+		A515753B2807F26D00D94EE4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */; };
 		A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */; };
 		A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422927EDF3CC000F233A /* AppDelegate.swift */; };
 		A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422B27EDF3CC000F233A /* SceneDelegate.swift */; };
@@ -103,6 +106,9 @@
 		A513E84027F9C94F0084BD86 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A513E84227F9C9580084BD86 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		A513E84527F9CC870084BD86 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		A51575352807EF3400D94EE4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		A579422627EDF3CC000F233A /* FilmRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579422927EDF3CC000F233A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +228,16 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		A51575392807EF3F00D94EE4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A51575352807EF3400D94EE4 /* SettingsViewController.swift */,
+				A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */,
+				A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		A579421D27EDF3CC000F233A = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +303,7 @@
 				A579425C27EDF6FF000F233A /* Home */,
 				A5C2A87A27F6BE6A00225640 /* Menu */,
 				A579426127EDFB49000F233A /* MovieSearch */,
+				A51575392807EF3F00D94EE4 /* Settings */,
 				A5AFFB0A27F7E09700FA078D /* ToWatch */,
 				A5FACB4827F0384800DAB3AA /* ReviewWrite */,
 			);
@@ -696,6 +713,8 @@
 				A5C2A87927F69A9D00225640 /* MenuViewController.swift in Sources */,
 				A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */,
 				A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */,
+				A515753B2807F26D00D94EE4 /* SettingsTableViewCell.swift in Sources */,
+				A51575362807EF3400D94EE4 /* SettingsViewController.swift in Sources */,
 				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
 				A5DA054627FC100500EB3FF8 /* CalendarPresenter.swift in Sources */,
@@ -706,6 +725,7 @@
 				A513E84627F9CC870084BD86 /* FavoriteCollectionViewCell.swift in Sources */,
 				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
+				A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
 				A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */,
 				A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */,

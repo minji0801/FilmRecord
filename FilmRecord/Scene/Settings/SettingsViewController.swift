@@ -1,16 +1,16 @@
 //
-//  ToWatchViewController.swift
+//  SettingsViewController.swift
 //  FilmRecord
 //
-//  Created by 김민지 on 2022/04/02.
-//  보고 싶은 영화 화면
+//  Created by 김민지 on 2022/04/14.
+//  설정 화면
 
 import SideMenu
 import SnapKit
 import UIKit
 
-final class ToWatchViewController: UIViewController {
-    private lazy var presenter = ToWatchPresenter(viewController: self)
+final class SettingsViewController: UIViewController {
+    private lazy var presenter = SettingsPresenter(viewController: self)
 
     /// Left Bar Button: 메뉴 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
@@ -24,27 +24,14 @@ final class ToWatchViewController: UIViewController {
         return leftBarButtonItem
     }()
 
-    /// Right Bar Button: 영화 검색 버튼
-    private lazy var rightBarButtonItem: UIBarButtonItem = {
-        let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "plus"),
-            style: .plain,
-            target: self,
-            action: #selector(didTappedRightBarButton)
-        )
-
-        return rightBarButtonItem
-    }()
-
-    /// Table View
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
         tableView.dataSource = presenter
         tableView.delegate = presenter
 
         tableView.register(
-            ToWatchTableViewCell.self,
-            forCellReuseIdentifier: ToWatchTableViewCell.identifier
+            SettingsTableViewCell.self,
+            forCellReuseIdentifier: SettingsTableViewCell.identifier
         )
 
         return tableView
@@ -64,21 +51,14 @@ final class ToWatchViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        presenter.viewWillAppear()
-    }
 }
 
-// MARK: - ToWatchProtocol Function
-extension ToWatchViewController: ToWatchProtocol {
+// MARK: - SettingProtocol Function
+extension SettingsViewController: SettingsProtocol {
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "to-watch list"
+        navigationItem.title = "settings"
     }
 
     /// 노티피케이션 구성
@@ -114,33 +94,17 @@ extension ToWatchViewController: ToWatchProtocol {
         let menuNavigationController = MenuNavigationController(rootViewController: MenuViewController())
         present(menuNavigationController, animated: true)
     }
-
-    /// 영화 검색 화면 push
-    func pushToSearchMovieViewController() {
-        let searchMovieViewController = MovieSearchViewController(fromHome: false)
-        navigationController?.pushViewController(searchMovieViewController, animated: true)
-    }
-
-    /// 테이블 뷰 다시 로드하기
-    func reloadTableView() {
-        tableView.reloadData()
-    }
 }
 
 // MARK: - @objc Function
-extension ToWatchViewController {
+extension SettingsViewController {
 
     /// 메뉴 버튼 클릭: 메뉴 화면 보여주기
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()
     }
 
-    /// + 버튼 클릭: 영화 검색 화면 보여주기
-    @objc func didTappedRightBarButton() {
-        presenter.didTappedRightBarButton()
-    }
-
-    /// 메뉴 뷰 사라지고 받는 노티
+    /// 메뉴 화면 사라지고 받는 노티
     @objc func didDismissMenuViewController(_ notification: Notification) {
         guard let object: Int = notification.object as? Int else { return }
         // 자기 자신 제외하고 컨트롤하기
@@ -154,9 +118,9 @@ extension ToWatchViewController {
         case 2:
             let favoriteViewController = FavoriteViewController()
             navigationController?.setViewControllers([favoriteViewController], animated: true)
-        case 4:
-            let settingsViewController = SettingsViewController()
-            navigationController?.setViewControllers([settingsViewController], animated: true)
+        case 3:
+            let toWatchViewController = ToWatchViewController()
+            navigationController?.setViewControllers([toWatchViewController], animated: true)
         default:
             break
         }
@@ -164,7 +128,7 @@ extension ToWatchViewController {
 }
 
 // MARK: - SideMenu
-extension ToWatchViewController: SideMenuNavigationControllerDelegate {
+extension SettingsViewController: SideMenuNavigationControllerDelegate {
 
     /// 메뉴가 사라지려고 할 때
     func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {

@@ -78,10 +78,7 @@ extension FavoriteViewController: FavoriteProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
 //        navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "favorite movie"
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: FontManager().largeFont()
-        ]
+        navigationItem.title = "bookmark"
     }
 
     /// 노티피케이션 구성
@@ -157,6 +154,9 @@ extension FavoriteViewController {
         case 3:
             let toWatchViewController = ToWatchViewController()
             navigationController?.setViewControllers([toWatchViewController], animated: true)
+        case 4:
+            let settingsViewController = SettingsViewController()
+            navigationController?.setViewControllers([settingsViewController], animated: true)
         default:
             break
         }

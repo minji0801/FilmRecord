@@ -89,6 +89,7 @@ extension HomeViewController: HomeProtocol {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.title = "movie review"
+//        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: FontManager().largeFont()
         ]
@@ -173,6 +174,9 @@ extension HomeViewController {
         case 3:
             let toWatchViewController = ToWatchViewController()
             navigationController?.setViewControllers([toWatchViewController], animated: true)
+        case 4:
+            let settingsViewController = SettingsViewController()
+            navigationController?.setViewControllers([settingsViewController], animated: true)
         default:
             break
         }
