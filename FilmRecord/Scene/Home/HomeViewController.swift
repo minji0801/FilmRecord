@@ -89,10 +89,10 @@ extension HomeViewController: HomeProtocol {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.title = "movie review"
-//        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: FontManager().largeFont()
-        ]
+        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.titleTextAttributes = [
+//            NSAttributedString.Key.font: FontManager().largeFont()
+//        ]
     }
 
     /// 노티피케이션 구성

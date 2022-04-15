@@ -55,6 +55,12 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
 
     /// 셀 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsTableViewCell.identifier
+        ) as? SettingsTableViewCell else { return UITableViewCell() }
+
+        cell.update(indexPath: indexPath)
+
+        return cell
     }
 }

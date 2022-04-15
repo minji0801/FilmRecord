@@ -58,7 +58,7 @@ extension SettingsViewController: SettingsProtocol {
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.title = "settings"
+        navigationItem.title = "설정"
     }
 
     /// 노티피케이션 구성

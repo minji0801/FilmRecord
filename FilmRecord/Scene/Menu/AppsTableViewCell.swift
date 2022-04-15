@@ -17,7 +17,7 @@ final class AppsTableViewCell: UITableViewCell {
         textLabel?.text = title[row]
         textLabel?.numberOfLines = 0
         textLabel?.font = .systemFont(ofSize: 14.0, weight: .regular)
-        textLabel?.textColor = .black.withAlphaComponent(0.7)
+        textLabel?.textColor = .label
 //        textLabel?.font = FontManager().largeFont()
 
         imageView?.image = UIImage(named: image[row])
