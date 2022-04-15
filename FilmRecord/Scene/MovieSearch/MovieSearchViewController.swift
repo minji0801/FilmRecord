@@ -33,15 +33,18 @@ final class MovieSearchViewController: UIViewController {
 
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
-        searchController.searchBar.placeholder = "영화 검색"
+        searchController.searchBar.placeholder = "제목을 입력해주세요."
         searchController.searchBar.searchTextField.font = FontManager().largeFont()
+
         searchController.searchBar.keyboardType = .default
         searchController.searchBar.autocorrectionType = .no
         searchController.searchBar.spellCheckingType = .no
         searchController.searchBar.autocapitalizationType = .none
+
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.showsCancelButton = false
+
         searchController.searchBar.delegate = presenter
         searchController.delegate = presenter
 
@@ -86,8 +89,9 @@ final class MovieSearchViewController: UIViewController {
 // MARK: - SearchMovieProtocol Function
 extension MovieSearchViewController: MovieSearchProtocol {
     func setupNavigationBar() {
+        navigationItem.title = "영화 검색"
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.titleView = searchController.searchBar
+        navigationItem.searchController = searchController
     }
 
     func setupView() {
