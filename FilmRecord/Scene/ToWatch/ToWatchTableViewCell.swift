@@ -51,14 +51,10 @@ final class ToWatchTableViewCell: UITableViewCell {
             // 봤음: 체크마크 & 중앙선 표시, 썸네일 & 제목 흐리게
             self.accessoryType = .checkmark
             horizontalLineView.isHidden = false
-//            thumbnailImageView.alpha = 0.5
-//            titleLabel.alpha = 0.5
         } else {
             // 안봤음: 체크마크 & 중앙선 표시 안함, 썸네일 & 제목 뚜렷하게
             self.accessoryType = .none
             horizontalLineView.isHidden = true
-//            thumbnailImageView.alpha = 1.0
-//            titleLabel.alpha = 1.0
         }
     }
 }
@@ -82,8 +78,6 @@ private extension ToWatchTableViewCell {
         titleLabel.snp.makeConstraints {
             $0.leading.equalTo(thumbnailImageView.snp.trailing).offset(10.0)
             $0.trailing.equalToSuperview().inset(50.0)
-//            $0.top.equalTo(thumbnailImageView.snp.top)
-//            $0.bottom.equalTo(thumbnailImageView.snp.bottom)
         }
 
         /// 중앙 가로선 뷰 Constraints
@@ -91,7 +85,6 @@ private extension ToWatchTableViewCell {
             $0.leading.equalTo(titleLabel.snp.leading)
             $0.trailing.equalTo(titleLabel.snp.trailing)
             $0.centerY.equalToSuperview()
-//            $0.height.equalTo(15.0)
             $0.top.equalTo(titleLabel.snp.top)
             $0.bottom.equalTo(titleLabel.snp.bottom)
         }

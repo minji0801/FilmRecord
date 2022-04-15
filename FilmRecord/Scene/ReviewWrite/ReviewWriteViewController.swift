@@ -36,7 +36,7 @@ final class ReviewWriteViewController: UIViewController {
         return formatter
     }()
 
-    /// 뒤로가기 버튼
+    /// Left Bar Button: 뒤로가기 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.left"),
@@ -48,7 +48,7 @@ final class ReviewWriteViewController: UIViewController {
         return leftBarButtonItem
     }()
 
-    /// 체크 버튼
+    /// Right Bar Button: 체크 버튼
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "checkmark"),
@@ -71,9 +71,10 @@ final class ReviewWriteViewController: UIViewController {
         stackView.backgroundColor = .systemBackground
         stackView.layer.cornerRadius = cornerRadius
 
-        stackView.layer.shadowColor = UIColor.systemGray.cgColor
-        stackView.layer.shadowOpacity = 0.3
+        stackView.layer.shadowColor = UIColor.black.cgColor
+        stackView.layer.shadowOpacity = 0.2
         stackView.layer.shadowRadius = cornerRadius
+        stackView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
 
         stackView.layoutMargins = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -205,7 +206,7 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
 
         verticalStactView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(spacing)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
         }
 
         reviewTextView.snp.makeConstraints {

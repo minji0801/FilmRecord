@@ -104,7 +104,6 @@ extension HomeViewController: HomeProtocol {
 
     /// 뷰 구성
     func setupView() {
-        view.backgroundColor = .systemBackground
 
         [collectionView, coverView].forEach {
             view.addSubview($0)

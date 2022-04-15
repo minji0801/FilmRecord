@@ -85,8 +85,8 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         let review = reviews[indexPath.item]
         cell.update(review)
 
-        cell.likeButton.tag = indexPath.row
-        cell.likeButton.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
+        cell.heartButton.tag = indexPath.row
+        cell.heartButton.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
 
         return cell
     }
@@ -97,7 +97,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let inset: CGFloat = 8.0
+        let inset: CGFloat = 16.0
         let spacing: CGFloat = 10.0
         let width: CGFloat = (collectionView.frame.width - (inset * 2) - (spacing * 2)) / 3
         return CGSize(width: width, height: width * 2)
@@ -109,7 +109,7 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        let inset: CGFloat = 8.0
+        let inset: CGFloat = 16.0
         return UIEdgeInsets(top: inset, left: inset, bottom: 0.0, right: inset)
     }
 

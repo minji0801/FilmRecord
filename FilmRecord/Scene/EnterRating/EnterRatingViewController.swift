@@ -29,7 +29,7 @@ final class EnterRatingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    /// 뒤로가기 버튼
+    /// Left Bar Button:  뒤로가기 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.left"),
@@ -41,7 +41,7 @@ final class EnterRatingViewController: UIViewController {
         return leftBarButtonItem
     }()
 
-    /// 체크 버튼
+    /// Right Bar Button: 체크 버튼
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "checkmark"),
@@ -64,9 +64,10 @@ final class EnterRatingViewController: UIViewController {
         stackView.backgroundColor = .systemBackground
         stackView.layer.cornerRadius = cornerRadius
 
-        stackView.layer.shadowColor = UIColor.systemGray.cgColor
-        stackView.layer.shadowOpacity = 0.3
+        stackView.layer.shadowColor = UIColor.black.cgColor
+        stackView.layer.shadowOpacity = 0.2
         stackView.layer.shadowRadius = cornerRadius
+        stackView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
 
         stackView.layoutMargins = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -74,7 +75,7 @@ final class EnterRatingViewController: UIViewController {
         return stackView
     }()
 
-    /// 영화 포스터 이미지
+    /// 영화 썸네일 이미지
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -93,7 +94,7 @@ final class EnterRatingViewController: UIViewController {
         return label
     }()
 
-    /// 영화 평점
+    /// 사용자 평점 뷰
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
         cosmosView.settings.starSize = 35
@@ -153,7 +154,7 @@ extension EnterRatingViewController: EnterRatingProtocol {
 
         verticalStactView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(spacing)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
         }
 
         thumbnailImageView.snp.makeConstraints { $0.width.equalTo(150) }

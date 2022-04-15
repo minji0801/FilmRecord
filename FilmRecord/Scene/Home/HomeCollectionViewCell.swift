@@ -13,15 +13,33 @@ import UIKit
 final class HomeCollectionViewCell: UICollectionViewCell {
     static let identifier = "HomeCollectionViewCell"
 
-    /// 세로 스택 뷰: 영화 썸네일, 사용자 평점, 영화 제목
-    private lazy var verticalStactView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        stackView.spacing = 7.0
+    /// 시간 포맷(yyyy년 M월 d일 EEEE)
+    private lazy var longFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 M월 d일 EEEE"
+        formatter.locale = Locale(identifier: "ko_KR")
 
-        return stackView
+        return formatter
+    }()
+
+    /// 시간 포맷(yy.MM.dd)
+    private lazy var shortFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy.MM.dd"
+        formatter.locale = Locale(identifier: "ko_KR")
+
+        return formatter
+    }()
+
+    /// 하트 버튼
+    var heartButton: UIButton = {
+        let button = UIButton()
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.8
+        button.layer.shadowRadius = 2.0
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+
+        return button
     }()
 
     /// 영화 썸네일 이미지
@@ -35,6 +53,16 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
+    /// 영화 제목
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = FontManager().mediumFont()
+        label.numberOfLines = 3
+        label.textAlignment = .left
+
+        return label
+    }()
+
     /// 사용자 평점 뷰
     private lazy var ratingView: CosmosView = {
         let cosmosView = CosmosView()
@@ -42,31 +70,10 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         cosmosView.settings.starMargin = 0
         cosmosView.settings.fillMode = .full
 
-        cosmosView.settings.filledImage = UIImage(named: "heart.fill")
-        cosmosView.settings.emptyImage = UIImage(named: "heart")
+        cosmosView.settings.filledImage = UIImage(named: "star.fill")
+        cosmosView.settings.emptyImage = UIImage(named: "star")
 
         return cosmosView
-    }()
-
-    /// 영화 제목
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = FontManager().smallFont()
-        label.numberOfLines = 3
-        label.textAlignment = .center
-
-        return label
-    }()
-
-    /// 좋아요 버튼
-    var likeButton: UIButton = {
-        let button = UIButton()
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.2
-        button.layer.shadowRadius = 2.0
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-
-        return button
     }()
 
     /// Cell UI Update
@@ -78,17 +85,17 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         ratingView.rating = review.rating
 
         if review.favorite {
-            likeButton.setImage(UIImage(
+            heartButton.setImage(UIImage(
                 systemName: "heart.fill",
-                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold, scale: .default)
             ), for: .normal)
-            likeButton.tintColor = .systemRed
+            heartButton.tintColor = .systemPink
         } else {
-            likeButton.setImage(UIImage(
+            heartButton.setImage(UIImage(
                 systemName: "heart",
-                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold, scale: .default)
             ), for: .normal)
-            likeButton.tintColor = .white
+            heartButton.tintColor = .white
         }
     }
 }
@@ -98,36 +105,31 @@ private extension HomeCollectionViewCell {
     func setupView() {
         backgroundColor = .systemBackground
 
-        layer.cornerRadius = 12.0
-        layer.shadowColor = UIColor.systemGray.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 12.0
+        let stackView = UIStackView(
+            arrangedSubviews: [thumbnailImageView, ratingView, titleLabel]
+        )
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 8.0
 
-        [verticalStactView, likeButton].forEach {
+        [stackView, heartButton].forEach {
             addSubview($0)
         }
 
-        [thumbnailImageView, titleLabel, ratingView].forEach {
-            verticalStactView.addArrangedSubview($0)
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
-        verticalStactView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(8.0)
+        heartButton.snp.makeConstraints {
+            $0.top.equalTo(thumbnailImageView.snp.top)
+            $0.trailing.equalTo(thumbnailImageView.snp.trailing)
+            $0.width.equalTo(snp.width).multipliedBy(0.3)
+            $0.height.equalTo(heartButton.snp.width)
         }
 
         thumbnailImageView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
-        }
-
-        ratingView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.height).multipliedBy(0.1)
-        }
-
-        likeButton.snp.makeConstraints {
-            $0.trailing.equalTo(thumbnailImageView.snp.trailing)
-            $0.bottom.equalTo(thumbnailImageView.snp.bottom)
-            $0.width.equalTo(snp.width).multipliedBy(0.3)
-            $0.height.equalTo(likeButton.snp.width)
+            $0.height.equalTo(stackView.snp.width).multipliedBy(1.4)
         }
     }
 }

@@ -58,10 +58,10 @@ final class CalendarTableViewCell: UITableViewCell {
 private extension CalendarTableViewCell {
     func setupView() {
         backgroundColor = .systemBackground
-        self.selectionStyle = .none
+        selectionStyle = .none
 
         [thumbnailImageView, titleLabel, ratingView].forEach {
-            self.addSubview($0)
+            addSubview($0)
         }
 
         /// 영화 썸네일 Constraints

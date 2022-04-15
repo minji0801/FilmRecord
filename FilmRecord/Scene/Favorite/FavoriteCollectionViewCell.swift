@@ -13,17 +13,6 @@ import UIKit
 final class FavoriteCollectionViewCell: UICollectionViewCell {
     static let identifier = "FavoriteCollectionViewCell"
 
-    /// 세로 스택 뷰: 영화 썸네일, 사용자 평점, 영화 제목
-    private lazy var verticalStactView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 7.0
-
-        return stackView
-    }()
-
     /// 영화 썸네일 이미지
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -70,33 +59,28 @@ final class FavoriteCollectionViewCell: UICollectionViewCell {
 private extension FavoriteCollectionViewCell {
     /// 뷰 구성
     func setupView() {
-//        layer.cornerRadius = 12.0
-//
-//        layer.shadowColor = UIColor.systemGray.cgColor
-//        layer.shadowOpacity = 0.3
-//        layer.shadowRadius = 12.0
-
         backgroundColor = .systemBackground
 
-        [verticalStactView].forEach {
-            self.addSubview($0)
-        }
+        let stackView = UIStackView(
+            arrangedSubviews: [thumbnailImageView, ratingView, titleLabel]
+        )
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 8.0
 
-        [thumbnailImageView, ratingView, titleLabel].forEach {
-            verticalStactView.addArrangedSubview($0)
-        }
+        addSubview(stackView)
 
-        verticalStactView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.bottom.equalToSuperview()
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
         thumbnailImageView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
+            $0.height.equalTo(stackView.snp.width).multipliedBy(1.4)
         }
 
         ratingView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.height).multipliedBy(0.05)
+            $0.height.equalTo(stackView.snp.height).multipliedBy(0.05)
         }
     }
 }

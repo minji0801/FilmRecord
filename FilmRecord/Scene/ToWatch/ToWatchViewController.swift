@@ -78,7 +78,7 @@ extension ToWatchViewController: ToWatchProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "to-watch list"
+        navigationItem.title = "보고 싶은 영화"
     }
 
     /// 노티피케이션 구성

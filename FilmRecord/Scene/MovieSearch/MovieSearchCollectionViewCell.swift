@@ -12,16 +12,7 @@ import UIKit
 final class MovieSearchCollectionViewCell: UICollectionViewCell {
     static let identifier = "MovieSearchCollectionViewCell"
 
-    private lazy var verticalStactView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 7.0
-
-        return stackView
-    }()
-
+    /// 영화 썸네일 이미지
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -32,6 +23,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
+    /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = FontManager().mediumFont()
@@ -40,49 +32,50 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var dateLabel: UILabel = {
+    /// 개봉년도
+    private lazy var pubDateLabel: UILabel = {
         let label = UILabel()
         label.font = FontManager().smallFont()
+        label.textAlignment = .left
 
         return label
     }()
 
+    /// Cell UI Update
     func update(movie: Movie) {
         setupView()
 
         thumbnailImageView.kf.setImage(with: movie.imageURL)
         titleLabel.text = movie.title.htmlEscaped
-        dateLabel.text = movie.pubDate
+        pubDateLabel.text = movie.pubDate
     }
 }
 
 private extension MovieSearchCollectionViewCell {
+    /// 뷰 구성
     func setupView() {
-        layer.cornerRadius = 12.0
-
-        layer.shadowColor = UIColor.systemGray.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 12.0
-
         backgroundColor = .systemBackground
 
-        self.addSubview(verticalStactView)
+        let stackView = UIStackView(
+            arrangedSubviews: [thumbnailImageView, pubDateLabel, titleLabel]
+        )
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 8.0
 
-        [thumbnailImageView, dateLabel, titleLabel].forEach {
-            verticalStactView.addArrangedSubview($0)
+        addSubview(stackView)
+
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
-        verticalStactView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(10.0)
-            $0.top.bottom.equalToSuperview().inset(10.0)
-        }
-
-        dateLabel.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(0.1)
+        pubDateLabel.snp.makeConstraints {
+            $0.height.equalTo(stackView.snp.width).multipliedBy(0.1)
         }
 
         thumbnailImageView.snp.makeConstraints {
-            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
+            $0.height.equalTo(stackView.snp.width).multipliedBy(1.3)
         }
     }
 }

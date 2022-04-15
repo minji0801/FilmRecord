@@ -51,11 +51,13 @@ final class CalendarViewController: UIViewController {
         view.appearance.headerDateFormat = "YYYY년 M월"
         view.appearance.headerTitleColor = .label
         view.appearance.headerMinimumDissolvedAlpha = 0.0
+        view.layer.cornerRadius = 12.0
 
         view.appearance.titleDefaultColor = .label
         view.appearance.weekdayTextColor = .label
         view.appearance.todayColor = .systemGray
         view.appearance.titleWeekendColor = .systemRed
+        view.backgroundColor = .secondarySystemBackground
 
         view.dataSource = presenter
         view.delegate = presenter
@@ -106,7 +108,7 @@ extension CalendarViewController: CalendarProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "review calendar"
+        navigationItem.title = "리뷰 캘린더"
     }
 
     /// 노티피케이션 구성
@@ -123,25 +125,28 @@ extension CalendarViewController: CalendarProtocol {
     func setupView() {
         view.backgroundColor = .systemBackground
 
-        [tableView, coverView, calendarView].forEach {
+        [tableView, calendarView, coverView].forEach {
             view.addSubview($0)
         }
 
-        calendarView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(350)
-        }
+        let spacing: CGFloat = 16.0
 
         tableView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(calendarView.snp.bottom)
+            $0.top.equalTo(calendarView.snp.bottom).offset(spacing)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+
+        calendarView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(spacing)
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(spacing)
+            $0.height.equalTo(350)
         }
 
         coverView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+
     }
 
     /// 메뉴 화면 push

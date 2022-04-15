@@ -78,7 +78,7 @@ extension FavoriteViewController: FavoriteProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
 //        navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.title = "bookmark"
+        navigationItem.title = "좋아하는 영화"
     }
 
     /// 노티피케이션 구성

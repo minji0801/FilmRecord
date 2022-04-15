@@ -22,15 +22,6 @@ class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    /// 시간 포맷
-    private lazy var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 M월 d일 EEEE"
-        formatter.locale = Locale(identifier: "ko_KR")
-
-        return formatter
-    }()
-
     /// Left Bar Button: 뒤로가기 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
@@ -78,9 +69,10 @@ class DetailViewController: UIViewController {
         stackView.backgroundColor = .systemBackground
         stackView.layer.cornerRadius = cornerRadius
 
-        stackView.layer.shadowColor = UIColor.systemGray.cgColor
-        stackView.layer.shadowOpacity = 0.3
+        stackView.layer.shadowColor = UIColor.black.cgColor
+        stackView.layer.shadowOpacity = 0.2
         stackView.layer.shadowRadius = cornerRadius
+        stackView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
 
         stackView.layoutMargins = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -135,8 +127,8 @@ class DetailViewController: UIViewController {
 
         cosmosView.settings.updateOnTouch = false
 
-        cosmosView.settings.filledImage = UIImage(named: "heart.fill")
-        cosmosView.settings.emptyImage = UIImage(named: "heart")
+        cosmosView.settings.filledImage = UIImage(named: "star.fill")
+        cosmosView.settings.emptyImage = UIImage(named: "star")
 
         return cosmosView
     }()
@@ -246,7 +238,7 @@ extension DetailViewController: DetailProtocol {
 
         topHorizontalStackView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(spacing)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
         }
 
         thumbnailImageView.snp.makeConstraints {
@@ -296,10 +288,16 @@ extension DetailViewController: DetailProtocol {
     /// 하트 버튼 UI 업데이트
     func updateRightBarLikeButton(review: Review) {
         if review.favorite {
-            rightBarLikeButtonItem.image = UIImage(systemName: "heart.fill")
-            rightBarLikeButtonItem.tintColor = .systemRed
+            rightBarLikeButtonItem.image = UIImage(
+                systemName: "heart.fill",
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold, scale: .default)
+            )
+            rightBarLikeButtonItem.tintColor = .systemPink
         } else {
-            rightBarLikeButtonItem.image = UIImage(systemName: "heart")
+            rightBarLikeButtonItem.image = UIImage(
+                systemName: "heart",
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold, scale: .default)
+            )
             rightBarLikeButtonItem.tintColor = .label
         }
     }
