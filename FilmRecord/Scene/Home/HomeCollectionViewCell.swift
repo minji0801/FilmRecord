@@ -17,7 +17,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     private lazy var verticalStactView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .fill
         stackView.spacing = 7.0
 
@@ -29,17 +29,8 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.borderWidth = 0.2
-        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.cornerRadius = 12.0
         imageView.backgroundColor = .secondarySystemBackground
-
-        return imageView
-    }()
-
-    /// 영화 포스터 받침대 이미지
-    private lazy var boardImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "poster_board")
 
         return imageView
     }()
@@ -51,8 +42,8 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         cosmosView.settings.starMargin = 0
         cosmosView.settings.fillMode = .full
 
-        cosmosView.settings.filledImage = UIImage(named: "star.fill")
-        cosmosView.settings.emptyImage = UIImage(named: "star")
+        cosmosView.settings.filledImage = UIImage(named: "heart.fill")
+        cosmosView.settings.emptyImage = UIImage(named: "heart")
 
         return cosmosView
     }()
@@ -62,6 +53,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = FontManager().smallFont()
         label.numberOfLines = 3
+        label.textAlignment = .center
 
         return label
     }()
@@ -73,7 +65,6 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         button.layer.shadowOpacity = 0.2
         button.layer.shadowRadius = 2.0
         button.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-//        button.backgroundColor = .systemYellow
 
         return button
     }()
@@ -105,52 +96,38 @@ final class HomeCollectionViewCell: UICollectionViewCell {
 private extension HomeCollectionViewCell {
     /// 뷰 구성
     func setupView() {
-//        layer.cornerRadius = 12.0
-//
-//        layer.shadowColor = UIColor.systemGray.cgColor
-//        layer.shadowOpacity = 0.3
-//        layer.shadowRadius = 12.0
-
         backgroundColor = .systemBackground
 
-        [boardImageView, thumbnailImageView].forEach {
+        layer.cornerRadius = 12.0
+        layer.shadowColor = UIColor.systemGray.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 12.0
+
+        [verticalStactView, likeButton].forEach {
             addSubview($0)
         }
 
-        thumbnailImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(10.0)
+        [thumbnailImageView, titleLabel, ratingView].forEach {
+            verticalStactView.addArrangedSubview($0)
         }
 
-        boardImageView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(50.0)
+        verticalStactView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(8.0)
         }
-//        [verticalStactView, likeButton].forEach {
-//            self.addSubview($0)
-//        }
-//
-//        [thumbnailImageView, ratingView, titleLabel].forEach {
-//            verticalStactView.addArrangedSubview($0)
-//        }
-//
-//        verticalStactView.snp.makeConstraints {
-//            $0.leading.trailing.equalToSuperview()
-//            $0.top.bottom.equalToSuperview()
-//        }
-//
-//        thumbnailImageView.snp.makeConstraints {
-//            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
-//        }
-//
-//        ratingView.snp.makeConstraints {
-//            $0.height.equalTo(verticalStactView.snp.height).multipliedBy(0.05)
-//        }
-//
-//        likeButton.snp.makeConstraints {
-//            $0.trailing.equalTo(thumbnailImageView.snp.trailing)
-//            $0.bottom.equalTo(thumbnailImageView.snp.bottom)
-//            $0.width.equalTo(self.snp.width).multipliedBy(0.3)
-//            $0.height.equalTo(likeButton.snp.width)
-//        }
+
+        thumbnailImageView.snp.makeConstraints {
+            $0.height.equalTo(verticalStactView.snp.width).multipliedBy(1.4)
+        }
+
+        ratingView.snp.makeConstraints {
+            $0.height.equalTo(verticalStactView.snp.height).multipliedBy(0.1)
+        }
+
+        likeButton.snp.makeConstraints {
+            $0.trailing.equalTo(thumbnailImageView.snp.trailing)
+            $0.bottom.equalTo(thumbnailImageView.snp.bottom)
+            $0.width.equalTo(snp.width).multipliedBy(0.3)
+            $0.height.equalTo(likeButton.snp.width)
+        }
     }
 }
