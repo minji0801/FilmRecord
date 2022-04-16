@@ -22,7 +22,8 @@ final class SettingsTableViewCell: UITableViewCell {
     private let image = [
         ["paintbrush", "textformat.size.larger"],
         ["lock", "faceid"],    // TODO: Touch ID 사용 기기에는 touchid (둘 다 사용안하면 다른 이미지)
-        ["star", "paperplane", "questionmark.circle", "info.circle"],
+        ["paperplane", "questionmark.circle", "info.circle"],
+//        ["star", "paperplane", "questionmark.circle", "info.circle"],
         ["scoit", "hours", "modakyi"]
     ]
 
@@ -38,7 +39,8 @@ final class SettingsTableViewCell: UITableViewCell {
     private let title = [
         ["테마", "글꼴"],
         ["암호 잠금", "Touch ID / Face ID"],
-        ["별점 남기기", "의견 보내기", "이용 방법", "버전 정보"],
+        ["의견 보내기", "이용 방법", "버전 정보"],
+//        ["별점 남기기", "의견 보내기", "이용 방법", "버전 정보"],
         ["Scoit", "h:ours", "모닥이"]
     ]
 
@@ -46,13 +48,15 @@ final class SettingsTableViewCell: UITableViewCell {
     private let detail = [
         ["", ""],
         ["", ""],
-        ["", "", "", "v1.0.0"],
+        ["", "", "v1.0.0"],
+//        ["", "", "", "v1.0.0"],
         ["스쿼트 챌린지 앱", "시간 및 디데이 계산 앱", "명언 및 글귀 모음 앱"]
     ]
 
     /// 셀 UI 업데이트
     func update(indexPath: IndexPath) {
         setupView(indexPath.section, indexPath.row)
+        selectionStyle = .none
     }
 }
 

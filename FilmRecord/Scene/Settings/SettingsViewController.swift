@@ -5,6 +5,7 @@
 //  Created by 김민지 on 2022/04/14.
 //  설정 화면
 
+import MessageUI
 import SideMenu
 import SnapKit
 import UIKit
@@ -94,6 +95,79 @@ extension SettingsViewController: SettingsProtocol {
         let menuNavigationController = MenuNavigationController(rootViewController: MenuViewController())
         present(menuNavigationController, animated: true)
     }
+
+    // MARK: - 지원 (별점 남기기, 의견 보내기, 이용 방법, 버전 정보)
+
+    /// 별점 남기기: 앱스토어 리뷰 화면으로 이동
+    func goToAppRating() {
+        let store = ""
+        if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            components?.queryItems =  [URLQueryItem(name: "action", value: "write-review")]
+
+            guard let writeReviewURL = components?.url else { return }
+
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(writeReviewURL)
+            }
+        }
+    }
+
+    /// 의견 보내기: 메일 보내기
+    func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            let composeViewController = MFMailComposeViewController()
+            composeViewController.mailComposeDelegate = self
+            composeViewController.setToRecipients(["앱 이름.help@gmail.com"])   // TODO: 앱 이름 넣기
+            composeViewController.setSubject("<앱 이름> 문의 및 의견")
+            composeViewController.setMessageBody(commentsBodyString(), isHTML: false)
+            present(composeViewController, animated: true)
+        } else {
+            let sendMailFailAlertViewController = SendMailFailAlertViewController()
+            sendMailFailAlertViewController.modalPresentationStyle = .overCurrentContext
+            present(sendMailFailAlertViewController, animated: false)
+        }
+    }
+}
+
+// MARK: - Etc. Function
+private extension SettingsViewController {
+    /// 의견 보내기: 내용
+    func commentsBodyString() -> String {
+        return """
+                이곳에 내용을 작성해주세요.
+
+
+                -------------------
+
+                Device Model : \(getDeviceIdentifier())
+                Device OS : \(UIDevice.current.systemVersion)
+                App Version : \(getCurrentVersion())
+
+                -------------------
+                """
+    }
+
+    /// 현재 버전 가져오기
+    func getCurrentVersion() -> String {
+        guard let dictionary = Bundle.main.infoDictionary,
+              let version = dictionary["CFBundleShortVersionString"] as? String else { return "" }
+        return version
+    }
+
+    /// 기기 Identifier 찾기
+    func getDeviceIdentifier() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
+    }
 }
 
 // MARK: - @objc Function
@@ -133,5 +207,17 @@ extension SettingsViewController: SideMenuNavigationControllerDelegate {
     /// 메뉴가 사라지려고 할 때
     func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
         coverView.isHidden = true
+    }
+}
+
+// MARK: - MailComposeViewController Delegate
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    /// (의견 보내기) 메일 보낸 후
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        dismiss(animated: true)
     }
 }

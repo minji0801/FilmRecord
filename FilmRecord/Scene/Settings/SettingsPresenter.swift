@@ -14,6 +14,9 @@ protocol SettingsProtocol: AnyObject {
     func setupView()
 
     func pushToMenuViewController()
+
+    func goToAppRating()
+    func sendMail()
 }
 
 final class SettingsPresenter: NSObject {
@@ -49,7 +52,7 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
 
     /// 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numRow = [2, 2, 4, 3]
+        let numRow = [2, 2, 3, 3]
         return numRow[section]
     }
 
@@ -62,5 +65,33 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
         cell.update(indexPath: indexPath)
 
         return cell
+    }
+
+    /// 셀 선택 시
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath {
+        case [0, 0]:
+            print("테마 변경")
+        case [0, 1]:
+            print("글꼴 변경")
+        case [1, 0]:
+            print("암호 잠금")
+        case [1, 1]:
+            print("터치/페이스 아이디")
+//        case [2, 0]:
+//            print("별점 남기기")
+        case [2, 0]:
+            viewController?.sendMail()
+        case [2, 1]:
+            print("이용 방법")
+        case [3, 0]:
+            print("스코잇")
+        case [3, 1]:
+            print("h:ours")
+        case [3, 2]:
+            print("모닥이")
+        default:
+            break
+        }
     }
 }

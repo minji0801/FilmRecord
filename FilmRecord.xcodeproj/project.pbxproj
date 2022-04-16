@@ -68,6 +68,8 @@
 		A5DA054427FC0FFA00EB3FF8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA054327FC0FFA00EB3FF8 /* CalendarViewController.swift */; };
 		A5DA054627FC100500EB3FF8 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA054527FC100500EB3FF8 /* CalendarPresenter.swift */; };
 		A5DA055027FC179300EB3FF8 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = A5DA054F27FC179300EB3FF8 /* FSCalendar */; };
+		A5E95188280AE02600748DCB /* SendMailFailAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E95187280AE02600748DCB /* SendMailFailAlertViewController.swift */; };
+		A5E9518A280AE92000748DCB /* SendMailFailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */; };
 		A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */; };
 		A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */; };
 		A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */; };
@@ -155,6 +157,8 @@
 		A5C6678B27F413480090B617 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		A5DA054327FC0FFA00EB3FF8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A5DA054527FC100500EB3FF8 /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
+		A5E95187280AE02600748DCB /* SendMailFailAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailFailAlertViewController.swift; sourceTree = "<group>"; };
+		A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailFailPresenter.swift; sourceTree = "<group>"; };
 		A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenter.swift; sourceTree = "<group>"; };
 		A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -219,7 +223,7 @@
 		A51575342807EDC400D94EE4 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				A5828A6D27F58C6B00DC89D3 /* DeleteAlert */,
+				A5E95185280ADFEA00748DCB /* Alert */,
 				A5C6678027F3ED5B0090B617 /* Font */,
 				A5828A6827F5548C00DC89D3 /* PopUp */,
 				A5FACB4327F0381D00DAB3AA /* StackView */,
@@ -420,6 +424,24 @@
 				A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		A5E95185280ADFEA00748DCB /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				A5E95186280ADFFE00748DCB /* SendMailFailAlert */,
+				A5828A6D27F58C6B00DC89D3 /* DeleteAlert */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		A5E95186280ADFFE00748DCB /* SendMailFailAlert */ = {
+			isa = PBXGroup;
+			children = (
+				A5E95187280AE02600748DCB /* SendMailFailAlertViewController.swift */,
+				A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */,
+			);
+			path = SendMailFailAlert;
 			sourceTree = "<group>";
 		};
 		A5FACB4327F0381D00DAB3AA /* StackView */ = {
@@ -724,6 +746,7 @@
 				A5C2A87C27F6BE8300225640 /* MenuTableViewCell.swift in Sources */,
 				A513E84627F9CC870084BD86 /* FavoriteCollectionViewCell.swift in Sources */,
 				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
+				A5E95188280AE02600748DCB /* SendMailFailAlertViewController.swift in Sources */,
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
 				A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
@@ -740,6 +763,7 @@
 				A579425B27EDF6FB000F233A /* HomePresenter.swift in Sources */,
 				A579426C27EE0822000F233A /* SearchMovieResponseModel.swift in Sources */,
 				A579425E27EDFB27000F233A /* MovieSearchViewController.swift in Sources */,
+				A5E9518A280AE92000748DCB /* SendMailFailPresenter.swift in Sources */,
 				A5C2A88027F6D25800225640 /* MenuPresenter.swift in Sources */,
 				A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */,
 				A511197D27F1658D0061BBAD /* HomeCollectionViewCell.swift in Sources */,
