@@ -17,6 +17,7 @@ protocol SettingsProtocol: AnyObject {
 
     func goToAppRating()
     func sendMail()
+    func goToAppStore(_ appName: String)
 }
 
 final class SettingsPresenter: NSObject {
@@ -85,11 +86,11 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
         case [2, 1]:
             print("이용 방법")
         case [3, 0]:
-            print("스코잇")
+            viewController?.goToAppStore("Scoit")
         case [3, 1]:
-            print("h:ours")
+            viewController?.goToAppStore("h:ours")
         case [3, 2]:
-            print("모닥이")
+            viewController?.goToAppStore("모닥이")
         default:
             break
         }

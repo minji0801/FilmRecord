@@ -130,6 +130,33 @@ extension SettingsViewController: SettingsProtocol {
             present(sendMailFailAlertViewController, animated: false)
         }
     }
+
+    // TODO: 이용 방법
+
+    // MARK: - © Minji Kim (Scoit, h:ours, 모닥이)
+
+    /// 앱스토어로 이동
+    func goToAppStore(_ appName: String) {
+        var store = ""
+        switch appName {
+        case "Scoit":
+            store = "https://apps.apple.com/kr/app/scoit/id1576850548"
+        case "h:ours":
+            store = "https://apps.apple.com/kr/app/h-ours/id1605524722"
+        case "모닥이":
+            store = "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"
+        default:
+            break
+        }
+
+        if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
 }
 
 // MARK: - Etc. Function

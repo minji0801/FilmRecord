@@ -45,7 +45,7 @@ final class SettingsTableViewCell: UITableViewCell {
     ]
 
     /// Cell Detail Text
-    private let detail = [
+    private lazy var detail = [
         ["", ""],
         ["", ""],
         ["", "", "v1.0.0"],
@@ -63,7 +63,6 @@ final class SettingsTableViewCell: UITableViewCell {
 private extension SettingsTableViewCell {
     /// 셀 뷰 구성
     func setupView(_ section: Int, _ row: Int) {
-
         if section == 3 {
             imageView?.image = UIImage(named: image[section][row])
         } else {
@@ -74,7 +73,16 @@ private extension SettingsTableViewCell {
         textLabel?.text = title[section][row]
         textLabel?.font = .systemFont(ofSize: 17.0, weight: .regular)
 
+        detail[2][2] = "v\(getCurrentVersion())"    // 현재 버전 가져오기
+
         detailTextLabel?.text = detail[section][row]
         detailTextLabel?.font = .systemFont(ofSize: 14.0, weight: .regular)
+    }
+
+    /// 현재 버전 가져오기
+    func getCurrentVersion() -> String {
+        guard let dictionary = Bundle.main.infoDictionary,
+              let version = dictionary["CFBundleShortVersionString"] as? String else { return "" }
+        return version
     }
 }
