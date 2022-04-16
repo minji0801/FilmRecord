@@ -24,7 +24,7 @@ final class SettingsTableViewCell: UITableViewCell {
         ["lock", "faceid"],    // TODO: Touch ID 사용 기기에는 touchid (둘 다 사용안하면 다른 이미지)
         ["paperplane", "questionmark.circle", "info.circle"],
 //        ["star", "paperplane", "questionmark.circle", "info.circle"],
-        ["scoit", "hours", "modakyi"]
+        ["scoit", "modakyi", "hours"]
     ]
 
     /// Cell ImageView TintColor
@@ -41,7 +41,7 @@ final class SettingsTableViewCell: UITableViewCell {
         ["암호 잠금", "Touch ID / Face ID"],
         ["의견 보내기", "이용 방법", "버전 정보"],
 //        ["별점 남기기", "의견 보내기", "이용 방법", "버전 정보"],
-        ["Scoit", "h:ours", "모닥이"]
+        ["Scoit", "모닥이", "h:ours"]
     ]
 
     /// Cell Detail Text
@@ -50,7 +50,7 @@ final class SettingsTableViewCell: UITableViewCell {
         ["", ""],
         ["", "", "v1.0.0"],
 //        ["", "", "", "v1.0.0"],
-        ["스쿼트 챌린지 앱", "시간 및 디데이 계산 앱", "명언 및 글귀 모음 앱"]
+        ["스쿼트 챌린지 앱", "명언 및 글귀 모음 앱", "시간 및 디데이 계산 앱"]
     ]
 
     /// 셀 UI 업데이트

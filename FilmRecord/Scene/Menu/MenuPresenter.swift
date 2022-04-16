@@ -8,7 +8,6 @@
 import UIKit
 
 protocol MenuProtocol: AnyObject {
-    func setupNavigationBar()
     func setupView()
     func dismiss()
     func didTappedMenu(_ row: Int)
@@ -23,7 +22,6 @@ final class MenuPresenter: NSObject {
     }
 
     func viewDidLoad() {
-        viewController?.setupNavigationBar()
         viewController?.setupView()
     }
 }

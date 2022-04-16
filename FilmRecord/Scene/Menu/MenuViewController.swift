@@ -84,13 +84,6 @@ final class MenuViewController: UIViewController {
 
 // MARK: - MenuProtocol Function
 extension MenuViewController: MenuProtocol {
-    /// 네비게이션 바 구성
-    func setupNavigationBar() {
-//        navigationItem.title = "film record"
-//        navigationController?.navigationBar.titleTextAttributes = [
-//            NSAttributedString.Key.font: FontManager().largeFont()
-//        ]
-    }
 
     /// 뷰 구성
     func setupView() {

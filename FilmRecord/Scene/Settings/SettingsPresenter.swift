@@ -88,9 +88,9 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
         case [3, 0]:
             viewController?.goToAppStore("Scoit")
         case [3, 1]:
-            viewController?.goToAppStore("h:ours")
-        case [3, 2]:
             viewController?.goToAppStore("모닥이")
+        case [3, 2]:
+            viewController?.goToAppStore("h:ours")
         default:
             break
         }

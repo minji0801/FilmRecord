@@ -90,6 +90,7 @@ extension HomeViewController: HomeProtocol {
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.title = "영화 기록장"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
 
     /// 노티피케이션 구성
