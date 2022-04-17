@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    /// 회전 금지
+    func application(
+        _ application: UIApplication,
+        supportedInterfaceOrientationsFor window: UIWindow?
+    ) -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+
     // MARK: UISceneSession Lifecycle
 
     func application(
