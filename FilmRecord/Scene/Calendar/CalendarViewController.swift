@@ -140,7 +140,7 @@ extension CalendarViewController: CalendarProtocol {
         calendarView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(spacing)
-            $0.height.equalTo(350)
+            $0.height.equalTo(view.snp.height).multipliedBy(0.4)
         }
 
         coverView.snp.makeConstraints {
