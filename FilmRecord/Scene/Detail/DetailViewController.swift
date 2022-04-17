@@ -202,7 +202,7 @@ extension DetailViewController: DetailProtocol {
     func setupView(review: Review) {
         view.backgroundColor = .secondarySystemBackground
 
-        thumbnailImageView.kf.setImage(with: review.movie.imageURL)
+        thumbnailImageView.kf.setImage(with: review.movie.imageURL, placeholder: UIImage(named: "thumbnail"))
         titleLabel.text = review.movie.title.htmlEscaped
         ratingView.rating = review.rating
 

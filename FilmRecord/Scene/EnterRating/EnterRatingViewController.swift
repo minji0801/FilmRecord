@@ -131,7 +131,7 @@ extension EnterRatingViewController: EnterRatingProtocol {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
 
-        thumbnailImageView.kf.setImage(with: movie.imageURL)
+        thumbnailImageView.kf.setImage(with: movie.imageURL, placeholder: UIImage(named: "thumbnail"))
         titleLabel.text = movie.title.htmlEscaped
         if isEditing { ratingView.rating = review.rating }
 
@@ -157,7 +157,10 @@ extension EnterRatingViewController: EnterRatingProtocol {
             $0.top.equalTo(view.safeAreaLayoutGuide)
         }
 
-        thumbnailImageView.snp.makeConstraints { $0.width.equalTo(150) }
+        thumbnailImageView.snp.makeConstraints {
+            $0.width.equalTo(150)
+            $0.height.equalTo(thumbnailImageView.snp.width).multipliedBy(1.3)
+        }
     }
 
     /// 현재 뷰 pop

@@ -41,7 +41,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    /// Cell UI Updateㅇ
+    /// Cell UI Update
     func update(movie: Movie) {
         setupView()
 
