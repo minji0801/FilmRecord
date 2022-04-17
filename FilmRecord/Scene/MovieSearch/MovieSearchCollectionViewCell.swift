@@ -45,7 +45,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
     func update(movie: Movie) {
         setupView()
 
-        thumbnailImageView.kf.setImage(with: movie.imageURL)
+        thumbnailImageView.kf.setImage(with: movie.imageURL, placeholder: UIImage(named: "thumbnail"))
         titleLabel.text = movie.title.htmlEscaped
         pubDateLabel.text = movie.pubDate
     }
