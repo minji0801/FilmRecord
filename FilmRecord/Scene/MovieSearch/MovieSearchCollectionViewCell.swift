@@ -28,6 +28,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = FontManager().mediumFont()
         label.numberOfLines = 3
+        label.sizeToFit()
 
         return label
     }()
@@ -56,26 +57,24 @@ private extension MovieSearchCollectionViewCell {
     func setupView() {
         backgroundColor = .systemBackground
 
-        let stackView = UIStackView(
-            arrangedSubviews: [thumbnailImageView, pubDateLabel, titleLabel]
-        )
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 8.0
-
-        addSubview(stackView)
-
-        stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-
-        pubDateLabel.snp.makeConstraints {
-            $0.height.equalTo(stackView.snp.width).multipliedBy(0.1)
+        [thumbnailImageView, titleLabel, pubDateLabel].forEach {
+            addSubview($0)
         }
 
         thumbnailImageView.snp.makeConstraints {
-            $0.height.equalTo(stackView.snp.width).multipliedBy(1.3)
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(snp.width).multipliedBy(1.3)
+        }
+
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(thumbnailImageView.snp.bottom).offset(5.0)
+            $0.leading.trailing.equalToSuperview()
+        }
+
+        pubDateLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5.0)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(snp.width).multipliedBy(0.1)
         }
     }
 }

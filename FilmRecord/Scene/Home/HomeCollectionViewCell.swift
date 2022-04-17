@@ -57,7 +57,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = FontManager().mediumFont()
-        label.numberOfLines = 3
+        label.numberOfLines = 2
         label.textAlignment = .left
 
         return label
@@ -110,7 +110,7 @@ private extension HomeCollectionViewCell {
         )
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
         stackView.spacing = 8.0
 
         [stackView, heartButton].forEach {
@@ -130,6 +130,10 @@ private extension HomeCollectionViewCell {
 
         thumbnailImageView.snp.makeConstraints {
             $0.height.equalTo(stackView.snp.width).multipliedBy(1.4)
+        }
+
+        ratingView.snp.makeConstraints {
+            $0.height.equalTo(stackView.snp.height).multipliedBy(0.05)
         }
     }
 }
