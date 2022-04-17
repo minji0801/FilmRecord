@@ -57,8 +57,8 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = FontManager().mediumFont()
-        label.numberOfLines = 2
-        label.textAlignment = .left
+        label.numberOfLines = 3
+        label.sizeToFit()
 
         return label
     }()
@@ -105,20 +105,13 @@ private extension HomeCollectionViewCell {
     func setupView() {
         backgroundColor = .systemBackground
 
-        let stackView = UIStackView(
-            arrangedSubviews: [thumbnailImageView, ratingView, titleLabel]
-        )
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 8.0
-
-        [stackView, heartButton].forEach {
+        [thumbnailImageView, ratingView, titleLabel, heartButton].forEach {
             addSubview($0)
         }
 
-        stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        thumbnailImageView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(snp.width).multipliedBy(1.3)
         }
 
         heartButton.snp.makeConstraints {
@@ -128,12 +121,15 @@ private extension HomeCollectionViewCell {
             $0.height.equalTo(heartButton.snp.width)
         }
 
-        thumbnailImageView.snp.makeConstraints {
-            $0.height.equalTo(stackView.snp.width).multipliedBy(1.4)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(thumbnailImageView.snp.bottom).offset(8.0)
+            $0.leading.trailing.equalToSuperview()
         }
 
         ratingView.snp.makeConstraints {
-            $0.height.equalTo(stackView.snp.height).multipliedBy(0.05)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8.0)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(snp.width).multipliedBy(0.1)
         }
     }
 }
