@@ -33,22 +33,6 @@ final class SendMailFailAlertViewController: UIViewController {
         return label
     }()
 
-    /// 가로 선 뷰
-    private lazy var horizontalLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray
-
-        return view
-    }()
-
-    /// 세로 선 뷰
-    private lazy var verticalLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray
-
-        return view
-    }()
-
     /// 닫기 버튼
     private lazy var dismissButton: UIButton = {
         let button = UIButton()
@@ -86,18 +70,14 @@ extension SendMailFailAlertViewController: SendMailFailProtocol {
         view.addSubview(alertView)
 
         /// 버튼 가로 스택 뷰
-        let buttonStackView = UIStackView(arrangedSubviews: [dismissButton, verticalLineView, moveButton])
+        let buttonStackView = UIStackView(arrangedSubviews: [dismissButton, moveButton])
         buttonStackView.axis = .horizontal
         buttonStackView.distribution = .fillProportionally
         buttonStackView.alignment = .fill
 
-        /// Alert 배경 세로 스택 뷰
-        let alertStackView = UIStackView(arrangedSubviews: [messageLabel, horizontalLineView, buttonStackView])
-        alertStackView.axis = .vertical
-        alertStackView.distribution = .fill
-        alertStackView.alignment = .fill
-
-        alertView.addSubview(alertStackView)
+        [messageLabel, buttonStackView].forEach {
+            alertView.addSubview($0)
+        }
 
         alertView.snp.makeConstraints {
             $0.width.equalTo(250)
@@ -105,15 +85,16 @@ extension SendMailFailAlertViewController: SendMailFailProtocol {
             $0.centerX.centerY.equalToSuperview()
         }
 
-        alertStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(10.0)
+        messageLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(10.0)
         }
 
-        buttonStackView.snp.makeConstraints { $0.height.equalTo(50) }
+        buttonStackView.snp.makeConstraints {
+            $0.top.equalTo(messageLabel.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(50)
 
-        horizontalLineView.snp.makeConstraints { $0.height.equalTo(0.2) }
-
-        verticalLineView.snp.makeConstraints { $0.width.equalTo(0.2) }
+        }
     }
 
     /// 현재 뷰 닫기

@@ -21,16 +21,6 @@ final class DeleteAlertViewController: UIViewController {
         return view
     }()
 
-    /// Alert 배경 세로 스택 뷰
-    private lazy var alertStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-
-        return stackView
-    }()
-
     /// 메세지 라벨
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
@@ -44,22 +34,6 @@ final class DeleteAlertViewController: UIViewController {
         label.numberOfLines = 0
 
         return label
-    }()
-
-    /// 가로 선 뷰
-    private lazy var horizontalLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray
-
-        return view
-    }()
-
-    /// 세로 선 뷰
-    private lazy var verticalLineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray
-
-        return view
     }()
 
     /// 버튼 가로 스택 뷰
@@ -109,13 +83,11 @@ extension DeleteAlertViewController: DeleteAlertProtocol {
 
         view.addSubview(alertView)
 
-        alertView.addSubview(alertStackView)
-
-        [messageLabel, horizontalLineView, buttonStackView].forEach {
-            alertStackView.addArrangedSubview($0)
+        [messageLabel, buttonStackView].forEach {
+            alertView.addSubview($0)
         }
 
-        [cancleButton, verticalLineView, deleteButton].forEach {
+        [cancleButton, deleteButton].forEach {
             buttonStackView.addArrangedSubview($0)
         }
 
@@ -125,20 +97,14 @@ extension DeleteAlertViewController: DeleteAlertProtocol {
             $0.centerX.centerY.equalToSuperview()
         }
 
-        alertStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-
-        horizontalLineView.snp.makeConstraints {
-            $0.height.equalTo(0.2)
+        messageLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(10.0)
         }
 
         buttonStackView.snp.makeConstraints {
+            $0.top.equalTo(messageLabel.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(50)
-        }
-
-        verticalLineView.snp.makeConstraints {
-            $0.width.equalTo(0.2)
         }
     }
 
