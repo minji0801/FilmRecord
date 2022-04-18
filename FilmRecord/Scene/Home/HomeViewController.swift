@@ -7,6 +7,7 @@
 
 import SideMenu
 import SnapKit
+import Toast
 import UIKit
 
 final class HomeViewController: UIViewController {
@@ -141,6 +142,15 @@ extension HomeViewController: HomeProtocol {
     func pushToDetailViewController(review: Review) {
         let detailViewController = DetailViewController(review: review)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+
+    /// Toast 메시지 보여주기
+    func showToast(_ show: Bool) {
+        if show {
+            view.makeToast("좋아하는 영화에 추가했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
+        } else {
+            view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
+        }
     }
 }
 

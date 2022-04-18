@@ -44,6 +44,8 @@
 		A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */; };
 		A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */; };
 		A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */; };
+		A586E3D8280D7541001474BF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A586E3D7280D7541001474BF /* Toast */; };
+		A586E3DB280D7AC2001474BF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DA280D7AC2001474BF /* Toast.swift */; };
 		A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */; };
 		A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */; };
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
@@ -136,6 +138,7 @@
 		A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPresenter.swift; sourceTree = "<group>"; };
 		A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertViewController.swift; sourceTree = "<group>"; };
 		A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertPresenter.swift; sourceTree = "<group>"; };
+		A586E3DA280D7AC2001474BF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingViewController.swift; sourceTree = "<group>"; };
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A586E3D8280D7541001474BF /* Toast in Frameworks */,
 				A594B0F527EF5833001344A2 /* Cosmos in Frameworks */,
 				A579427927EE0DAB000F233A /* Kingfisher in Frameworks */,
 				A579427627EE0D84000F233A /* SnapKit in Frameworks */,
@@ -224,10 +228,11 @@
 			isa = PBXGroup;
 			children = (
 				A5E95185280ADFEA00748DCB /* Alert */,
+				A586E3D9280D7AB1001474BF /* Extension */,
 				A5C6678027F3ED5B0090B617 /* Font */,
 				A5828A6827F5548C00DC89D3 /* PopUp */,
 				A5FACB4327F0381D00DAB3AA /* StackView */,
-				A579427027EE08C8000F233A /* String+.swift */,
+				A586E3DC280D7AC5001474BF /* Toast */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -374,6 +379,22 @@
 			path = DeleteAlert;
 			sourceTree = "<group>";
 		};
+		A586E3D9280D7AB1001474BF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A579427027EE08C8000F233A /* String+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A586E3DC280D7AC5001474BF /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				A586E3DA280D7AC2001474BF /* Toast.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		A594B0EC27EF3829001344A2 /* EnterRating */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +532,7 @@
 				A594B0F427EF5833001344A2 /* Cosmos */,
 				A5C2A87427F697D500225640 /* SideMenu */,
 				A5DA054F27FC179300EB3FF8 /* FSCalendar */,
+				A586E3D7280D7541001474BF /* Toast */,
 			);
 			productName = FilmRecord;
 			productReference = A579422627EDF3CC000F233A /* FilmRecord.app */;
@@ -593,6 +615,7 @@
 				A594B0F327EF5833001344A2 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				A5C2A87327F697D500225640 /* XCRemoteSwiftPackageReference "SideMenu" */,
 				A5DA054E27FC179300EB3FF8 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				A586E3D6280D7540001474BF /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = A579422727EDF3CC000F233A /* Products */;
 			projectDirPath = "";
@@ -774,6 +797,7 @@
 				A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */,
 				A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */,
 				A5AFFB0C27F7E45E00FA078D /* ToWatchTableViewCell.swift in Sources */,
+				A586E3DB280D7AC2001474BF /* Toast.swift in Sources */,
 				A5AFFB0927F7E09200FA078D /* ToWatchPresenter.swift in Sources */,
 				A5AFFB0E27F7E76600FA078D /* Watch.swift in Sources */,
 			);
@@ -1139,6 +1163,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		A586E3D6280D7540001474BF /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		A594B0F327EF5833001344A2 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
@@ -1180,6 +1212,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A579427727EE0DAB000F233A /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		A586E3D7280D7541001474BF /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A586E3D6280D7540001474BF /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		A594B0F427EF5833001344A2 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;

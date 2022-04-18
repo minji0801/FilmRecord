@@ -17,6 +17,7 @@ protocol DetailProtocol: AnyObject {
     func pushToEnterRatingViewController()
     func showDeleteAlert()
     func updateRightBarLikeButton(review: Review)
+    func showToast(_ show: Bool)
 }
 
 final class DetailPresenter: NSObject {
@@ -51,6 +52,7 @@ final class DetailPresenter: NSObject {
         review.favorite = !review.favorite
         userDefaultsManager.editReview(id: review.id, newValue: review)
         viewController?.updateRightBarLikeButton(review: review)
+        viewController?.showToast(review.favorite)
     }
 
     func editNotification() {

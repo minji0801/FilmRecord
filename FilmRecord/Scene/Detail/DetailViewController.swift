@@ -6,6 +6,7 @@
 //  리뷰 상세 화면
 
 import Cosmos
+import Toast
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -299,6 +300,15 @@ extension DetailViewController: DetailProtocol {
                 withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold, scale: .default)
             )
             rightBarLikeButtonItem.tintColor = .label
+        }
+    }
+
+    /// Toast 메시지 보여주기
+    func showToast(_ show: Bool) {
+        if show {
+            view.makeToast("좋아하는 영화에 추가했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
+        } else {
+            view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
         }
     }
 }

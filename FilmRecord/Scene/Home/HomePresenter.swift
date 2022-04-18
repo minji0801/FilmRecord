@@ -6,6 +6,7 @@
 //  홈 Presenter
 
 import Foundation
+import Toast
 import UIKit
 
 protocol HomeProtocol: AnyObject {
@@ -17,6 +18,7 @@ protocol HomeProtocol: AnyObject {
     func pushToSearchMovieViewController()
     func reloadCollectionView()
     func pushToDetailViewController(review: Review)
+    func showToast(_ show: Bool)
 }
 
 final class HomePresenter: NSObject {
@@ -56,8 +58,10 @@ final class HomePresenter: NSObject {
     @objc func didTappedLikeButton(_ sender: UIButton) {
         if reviews[sender.tag].favorite {
             reviews[sender.tag].favorite = false
+            viewController?.showToast(false)
         } else {
             reviews[sender.tag].favorite = true
+            viewController?.showToast(true)
         }
         userDefaultsManager.overwriteReview(reviews)
         viewController?.reloadCollectionView()
