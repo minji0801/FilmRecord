@@ -44,18 +44,18 @@ final class SettingsPresenter: NSObject {
 extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
     /// 섹션 수
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 1
     }
 
     /// 섹션 타이틀
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionHeader = ["디스플레이", "잠금", "지원", "ⓒ Minji Kim"]
+        let sectionHeader = [""]
         return sectionHeader[section]
     }
 
     /// 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numRow = [2, 2, 3, 3]
+        let numRow = [7]
         return numRow[section]
     }
 
@@ -70,6 +70,11 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
+    /// 셀 높이
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+
     /// 셀 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
@@ -77,21 +82,21 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
             viewController?.pushToThemeViewController()
         case [0, 1]:
             print("글꼴 변경")
-        case [1, 0]:
+        case [0, 2]:
             print("암호 잠금")
-        case [1, 1]:
+        case [0, 3]:
             print("터치/페이스 아이디")
-//        case [2, 0]:
+//        case [0, 4]:
 //            print("별점 남기기")
-        case [2, 0]:
+        case [0, 4]:
             viewController?.sendMail()
-        case [2, 1]:
+        case [0, 5]:
             print("이용 방법")
-        case [3, 0]:
+        case [1, 0]:
             viewController?.goToAppStore("Scoit")
-        case [3, 1]:
+        case [1, 1]:
             viewController?.goToAppStore("모닥이")
-        case [3, 2]:
+        case [1, 2]:
             viewController?.goToAppStore("h:ours")
         default:
             break

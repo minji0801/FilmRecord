@@ -58,6 +58,11 @@ extension MenuPresenter: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    /// Cell 높이
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+
     /// Cell 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewController?.dismiss()

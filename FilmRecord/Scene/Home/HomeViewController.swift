@@ -90,6 +90,9 @@ extension HomeViewController: HomeProtocol {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.title = "영화 기록장"
+        navigationController!.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: FontManager().extraLargeFont()
+        ]
 //        navigationController?.navigationBar.prefersLargeTitles = true
 //        navigationItem.largeTitleDisplayMode = .always
     }

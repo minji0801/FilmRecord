@@ -26,7 +26,8 @@ final class SettingsViewController: UIViewController {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
         tableView.dataSource = presenter
         tableView.delegate = presenter
 
