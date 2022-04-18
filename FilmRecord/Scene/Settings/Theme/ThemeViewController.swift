@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ThemeViewcontroller: UIViewController {
+final class ThemeViewController: UIViewController {
     private lazy var presenter = ThemePresenter(viewController: self)
 
     /// Left Bar Button: 뒤로가기 버튼
@@ -31,7 +31,7 @@ final class ThemeViewcontroller: UIViewController {
 }
 
 // MARK: - ThemeProtocol Function
-extension ThemeViewcontroller: ThemeProtocol {
+extension ThemeViewController: ThemeProtocol {
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.title = "테마 변경"
@@ -53,7 +53,7 @@ extension ThemeViewcontroller: ThemeProtocol {
 }
 
 // MARK: - @objc Function
-extension ThemeViewcontroller {
+extension ThemeViewController {
     /// 뒤로 가기 버튼 클릭
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()

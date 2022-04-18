@@ -46,7 +46,7 @@
 		A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */; };
 		A586E3D8280D7541001474BF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A586E3D7280D7541001474BF /* Toast */; };
 		A586E3DB280D7AC2001474BF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DA280D7AC2001474BF /* Toast.swift */; };
-		A586E3DE280D7DA9001474BF /* ThemeViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DD280D7DA9001474BF /* ThemeViewcontroller.swift */; };
+		A586E3DE280D7DA9001474BF /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DD280D7DA9001474BF /* ThemeViewController.swift */; };
 		A586E3E1280D7DE8001474BF /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E0280D7DE8001474BF /* Color+.swift */; };
 		A586E3E3280D7ED7001474BF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E2280D7ED7001474BF /* ThemeManager.swift */; };
 		A586E3E5280D8087001474BF /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E4280D8087001474BF /* ThemePresenter.swift */; };
@@ -143,7 +143,7 @@
 		A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertViewController.swift; sourceTree = "<group>"; };
 		A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertPresenter.swift; sourceTree = "<group>"; };
 		A586E3DA280D7AC2001474BF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		A586E3DD280D7DA9001474BF /* ThemeViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewcontroller.swift; sourceTree = "<group>"; };
+		A586E3DD280D7DA9001474BF /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		A586E3E0280D7DE8001474BF /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		A586E3E2280D7ED7001474BF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		A586E3E4280D8087001474BF /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 		A586E3DF280D7DAF001474BF /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				A586E3DD280D7DA9001474BF /* ThemeViewcontroller.swift */,
+				A586E3DD280D7DA9001474BF /* ThemeViewController.swift */,
 				A586E3E4280D8087001474BF /* ThemePresenter.swift */,
 			);
 			path = Theme;
@@ -772,7 +772,7 @@
 			files = (
 				A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */,
 				A579426A27EE0817000F233A /* SearchMovieRequestModel.swift in Sources */,
-				A586E3DE280D7DA9001474BF /* ThemeViewcontroller.swift in Sources */,
+				A586E3DE280D7DA9001474BF /* ThemeViewController.swift in Sources */,
 				A513E84327F9C9580084BD86 /* FavoritePresenter.swift in Sources */,
 				A5AFFB0727F7E06900FA078D /* ToWatchViewController.swift in Sources */,
 				A50E507F27F2BAA90079AFEB /* DetailViewController.swift in Sources */,
