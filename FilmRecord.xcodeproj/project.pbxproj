@@ -46,6 +46,10 @@
 		A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */; };
 		A586E3D8280D7541001474BF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A586E3D7280D7541001474BF /* Toast */; };
 		A586E3DB280D7AC2001474BF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DA280D7AC2001474BF /* Toast.swift */; };
+		A586E3DE280D7DA9001474BF /* ThemeViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DD280D7DA9001474BF /* ThemeViewcontroller.swift */; };
+		A586E3E1280D7DE8001474BF /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E0280D7DE8001474BF /* Color+.swift */; };
+		A586E3E3280D7ED7001474BF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E2280D7ED7001474BF /* ThemeManager.swift */; };
+		A586E3E5280D8087001474BF /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E4280D8087001474BF /* ThemePresenter.swift */; };
 		A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */; };
 		A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */; };
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
@@ -139,6 +143,10 @@
 		A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertViewController.swift; sourceTree = "<group>"; };
 		A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertPresenter.swift; sourceTree = "<group>"; };
 		A586E3DA280D7AC2001474BF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		A586E3DD280D7DA9001474BF /* ThemeViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewcontroller.swift; sourceTree = "<group>"; };
+		A586E3E0280D7DE8001474BF /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		A586E3E2280D7ED7001474BF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		A586E3E4280D8087001474BF /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
 		A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingViewController.swift; sourceTree = "<group>"; };
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 				A51575352807EF3400D94EE4 /* SettingsViewController.swift */,
 				A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */,
 				A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */,
+				A586E3DF280D7DAF001474BF /* Theme */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -342,9 +351,10 @@
 		A579426527EE07AC000F233A /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				A579426327EE07A7000F233A /* MovieSearchManager.swift */,
-				A511197A27F1601C0061BBAD /* UserDefaultsManager.swift */,
 				A5C6678927F3EE290090B617 /* FontManager.swift */,
+				A579426327EE07A7000F233A /* MovieSearchManager.swift */,
+				A586E3E2280D7ED7001474BF /* ThemeManager.swift */,
+				A511197A27F1601C0061BBAD /* UserDefaultsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -383,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				A579427027EE08C8000F233A /* String+.swift */,
+				A586E3E0280D7DE8001474BF /* Color+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -393,6 +404,15 @@
 				A586E3DA280D7AC2001474BF /* Toast.swift */,
 			);
 			path = Toast;
+			sourceTree = "<group>";
+		};
+		A586E3DF280D7DAF001474BF /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A586E3DD280D7DA9001474BF /* ThemeViewcontroller.swift */,
+				A586E3E4280D8087001474BF /* ThemePresenter.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		A594B0EC27EF3829001344A2 /* EnterRating */ = {
@@ -752,6 +772,7 @@
 			files = (
 				A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */,
 				A579426A27EE0817000F233A /* SearchMovieRequestModel.swift in Sources */,
+				A586E3DE280D7DA9001474BF /* ThemeViewcontroller.swift in Sources */,
 				A513E84327F9C9580084BD86 /* FavoritePresenter.swift in Sources */,
 				A5AFFB0727F7E06900FA078D /* ToWatchViewController.swift in Sources */,
 				A50E507F27F2BAA90079AFEB /* DetailViewController.swift in Sources */,
@@ -773,7 +794,9 @@
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
 				A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
+				A586E3E5280D8087001474BF /* ThemePresenter.swift in Sources */,
 				A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */,
+				A586E3E3280D7ED7001474BF /* ThemeManager.swift in Sources */,
 				A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */,
 				A579426F27EE0884000F233A /* Movie.swift in Sources */,
 				A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */,
@@ -798,6 +821,7 @@
 				A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */,
 				A5AFFB0C27F7E45E00FA078D /* ToWatchTableViewCell.swift in Sources */,
 				A586E3DB280D7AC2001474BF /* Toast.swift in Sources */,
+				A586E3E1280D7DE8001474BF /* Color+.swift in Sources */,
 				A5AFFB0927F7E09200FA078D /* ToWatchPresenter.swift in Sources */,
 				A5AFFB0E27F7E76600FA078D /* Watch.swift in Sources */,
 			);

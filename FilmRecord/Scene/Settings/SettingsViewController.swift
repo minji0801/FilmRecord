@@ -96,6 +96,15 @@ extension SettingsViewController: SettingsProtocol {
         present(menuNavigationController, animated: true)
     }
 
+    // MARK: - 디스플레이 (테마, 글꼴)
+
+    /// 테마 변경 화면 push
+    func pushToThemeViewController() {
+        let themeViewController = ThemeViewcontroller()
+        navigationController?.pushViewController(themeViewController, animated: true)
+    }
+
+
     // MARK: - 지원 (별점 남기기, 의견 보내기, 이용 방법, 버전 정보)
 
     /// 별점 남기기: 앱스토어 리뷰 화면으로 이동

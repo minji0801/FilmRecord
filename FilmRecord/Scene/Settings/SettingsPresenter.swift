@@ -15,6 +15,8 @@ protocol SettingsProtocol: AnyObject {
 
     func pushToMenuViewController()
 
+    func pushToThemeViewController()
+
     func goToAppRating()
     func sendMail()
     func goToAppStore(_ appName: String)
@@ -72,7 +74,7 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
         case [0, 0]:
-            print("테마 변경")
+            viewController?.pushToThemeViewController()
         case [0, 1]:
             print("글꼴 변경")
         case [1, 0]:
