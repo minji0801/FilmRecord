@@ -49,7 +49,8 @@
 		A586E3DE280D7DA9001474BF /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DD280D7DA9001474BF /* ThemeViewController.swift */; };
 		A586E3E1280D7DE8001474BF /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E0280D7DE8001474BF /* Color+.swift */; };
 		A586E3E3280D7ED7001474BF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E2280D7ED7001474BF /* ThemeManager.swift */; };
-		A586E3E5280D8087001474BF /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E4280D8087001474BF /* ThemePresenter.swift */; };
+		A586E3E7280D87F7001474BF /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E6280D87F7001474BF /* ThemePresenter.swift */; };
+		A586E3E9280D886C001474BF /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3E8280D886C001474BF /* ThemeTableViewCell.swift */; };
 		A594B0E927EF374D001344A2 /* EnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */; };
 		A594B0EB27EF3825001344A2 /* EnterRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */; };
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
@@ -146,7 +147,8 @@
 		A586E3DD280D7DA9001474BF /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		A586E3E0280D7DE8001474BF /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		A586E3E2280D7ED7001474BF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
-		A586E3E4280D8087001474BF /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
+		A586E3E6280D87F7001474BF /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
+		A586E3E8280D886C001474BF /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		A594B0E827EF374D001344A2 /* EnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingViewController.swift; sourceTree = "<group>"; };
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -410,7 +412,8 @@
 			isa = PBXGroup;
 			children = (
 				A586E3DD280D7DA9001474BF /* ThemeViewController.swift */,
-				A586E3E4280D8087001474BF /* ThemePresenter.swift */,
+				A586E3E6280D87F7001474BF /* ThemePresenter.swift */,
+				A586E3E8280D886C001474BF /* ThemeTableViewCell.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -794,7 +797,7 @@
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
 				A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
-				A586E3E5280D8087001474BF /* ThemePresenter.swift in Sources */,
+				A586E3E7280D87F7001474BF /* ThemePresenter.swift in Sources */,
 				A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */,
 				A586E3E3280D7ED7001474BF /* ThemeManager.swift in Sources */,
 				A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */,
@@ -813,6 +816,7 @@
 				A5C2A88027F6D25800225640 /* MenuPresenter.swift in Sources */,
 				A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */,
 				A511197D27F1658D0061BBAD /* HomeCollectionViewCell.swift in Sources */,
+				A586E3E9280D886C001474BF /* ThemeTableViewCell.swift in Sources */,
 				A511197B27F1601C0061BBAD /* UserDefaultsManager.swift in Sources */,
 				A5C2A87E27F6C10C00225640 /* AppsTableViewCell.swift in Sources */,
 				A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */,

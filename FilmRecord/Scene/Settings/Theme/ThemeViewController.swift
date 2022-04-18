@@ -6,6 +6,7 @@
 //  테마 변경 화면
 
 import Foundation
+import SnapKit
 import UIKit
 
 final class ThemeViewController: UIViewController {
@@ -23,6 +24,21 @@ final class ThemeViewController: UIViewController {
         return leftBarButtonItem
     }()
 
+    /// 테이블 뷰
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.dataSource = presenter
+        tableView.delegate = presenter
+
+        tableView.register(
+            ThemeTableViewCell.self,
+            forCellReuseIdentifier: ThemeTableViewCell.identifier
+        )
+
+        return tableView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +50,7 @@ final class ThemeViewController: UIViewController {
 extension ThemeViewController: ThemeProtocol {
     /// 네비게이션 바 구성
     func setupNavigationBar() {
-        navigationItem.title = "테마 변경"
+        navigationItem.title = "다크 모드"
         navigationItem.leftBarButtonItem = leftBarButtonItem
     }
 
@@ -44,6 +60,12 @@ extension ThemeViewController: ThemeProtocol {
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
+
+        view.addSubview(tableView)
+
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     /// 현재 뷰 pop

@@ -9,7 +9,8 @@ import UIKit
 
 enum Theme: Int {
 
-    case white, black, rolling, lemon, undergrowth, lily, bubbly, meeting
+    case white, black
+//    , rolling, lemon, undergrowth, lily, bubbly, meeting
 
     /// 배경 색상
     var backgroundColor: UIColor {
@@ -18,18 +19,18 @@ enum Theme: Int {
             return UIColor().colorFromHexString("FFFFFF")
         case .black:
             return UIColor().colorFromHexString("000000")
-        case .rolling:
-            return UIColor().colorFromHexString("F4BBB8")
-        case .lemon:
-            return UIColor().colorFromHexString("F8D473")
-        case .undergrowth:
-            return UIColor().colorFromHexString("8FB789")
-        case .lily:
-            return UIColor().colorFromHexString("96D9E6")
-        case .bubbly:
-            return UIColor().colorFromHexString("9DABEC")
-        case .meeting:
-            return UIColor().colorFromHexString("D6CBF6")
+//        case .rolling:
+//            return UIColor().colorFromHexString("F4BBB8")
+//        case .lemon:
+//            return UIColor().colorFromHexString("F8D473")
+//        case .undergrowth:
+//            return UIColor().colorFromHexString("8FB789")
+//        case .lily:
+//            return UIColor().colorFromHexString("96D9E6")
+//        case .bubbly:
+//            return UIColor().colorFromHexString("9DABEC")
+//        case .meeting:
+//            return UIColor().colorFromHexString("D6CBF6")
         }
     }
 
@@ -40,18 +41,18 @@ enum Theme: Int {
             return UIColor().colorFromHexString("F2F2F7")
         case .black:
             return UIColor().colorFromHexString("1C1C1E")
-        case .rolling:
-            return UIColor().colorFromHexString("FAE8E7")
-        case .lemon:
-            return UIColor().colorFromHexString("FEF6E2")
-        case .undergrowth:
-            return UIColor().colorFromHexString("D6F5D9")
-        case .lily:
-            return UIColor().colorFromHexString("D7F1F8")
-        case .bubbly:
-            return UIColor().colorFromHexString("DBE1F7")
-        case .meeting:
-            return UIColor().colorFromHexString("F4F2FD")
+//        case .rolling:
+//            return UIColor().colorFromHexString("FAE8E7")
+//        case .lemon:
+//            return UIColor().colorFromHexString("FEF6E2")
+//        case .undergrowth:
+//            return UIColor().colorFromHexString("D6F5D9")
+//        case .lily:
+//            return UIColor().colorFromHexString("D7F1F8")
+//        case .bubbly:
+//            return UIColor().colorFromHexString("DBE1F7")
+//        case .meeting:
+//            return UIColor().colorFromHexString("F4F2FD")
         }
     }
 }
