@@ -8,6 +8,7 @@
 import UIKit
 
 protocol ToWatchProtocol: AnyObject {
+    func setupAppearance()
     func setupNavigationBar()
     func setupNoti()
     func setupView()
@@ -33,6 +34,7 @@ final class ToWatchPresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupNoti()
         viewController?.setupView()

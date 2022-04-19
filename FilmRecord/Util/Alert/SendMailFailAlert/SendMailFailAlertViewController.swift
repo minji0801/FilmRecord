@@ -64,6 +64,11 @@ final class SendMailFailAlertViewController: UIViewController {
 
 // MARK: - SendMailFailProtocol Function
 extension SendMailFailAlertViewController: SendMailFailProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
     /// 뷰 구성
     func setupView() {
         view.backgroundColor = .black.withAlphaComponent(0.5)

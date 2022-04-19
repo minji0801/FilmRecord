@@ -8,7 +8,9 @@
 import Foundation
 
 protocol DeleteAlertProtocol: AnyObject {
+    func setupAppearance()
     func setupView()
+
     func dismiss()
     func postDeleteNotification()
 }
@@ -21,6 +23,7 @@ final class DeleteAlertPresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupView()
     }
 

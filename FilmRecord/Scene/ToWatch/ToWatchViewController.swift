@@ -74,6 +74,11 @@ final class ToWatchViewController: UIViewController {
 
 // MARK: - ToWatchProtocol Function
 extension ToWatchViewController: ToWatchProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem

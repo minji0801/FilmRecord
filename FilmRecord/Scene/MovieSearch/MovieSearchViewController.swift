@@ -88,12 +88,19 @@ final class MovieSearchViewController: UIViewController {
 
 // MARK: - SearchMovieProtocol Function
 extension MovieSearchViewController: MovieSearchProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
+    /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.title = "영화 검색"
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.searchController = searchController
     }
 
+    /// 뷰 구성
     func setupView() {
         definesPresentationContext = true   // 다른 VC을 push해도 최상단에 UISearchController가 있지 않도록!
 
@@ -107,26 +114,32 @@ extension MovieSearchViewController: MovieSearchProtocol {
         }
     }
 
+    /// 콜렉션 뷰 다시 로드
     func reloadCollectionView() {
         collectionView.reloadData()
     }
 
+    /// 검색창 활성화
     func activeSearchController() {
         searchController.isActive = true
     }
 
+    /// 키보드 내리기
     func keyboardDown() {
         searchController.searchBar.endEditing(true)
     }
 
+    /// 새로고침 종료
     func endRefreshing() {
         refreshControl.endRefreshing()
     }
 
+    /// 현재 뷰 pop
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
 
+    /// 평점 입력 화면 push
     func pushToEnterRatingViewController(movie: Movie) {
         let enterRagingViewController = EnterRatingViewController(
             movie: movie,

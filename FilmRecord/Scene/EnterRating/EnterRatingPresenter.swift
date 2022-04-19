@@ -8,8 +8,10 @@
 import Foundation
 
 protocol EnterRatingProtocol: AnyObject {
+    func setupAppearance()
     func setupNavigationBar()
     func setupView(movie: Movie, review: Review, isEditing: Bool)
+
     func popViewController()
     func pushToReviewWriteViewController(movie: Movie, rating: Double, review: Review, isEditing: Bool)
 }
@@ -34,9 +36,9 @@ final class EnterRatingPresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupView(movie: movie, review: review, isEditing: isEditing)
-        print(review, isEditing)
     }
 
     func didTappedLeftBarButton() {

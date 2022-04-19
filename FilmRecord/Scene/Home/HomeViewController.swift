@@ -85,16 +85,16 @@ final class HomeViewController: UIViewController {
 
 // MARK: - HomeProtocol Function
 extension HomeViewController: HomeProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.title = "영화 기록장"
-        navigationController!.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: FontManager().extraLargeFont()
-        ]
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationItem.largeTitleDisplayMode = .always
     }
 
     /// 노티피케이션 구성

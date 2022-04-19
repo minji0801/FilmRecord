@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 
 protocol FavoriteProtocol: AnyObject {
+    func setupAppearance()
     func setupNavigationBar()
     func setupNoti()
     func setupView()
+
     func pushToMenuViewController()
     func reloadCollectionView()
     func pushToDetailViewController(review: Review)
@@ -32,6 +34,7 @@ final class FavoritePresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupNoti()
         viewController?.setupView()

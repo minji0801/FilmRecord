@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol MovieSearchProtocol: AnyObject {
+    func setupAppearance()
     func setupNavigationBar()
     func setupView()
 
@@ -45,6 +46,7 @@ final class MovieSearchPresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupView()
     }

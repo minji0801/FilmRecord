@@ -8,7 +8,9 @@
 import Foundation
 
 protocol SendMailFailProtocol: AnyObject {
+    func setupAppearance()
     func setupView()
+
     func dismiss()
     func goToAppStore()
 }
@@ -21,6 +23,7 @@ final class SendMailFailPresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupView()
     }
 

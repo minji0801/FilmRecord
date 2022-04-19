@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 protocol ReviewWriteProtocol: AnyObject {
+    func setupAppearance()
     func setupNavigationBar()
     func setupView(review: Review, isEditing: Bool)
+
     func showDatePicker()
     func keyboardDown()
     func popViewController()
@@ -44,6 +46,7 @@ final class ReviewWritePresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupView(review: review, isEditing: isEditing)
     }

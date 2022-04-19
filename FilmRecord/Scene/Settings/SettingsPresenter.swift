@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol SettingsProtocol: AnyObject {
+    func setupAppearance()
     func setupNavigationBar()
     func setupNoti()
     func setupView()
@@ -33,6 +34,10 @@ final class SettingsPresenter: NSObject {
         viewController?.setupNavigationBar()
         viewController?.setupNoti()
         viewController?.setupView()
+    }
+
+    func viewWillAppear() {
+        viewController?.setupAppearance()
     }
 
     func didTappedLeftBarButton() {

@@ -9,6 +9,7 @@ import FSCalendar
 import Foundation
 
 protocol CalendarProtocol: AnyObject {
+    func setupAppearance()
     func setupNavigationBar()
     func setupNoti()
     func setupView()
@@ -43,6 +44,7 @@ final class CalendarPresenter: NSObject {
     }
 
     func viewDidLoad() {
+        viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupNoti()
         viewController?.setupView()

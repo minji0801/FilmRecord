@@ -1,16 +1,16 @@
 //
-//  ThemeViewcontroller.swift
+//  DarkModeViewController.swift
 //  FilmRecord
 //
 //  Created by 김민지 on 2022/04/18.
-//  테마 변경 화면
+//  Appearance 변경 화면
 
 import Foundation
 import SnapKit
 import UIKit
 
-final class ThemeViewController: UIViewController {
-    private lazy var presenter = ThemePresenter(viewController: self)
+final class DarkModeViewController: UIViewController {
+    private lazy var presenter = DarkModePresenter(viewController: self)
 
     /// Left Bar Button: 뒤로가기 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
@@ -32,8 +32,8 @@ final class ThemeViewController: UIViewController {
         tableView.delegate = presenter
 
         tableView.register(
-            ThemeTableViewCell.self,
-            forCellReuseIdentifier: ThemeTableViewCell.identifier
+            DarkModeTableViewCell.self,
+            forCellReuseIdentifier: DarkModeTableViewCell.identifier
         )
 
         return tableView
@@ -47,7 +47,12 @@ final class ThemeViewController: UIViewController {
 }
 
 // MARK: - ThemeProtocol Function
-extension ThemeViewController: ThemeProtocol {
+extension DarkModeViewController: DarkModeProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.title = "다크 모드"
@@ -72,10 +77,15 @@ extension ThemeViewController: ThemeProtocol {
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
+
+    /// 테이블 뷰 다시 로드하기
+    func tableViewReload() {
+        tableView.reloadData()
+    }
 }
 
 // MARK: - @objc Function
-extension ThemeViewController {
+extension DarkModeViewController {
     /// 뒤로 가기 버튼 클릭
     @objc func didTappedLeftBarButton() {
         presenter.didTappedLeftBarButton()

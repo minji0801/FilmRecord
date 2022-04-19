@@ -84,6 +84,10 @@ final class MenuViewController: UIViewController {
 
 // MARK: - MenuProtocol Function
 extension MenuViewController: MenuProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
 
     /// 뷰 구성
     func setupView() {

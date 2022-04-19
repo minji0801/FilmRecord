@@ -61,6 +61,11 @@ final class PopUpViewController: UIViewController {
 
 // MARK: - PopUpProtocol Function
 extension PopUpViewController: PopUpProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
     /// 뷰 구성
     func setupView() {
         view.backgroundColor = .secondarySystemBackground

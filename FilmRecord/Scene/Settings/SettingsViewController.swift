@@ -53,10 +53,21 @@ final class SettingsViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.viewWillAppear()
+    }
 }
 
 // MARK: - SettingProtocol Function
 extension SettingsViewController: SettingsProtocol {
+    /// 화면 Appearance 설정
+    func setupAppearance() {
+        DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
     /// 네비게이션 바 구성
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
@@ -101,7 +112,7 @@ extension SettingsViewController: SettingsProtocol {
 
     /// 테마 변경 화면 push
     func pushToThemeViewController() {
-        let themeViewController = ThemeViewController()
+        let themeViewController = DarkModeViewController()
         navigationController?.pushViewController(themeViewController, animated: true)
     }
 
