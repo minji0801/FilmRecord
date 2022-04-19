@@ -19,7 +19,7 @@ class DarkModeManager {
     static func getAppearance() -> Mode {
         guard let appearance = (
             UserDefaults.standard.value(forKey: key) as AnyObject
-        ).integerValue else { return Mode(rawValue: 1)! }
+        ).integerValue else { return Mode(rawValue: 0)! }
 
         return Mode(rawValue: appearance)!
     }
