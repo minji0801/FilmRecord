@@ -11,9 +11,10 @@ import UIKit
 protocol ReviewWriteProtocol: AnyObject {
     func setupAppearance()
     func setupNavigationBar()
+    func setupNoti()
     func setupView(review: Review, isEditing: Bool)
 
-    func showDatePicker()
+    func showDatePickerAlertViewController()
     func keyboardDown()
     func popViewController()
     func popToRootViewController()
@@ -48,6 +49,7 @@ final class ReviewWritePresenter: NSObject {
     func viewDidLoad() {
         viewController?.setupAppearance()
         viewController?.setupNavigationBar()
+        viewController?.setupNoti()
         viewController?.setupView(review: review, isEditing: isEditing)
     }
 
@@ -100,7 +102,7 @@ final class ReviewWritePresenter: NSObject {
     }
 
     func didTappedDateLabel() {
-        viewController?.showDatePicker()
+        viewController?.showDatePickerAlertViewController()
     }
 }
 

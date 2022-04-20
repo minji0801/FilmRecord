@@ -77,6 +77,8 @@
 		A5DA055027FC179300EB3FF8 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = A5DA054F27FC179300EB3FF8 /* FSCalendar */; };
 		A5E95188280AE02600748DCB /* SendMailFailAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E95187280AE02600748DCB /* SendMailFailAlertViewController.swift */; };
 		A5E9518A280AE92000748DCB /* SendMailFailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */; };
+		A5EBAA2D28104BBE00428454 /* DatePickerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBAA2C28104BBE00428454 /* DatePickerAlertViewController.swift */; };
+		A5EBAA2F28104BE600428454 /* DatePickerAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBAA2E28104BE600428454 /* DatePickerAlertPresenter.swift */; };
 		A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */; };
 		A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */; };
 		A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */; };
@@ -172,6 +174,8 @@
 		A5DA054527FC100500EB3FF8 /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
 		A5E95187280AE02600748DCB /* SendMailFailAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailFailAlertViewController.swift; sourceTree = "<group>"; };
 		A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailFailPresenter.swift; sourceTree = "<group>"; };
+		A5EBAA2C28104BBE00428454 /* DatePickerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertViewController.swift; sourceTree = "<group>"; };
+		A5EBAA2E28104BE600428454 /* DatePickerAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertPresenter.swift; sourceTree = "<group>"; };
 		A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenter.swift; sourceTree = "<group>"; };
 		A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E95185280ADFEA00748DCB /* Alert */,
+				A5E95186280ADFFE00748DCB /* SendMailFailAlert */,
 				A586E3D9280D7AB1001474BF /* Extension */,
 				A5C6678027F3ED5B0090B617 /* Font */,
 				A5828A6827F5548C00DC89D3 /* PopUp */,
@@ -473,7 +478,7 @@
 		A5E95185280ADFEA00748DCB /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				A5E95186280ADFFE00748DCB /* SendMailFailAlert */,
+				A5EBAA3028104BEA00428454 /* DatePickerAlert */,
 				A5828A6D27F58C6B00DC89D3 /* DeleteAlert */,
 			);
 			path = Alert;
@@ -486,6 +491,15 @@
 				A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */,
 			);
 			path = SendMailFailAlert;
+			sourceTree = "<group>";
+		};
+		A5EBAA3028104BEA00428454 /* DatePickerAlert */ = {
+			isa = PBXGroup;
+			children = (
+				A5EBAA2C28104BBE00428454 /* DatePickerAlertViewController.swift */,
+				A5EBAA2E28104BE600428454 /* DatePickerAlertPresenter.swift */,
+			);
+			path = DatePickerAlert;
 			sourceTree = "<group>";
 		};
 		A5FACB4327F0381D00DAB3AA /* StackView */ = {
@@ -785,6 +799,7 @@
 				A515753B2807F26D00D94EE4 /* SettingsTableViewCell.swift in Sources */,
 				A51575362807EF3400D94EE4 /* SettingsViewController.swift in Sources */,
 				A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */,
+				A5EBAA2D28104BBE00428454 /* DatePickerAlertViewController.swift in Sources */,
 				A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */,
 				A5DA054627FC100500EB3FF8 /* CalendarPresenter.swift in Sources */,
 				A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */,
@@ -811,6 +826,7 @@
 				A579427127EE08C8000F233A /* String+.swift in Sources */,
 				A579425B27EDF6FB000F233A /* HomePresenter.swift in Sources */,
 				A579426C27EE0822000F233A /* SearchMovieResponseModel.swift in Sources */,
+				A5EBAA2F28104BE600428454 /* DatePickerAlertPresenter.swift in Sources */,
 				A579425E27EDFB27000F233A /* MovieSearchViewController.swift in Sources */,
 				A5E9518A280AE92000748DCB /* SendMailFailPresenter.swift in Sources */,
 				A5C2A88027F6D25800225640 /* MenuPresenter.swift in Sources */,

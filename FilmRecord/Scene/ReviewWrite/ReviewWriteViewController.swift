@@ -127,37 +127,6 @@ final class ReviewWriteViewController: UIViewController {
         return textView
     }()
 
-    /// 날짜 선택 뷰
-    private lazy var datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        datePicker.locale = Locale(identifier: "ko-KR")
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.date = formatter.date(from: dateLabel.text!)!
-
-        return datePicker
-    }()
-
-    /// 날짜 선택 Alert
-    private lazy var datePickerAlert: UIAlertController = {
-        let dateChooserAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-
-        dateChooserAlert.view.addSubview(datePicker)
-
-        datePicker.snp.makeConstraints {
-            $0.leading.trailing.top.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-20)
-        }
-
-        dateChooserAlert.addAction(UIAlertAction(title: "선택", style: .default, handler: { [weak self] _ in
-            guard let self = self else { return }
-            let date = self.formatter.string(from: self.datePicker.date)
-            self.dateLabel.text = date
-        }))
-
-        return dateChooserAlert
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -179,6 +148,16 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+
+    /// 노티피케이션 구성
+    func setupNoti() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didDismissDatePickerAlert(_:)),
+            name: NSNotification.Name("DismissDatePicker"),
+            object: nil
+        )
     }
 
     /// 뷰 구성
@@ -220,8 +199,10 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
     }
 
     /// 날짜 선택 창 보여주기
-    func showDatePicker() {
-        present(datePickerAlert, animated: true, completion: nil)
+    func showDatePickerAlertViewController() {
+        let datePickerAlertViewController = DatePickerAlertViewController(date: formatter.date(from: dateLabel.text!)!)
+        datePickerAlertViewController.modalPresentationStyle = .overCurrentContext
+        present(datePickerAlertViewController, animated: false)
     }
 
     /// 키보드 내리기
@@ -261,5 +242,13 @@ extension ReviewWriteViewController {
     /// 날짜 라벨 클릭 -> DatePickerAlert 띄우기
     @objc func didTappedDateLabel() {
         presenter.didTappedDateLabel()
+    }
+
+    /// 데이트피커 사라지고 받는 노티
+    @objc func didDismissDatePickerAlert(_ notification: Notification) {
+        guard let object: Date = notification.object as? Date else { return }
+
+        let date = formatter.string(from: object)
+        dateLabel.text = date
     }
 }
