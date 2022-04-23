@@ -23,6 +23,9 @@
 		A519F8F828141CD400D73BE4 /* NaverAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */; };
 		A519F8FD28142EBE00D73BE4 /* MockHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F8FC28142EBE00D73BE4 /* MockHomeViewController.swift */; };
 		A519F8FF28142EF100D73BE4 /* MockUserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */; };
+		A519F9022814312500D73BE4 /* FontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F9012814312500D73BE4 /* FontViewController.swift */; };
+		A519F9042814314100D73BE4 /* FontPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F9032814314100D73BE4 /* FontPresenter.swift */; };
+		A519F9062814314A00D73BE4 /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F9052814314A00D73BE4 /* FontTableViewCell.swift */; };
 		A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */; };
 		A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422927EDF3CC000F233A /* AppDelegate.swift */; };
 		A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422B27EDF3CC000F233A /* SceneDelegate.swift */; };
@@ -126,6 +129,9 @@
 		A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPIKey.swift; sourceTree = "<group>"; };
 		A519F8FC28142EBE00D73BE4 /* MockHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewController.swift; sourceTree = "<group>"; };
 		A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsManager.swift; sourceTree = "<group>"; };
+		A519F9012814312500D73BE4 /* FontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewController.swift; sourceTree = "<group>"; };
+		A519F9032814314100D73BE4 /* FontPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPresenter.swift; sourceTree = "<group>"; };
+		A519F9052814314A00D73BE4 /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		A579422627EDF3CC000F233A /* FilmRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579422927EDF3CC000F233A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +270,7 @@
 				A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */,
 				A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */,
 				A586E3DF280D7DAF001474BF /* DarkMode */,
+				A519F900281430E300D73BE4 /* Font */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -271,18 +278,18 @@
 		A519F8F628141CA700D73BE4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A5C6678027F3ED5B0090B617 /* Font */,
-				A519F8F928141CF000D73BE4 /* Key */,
+				A5C6678027F3ED5B0090B617 /* Fonts */,
+				A519F8F928141CF000D73BE4 /* Keys */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		A519F8F928141CF000D73BE4 /* Key */ = {
+		A519F8F928141CF000D73BE4 /* Keys */ = {
 			isa = PBXGroup;
 			children = (
 				A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */,
 			);
-			path = Key;
+			path = Keys;
 			sourceTree = "<group>";
 		};
 		A519F8FA28142E9C00D73BE4 /* Tests */ = {
@@ -300,6 +307,16 @@
 				A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A519F900281430E300D73BE4 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A519F9012814312500D73BE4 /* FontViewController.swift */,
+				A519F9032814314100D73BE4 /* FontPresenter.swift */,
+				A519F9052814314A00D73BE4 /* FontTableViewCell.swift */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		A579421D27EDF3CC000F233A = {
@@ -495,7 +512,7 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		A5C6678027F3ED5B0090B617 /* Font */ = {
+		A5C6678027F3ED5B0090B617 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				A5C6678127F3EDA60090B617 /* 강원교육새음.otf */,
@@ -503,7 +520,7 @@
 				A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */,
 				A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */,
 			);
-			path = Font;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A5DA054727FC100900EB3FF8 /* Calendar */ = {
@@ -845,6 +862,7 @@
 				A5DA054627FC100500EB3FF8 /* CalendarPresenter.swift in Sources */,
 				A5C6678C27F413480090B617 /* PopUpViewController.swift in Sources */,
 				A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */,
+				A519F9062814314A00D73BE4 /* FontTableViewCell.swift in Sources */,
 				A5DA054427FC0FFA00EB3FF8 /* CalendarViewController.swift in Sources */,
 				A5C2A87C27F6BE8300225640 /* MenuTableViewCell.swift in Sources */,
 				A513E84627F9CC870084BD86 /* FavoriteCollectionViewCell.swift in Sources */,
@@ -873,6 +891,7 @@
 				A5E9518A280AE92000748DCB /* SendMailFailPresenter.swift in Sources */,
 				A5C2A88027F6D25800225640 /* MenuPresenter.swift in Sources */,
 				A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */,
+				A519F9042814314100D73BE4 /* FontPresenter.swift in Sources */,
 				A511197D27F1658D0061BBAD /* HomeCollectionViewCell.swift in Sources */,
 				A586E3E9280D886C001474BF /* DarkModeTableViewCell.swift in Sources */,
 				A511197B27F1601C0061BBAD /* UserDefaultsManager.swift in Sources */,
@@ -886,6 +905,7 @@
 				A586E3E1280D7DE8001474BF /* Color+.swift in Sources */,
 				A5AFFB0927F7E09200FA078D /* ToWatchPresenter.swift in Sources */,
 				A5AFFB0E27F7E76600FA078D /* Watch.swift in Sources */,
+				A519F9022814312500D73BE4 /* FontViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

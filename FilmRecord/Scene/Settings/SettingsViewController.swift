@@ -108,12 +108,17 @@ extension SettingsViewController: SettingsProtocol {
         present(menuNavigationController, animated: true)
     }
 
-    // MARK: - 디스플레이 (테마, 글꼴)
+    // MARK: - 디스플레이 (다크 모드, 글꼴)
+    /// 다크 모드 화면 push
+    func pushToDarkModeViewController() {
+        let darkModeViewController = DarkModeViewController()
+        navigationController?.pushViewController(darkModeViewController, animated: true)
+    }
 
-    /// 테마 변경 화면 push
-    func pushToThemeViewController() {
-        let themeViewController = DarkModeViewController()
-        navigationController?.pushViewController(themeViewController, animated: true)
+    /// 글꼴  화면 push
+    func pushToFontViewController() {
+        let fontViewController = FontViewController()
+        navigationController?.pushViewController(fontViewController, animated: true)
     }
 
     // MARK: - 지원 (별점 남기기, 의견 보내기, 이용 방법, 버전 정보)

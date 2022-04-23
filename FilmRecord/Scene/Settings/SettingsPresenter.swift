@@ -16,7 +16,8 @@ protocol SettingsProtocol: AnyObject {
 
     func pushToMenuViewController()
 
-    func pushToThemeViewController()
+    func pushToDarkModeViewController()
+    func pushToFontViewController()
 
     func goToAppRating()
     func sendMail()
@@ -84,9 +85,9 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
         case [0, 0]:
-            viewController?.pushToThemeViewController()
+            viewController?.pushToDarkModeViewController()
         case [0, 1]:
-            print("글꼴 변경")
+            viewController?.pushToFontViewController()
         case [0, 2]:
             print("암호 잠금")
         case [0, 3]:

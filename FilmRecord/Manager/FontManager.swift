@@ -15,28 +15,31 @@ enum FontSize: CGFloat {
     case extraLarge = 18
 }
 
-enum FamilyName: String {
-    case gangwon = "GangwonEduSaeeum-OTFMedium" // 강원교육새음
-    case ownglyph = "OwnglyphMinhyeChae"        // 온글잎 민혜체
-    case kyobo = "KyoboHandwriting2019"         // 교보손글씨2019
-    case leeseoyun = "LeeSeoyun"                // 이서윤체
+enum Font: Int {
+    case gangwon    // 강원교육새음
+    case kyobo      // 교보손글씨2019
+    case ownglyph   // 온글잎 민혜체
+    case leeseoyun  // 이서윤체
 
-//    var basicFont: UIFont {
-//        switch self {
-//        case .gangwon:
-//            return UIFont(name: self.rawValue, size: FontSize.basic.rawValue)!
-//        case .ownglyph:
-//            return UIFont(name: self.rawValue, size: FontSize.basic.rawValue)!
-//        case .kyobo:
-//            return UIFont(name: self.rawValue, size: FontSize.basic.rawValue)!
-//        case .leeseoyun:
-//            return UIFont(name: self.rawValue, size: FontSize.basic.rawValue)!
-//        }
-//    }
+    static let allValues = [gangwon, kyobo, ownglyph, leeseoyun]
+
+    /// 아이폰 작은 글씨(size: 12)
+    var smallFont: UIFont {
+        switch self {
+        case .gangwon:
+            return UIFont(name: "GangwonEduSaeeum-OTFMedium", size: FontSize.small.rawValue)!
+        case .kyobo:
+            return UIFont(name: "KyoboHandwriting2019", size: FontSize.small.rawValue)!
+        case .ownglyph:
+            return UIFont(name: "OwnglyphMinhyeChae", size: FontSize.small.rawValue)!
+        case .leeseoyun:
+            return UIFont(name: "LeeSeoyun", size: FontSize.small.rawValue)!
+        }
+    }
 }
 
 class FontManager {
-    static let familyName = FamilyName.leeseoyun.rawValue
+    static let familyName = "LeeSeoyun"
 
     /// FontSize: 12
     static func smallFont() -> UIFont {
