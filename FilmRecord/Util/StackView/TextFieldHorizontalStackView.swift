@@ -17,7 +17,7 @@ final class TextFieldHorizontalStackView: UIStackView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
-        label.font = FontManager().mediumFont()
+        label.font = FontManager.mediumFont()
         label.textColor = .systemGray2
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true

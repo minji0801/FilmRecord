@@ -28,10 +28,10 @@ final class AppsTableViewCell: UITableViewCell {
         imageView?.image = UIImage(named: image[row])
 
         textLabel?.text = title[row]
-        textLabel?.font = FontManager().mediumFont()
+        textLabel?.font = FontManager.mediumFont()
         textLabel?.textColor = .label
 
         detailTextLabel?.text = detail[row]
-        detailTextLabel?.font = FontManager().smallFont()
+        detailTextLabel?.font = FontManager.smallFont()
     }
 }

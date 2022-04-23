@@ -26,7 +26,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
     /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager().mediumFont()
+        label.font = FontManager.mediumFont()
         label.numberOfLines = 3
         label.sizeToFit()
 
@@ -36,7 +36,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
     /// 개봉년도
     private lazy var pubDateLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager().smallFont()
+        label.font = FontManager.smallFont()
         label.textAlignment = .left
 
         return label

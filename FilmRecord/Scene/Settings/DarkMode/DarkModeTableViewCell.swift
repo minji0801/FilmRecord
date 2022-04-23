@@ -25,7 +25,7 @@ final class DarkModeTableViewCell: UITableViewCell {
         setupView()
 
         textLabel?.text = title[row]
-        textLabel?.font = FontManager().largeFont()
+        textLabel?.font = FontManager.largeFont()
 
         if (mode == .light && row == 0) || (mode == .dark && row == 1) {
             selectButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)

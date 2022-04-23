@@ -20,6 +20,7 @@
 		A51575362807EF3400D94EE4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51575352807EF3400D94EE4 /* SettingsViewController.swift */; };
 		A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */; };
 		A515753B2807F26D00D94EE4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */; };
+		A519F8F828141CD400D73BE4 /* NaverAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */; };
 		A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */; };
 		A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422927EDF3CC000F233A /* AppDelegate.swift */; };
 		A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422B27EDF3CC000F233A /* SceneDelegate.swift */; };
@@ -120,6 +121,7 @@
 		A51575352807EF3400D94EE4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPIKey.swift; sourceTree = "<group>"; };
 		A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		A579422627EDF3CC000F233A /* FilmRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579422927EDF3CC000F233A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,7 +246,6 @@
 				A5E95185280ADFEA00748DCB /* Alert */,
 				A5E95186280ADFFE00748DCB /* SendMailFailAlert */,
 				A586E3D9280D7AB1001474BF /* Extension */,
-				A5C6678027F3ED5B0090B617 /* Font */,
 				A5828A6827F5548C00DC89D3 /* PopUp */,
 				A5FACB4327F0381D00DAB3AA /* StackView */,
 				A586E3DC280D7AC5001474BF /* Toast */,
@@ -261,6 +262,23 @@
 				A586E3DF280D7DAF001474BF /* DarkMode */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		A519F8F628141CA700D73BE4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A5C6678027F3ED5B0090B617 /* Font */,
+				A519F8F928141CF000D73BE4 /* Key */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A519F8F928141CF000D73BE4 /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */,
+			);
+			path = Key;
 			sourceTree = "<group>";
 		};
 		A579421D27EDF3CC000F233A = {
@@ -293,6 +311,7 @@
 				A579426527EE07AC000F233A /* Manager */,
 				A579426D27EE0827000F233A /* Model */,
 				A579425927EDF6D4000F233A /* Scene */,
+				A519F8F628141CA700D73BE4 /* Source */,
 				A51575342807EDC400D94EE4 /* Util */,
 				A579423227EDF3CC000F233A /* Assets.xcassets */,
 				A579423427EDF3CC000F233A /* LaunchScreen.storyboard */,
@@ -812,6 +831,7 @@
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
 				A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
+				A519F8F828141CD400D73BE4 /* NaverAPIKey.swift in Sources */,
 				A586E3E7280D87F7001474BF /* DarkModePresenter.swift in Sources */,
 				A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */,
 				A586E3E3280D7ED7001474BF /* DarkModeManager.swift in Sources */,

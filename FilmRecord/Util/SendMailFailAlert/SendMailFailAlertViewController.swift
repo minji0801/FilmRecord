@@ -27,7 +27,7 @@ final class SendMailFailAlertViewController: UIViewController {
         label.textColor = .label
         label.text = "App Store에서 'Mail' 앱을 복원하거나 [설정 > Mail > 계정]을 확인하고 다시 시도해주세요."
         label.textAlignment = .center
-        label.font = FontManager().largeFont()
+        label.font = FontManager.largeFont()
         label.numberOfLines = 0
 
         return label
@@ -38,7 +38,7 @@ final class SendMailFailAlertViewController: UIViewController {
         let button = UIButton()
         button.setTitle("닫기", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
-        button.titleLabel?.font = FontManager().largeFont()
+        button.titleLabel?.font = FontManager.largeFont()
         button.addTarget(self, action: #selector(didTappedDismissButton), for: .touchUpInside)
 
         return button
@@ -49,7 +49,7 @@ final class SendMailFailAlertViewController: UIViewController {
         let button = UIButton()
         button.setTitle("이동", for: .normal)
         button.setTitleColor(UIColor.systemRed, for: .normal)
-        button.titleLabel?.font = FontManager().largeFont()
+        button.titleLabel?.font = FontManager.largeFont()
         button.addTarget(self, action: #selector(didTappedMoveButton), for: .touchUpInside)
 
         return button

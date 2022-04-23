@@ -44,9 +44,9 @@ final class CalendarViewController: UIViewController {
         view.locale = Locale(identifier: "ko_KR")
         view.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesUpperCase
 
-        view.appearance.headerTitleFont = FontManager().largeFont()
-        view.appearance.weekdayFont = FontManager().mediumFont()
-        view.appearance.titleFont = FontManager().mediumFont()
+        view.appearance.headerTitleFont = FontManager.largeFont()
+        view.appearance.weekdayFont = FontManager.mediumFont()
+        view.appearance.titleFont = FontManager.mediumFont()
 
         view.appearance.headerDateFormat = "YYYY년 M월"
         view.appearance.headerTitleColor = .label

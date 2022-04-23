@@ -58,12 +58,12 @@ private extension SettingsTableViewCell {
         imageView?.tintColor = .label
 
         textLabel?.text = title[section][row]
-        textLabel?.font = FontManager().largeFont()
+        textLabel?.font = FontManager.largeFont()
 
         detail[0][6] = "v\(getCurrentVersion())"    // 현재 버전 가져오기
 
         detailTextLabel?.text = detail[section][row]
-        detailTextLabel?.font = FontManager().largeFont()
+        detailTextLabel?.font = FontManager.largeFont()
     }
 
     /// 현재 버전 가져오기

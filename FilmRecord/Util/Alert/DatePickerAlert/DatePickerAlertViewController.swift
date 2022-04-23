@@ -54,7 +54,7 @@ final class DatePickerAlertViewController: UIViewController {
         let button = UIButton()
         button.setTitle("선택", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
-        button.titleLabel?.font = FontManager().largeFont()
+        button.titleLabel?.font = FontManager.largeFont()
         button.addTarget(self, action: #selector(didTappedSelectButton), for: .touchUpInside)
 
         return button

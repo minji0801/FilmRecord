@@ -28,8 +28,8 @@ struct MovieSearchManager: MovieSearchManagerProtocol {
 
         let parameters = MovieSearchRequestModel(start: start, display: display, query: keyword)
         let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": "vG95SRrIYs7muxvV4t19",
-            "X-Naver-Client-Secret": "nZkbphXlYx"
+            "X-Naver-Client-Id": NaverAPIKey.id,
+            "X-Naver-Client-Secret": NaverAPIKey.secret
         ]
 
         AF.request(

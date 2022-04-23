@@ -40,7 +40,7 @@ final class FavoriteCollectionViewCell: UICollectionViewCell {
     /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager().mediumFont()
+        label.font = FontManager.mediumFont()
         label.numberOfLines = 3
         label.sizeToFit()
 

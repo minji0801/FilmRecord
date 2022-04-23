@@ -30,7 +30,7 @@ final class DeleteAlertViewController: UIViewController {
                     (삭제 후 내용을 복원할 수 없습니다)
                     """
         label.textAlignment = .center
-        label.font = FontManager().largeFont()
+        label.font = FontManager.largeFont()
         label.numberOfLines = 0
 
         return label
@@ -51,7 +51,7 @@ final class DeleteAlertViewController: UIViewController {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
-        button.titleLabel?.font = FontManager().largeFont()
+        button.titleLabel?.font = FontManager.largeFont()
         button.addTarget(self, action: #selector(didTappedCancleButton), for: .touchUpInside)
 
         return button
@@ -62,7 +62,7 @@ final class DeleteAlertViewController: UIViewController {
         let button = UIButton()
         button.setTitle("삭제", for: .normal)
         button.setTitleColor(UIColor.systemRed, for: .normal)
-        button.titleLabel?.font = FontManager().largeFont()
+        button.titleLabel?.font = FontManager.largeFont()
         button.addTarget(self, action: #selector(didTappedDeleteButton), for: .touchUpInside)
 
         return button

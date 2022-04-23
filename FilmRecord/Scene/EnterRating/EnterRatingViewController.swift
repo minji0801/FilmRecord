@@ -87,7 +87,7 @@ final class EnterRatingViewController: UIViewController {
     /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager().extraLargeFont()
+        label.font = FontManager.extraLargeFont()
         label.textAlignment = .center
         label.numberOfLines = 3
 

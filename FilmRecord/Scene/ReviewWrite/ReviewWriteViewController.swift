@@ -86,7 +86,7 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = formatter.string(from: Date())
-        label.font = FontManager().mediumFont()
+        label.font = FontManager.mediumFont()
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTappedDateLabel)))
         label.isUserInteractionEnabled = true
 
@@ -97,7 +97,7 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var whereTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "어디서"
-        textField.font = FontManager().mediumFont()
+        textField.font = FontManager.mediumFont()
         textField.returnKeyType = .done
         textField.delegate = presenter
 
@@ -108,7 +108,7 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var whoTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "누구랑"
-        textField.font = FontManager().mediumFont()
+        textField.font = FontManager.mediumFont()
         textField.returnKeyType = .done
         textField.delegate = presenter
 
@@ -120,7 +120,7 @@ final class ReviewWriteViewController: UIViewController {
         let textView = UITextView()
         textView.text = "리뷰를 작성해주세요."
         textView.textColor = .systemGray3
-        textView.font = FontManager().mediumFont()
+        textView.font = FontManager.mediumFont()
 
         textView.delegate = presenter
 

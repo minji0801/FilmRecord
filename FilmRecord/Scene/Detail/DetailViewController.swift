@@ -112,7 +112,7 @@ class DetailViewController: UIViewController {
     /// 영화 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager().extraLargeFont()
+        label.font = FontManager.extraLargeFont()
         label.textAlignment = .center
         label.numberOfLines = 3
 
@@ -149,7 +149,7 @@ class DetailViewController: UIViewController {
     private lazy var reviewTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .label
-        textView.font = FontManager().mediumFont()
+        textView.font = FontManager.mediumFont()
         textView.backgroundColor = .clear
         textView.isEditable = false
 

@@ -35,26 +35,26 @@ enum FamilyName: String {
 //    }
 }
 
-struct FontManager {
-    let familyName = FamilyName.leeseoyun.rawValue
+class FontManager {
+    static let familyName = FamilyName.leeseoyun.rawValue
 
     /// FontSize: 12
-    func smallFont() -> UIFont {
+    static func smallFont() -> UIFont {
         return UIFont(name: familyName, size: FontSize.small.rawValue)!
     }
 
     /// FontSize: 14
-    func mediumFont() -> UIFont {
+    static func mediumFont() -> UIFont {
         return UIFont(name: familyName, size: FontSize.medium.rawValue)!
     }
 
     /// FontSize: 16
-    func largeFont() -> UIFont {
+    static func largeFont() -> UIFont {
         return UIFont(name: familyName, size: FontSize.large.rawValue)!
     }
 
     /// FontSize: 18
-    func extraLargeFont() -> UIFont {
+    static func extraLargeFont() -> UIFont {
         return UIFont(name: familyName, size: FontSize.extraLarge.rawValue)!
     }
 }

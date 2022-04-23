@@ -11,7 +11,7 @@ struct Toast {
     func toastStyle() -> ToastStyle {
         var style = ToastStyle()
         style.messageColor = .systemBackground
-        style.messageFont = FontManager().largeFont()
+        style.messageFont = FontManager.largeFont()
         style.backgroundColor = .label
 
         return style

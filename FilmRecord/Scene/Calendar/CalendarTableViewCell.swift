@@ -26,7 +26,7 @@ final class CalendarTableViewCell: UITableViewCell {
     /// 영화 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager().largeFont()
+        label.font = FontManager.largeFont()
         label.numberOfLines = 3
 
         return label
