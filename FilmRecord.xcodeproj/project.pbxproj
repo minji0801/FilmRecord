@@ -21,13 +21,15 @@
 		A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */; };
 		A515753B2807F26D00D94EE4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */; };
 		A519F8F828141CD400D73BE4 /* NaverAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */; };
+		A519F8FD28142EBE00D73BE4 /* MockHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F8FC28142EBE00D73BE4 /* MockHomeViewController.swift */; };
+		A519F8FF28142EF100D73BE4 /* MockUserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */; };
 		A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */; };
 		A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422927EDF3CC000F233A /* AppDelegate.swift */; };
 		A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422B27EDF3CC000F233A /* SceneDelegate.swift */; };
 		A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422D27EDF3CC000F233A /* HomeViewController.swift */; };
 		A579423327EDF3CC000F233A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A579423227EDF3CC000F233A /* Assets.xcassets */; };
 		A579423627EDF3CC000F233A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A579423427EDF3CC000F233A /* LaunchScreen.storyboard */; };
-		A579424127EDF3CC000F233A /* FilmRecordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579424027EDF3CC000F233A /* FilmRecordTests.swift */; };
+		A579424127EDF3CC000F233A /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579424027EDF3CC000F233A /* HomePresenterTests.swift */; };
 		A579424B27EDF3CD000F233A /* FilmRecordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579424A27EDF3CD000F233A /* FilmRecordUITests.swift */; };
 		A579424D27EDF3CD000F233A /* FilmRecordUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579424C27EDF3CD000F233A /* FilmRecordUITestsLaunchTests.swift */; };
 		A579425B27EDF6FB000F233A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579425A27EDF6FB000F233A /* HomePresenter.swift */; };
@@ -122,6 +124,8 @@
 		A51575372807EF3C00D94EE4 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A519F8F728141CD400D73BE4 /* NaverAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPIKey.swift; sourceTree = "<group>"; };
+		A519F8FC28142EBE00D73BE4 /* MockHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewController.swift; sourceTree = "<group>"; };
+		A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsManager.swift; sourceTree = "<group>"; };
 		A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		A579422627EDF3CC000F233A /* FilmRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579422927EDF3CC000F233A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,7 +135,7 @@
 		A579423527EDF3CC000F233A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A579423727EDF3CC000F233A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A579423C27EDF3CC000F233A /* FilmRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A579424027EDF3CC000F233A /* FilmRecordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRecordTests.swift; sourceTree = "<group>"; };
+		A579424027EDF3CC000F233A /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		A579424627EDF3CD000F233A /* FilmRecordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmRecordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579424A27EDF3CD000F233A /* FilmRecordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRecordUITests.swift; sourceTree = "<group>"; };
 		A579424C27EDF3CD000F233A /* FilmRecordUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRecordUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -281,6 +285,23 @@
 			path = Key;
 			sourceTree = "<group>";
 		};
+		A519F8FA28142E9C00D73BE4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A579424027EDF3CC000F233A /* HomePresenterTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A519F8FB28142EA100D73BE4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A519F8FC28142EBE00D73BE4 /* MockHomeViewController.swift */,
+				A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		A579421D27EDF3CC000F233A = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +344,8 @@
 		A579423F27EDF3CC000F233A /* FilmRecordTests */ = {
 			isa = PBXGroup;
 			children = (
-				A579424027EDF3CC000F233A /* FilmRecordTests.swift */,
+				A519F8FB28142EA100D73BE4 /* Mocks */,
+				A519F8FA28142E9C00D73BE4 /* Tests */,
 			);
 			path = FilmRecordTests;
 			sourceTree = "<group>";
@@ -871,7 +893,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A579424127EDF3CC000F233A /* FilmRecordTests.swift in Sources */,
+				A579424127EDF3CC000F233A /* HomePresenterTests.swift in Sources */,
+				A519F8FD28142EBE00D73BE4 /* MockHomeViewController.swift in Sources */,
+				A519F8FF28142EF100D73BE4 /* MockUserDefaultsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
