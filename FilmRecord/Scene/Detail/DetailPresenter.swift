@@ -14,6 +14,7 @@ protocol DetailProtocol: AnyObject {
     func setupGesture()
     func setupView(review: Review)
 
+    func applyFont()
     func popViewController()
     func pushToEnterRatingViewController()
     func showDeleteAlert()
@@ -43,6 +44,8 @@ final class DetailPresenter: NSObject {
         viewController?.setupNoti()
         viewController?.setupGesture()
         viewController?.setupView(review: review)
+
+        viewController?.applyFont()
         viewController?.updateRightBarLikeButton(review: review)
     }
 

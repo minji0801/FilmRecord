@@ -87,7 +87,6 @@ final class EnterRatingViewController: UIViewController {
     /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager.extraLargeFont()
         label.textAlignment = .center
         label.numberOfLines = 3
 
@@ -166,6 +165,13 @@ extension EnterRatingViewController: EnterRatingProtocol {
             $0.width.equalTo(150)
             $0.height.equalTo(thumbnailImageView.snp.width).multipliedBy(1.3)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        titleLabel.font = font.extraLargeFont
     }
 
     /// 현재 뷰 pop

@@ -16,29 +16,70 @@ enum FontSize: CGFloat {
 }
 
 enum Font: Int {
-    case gangwon    // 강원교육새음
     case kyobo      // 교보손글씨2019
-    case ownglyph   // 온글잎 민혜체
     case leeseoyun  // 이서윤체
 
-    static let allValues = [gangwon, kyobo, ownglyph, leeseoyun]
+    static let allValues = [kyobo, leeseoyun]
 
     /// 아이폰 작은 글씨(size: 12)
     var smallFont: UIFont {
         switch self {
-        case .gangwon:
-            return UIFont(name: "GangwonEduSaeeum-OTFMedium", size: FontSize.small.rawValue)!
         case .kyobo:
             return UIFont(name: "KyoboHandwriting2019", size: FontSize.small.rawValue)!
-        case .ownglyph:
-            return UIFont(name: "OwnglyphMinhyeChae", size: FontSize.small.rawValue)!
         case .leeseoyun:
             return UIFont(name: "LeeSeoyun", size: FontSize.small.rawValue)!
         }
     }
+
+    /// 아이폰 중간 글씨(size: 14)
+    var mediumFont: UIFont {
+        switch self {
+        case .kyobo:
+            return UIFont(name: "KyoboHandwriting2019", size: FontSize.medium.rawValue)!
+        case .leeseoyun:
+            return UIFont(name: "LeeSeoyun", size: FontSize.medium.rawValue)!
+        }
+    }
+
+    /// 아이폰 큰 글씨(size: 16)
+    var largeFont: UIFont {
+        switch self {
+        case .kyobo:
+            return UIFont(name: "KyoboHandwriting2019", size: FontSize.large.rawValue)!
+        case .leeseoyun:
+            return UIFont(name: "LeeSeoyun", size: FontSize.large.rawValue)!
+        }
+    }
+
+    /// 아이폰 더 큰 글씨(size: 18)
+    var extraLargeFont: UIFont {
+        switch self {
+        case .kyobo:
+            return UIFont(name: "KyoboHandwriting2019", size: FontSize.extraLarge.rawValue)!
+        case .leeseoyun:
+            return UIFont(name: "LeeSeoyun", size: FontSize.extraLarge.rawValue)!
+        }
+    }
 }
 
+let fontKey = "Font"
+
 class FontManager {
+    /// 저장된 폰트 가져오기
+    static func getFont() -> Font {
+        if let font = (UserDefaults.standard.value(forKey: fontKey) as AnyObject).integerValue {
+            return Font(rawValue: font)!
+        } else {
+            // 저장된 폰트가 없으면 기본 폰트로
+            return .leeseoyun
+        }
+    }
+    /// 폰트 저장하기
+    static func setFont(font: Font) {
+        UserDefaults.standard.setValue(font.rawValue, forKey: fontKey)
+        UserDefaults.standard.synchronize()
+    }
+
     static let familyName = "LeeSeoyun"
 
     /// FontSize: 12

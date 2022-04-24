@@ -119,6 +119,12 @@ final class FontViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.viewWillAppear()
+    }
 }
 
 // MARK: - FontProtocol func
@@ -167,6 +173,19 @@ extension FontViewController: FontProtocol {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(verticalStactView.snp.bottom)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: font.extraLargeFont
+        ]
+        dateLabel.font = font.mediumFont
+        whereTextField.font = font.mediumFont
+        whoTextField.font = font.mediumFont
+        reviewTextView.font = font.mediumFont
     }
 
     /// 현재 뷰 pop

@@ -11,10 +11,10 @@ import UIKit
 final class FontTableViewCell: UITableViewCell {
     static let identifier = "FontTableViewCell"
 
-    let title = ["강원교육새음", "교보손글씨2019", "온글잎 민혜체", "이서윤체"]
+    let title = ["교보손글씨2019", "이서윤체"]
 
     func update(_ row: Int) {
         textLabel?.text = title[row]
-        textLabel?.font = Font(rawValue: row)?.smallFont
+        textLabel?.font = Font(rawValue: row)?.largeFont
     }
 }

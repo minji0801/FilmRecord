@@ -13,6 +13,7 @@ protocol MovieSearchProtocol: AnyObject {
     func setupNavigationBar()
     func setupView()
 
+    func applyFont()
     func reloadCollectionView()
     func activeSearchController()
     func keyboardDown()
@@ -49,6 +50,10 @@ final class MovieSearchPresenter: NSObject {
         viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupView()
+    }
+
+    func viewWillAppear() {
+        viewController?.applyFont()
     }
 
     func viewDidAppear() {

@@ -38,7 +38,6 @@ class DarkModeManager {
             viewController.navigationController?.navigationBar.barTintColor = .white
             viewController.navigationController?.navigationBar.tintColor = .black
             viewController.navigationController?.navigationBar.titleTextAttributes = [
-                .font: FontManager.extraLargeFont(),
                 .foregroundColor: UIColor.black
             ]
         } else {
@@ -47,7 +46,6 @@ class DarkModeManager {
             viewController.navigationController?.navigationBar.barTintColor = .black
             viewController.navigationController?.navigationBar.tintColor = .white
             viewController.navigationController?.navigationBar.titleTextAttributes = [
-                .font: FontManager.extraLargeFont(),
                 .foregroundColor: UIColor.white
             ]
         }

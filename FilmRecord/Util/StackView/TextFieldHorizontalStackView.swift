@@ -17,7 +17,6 @@ final class TextFieldHorizontalStackView: UIStackView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
-        label.font = FontManager.mediumFont()
         label.textColor = .systemGray2
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -36,13 +35,33 @@ final class TextFieldHorizontalStackView: UIStackView {
         distribution = .fill
         spacing = 10.0
 
-        [titleLabel, textField].forEach { self.addArrangedSubview($0) }
-
-        titleLabel.snp.makeConstraints { $0.width.equalTo(55.0) }
+        setupView()
+        applyFont()
     }
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension TextFieldHorizontalStackView {
+    /// 뷰 구성
+    func setupView() {
+        [titleLabel, textField].forEach {
+            addArrangedSubview($0)
+        }
+
+        titleLabel.snp.makeConstraints {
+            $0.width.equalTo(55.0)
+        }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        titleLabel.font = font.mediumFont
+        textField.font = font.mediumFont
     }
 }
 

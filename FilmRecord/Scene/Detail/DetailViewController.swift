@@ -112,7 +112,6 @@ class DetailViewController: UIViewController {
     /// 영화 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager.extraLargeFont()
         label.textAlignment = .center
         label.numberOfLines = 3
 
@@ -149,7 +148,6 @@ class DetailViewController: UIViewController {
     private lazy var reviewTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .label
-        textView.font = FontManager.mediumFont()
         textView.backgroundColor = .clear
         textView.isEditable = false
 
@@ -266,6 +264,14 @@ extension DetailViewController: DetailProtocol {
             $0.top.equalTo(bottomVerticalStactView.snp.bottom).offset(spacing)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(spacing)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        titleLabel.font = font.extraLargeFont
+        reviewTextView.font = font.mediumFont
     }
 
     /// 현재 뷰 pop

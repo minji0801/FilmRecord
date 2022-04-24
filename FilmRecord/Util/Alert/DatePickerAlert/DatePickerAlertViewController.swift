@@ -54,7 +54,6 @@ final class DatePickerAlertViewController: UIViewController {
         let button = UIButton()
         button.setTitle("선택", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
-        button.titleLabel?.font = FontManager.largeFont()
         button.addTarget(self, action: #selector(didTappedSelectButton), for: .touchUpInside)
 
         return button
@@ -100,6 +99,13 @@ extension DatePickerAlertViewController: DatePickerAlertProtocol {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(datePicker.snp.bottom)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        selectButton.titleLabel?.font = font.largeFont
     }
 
     /// 현재 뷰 닫기

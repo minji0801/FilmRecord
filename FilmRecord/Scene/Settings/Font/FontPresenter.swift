@@ -12,6 +12,8 @@ protocol FontProtocol: AnyObject {
     func setupAppearance()
     func setupNavigationBar()
     func setupView()
+
+    func applyFont()
     func popViewController()
 }
 
@@ -28,6 +30,10 @@ final class FontPresenter: NSObject {
         viewController?.setupView()
     }
 
+    func viewWillAppear() {
+        viewController?.applyFont()
+    }
+
     func didTappedLeftBarButton() {
         viewController?.popViewController()
     }
@@ -35,10 +41,12 @@ final class FontPresenter: NSObject {
 
 // MARK: - UITableView
 extension FontPresenter: UITableViewDataSource, UITableViewDelegate {
+    /// 행 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Font.allValues.count
     }
 
+    /// 셀 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: FontTableViewCell.identifier
@@ -46,5 +54,11 @@ extension FontPresenter: UITableViewDataSource, UITableViewDelegate {
 
         cell.update(indexPath.row)
         return cell
+    }
+
+    /// 셀 클릭
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        FontManager.setFont(font: Font(rawValue: indexPath.row)!)
+        viewWillAppear()
     }
 }

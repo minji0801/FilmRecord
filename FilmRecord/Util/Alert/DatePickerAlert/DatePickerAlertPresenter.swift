@@ -10,6 +10,7 @@ import Foundation
 protocol DatePickerAlertProtocol: AnyObject {
     func setupAppearance()
     func setupView()
+    func applyFont()
     func dismiss()
 }
 
@@ -29,6 +30,7 @@ final class DatePickerAlertPresenter: NSObject {
     func viewDidLoad() {
         viewController?.setupAppearance()
         viewController?.setupView()
+        viewController?.applyFont()
     }
 
     func didTappedSelectButton() {

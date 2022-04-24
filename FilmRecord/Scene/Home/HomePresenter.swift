@@ -15,6 +15,7 @@ protocol HomeProtocol: AnyObject {
     func setupNoti()
     func setupView()
 
+    func applyFont()
     func pushToMenuViewController()
     func pushToSearchMovieViewController()
     func reloadCollectionView()
@@ -47,6 +48,7 @@ final class HomePresenter: NSObject {
     func viewWillAppear() {
         reviews = userDefaultsManager.getReviews()
         viewController?.reloadCollectionView()
+        viewController?.applyFont()
     }
 
     func didTappedLeftBarButton() {

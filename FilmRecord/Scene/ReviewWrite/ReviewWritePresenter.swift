@@ -14,6 +14,7 @@ protocol ReviewWriteProtocol: AnyObject {
     func setupNoti()
     func setupView(review: Review, isEditing: Bool)
 
+    func applyFont()
     func showDatePickerAlertViewController()
     func keyboardDown()
     func popViewController()
@@ -51,6 +52,7 @@ final class ReviewWritePresenter: NSObject {
         viewController?.setupNavigationBar()
         viewController?.setupNoti()
         viewController?.setupView(review: review, isEditing: isEditing)
+        viewController?.applyFont()
     }
 
     func touchesBegan() {

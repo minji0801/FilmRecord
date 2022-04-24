@@ -34,7 +34,6 @@ final class MovieSearchViewController: UIViewController {
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "제목을 입력해주세요."
-        searchController.searchBar.searchTextField.font = FontManager.largeFont()
 
         searchController.searchBar.keyboardType = .default
         searchController.searchBar.autocorrectionType = .no
@@ -79,6 +78,12 @@ final class MovieSearchViewController: UIViewController {
         presenter.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.viewWillAppear()
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -112,6 +117,17 @@ extension MovieSearchViewController: MovieSearchProtocol {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: font.extraLargeFont
+        ]
+        searchController.searchBar.searchTextField.font = font.largeFont
+
     }
 
     /// 콜렉션 뷰 다시 로드

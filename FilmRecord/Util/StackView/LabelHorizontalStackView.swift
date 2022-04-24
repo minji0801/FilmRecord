@@ -16,7 +16,6 @@ final class LabelHorizontalStackView: UIStackView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = title
-        label.font = FontManager.mediumFont()
         label.textColor = .systemGray2
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -28,7 +27,6 @@ final class LabelHorizontalStackView: UIStackView {
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = content
-        label.font = FontManager.mediumFont()
         label.numberOfLines = 0
 
         return label
@@ -45,12 +43,32 @@ final class LabelHorizontalStackView: UIStackView {
         distribution = .fill
         spacing = 10.0
 
-        [titleLabel, textLabel].forEach { self.addArrangedSubview($0) }
-
-        titleLabel.snp.makeConstraints { $0.width.equalTo(70.0) }
+        setupView()
+        applyFont()
     }
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension LabelHorizontalStackView {
+    /// 뷰 구성
+    func setupView() {
+        [titleLabel, textLabel].forEach {
+            addArrangedSubview($0)
+        }
+
+        titleLabel.snp.makeConstraints {
+            $0.width.equalTo(70.0)
+        }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        titleLabel.font = font.mediumFont
+        textLabel.font = font.mediumFont
     }
 }
