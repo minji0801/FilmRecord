@@ -11,6 +11,7 @@ protocol PopUpProtocol: AnyObject {
     func setupAppearance()
     func setupView()
 
+    func applyFont()
     func postEditNotification()
     func postDeleteNotification()
 }
@@ -31,6 +32,7 @@ final class PopUpPresenter: NSObject {
     func viewDidLoad() {
         viewController?.setupAppearance()
         viewController?.setupView()
+        viewController?.applyFont()
     }
 
     func didTappedEditButton() {

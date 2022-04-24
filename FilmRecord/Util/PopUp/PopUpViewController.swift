@@ -34,7 +34,6 @@ final class PopUpViewController: UIViewController {
     private lazy var editButton: UIButton = {
         let button = UIButton()
         button.setTitle("수정", for: .normal)
-        button.titleLabel?.font = FontManager.largeFont()
         button.setTitleColor(UIColor.label, for: .normal)
         button.addTarget(self, action: #selector(didTappedEditButton), for: .touchUpInside)
 
@@ -45,7 +44,6 @@ final class PopUpViewController: UIViewController {
     private lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setTitle("삭제", for: .normal)
-        button.titleLabel?.font = FontManager.largeFont()
         button.setTitleColor(UIColor.systemRed, for: .normal)
         button.addTarget(self, action: #selector(didTappedDeleteButton), for: .touchUpInside)
 
@@ -79,6 +77,13 @@ extension PopUpViewController: PopUpProtocol {
         verticalStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        editButton.titleLabel?.font = font.largeFont
+        deleteButton.titleLabel?.font = font.largeFont
     }
 
     /// 수정 노티피케이션 송신

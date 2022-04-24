@@ -56,7 +56,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 3
+        label.numberOfLines = 2
         label.sizeToFit()
 
         return label
