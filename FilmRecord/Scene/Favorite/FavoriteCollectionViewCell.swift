@@ -40,7 +40,6 @@ final class FavoriteCollectionViewCell: UICollectionViewCell {
     /// 영화 제목
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager.mediumFont()
         label.numberOfLines = 3
         label.sizeToFit()
 
@@ -50,6 +49,7 @@ final class FavoriteCollectionViewCell: UICollectionViewCell {
     /// Cell UI Update
     func update(_ review: Review) {
         setupView()
+        applyFont()
 
         thumbnailImageView.kf.setImage(with: review.movie.imageURL, placeholder: UIImage(named: "thumbnail"))
         titleLabel.text = review.movie.title.htmlEscaped
@@ -81,5 +81,12 @@ private extension FavoriteCollectionViewCell {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(snp.width).multipliedBy(0.1)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        titleLabel.font = font.mediumFont
     }
 }

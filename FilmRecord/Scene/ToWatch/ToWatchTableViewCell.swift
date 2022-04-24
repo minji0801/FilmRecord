@@ -25,8 +25,7 @@ final class ToWatchTableViewCell: UITableViewCell {
     /// 영화 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager.largeFont()
-        label.numberOfLines = 3
+        label.numberOfLines = 2
 
         return label
     }()
@@ -43,17 +42,18 @@ final class ToWatchTableViewCell: UITableViewCell {
     /// update Cell UI
     func update(_ watch: Watch) {
         setupView()
+        applyFont()
 
         thumbnailImageView.kf.setImage(with: watch.movie.imageURL, placeholder: UIImage(named: "thumbnail"))
         titleLabel.text = watch.movie.title.htmlEscaped
 
         if watch.watched {
             // 봤음: 체크마크 & 중앙선 표시, 썸네일 & 제목 흐리게
-            self.accessoryType = .checkmark
+            accessoryType = .checkmark
             horizontalLineView.isHidden = false
         } else {
             // 안봤음: 체크마크 & 중앙선 표시 안함, 썸네일 & 제목 뚜렷하게
-            self.accessoryType = .none
+            accessoryType = .none
             horizontalLineView.isHidden = true
         }
     }
@@ -65,7 +65,7 @@ private extension ToWatchTableViewCell {
         backgroundColor = .systemBackground
         tintColor = .systemPink
 
-        [thumbnailImageView, titleLabel, horizontalLineView].forEach { self.addSubview($0) }
+        [thumbnailImageView, titleLabel, horizontalLineView].forEach { addSubview($0) }
 
         /// 영화 썸네일 Constraints
         thumbnailImageView.snp.makeConstraints {
@@ -88,5 +88,12 @@ private extension ToWatchTableViewCell {
             $0.top.equalTo(titleLabel.snp.top)
             $0.bottom.equalTo(titleLabel.snp.bottom)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        titleLabel.font = font.largeFont
     }
 }

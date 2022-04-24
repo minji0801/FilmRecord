@@ -13,6 +13,7 @@ protocol ToWatchProtocol: AnyObject {
     func setupNoti()
     func setupView()
 
+    func applyFont()
     func pushToMenuViewController()
     func pushToSearchMovieViewController()
     func reloadTableView()
@@ -42,8 +43,8 @@ final class ToWatchPresenter: NSObject {
 
     func viewWillAppear() {
         movies = userDefaultsManager.getMovieToWatch()
-        print("보고 싶은 영화: \(movies)")
         viewController?.reloadTableView()
+        viewController?.applyFont()
     }
 
     func didTappedLeftBarButton() {

@@ -113,6 +113,15 @@ extension ToWatchViewController: ToWatchProtocol {
         }
     }
 
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: font.extraLargeFont
+        ]
+    }
+
     /// 메뉴 화면 push
     func pushToMenuViewController() {
         coverView.isHidden = false

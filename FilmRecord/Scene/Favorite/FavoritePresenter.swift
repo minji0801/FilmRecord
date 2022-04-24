@@ -14,6 +14,7 @@ protocol FavoriteProtocol: AnyObject {
     func setupNoti()
     func setupView()
 
+    func applyFont()
     func pushToMenuViewController()
     func reloadCollectionView()
     func pushToDetailViewController(review: Review)
@@ -43,6 +44,7 @@ final class FavoritePresenter: NSObject {
     func viewWillAppear() {
         reviews = userDefaultsManager.getReviews().filter { $0.favorite }
         viewController?.reloadCollectionView()
+        viewController?.applyFont()
     }
 
     func didTappedLeftBarButton() {
