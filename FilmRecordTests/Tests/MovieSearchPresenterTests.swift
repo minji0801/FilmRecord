@@ -16,6 +16,11 @@ final class MovieSearchPresenterTests: XCTestCase {
     var userDefaultsManager: MockUserDefaultsManager!
     var fromHome: Bool!
 
+    let movies: [Movie] = [Movie.TEST]
+
+    var collectionView: UICollectionView!
+    let indexPath = IndexPath(row: 0, section: 0)
+
     override func setUp() {
         super.setUp()
 
@@ -23,6 +28,15 @@ final class MovieSearchPresenterTests: XCTestCase {
         movieSearchManager = MockMovieSearchManager()
         userDefaultsManager = MockUserDefaultsManager()
         fromHome = true
+
+        collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewFlowLayout()
+        )
+        collectionView.register(
+            MovieSearchCollectionViewCell.self,
+            forCellWithReuseIdentifier: MovieSearchCollectionViewCell.identifier
+        )
 
         sut = MovieSearchPresenter(
             viewController: viewController,
@@ -62,10 +76,20 @@ final class MovieSearchPresenterTests: XCTestCase {
         XCTAssertTrue(viewController.isCalledActiveSearchController)
     }
 
-    func test_pullToRefresh가_요청되면() {
+    func test_pullToRefresh가_요청될때_request에_실패하면() {
+        movieSearchManager.error = NSError() as Error
         sut.pullToRefresh()
 
-        XCTAssertTrue(movieSearchManager.isCalledRequest)
+        XCTAssertFalse(viewController.isCalledReloadCollectionView)
+        XCTAssertFalse(viewController.isCalledEndRefreshing)
+    }
+
+    func test_pullToRefresh가_요청될때_request에_성공하면() {
+        movieSearchManager.error = nil
+        sut.pullToRefresh()
+
+        XCTAssertTrue(viewController.isCalledReloadCollectionView)
+        XCTAssertTrue(viewController.isCalledEndRefreshing)
     }
 
     func test_didTappedLeftBarButton이_요청되면() {
@@ -76,10 +100,7 @@ final class MovieSearchPresenterTests: XCTestCase {
 
     /// 검색어가 있는지 없는지에 따라 나누지 않은 이유: 검색어가 없으면 Search 버튼이 비활성화됨
     func test_searchBarSearchButtonClicked가_요청되면() {
-        let searchBar = UISearchBar()
-        searchBar.text = "검색어"
-
-        sut.searchBarSearchButtonClicked(searchBar)
+        sut.searchBarSearchButtonClicked(UISearchBar())
 
         XCTAssertTrue(movieSearchManager.isCalledRequest)
     }
@@ -93,10 +114,90 @@ final class MovieSearchPresenterTests: XCTestCase {
         }
     }
 
-    // TODO: numberOfItemsInSection는 어떻게 테스트 작성하지?
-//    func test_collectionView의_numberOfItemsInSection가_요청되면() {
-//        let collectionView = UICollectionView()
-//        let section = 0
-//        let moviesCount = sut.collectionView(collectionView, numberOfItemsInSection: section)
-//    }
+    func test_collectionView의_numberOfItemsInSection가_요청되면() {
+        sut.movies = movies
+        let numberOfCells = sut.collectionView(collectionView, numberOfItemsInSection: 0)
+        XCTAssertEqual(numberOfCells, sut.movies.count)
+    }
+
+    func test_collectionView의_cellForItemAt이_요청되면() {
+        sut.movies = movies
+
+        let cell = sut.collectionView(collectionView, cellForItemAt: indexPath) as? MovieSearchCollectionViewCell
+        XCTAssertEqual((cell?.titleLabel.text)! as String, sut.movies.first?.title)
+    }
+
+    func test_collectionView의_sizeForItemAt이_요청되면() {
+        let size = sut.collectionView(collectionView, layout: UICollectionViewLayout(), sizeForItemAt: indexPath)
+
+        let inset: CGFloat = 16.0
+        let spacing: CGFloat = 10.0
+        let width: CGFloat = (collectionView.frame.width - (inset * 2) - (spacing * 2)) / 3
+
+        XCTAssertEqual(size, CGSize(width: width, height: width * 2))
+    }
+
+    func test_collectionView의_insetForSectionAt이_요청되면() {
+        let edgeInsets = sut.collectionView(
+            collectionView,
+            layout: UICollectionViewLayout(),
+            insetForSectionAt: indexPath.section
+        )
+
+        let inset: CGFloat = 16.0
+
+        XCTAssertEqual(edgeInsets, UIEdgeInsets(top: 0.0, left: inset, bottom: 0.0, right: inset))
+    }
+
+    func test_scrollViewWillBeginDragging이_요청되면() {
+        sut.scrollViewWillBeginDragging(UIScrollView())
+
+        XCTAssertTrue(viewController.isCalledKeyboardDown)
+    }
+
+    func test_collectionView의_willDisplay가_요청될때_request에_실패하면() {
+        movieSearchManager.error = NSError() as Error
+
+        sut.currentPage = 1
+        sut.display = 3
+        sut.collectionView(collectionView, willDisplay: UICollectionViewCell(), forItemAt: indexPath)
+
+        XCTAssertFalse(viewController.isCalledReloadCollectionView)
+        XCTAssertFalse(viewController.isCalledEndRefreshing)
+    }
+
+    func test_collectionView의_willDisplay가_요청될때_request에_성공하면() {
+        movieSearchManager.error = nil
+
+        sut.currentPage = 1
+        sut.display = 3
+        sut.collectionView(collectionView, willDisplay: UICollectionViewCell(), forItemAt: indexPath)
+
+        XCTAssertTrue(viewController.isCalledReloadCollectionView)
+        XCTAssertTrue(viewController.isCalledEndRefreshing)
+    }
+
+    func test_collectionView의_didSelectItemAt이_요청될때_fromHome이_true면() {
+        sut.movies = movies
+        sut.collectionView(collectionView, didSelectItemAt: indexPath)
+
+        XCTAssertTrue(viewController.isCalledPushToEnterRatingViewController)
+        XCTAssertFalse(userDefaultsManager.isCalledSetMovieToWatch)
+        XCTAssertFalse(viewController.isCalledPopViewController)
+    }
+
+    func test_collectionView의_didSelectItemAt이_요청될때_fromHome이_false면() {
+        sut = MovieSearchPresenter(
+            viewController: viewController,
+            movieSearchManager: movieSearchManager,
+            userDefaultsManager: userDefaultsManager,
+            fromHome: false
+        )
+        sut.movies = movies
+        sut.collectionView(collectionView, didSelectItemAt: indexPath)
+
+        XCTAssertFalse(viewController.isCalledPushToEnterRatingViewController)
+        XCTAssertTrue(userDefaultsManager.isCalledSetMovieToWatch)
+        XCTAssertTrue(viewController.isCalledPopViewController)
+    }
 }

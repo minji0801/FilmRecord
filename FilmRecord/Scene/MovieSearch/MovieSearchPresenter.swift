@@ -27,12 +27,12 @@ final class MovieSearchPresenter: NSObject {
     private let movieSearchManager: MovieSearchManagerProtocol
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    private var movies: [Movie] = []
+    var movies: [Movie] = []
     private var fromHome: Bool
 
     private var currentKeyword = ""
-    private var currentPage: Int = 0
-    private let display: Int = 15
+    var currentPage: Int = 0
+    var display: Int = 15
 
     init(
         viewController: MovieSearchProtocol,
@@ -114,6 +114,7 @@ extension MovieSearchPresenter: UICollectionViewDataSource, UICollectionViewDele
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
+        print(collectionViewLayout)
         let inset: CGFloat = 16.0
         let spacing: CGFloat = 10.0
         let width: CGFloat = (collectionView.frame.width - (inset * 2) - (spacing * 2)) / 3

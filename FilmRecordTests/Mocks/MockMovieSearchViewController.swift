@@ -9,6 +9,8 @@ import XCTest
 @testable import FilmRecord
 
 final class MockMovieSearchViewController: MovieSearchProtocol {
+    var movie: Movie!
+
     var isCalledSetupAppearance = false
     var isCalledSetupNavigationBar = false
     var isCalledSetupView = false
@@ -58,5 +60,6 @@ final class MockMovieSearchViewController: MovieSearchProtocol {
 
     func pushToEnterRatingViewController(movie: Movie) {
         isCalledPushToEnterRatingViewController = true
+        self.movie = movie
     }
 }

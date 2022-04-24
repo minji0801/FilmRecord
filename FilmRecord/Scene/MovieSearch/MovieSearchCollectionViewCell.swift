@@ -24,7 +24,7 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
     }()
 
     /// 영화 제목
-    private lazy var titleLabel: UILabel = {
+    var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
         label.sizeToFit()

@@ -71,4 +71,13 @@ class HomePresenterTests: XCTestCase {
 //        XCTAssertTrue(userDefaultsManager.isCalledOverwriteReview)
 //        XCTAssertTrue(viewController.isCalledReloadCollectionView)
 //    }
+
+//    func test_collectionView의_didSelectItemAt이_요청되면() {
+//        let collectionViewLayout = UICollectionViewFlowLayout()
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+//        sut.collectionView(collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
+//
+//        userDefaultsManager.reviews = [Review(id: 0, date: "", movie: Movie.EMPTY, place: "", with: "", review: "", rating: 0.0, favorite: false)]
+//        XCTAssertTrue(viewController.isCalledPushToDetailViewController)
+//    }
 }

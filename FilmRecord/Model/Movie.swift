@@ -39,4 +39,6 @@ struct Movie: Codable {
 
 extension Movie {
     static let EMPTY = Movie(title: "", imageURL: "", pubDate: "", director: "", actor: "", userRating: "", link: "")
+
+    static let TEST = Movie(title: "test", imageURL: "", pubDate: "", director: "", actor: "", userRating: "", link: "")
 }
