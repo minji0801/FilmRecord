@@ -50,6 +50,9 @@
 		A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */; };
 		A5828A6A27F58C2100DC89D3 /* DeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */; };
 		A5828A6C27F58C6400DC89D3 /* DeleteAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */; };
+		A583514E2815345100B3082B /* DetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A583514D2815345100B3082B /* DetailPresenterTests.swift */; };
+		A58351502815397D00B3082B /* MovieSearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A583514F2815397D00B3082B /* MovieSearchPresenterTests.swift */; };
+		A5835152281539A400B3082B /* MockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5835151281539A400B3082B /* MockDetailViewController.swift */; };
 		A586E3D8280D7541001474BF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A586E3D7280D7541001474BF /* Toast */; };
 		A586E3DB280D7AC2001474BF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DA280D7AC2001474BF /* Toast.swift */; };
 		A586E3DE280D7DA9001474BF /* DarkModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586E3DD280D7DA9001474BF /* DarkModeViewController.swift */; };
@@ -157,6 +160,9 @@
 		A5828A6627F5547D00DC89D3 /* PopUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpPresenter.swift; sourceTree = "<group>"; };
 		A5828A6927F58C2100DC89D3 /* DeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertViewController.swift; sourceTree = "<group>"; };
 		A5828A6B27F58C6400DC89D3 /* DeleteAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertPresenter.swift; sourceTree = "<group>"; };
+		A583514D2815345100B3082B /* DetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterTests.swift; sourceTree = "<group>"; };
+		A583514F2815397D00B3082B /* MovieSearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchPresenterTests.swift; sourceTree = "<group>"; };
+		A5835151281539A400B3082B /* MockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailViewController.swift; sourceTree = "<group>"; };
 		A586E3DA280D7AC2001474BF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		A586E3DD280D7DA9001474BF /* DarkModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeViewController.swift; sourceTree = "<group>"; };
 		A586E3E0280D7DE8001474BF /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
@@ -295,7 +301,9 @@
 		A519F8FA28142E9C00D73BE4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				A583514D2815345100B3082B /* DetailPresenterTests.swift */,
 				A579424027EDF3CC000F233A /* HomePresenterTests.swift */,
+				A583514F2815397D00B3082B /* MovieSearchPresenterTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 		A519F8FB28142EA100D73BE4 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				A5835151281539A400B3082B /* MockDetailViewController.swift */,
 				A519F8FC28142EBE00D73BE4 /* MockHomeViewController.swift */,
 				A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */,
 			);
@@ -913,9 +922,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58351502815397D00B3082B /* MovieSearchPresenterTests.swift in Sources */,
 				A579424127EDF3CC000F233A /* HomePresenterTests.swift in Sources */,
 				A519F8FD28142EBE00D73BE4 /* MockHomeViewController.swift in Sources */,
 				A519F8FF28142EF100D73BE4 /* MockUserDefaultsManager.swift in Sources */,
+				A583514E2815345100B3082B /* DetailPresenterTests.swift in Sources */,
+				A5835152281539A400B3082B /* MockDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

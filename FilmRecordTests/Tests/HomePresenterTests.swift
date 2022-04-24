@@ -3,7 +3,7 @@
 //  HomePresenterTests
 //
 //  Created by 김민지 on 2022/03/25.
-//  HomePresenter UnitTest
+//  HomePresenter Unit Test
 
 import XCTest
 @testable import FilmRecord
@@ -48,6 +48,7 @@ class HomePresenterTests: XCTestCase {
 
         XCTAssertTrue(userDefaultsManager.isCalledGetReviews)
         XCTAssertTrue(viewController.isCalledReloadCollectionView)
+        XCTAssertTrue(viewController.isCalledApplyFont)
     }
 
     func test_didTappedLeftBarButton이_요청되면() {

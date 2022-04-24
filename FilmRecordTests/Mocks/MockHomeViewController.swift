@@ -13,6 +13,7 @@ final class MockHomeViewController: HomeProtocol {
     var isCalledSetupNavigationBar = false
     var isCalledSetupNoti = false
     var isCalledSetupView = false
+    var isCalledApplyFont = false
     var isCalledPushToMenuViewController = false
     var isCalledPushToSearchMovieViewController = false
     var isCalledReloadCollectionView = false
@@ -33,6 +34,10 @@ final class MockHomeViewController: HomeProtocol {
 
     func setupView() {
         isCalledSetupView = true
+    }
+
+    func applyFont() {
+        isCalledApplyFont = true
     }
 
     func pushToMenuViewController() {
