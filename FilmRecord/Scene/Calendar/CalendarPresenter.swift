@@ -14,6 +14,7 @@ protocol CalendarProtocol: AnyObject {
     func setupNoti()
     func setupView()
 
+    func applyFont()
     func pushToMenuViewController()
     func moveToToday()
     func reloadTableView()
@@ -54,6 +55,7 @@ final class CalendarPresenter: NSObject {
     func viewWillApper() {
         events = setupEvents()
         getReview(date: Date())
+        viewController?.applyFont()
     }
 
     func didTappedLeftBarButton() {

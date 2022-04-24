@@ -28,7 +28,7 @@ final class CalendarViewController: UIViewController {
     /// Right Bar Button: 오늘 버튼
     private lazy var rightBarButtonItem: UIBarButtonItem = {
         let rightBarButtonItem = UIBarButtonItem(
-            title: "오늘",
+            image: UIImage(systemName: "arrow.clockwise"),
             style: .plain,
             target: self,
             action: #selector(didTappedRightBarButton)
@@ -43,10 +43,6 @@ final class CalendarViewController: UIViewController {
         view.scrollDirection = .vertical
         view.locale = Locale(identifier: "ko_KR")
         view.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesUpperCase
-
-        view.appearance.headerTitleFont = FontManager.largeFont()
-        view.appearance.weekdayFont = FontManager.mediumFont()
-        view.appearance.titleFont = FontManager.mediumFont()
 
         view.appearance.headerDateFormat = "YYYY년 M월"
         view.appearance.headerTitleColor = .label
@@ -152,6 +148,19 @@ extension CalendarViewController: CalendarProtocol {
             $0.edges.equalToSuperview()
         }
 
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: font.extraLargeFont
+        ]
+
+        calendarView.appearance.headerTitleFont = font.largeFont
+        calendarView.appearance.weekdayFont = font.mediumFont
+        calendarView.appearance.titleFont = font.mediumFont
     }
 
     /// 메뉴 화면 push

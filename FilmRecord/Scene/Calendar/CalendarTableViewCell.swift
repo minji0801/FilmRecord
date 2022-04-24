@@ -26,8 +26,7 @@ final class CalendarTableViewCell: UITableViewCell {
     /// 영화 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager.largeFont()
-        label.numberOfLines = 3
+        label.numberOfLines = 2
 
         return label
     }()
@@ -48,6 +47,7 @@ final class CalendarTableViewCell: UITableViewCell {
     /// Cell UI 업데이트
     func update(_ review: Review) {
         setupView()
+        applyFont()
 
         thumbnailImageView.kf.setImage(with: review.movie.imageURL, placeholder: UIImage(named: "thumbnail"))
         titleLabel.text = review.movie.title.htmlEscaped
@@ -56,6 +56,7 @@ final class CalendarTableViewCell: UITableViewCell {
 }
 
 private extension CalendarTableViewCell {
+    /// 뷰 구성
     func setupView() {
         backgroundColor = .systemBackground
         selectionStyle = .none
@@ -83,5 +84,12 @@ private extension CalendarTableViewCell {
             $0.trailing.centerY.equalToSuperview()
             $0.width.equalTo(90)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        titleLabel.font = font.largeFont
     }
 }
