@@ -42,7 +42,6 @@ final class MenuViewController: UIViewController {
     /// 작성한 리뷰 개수 라벨
     private lazy var countLabel: UILabel = {
         let label = UILabel()
-        label.font = FontManager.mediumFont()
         label.textColor = .label
 
         return label
@@ -52,7 +51,6 @@ final class MenuViewController: UIViewController {
     private lazy var copyrightLabel: UILabel = {
         let label = UILabel()
         label.text = "© Minji Kim"
-        label.font = FontManager.mediumFont()
         label.textColor = .label
 
         return label
@@ -118,6 +116,14 @@ extension MenuViewController: MenuProtocol {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(horizontalStackView.snp.bottom)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        countLabel.font = font.mediumFont
+        copyrightLabel.font = font.mediumFont
     }
 
     /// 현재 뷰 닫기

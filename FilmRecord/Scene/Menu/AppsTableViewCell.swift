@@ -23,15 +23,29 @@ final class AppsTableViewCell: UITableViewCell {
     private let detail = ["스쿼트 챌린지 앱", "명언 및 모음 앱", "시간 및 디데이 계산 앱"]
 
     func setupCell(row: Int) {
-        backgroundColor = .clear
+        setupView()
+        applyFont()
 
         imageView?.image = UIImage(named: image[row])
 
         textLabel?.text = title[row]
-        textLabel?.font = FontManager.mediumFont()
         textLabel?.textColor = .label
 
         detailTextLabel?.text = detail[row]
-        detailTextLabel?.font = FontManager.smallFont()
+    }
+}
+
+private extension AppsTableViewCell {
+    /// 뷰 구성
+    func setupView() {
+        backgroundColor = .clear
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        textLabel?.font = font.mediumFont
+        detailTextLabel?.font = font.smallFont
     }
 }

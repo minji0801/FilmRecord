@@ -14,12 +14,26 @@ final class MenuTableViewCell: UITableViewCell {
     private let title = ["영화 기록장", "리뷰 캘린더", "좋아하는 영화", "보고 싶은 영화", "설정" ]
 
     func setupCell(row: Int) {
-        textLabel?.text = title[row]
-        textLabel?.font = FontManager.extraLargeFont()
+        setupView()
+        applyFont()
 
         imageView?.image = UIImage(systemName: image[row])
         imageView?.tintColor = .label
 
+        textLabel?.text = title[row]
+    }
+}
+
+private extension MenuTableViewCell {
+    /// 뷰 구성
+    func setupView() {
         backgroundColor = .clear
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        textLabel?.font = font.extraLargeFont
     }
 }
