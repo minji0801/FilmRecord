@@ -24,7 +24,7 @@ protocol MovieSearchProtocol: AnyObject {
 
 final class MovieSearchPresenter: NSObject {
     private weak var viewController: MovieSearchProtocol?
-    private let searchMovieManager: MovieSearchManagerProtocol
+    private let movieSearchManager: MovieSearchManagerProtocol
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
     private var movies: [Movie] = []
@@ -36,12 +36,12 @@ final class MovieSearchPresenter: NSObject {
 
     init(
         viewController: MovieSearchProtocol,
-        searchMovieManager: MovieSearchManagerProtocol = MovieSearchManager(),
+        movieSearchManager: MovieSearchManagerProtocol = MovieSearchManager(),
         userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager(),
         fromHome: Bool
     ) {
         self.viewController = viewController
-        self.searchMovieManager = searchMovieManager
+        self.movieSearchManager = movieSearchManager
         self.userDefaultsManager = userDefaultsManager
         self.fromHome = fromHome
     }
@@ -73,9 +73,10 @@ final class MovieSearchPresenter: NSObject {
 extension MovieSearchPresenter: UISearchBarDelegate, UISearchControllerDelegate {
     /// 영화 검색
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
-        currentKeyword = searchText
-        requestMovieList(isNeededToReset: true)
+        if let searchText = searchBar.text {
+            currentKeyword = searchText
+            requestMovieList(isNeededToReset: true)
+        }
     }
 
     /// 검색 바 보여졌을 때: 자동 포커싱
@@ -168,7 +169,7 @@ private extension MovieSearchPresenter {
             movies = []
         }
 
-        searchMovieManager.request(
+        movieSearchManager.request(
             from: currentKeyword,
             start: (currentPage * display) + 1,
             display: display
