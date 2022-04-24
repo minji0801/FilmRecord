@@ -49,4 +49,15 @@ extension Review {
         rating: 0.0,
         favorite: false
     )
+
+    static let TEST = Review(
+        id: 0,
+        date: "",
+        movie: Movie.TEST,
+        place: "",
+        with: "",
+        review: "",
+        rating: 0.0,
+        favorite: false
+    )
 }

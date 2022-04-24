@@ -27,7 +27,7 @@ final class HomePresenter: NSObject {
     private let viewController: HomeProtocol?
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    private var reviews: [Review] = []
+    var reviews: [Review] = []
     private var movie: Movie = Movie.EMPTY
 
     init(
@@ -123,7 +123,6 @@ extension HomePresenter: UICollectionViewDataSource, UICollectionViewDelegateFlo
 
     /// Cell 클릭: 해당 영화의 리뷰 정보 보여주기
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(reviews)
         let review = reviews[indexPath.row]
         viewController?.pushToDetailViewController(review: review)
     }

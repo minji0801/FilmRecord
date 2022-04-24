@@ -14,11 +14,25 @@ class HomePresenterTests: XCTestCase {
     var viewController: MockHomeViewController!
     var userDefaultsManager: MockUserDefaultsManager!
 
+    var reviews: [Review] = [Review.TEST]
+
+    var collectionView: UICollectionView!
+    let indexPath = IndexPath(row: 0, section: 0)
+
     override func setUp() {
         super.setUp()
 
         viewController = MockHomeViewController()
         userDefaultsManager = MockUserDefaultsManager()
+
+        collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewFlowLayout()
+        )
+        collectionView.register(
+            HomeCollectionViewCell.self,
+            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier
+        )
 
         sut = HomePresenter(
             viewController: viewController,
@@ -63,21 +77,29 @@ class HomePresenterTests: XCTestCase {
         XCTAssertTrue(viewController.isCalledPushToSearchMovieViewController)
     }
 
-    // TODO:  @objc func은 어떻게 Test를 작성하지?
-//    func test_didTappedLikeButton이_요청될때_review의_favorite이_true면() {
-//        sut.didTappedLikeButton(button)
-//
-//        XCTAssertTrue(viewController.isCalledShowToast)
-//        XCTAssertTrue(userDefaultsManager.isCalledOverwriteReview)
-//        XCTAssertTrue(viewController.isCalledReloadCollectionView)
-//    }
+    func test_didTappedLikeButton이_요청될때_review의_favorite이_true면() {
+        sut.reviews = reviews
+        sut.reviews[0].favorite = true
+        sut.didTappedLikeButton(UIButton())
 
-//    func test_collectionView의_didSelectItemAt이_요청되면() {
-//        let collectionViewLayout = UICollectionViewFlowLayout()
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-//        sut.collectionView(collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
-//
-//        userDefaultsManager.reviews = [Review(id: 0, date: "", movie: Movie.EMPTY, place: "", with: "", review: "", rating: 0.0, favorite: false)]
-//        XCTAssertTrue(viewController.isCalledPushToDetailViewController)
-//    }
+        XCTAssertTrue(viewController.isCalledShowToast)
+        XCTAssertTrue(userDefaultsManager.isCalledOverwriteReview)
+        XCTAssertTrue(viewController.isCalledReloadCollectionView)
+    }
+
+    func test_didTappedLikeButton이_요청될때_review의_favorite이_false면() {
+        sut.reviews = reviews
+        sut.didTappedLikeButton(UIButton())
+
+        XCTAssertTrue(viewController.isCalledShowToast)
+        XCTAssertTrue(userDefaultsManager.isCalledOverwriteReview)
+        XCTAssertTrue(viewController.isCalledReloadCollectionView)
+    }
+
+    func test_collectionView의_didSelectItemAt이_요청되면() {
+        sut.reviews = reviews
+        sut.collectionView(collectionView, didSelectItemAt: indexPath)
+
+        XCTAssertTrue(viewController.isCalledPushToDetailViewController)
+    }
 }
