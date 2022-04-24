@@ -12,6 +12,7 @@ protocol DarkModeProtocol: AnyObject {
     func setupAppearance()
     func setupNavigationBar()
     func setupView()
+
     func popViewController()
     func tableViewReload()
 }

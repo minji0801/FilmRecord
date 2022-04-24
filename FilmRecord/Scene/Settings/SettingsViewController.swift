@@ -101,6 +101,11 @@ extension SettingsViewController: SettingsProtocol {
         }
     }
 
+    /// 테이블 뷰 다시 불러오기
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+
     /// 메뉴 화면 push
     func pushToMenuViewController() {
         coverView.isHidden = false

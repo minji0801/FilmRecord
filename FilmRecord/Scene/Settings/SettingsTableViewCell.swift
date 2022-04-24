@@ -43,6 +43,8 @@ final class SettingsTableViewCell: UITableViewCell {
     /// 셀 UI 업데이트
     func update(indexPath: IndexPath) {
         setupView(indexPath.section, indexPath.row)
+        applyFont()
+
         selectionStyle = .none
     }
 }
@@ -58,12 +60,18 @@ private extension SettingsTableViewCell {
         imageView?.tintColor = .label
 
         textLabel?.text = title[section][row]
-        textLabel?.font = FontManager.largeFont()
 
         detail[0][6] = "v\(getCurrentVersion())"    // 현재 버전 가져오기
 
         detailTextLabel?.text = detail[section][row]
         detailTextLabel?.font = FontManager.largeFont()
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        textLabel?.font = font.largeFont
     }
 
     /// 현재 버전 가져오기

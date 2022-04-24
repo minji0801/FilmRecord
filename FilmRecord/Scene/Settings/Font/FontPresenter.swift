@@ -41,6 +41,11 @@ final class FontPresenter: NSObject {
 
 // MARK: - UITableView
 extension FontPresenter: UITableViewDataSource, UITableViewDelegate {
+    /// 섹션 타이틀
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "글씨체"
+    }
+
     /// 행 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Font.allValues.count

@@ -32,12 +32,15 @@ class DarkModeManager {
 
     /// Appearance 적용하기
     static func applyAppearance(mode: Mode, viewController: UIViewController) {
+        let font = FontManager.getFont()
+
         if mode == .light {
             viewController.overrideUserInterfaceStyle = .light
             viewController.navigationController?.navigationBar.barStyle = .default
             viewController.navigationController?.navigationBar.barTintColor = .white
             viewController.navigationController?.navigationBar.tintColor = .black
             viewController.navigationController?.navigationBar.titleTextAttributes = [
+                .font: font.extraLargeFont,
                 .foregroundColor: UIColor.black
             ]
         } else {
@@ -46,6 +49,7 @@ class DarkModeManager {
             viewController.navigationController?.navigationBar.barTintColor = .black
             viewController.navigationController?.navigationBar.tintColor = .white
             viewController.navigationController?.navigationBar.titleTextAttributes = [
+                .font: font.extraLargeFont,
                 .foregroundColor: UIColor.white
             ]
         }

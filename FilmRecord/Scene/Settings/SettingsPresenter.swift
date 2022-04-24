@@ -14,6 +14,7 @@ protocol SettingsProtocol: AnyObject {
     func setupNoti()
     func setupView()
 
+    func reloadTableView()
     func pushToMenuViewController()
 
     func pushToDarkModeViewController()
@@ -39,6 +40,7 @@ final class SettingsPresenter: NSObject {
 
     func viewWillAppear() {
         viewController?.setupAppearance()
+        viewController?.reloadTableView()
     }
 
     func didTappedLeftBarButton() {

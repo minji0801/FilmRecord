@@ -14,6 +14,7 @@ final class FontTableViewCell: UITableViewCell {
     let title = ["교보손글씨2019", "이서윤체"]
 
     func update(_ row: Int) {
+        backgroundColor = .systemBackground
         textLabel?.text = title[row]
         textLabel?.font = Font(rawValue: row)?.largeFont
     }

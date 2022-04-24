@@ -23,9 +23,9 @@ final class DarkModeTableViewCell: UITableViewCell {
 
     func update(_ row: Int, _ mode: Mode) {
         setupView()
+        applyFont()
 
         textLabel?.text = title[row]
-        textLabel?.font = FontManager.largeFont()
 
         if (mode == .light && row == 0) || (mode == .dark && row == 1) {
             selectButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
@@ -38,6 +38,7 @@ final class DarkModeTableViewCell: UITableViewCell {
 }
 
 private extension DarkModeTableViewCell {
+    /// 뷰 구성
     func setupView() {
         selectionStyle = .none
 
@@ -47,5 +48,12 @@ private extension DarkModeTableViewCell {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(16.0)
         }
+    }
+
+    /// 폰트 적용
+    func applyFont() {
+        let font = FontManager.getFont()
+
+        textLabel?.font = font.largeFont
     }
 }
