@@ -11,6 +11,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     private var presenter: DetailPresenter!
+
+    private let font = FontManager.getFont()
     private let inset: CGFloat = 16.0
     private let cornerRadius: CGFloat = 12.0
 
@@ -268,8 +270,6 @@ extension DetailViewController: DetailProtocol {
 
     /// 폰트 적용
     func applyFont() {
-        let font = FontManager.getFont()
-
         titleLabel.font = font.extraLargeFont
         reviewTextView.font = font.mediumFont
     }
@@ -317,9 +317,9 @@ extension DetailViewController: DetailProtocol {
     /// Toast 메시지 보여주기
     func showToast(_ show: Bool) {
         if show {
-            view.makeToast("좋아하는 영화에 추가했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
+            view.makeToast("좋아하는 영화에 추가했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle(font))
         } else {
-            view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
+            view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle(font))
         }
     }
 }

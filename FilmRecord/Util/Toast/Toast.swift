@@ -8,10 +8,10 @@
 import Toast
 
 struct Toast {
-    func toastStyle() -> ToastStyle {
+    func toastStyle(_ font: Font) -> ToastStyle {
         var style = ToastStyle()
+        style.messageFont = font.largeFont
         style.messageColor = .systemBackground
-        style.messageFont = FontManager.largeFont()
         style.backgroundColor = .label
 
         return style

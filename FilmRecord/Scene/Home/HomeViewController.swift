@@ -13,6 +13,8 @@ import UIKit
 final class HomeViewController: UIViewController {
     private lazy var presenter = HomePresenter(viewController: self)
 
+    private let font = FontManager.getFont()
+
     /// Left Bar Button: 메뉴 버튼
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let leftBarButtonItem = UIBarButtonItem(
@@ -125,8 +127,6 @@ extension HomeViewController: HomeProtocol {
 
     /// 폰트 적용
     func applyFont() {
-        let font = FontManager.getFont()
-
         navigationController?.navigationBar.titleTextAttributes = [
             .font: font.extraLargeFont
         ]
@@ -159,9 +159,9 @@ extension HomeViewController: HomeProtocol {
     /// Toast 메시지 보여주기
     func showToast(_ show: Bool) {
         if show {
-            view.makeToast("좋아하는 영화에 추가했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
+            view.makeToast("좋아하는 영화에 추가했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle(font))
         } else {
-            view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle())
+            view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle(font))
         }
     }
 }
