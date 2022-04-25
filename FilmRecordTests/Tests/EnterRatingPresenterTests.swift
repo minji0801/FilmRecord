@@ -8,13 +8,13 @@
 import XCTest
 @testable import FilmRecord
 
-class EnterRatingPresenterTests: XCTestCase {
+final class EnterRatingPresenterTests: XCTestCase {
     var sut: EnterRatingPresenter!
 
     var viewController: MockEnterRatingViewController!
-    var movie: Movie = Movie.TEST
-    var review: Review = Review.TEST
-    var isEditing: Bool = false
+    let movie: Movie = Movie.TEST
+    let review: Review = Review.TEST
+    let isEditing: Bool = false
 
     override func setUp() {
         super.setUp()
