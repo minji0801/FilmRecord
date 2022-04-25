@@ -64,7 +64,6 @@ private extension SettingsTableViewCell {
         detail[0][6] = "v\(getCurrentVersion())"    // 현재 버전 가져오기
 
         detailTextLabel?.text = detail[section][row]
-        detailTextLabel?.font = FontManager.largeFont()
     }
 
     /// 폰트 적용
@@ -72,6 +71,7 @@ private extension SettingsTableViewCell {
         let font = FontManager.getFont()
 
         textLabel?.font = font.largeFont
+        detailTextLabel?.font = font.largeFont
     }
 
     /// 현재 버전 가져오기

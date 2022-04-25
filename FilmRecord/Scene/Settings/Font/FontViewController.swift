@@ -60,7 +60,6 @@ final class FontViewController: UIViewController {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = formatter.string(from: Date())
-        label.font = FontManager.mediumFont()
 
         return label
     }()
@@ -69,7 +68,6 @@ final class FontViewController: UIViewController {
     private lazy var whereTextField: UITextField = {
         let textField = UITextField()
         textField.text = "CGV"
-        textField.font = FontManager.mediumFont()
         textField.isEnabled = false
 
         return textField
@@ -79,7 +77,6 @@ final class FontViewController: UIViewController {
     private lazy var whoTextField: UITextField = {
         let textField = UITextField()
         textField.text = "친구랑"
-        textField.font = FontManager.mediumFont()
         textField.isEnabled = false
 
         return textField
@@ -93,7 +90,6 @@ final class FontViewController: UIViewController {
         친구가 보고싶다고 해서 같이 보러갔다. 생각보다 너무 무서웠다. 아니 친구야 너가 보자며 왜 고개숙이고 안봐?-- 앞으로 절!대! 공포영화는 안볼거다!!!!!
         """
         textView.textColor = .label
-        textView.font = FontManager.mediumFont()
         textView.isEditable = false
 
         return textView

@@ -11,6 +11,7 @@ protocol SendMailFailProtocol: AnyObject {
     func setupAppearance()
     func setupView()
 
+    func applyFont()
     func dismiss()
     func goToAppStore()
 }
@@ -25,6 +26,7 @@ final class SendMailFailPresenter: NSObject {
     func viewDidLoad() {
         viewController?.setupAppearance()
         viewController?.setupView()
+        viewController?.applyFont()
     }
 
     func didTappedDismissButton() {

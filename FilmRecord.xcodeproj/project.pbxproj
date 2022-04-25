@@ -31,6 +31,8 @@
 		A575A9E82816ACE100ACD091 /* MockEnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */; };
 		A575A9EA2816AD5D00ACD091 /* ReviewWritePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E92816AD5D00ACD091 /* ReviewWritePresenterTests.swift */; };
 		A575A9EC2816B3E900ACD091 /* MockReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9EB2816B3E900ACD091 /* MockReviewWriteViewController.swift */; };
+		A575A9EE2816B95500ACD091 /* SuncheonR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A575A9ED2816B95500ACD091 /* SuncheonR.ttf */; };
+		A575A9F02816CA3300ACD091 /* KyoboHandwriting2020pdy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A575A9EF2816CA3300ACD091 /* KyoboHandwriting2020pdy.otf */; };
 		A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422927EDF3CC000F233A /* AppDelegate.swift */; };
 		A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422B27EDF3CC000F233A /* SceneDelegate.swift */; };
 		A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422D27EDF3CC000F233A /* HomeViewController.swift */; };
@@ -81,8 +83,6 @@
 		A5C2A87C27F6BE8300225640 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87B27F6BE8300225640 /* MenuTableViewCell.swift */; };
 		A5C2A87E27F6C10C00225640 /* AppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87D27F6C10C00225640 /* AppsTableViewCell.swift */; };
 		A5C2A88027F6D25800225640 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87F27F6D25800225640 /* MenuPresenter.swift */; };
-		A5C6678527F3EDA60090B617 /* 강원교육새음.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678127F3EDA60090B617 /* 강원교육새음.otf */; };
-		A5C6678627F3EDA60090B617 /* 온글잎 민혜체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */; };
 		A5C6678727F3EDA60090B617 /* Kyobo Handwriting 2019.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */; };
 		A5C6678827F3EDA60090B617 /* LeeSeoyun.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */; };
 		A5C6678A27F3EE290090B617 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6678927F3EE290090B617 /* FontManager.swift */; };
@@ -146,6 +146,8 @@
 		A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEnterRatingViewController.swift; sourceTree = "<group>"; };
 		A575A9E92816AD5D00ACD091 /* ReviewWritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenterTests.swift; sourceTree = "<group>"; };
 		A575A9EB2816B3E900ACD091 /* MockReviewWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReviewWriteViewController.swift; sourceTree = "<group>"; };
+		A575A9ED2816B95500ACD091 /* SuncheonR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SuncheonR.ttf; sourceTree = "<group>"; };
+		A575A9EF2816CA3300ACD091 /* KyoboHandwriting2020pdy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KyoboHandwriting2020pdy.otf; sourceTree = "<group>"; };
 		A579422627EDF3CC000F233A /* FilmRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579422927EDF3CC000F233A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A579422B27EDF3CC000F233A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,8 +196,6 @@
 		A5C2A87B27F6BE8300225640 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		A5C2A87D27F6C10C00225640 /* AppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTableViewCell.swift; sourceTree = "<group>"; };
 		A5C2A87F27F6D25800225640 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
-		A5C6678127F3EDA60090B617 /* 강원교육새음.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "강원교육새음.otf"; sourceTree = "<group>"; };
-		A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "온글잎 민혜체.ttf"; sourceTree = "<group>"; };
 		A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kyobo Handwriting 2019.otf"; sourceTree = "<group>"; };
 		A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeeSeoyun.otf; sourceTree = "<group>"; };
 		A5C6678927F3EE290090B617 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -542,8 +542,8 @@
 		A5C6678027F3ED5B0090B617 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A5C6678127F3EDA60090B617 /* 강원교육새음.otf */,
-				A5C6678227F3EDA60090B617 /* 온글잎 민혜체.ttf */,
+				A575A9EF2816CA3300ACD091 /* KyoboHandwriting2020pdy.otf */,
+				A575A9ED2816B95500ACD091 /* SuncheonR.ttf */,
 				A5C6678327F3EDA60090B617 /* Kyobo Handwriting 2019.otf */,
 				A5C6678427F3EDA60090B617 /* LeeSeoyun.otf */,
 			);
@@ -755,12 +755,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A575A9F02816CA3300ACD091 /* KyoboHandwriting2020pdy.otf in Resources */,
+				A575A9EE2816B95500ACD091 /* SuncheonR.ttf in Resources */,
 				A579423627EDF3CC000F233A /* LaunchScreen.storyboard in Resources */,
 				A5C6678827F3EDA60090B617 /* LeeSeoyun.otf in Resources */,
 				A579423327EDF3CC000F233A /* Assets.xcassets in Resources */,
 				A5C6678727F3EDA60090B617 /* Kyobo Handwriting 2019.otf in Resources */,
-				A5C6678527F3EDA60090B617 /* 강원교육새음.otf in Resources */,
-				A5C6678627F3EDA60090B617 /* 온글잎 민혜체.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
