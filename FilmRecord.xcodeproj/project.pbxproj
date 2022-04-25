@@ -27,6 +27,8 @@
 		A519F9042814314100D73BE4 /* FontPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F9032814314100D73BE4 /* FontPresenter.swift */; };
 		A519F9062814314A00D73BE4 /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519F9052814314A00D73BE4 /* FontTableViewCell.swift */; };
 		A52C888D27FDBB17004A0BE5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */; };
+		A575A9E62816AA9100ACD091 /* EnterRatingPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */; };
+		A575A9E82816ACE100ACD091 /* MockEnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */; };
 		A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422927EDF3CC000F233A /* AppDelegate.swift */; };
 		A579422C27EDF3CC000F233A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422B27EDF3CC000F233A /* SceneDelegate.swift */; };
 		A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579422D27EDF3CC000F233A /* HomeViewController.swift */; };
@@ -138,6 +140,8 @@
 		A519F9032814314100D73BE4 /* FontPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPresenter.swift; sourceTree = "<group>"; };
 		A519F9052814314A00D73BE4 /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		A52C888C27FDBB17004A0BE5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenterTests.swift; sourceTree = "<group>"; };
+		A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEnterRatingViewController.swift; sourceTree = "<group>"; };
 		A579422627EDF3CC000F233A /* FilmRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A579422927EDF3CC000F233A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A579422B27EDF3CC000F233A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				A583514D2815345100B3082B /* DetailPresenterTests.swift */,
+				A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */,
 				A579424027EDF3CC000F233A /* HomePresenterTests.swift */,
 				A583514F2815397D00B3082B /* MovieSearchPresenterTests.swift */,
 			);
@@ -320,6 +325,7 @@
 				A5835155281568F900B3082B /* MockMovieSearchManager.swift */,
 				A5835153281568C500B3082B /* MockMovieSearchViewController.swift */,
 				A519F8FE28142EF100D73BE4 /* MockUserDefaultsManager.swift */,
+				A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -932,10 +938,12 @@
 				A579424127EDF3CC000F233A /* HomePresenterTests.swift in Sources */,
 				A5835156281568F900B3082B /* MockMovieSearchManager.swift in Sources */,
 				A519F8FD28142EBE00D73BE4 /* MockHomeViewController.swift in Sources */,
+				A575A9E82816ACE100ACD091 /* MockEnterRatingViewController.swift in Sources */,
 				A519F8FF28142EF100D73BE4 /* MockUserDefaultsManager.swift in Sources */,
 				A583514E2815345100B3082B /* DetailPresenterTests.swift in Sources */,
 				A5835152281539A400B3082B /* MockDetailViewController.swift in Sources */,
 				A5835154281568C500B3082B /* MockMovieSearchViewController.swift in Sources */,
+				A575A9E62816AA9100ACD091 /* EnterRatingPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
