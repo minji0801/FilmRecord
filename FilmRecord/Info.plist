@@ -6,8 +6,8 @@
 	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Room No.703 OTF.otf</string>
 		<string>KyoboHandwriting2020pdy.otf</string>
-		<string>SuncheonR.ttf</string>
 		<string>Kyobo Handwriting 2019.otf</string>
 		<string>LeeSeoyun.otf</string>
 	</array>
