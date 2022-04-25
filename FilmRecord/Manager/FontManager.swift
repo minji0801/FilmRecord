@@ -16,12 +16,19 @@ enum FontSize: CGFloat {
 }
 
 enum Font: Int {
-    case kyobo  // 교보손글씨
-    case kyobo2020  // 교보손글씨2020
-    case leeseoyun  // 이서윤체
-    case no703      // 칠백삼체 유서연
+    case kyobo          // 교보손글씨
+    case kyobo2020      // 교보손글씨2020
+    case leeseoyun      // 이서윤체
+    case no703          // 칠백삼체 유서연
+    case komi           // 국립공원 꼬미
 
-    static let allValues = [kyobo, kyobo2020, leeseoyun, no703]
+    static let allValues = [
+        kyobo,
+        kyobo2020,
+        leeseoyun,
+        no703,
+        komi
+    ]
 
     /// 아이폰 작은 글씨(size: 12)
     var smallFont: UIFont {
@@ -34,6 +41,8 @@ enum Font: Int {
             return UIFont(name: "LeeSeoyun", size: FontSize.small.rawValue)!
         case .no703:
             return UIFont(name: "establishRoomNo703OTF", size: FontSize.small.rawValue)!
+        case .komi:
+            return UIFont(name: "KNPSKkomi-Regular", size: FontSize.small.rawValue)!
         }
     }
 
@@ -48,6 +57,8 @@ enum Font: Int {
             return UIFont(name: "LeeSeoyun", size: FontSize.medium.rawValue)!
         case .no703:
             return UIFont(name: "establishRoomNo703OTF", size: FontSize.medium.rawValue)!
+        case .komi:
+            return UIFont(name: "KNPSKkomi-Regular", size: FontSize.medium.rawValue)!
         }
     }
 
@@ -62,6 +73,8 @@ enum Font: Int {
             return UIFont(name: "LeeSeoyun", size: FontSize.large.rawValue)!
         case .no703:
             return UIFont(name: "establishRoomNo703OTF", size: FontSize.large.rawValue)!
+        case .komi:
+            return UIFont(name: "KNPSKkomi-Regular", size: FontSize.large.rawValue)!
         }
     }
 
@@ -76,6 +89,8 @@ enum Font: Int {
             return UIFont(name: "LeeSeoyun", size: FontSize.extraLarge.rawValue)!
         case .no703:
             return UIFont(name: "establishRoomNo703OTF", size: FontSize.extraLarge.rawValue)!
+        case .komi:
+            return UIFont(name: "KNPSKkomi-Regular", size: FontSize.extraLarge.rawValue)!
         }
     }
 }

@@ -11,7 +11,13 @@ import UIKit
 final class FontTableViewCell: UITableViewCell {
     static let identifier = "FontTableViewCell"
 
-    let title = ["교보손글씨", "교보손글씨 2020 박도연", "이서윤체", "칠백삼체 유서연"]
+    let title = [
+        "교보손글씨",
+        "교보손글씨 2020 박도연",
+        "이서윤체",
+        "칠백삼체 유서연",
+        "국립공원 꼬미"
+    ]
 
     func update(_ row: Int) {
         backgroundColor = .systemBackground

@@ -6,6 +6,7 @@
 	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>KNPSKkomi.otf</string>
 		<string>Room No.703 OTF.otf</string>
 		<string>KyoboHandwriting2020pdy.otf</string>
 		<string>Kyobo Handwriting 2019.otf</string>
