@@ -6,11 +6,12 @@
 	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>KNPSKkomi.otf</string>
-		<string>Room No.703 OTF.otf</string>
-		<string>KyoboHandwriting2020pdy.otf</string>
-		<string>Kyobo Handwriting 2019.otf</string>
-		<string>LeeSeoyun.otf</string>
+		<string>봉숭아틴트.ttf</string>
+		<string>국립공원 꼬미.otf</string>
+		<string>칠백삼체 유서연.otf</string>
+		<string>교보손글씨 2020 박도연.otf</string>
+		<string>교보손글씨.otf</string>
+		<string>이서연체.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
