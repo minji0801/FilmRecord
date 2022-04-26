@@ -23,7 +23,7 @@ final class ToWatchPresenter: NSObject {
     private weak var viewController: ToWatchProtocol?
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    private var movies: [Watch] = []        // 보고 싶은 영화들
+    var movies: [Watch] = []        // 보고 싶은 영화들
     private var watch: Watch = Watch.EMPTY  // 영화 검색 화면에서 선택한 영화
 
     init(

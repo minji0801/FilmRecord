@@ -20,4 +20,6 @@ struct Watch: Codable {
 
 extension Watch {
     static let EMPTY = Watch(movie: Movie.EMPTY, watched: false)
+
+    static let TEST = Watch(movie: Movie.TEST, watched: false)
 }
