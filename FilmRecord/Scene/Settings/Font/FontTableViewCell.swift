@@ -19,7 +19,8 @@ final class FontTableViewCell: UITableViewCell {
         "국립공원 꼬미",
         "봉숭아틴트",
         "고양체",
-        "넥슨 배찌체"
+        "넥슨 배찌체",
+        "국립공원 반달이"
     ]
 
     func update(_ row: Int) {
