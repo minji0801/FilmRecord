@@ -12,19 +12,25 @@ final class MenuPresenterTests: XCTestCase {
     var sut: MenuPresenter!
 
     var viewController: MockMenuViewController!
-    let tableView: UITableView = UITableView()
-    let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+
+    var tableView: UITableView!
+    var indexPath: IndexPath!
 
     override func setUp() {
         super.setUp()
 
         viewController = MockMenuViewController()
 
+        tableView = UITableView()
+        indexPath = IndexPath(row: 0, section: 0)
+
         sut = MenuPresenter(viewController: viewController)
     }
 
     override func tearDown() {
         sut = nil
+        indexPath = nil
+        tableView = nil
         viewController = nil
 
         super.tearDown()

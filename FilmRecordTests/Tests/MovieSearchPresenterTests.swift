@@ -14,12 +14,12 @@ final class MovieSearchPresenterTests: XCTestCase {
     var viewController: MockMovieSearchViewController!
     var movieSearchManager: MockMovieSearchManager!
     var userDefaultsManager: MockUserDefaultsManager!
+
+    var movies: [Movie]!
     var fromHome: Bool!
 
-    let movies: [Movie] = [Movie.TEST]
-
     var collectionView: UICollectionView!
-    let indexPath = IndexPath(row: 0, section: 0)
+    var indexPath: IndexPath!
 
     override func setUp() {
         super.setUp()
@@ -27,16 +27,15 @@ final class MovieSearchPresenterTests: XCTestCase {
         viewController = MockMovieSearchViewController()
         movieSearchManager = MockMovieSearchManager()
         userDefaultsManager = MockUserDefaultsManager()
+
+        movies = [Movie.TEST]
         fromHome = true
 
         collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewFlowLayout()
         )
-        collectionView.register(
-            MovieSearchCollectionViewCell.self,
-            forCellWithReuseIdentifier: MovieSearchCollectionViewCell.identifier
-        )
+        indexPath = IndexPath(row: 0, section: 0)
 
         sut = MovieSearchPresenter(
             viewController: viewController,
@@ -48,7 +47,10 @@ final class MovieSearchPresenterTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        indexPath = nil
+        collectionView = nil
         fromHome = nil
+        movies = nil
         userDefaultsManager = nil
         movieSearchManager = nil
         viewController = nil
@@ -117,24 +119,24 @@ final class MovieSearchPresenterTests: XCTestCase {
     func test_collectionView의_numberOfItemsInSection가_요청되면() {
         sut.movies = movies
         let numberOfCells = sut.collectionView(collectionView, numberOfItemsInSection: 0)
-        XCTAssertEqual(numberOfCells, sut.movies.count)
+        XCTAssertNotNil(numberOfCells)
     }
 
     func test_collectionView의_cellForItemAt이_요청되면() {
         sut.movies = movies
+        collectionView.register(
+            MovieSearchCollectionViewCell.self,
+            forCellWithReuseIdentifier: MovieSearchCollectionViewCell.identifier
+        )
+        let cell = sut.collectionView(collectionView, cellForItemAt: indexPath)
 
-        let cell = sut.collectionView(collectionView, cellForItemAt: indexPath) as? MovieSearchCollectionViewCell
-        XCTAssertEqual((cell?.titleLabel.text)! as String, sut.movies.first?.title)
+        XCTAssertNotNil(cell)
     }
 
     func test_collectionView의_sizeForItemAt이_요청되면() {
         let size = sut.collectionView(collectionView, layout: UICollectionViewLayout(), sizeForItemAt: indexPath)
 
-        let inset: CGFloat = 16.0
-        let spacing: CGFloat = 10.0
-        let width: CGFloat = (collectionView.frame.width - (inset * 2) - (spacing * 2)) / 3
-
-        XCTAssertEqual(size, CGSize(width: width, height: width * 2))
+        XCTAssertNotNil(size)
     }
 
     func test_collectionView의_insetForSectionAt이_요청되면() {
@@ -144,9 +146,7 @@ final class MovieSearchPresenterTests: XCTestCase {
             insetForSectionAt: indexPath.section
         )
 
-        let inset: CGFloat = 16.0
-
-        XCTAssertEqual(edgeInsets, UIEdgeInsets(top: 0.0, left: inset, bottom: 0.0, right: inset))
+        XCTAssertNotNil(edgeInsets)
     }
 
     func test_scrollViewWillBeginDragging이_요청되면() {

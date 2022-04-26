@@ -14,10 +14,10 @@ class HomePresenterTests: XCTestCase {
     var viewController: MockHomeViewController!
     var userDefaultsManager: MockUserDefaultsManager!
 
-    var reviews: [Review] = [Review.TEST]
+    var reviews: [Review]!
 
     var collectionView: UICollectionView!
-    let indexPath = IndexPath(row: 0, section: 0)
+    var indexPath: IndexPath!
 
     override func setUp() {
         super.setUp()
@@ -25,14 +25,13 @@ class HomePresenterTests: XCTestCase {
         viewController = MockHomeViewController()
         userDefaultsManager = MockUserDefaultsManager()
 
+        reviews = [Review.TEST]
+
         collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewFlowLayout()
         )
-        collectionView.register(
-            HomeCollectionViewCell.self,
-            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier
-        )
+        indexPath = IndexPath(row: 0, section: 0)
 
         sut = HomePresenter(
             viewController: viewController,
@@ -42,6 +41,9 @@ class HomePresenterTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        indexPath = nil
+        collectionView = nil
+        reviews = nil
         userDefaultsManager = nil
         viewController = nil
 

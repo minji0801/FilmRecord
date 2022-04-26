@@ -13,16 +13,22 @@ final class ReviewWritePresenterTests: XCTestCase {
 
     var viewController: MockReviewWriteViewController!
     var userDefaultsManager: MockUserDefaultsManager!
-    let movie: Movie = Movie.TEST
-    let rating: Double = 3.0
-    let review: Review = Review.TEST
-    var isEditing: Bool = false
+
+    var movie: Movie!
+    var rating: Double!
+    var review: Review!
+    var isEditing: Bool!
 
     override func setUp() {
         super.setUp()
 
         viewController = MockReviewWriteViewController()
         userDefaultsManager = MockUserDefaultsManager()
+
+        movie = Movie.TEST
+        rating = 3.0
+        review = Review.TEST
+        isEditing = false
 
         sut = ReviewWritePresenter(
             viewController: viewController,
@@ -32,6 +38,18 @@ final class ReviewWritePresenterTests: XCTestCase {
             review: review,
             isEditing: isEditing
         )
+    }
+
+    override func tearDown() {
+        sut = nil
+        isEditing = nil
+        review = nil
+        rating = nil
+        movie = nil
+        userDefaultsManager = nil
+        viewController = nil
+
+        super.tearDown()
     }
 
     func test_viewDidLoad가_요청되면() {

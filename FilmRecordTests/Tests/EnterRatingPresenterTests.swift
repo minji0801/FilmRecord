@@ -12,14 +12,19 @@ final class EnterRatingPresenterTests: XCTestCase {
     var sut: EnterRatingPresenter!
 
     var viewController: MockEnterRatingViewController!
-    let movie: Movie = Movie.TEST
-    let review: Review = Review.TEST
-    let isEditing: Bool = false
+
+    var movie: Movie!
+    var review: Review!
+    var isEditing: Bool!
 
     override func setUp() {
         super.setUp()
 
         viewController = MockEnterRatingViewController()
+
+        movie = Movie.TEST
+        review = Review.TEST
+        isEditing = false
 
         sut = EnterRatingPresenter(
             viewController: viewController,
@@ -31,6 +36,9 @@ final class EnterRatingPresenterTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        isEditing = nil
+        review = nil
+        movie = nil
         viewController = nil
 
         super.tearDown()
