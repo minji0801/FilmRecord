@@ -30,6 +30,7 @@
 		A5419BEC28180DA30044EEB4 /* FavoritePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5419BEB28180DA30044EEB4 /* FavoritePresenterTests.swift */; };
 		A5419BEE281812550044EEB4 /* MockFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5419BED281812550044EEB4 /* MockFavoriteViewController.swift */; };
 		A5419BF02818128B0044EEB4 /* ToWatchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5419BEF2818128B0044EEB4 /* ToWatchPresenterTests.swift */; };
+		A5628E2028181C5B00A1D3D2 /* 고양체.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5628E1F28181C5B00A1D3D2 /* 고양체.otf */; };
 		A575A9E62816AA9100ACD091 /* EnterRatingPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */; };
 		A575A9E82816ACE100ACD091 /* MockEnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */; };
 		A575A9EA2816AD5D00ACD091 /* ReviewWritePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E92816AD5D00ACD091 /* ReviewWritePresenterTests.swift */; };
@@ -154,6 +155,7 @@
 		A5419BEB28180DA30044EEB4 /* FavoritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenterTests.swift; sourceTree = "<group>"; };
 		A5419BED281812550044EEB4 /* MockFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFavoriteViewController.swift; sourceTree = "<group>"; };
 		A5419BEF2818128B0044EEB4 /* ToWatchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToWatchPresenterTests.swift; sourceTree = "<group>"; };
+		A5628E1F28181C5B00A1D3D2 /* 고양체.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "고양체.otf"; sourceTree = "<group>"; };
 		A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenterTests.swift; sourceTree = "<group>"; };
 		A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEnterRatingViewController.swift; sourceTree = "<group>"; };
 		A575A9E92816AD5D00ACD091 /* ReviewWritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenterTests.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 		A5C6678027F3ED5B0090B617 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A5628E1F28181C5B00A1D3D2 /* 고양체.otf */,
 				A575A9FD2816D28400ACD091 /* 봉숭아틴트.ttf */,
 				A575A9FB2816D0E900ACD091 /* 국립공원 꼬미.otf */,
 				A575A9F12816CBD700ACD091 /* 칠백삼체 유서연.otf */,
@@ -787,6 +790,7 @@
 				A579423627EDF3CC000F233A /* LaunchScreen.storyboard in Resources */,
 				A575A9FE2816D28400ACD091 /* 봉숭아틴트.ttf in Resources */,
 				A5C6678827F3EDA60090B617 /* 이서연체.otf in Resources */,
+				A5628E2028181C5B00A1D3D2 /* 고양체.otf in Resources */,
 				A575A9F22816CBD700ACD091 /* 칠백삼체 유서연.otf in Resources */,
 				A579423327EDF3CC000F233A /* Assets.xcassets in Resources */,
 				A5C6678727F3EDA60090B617 /* 교보손글씨.otf in Resources */,

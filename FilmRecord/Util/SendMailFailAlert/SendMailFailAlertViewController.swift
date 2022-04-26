@@ -102,7 +102,7 @@ extension SendMailFailAlertViewController: SendMailFailProtocol {
     /// 폰트 적용
     func applyFont() {
         let font = FontManager.getFont()
-        
+
         messageLabel.font = font.largeFont
         dismissButton.titleLabel?.font = font.largeFont
         moveButton.titleLabel?.font = font.largeFont

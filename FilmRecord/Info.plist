@@ -6,6 +6,7 @@
 	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>고양체.otf</string>
 		<string>봉숭아틴트.ttf</string>
 		<string>국립공원 꼬미.otf</string>
 		<string>칠백삼체 유서연.otf</string>
