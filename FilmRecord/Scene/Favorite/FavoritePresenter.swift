@@ -24,7 +24,7 @@ final class FavoritePresenter: NSObject {
     private weak var viewController: FavoriteProtocol?
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    private var reviews: [Review] = []
+    var reviews: [Review] = []
 
     init(
         viewController: FavoriteProtocol?,

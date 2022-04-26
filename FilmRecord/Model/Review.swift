@@ -58,6 +58,6 @@ extension Review {
         with: "",
         review: "",
         rating: 0.0,
-        favorite: false
+        favorite: true
     )
 }
