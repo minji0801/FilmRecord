@@ -94,7 +94,7 @@ final class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        presenter.viewWillApper()
+        presenter.viewWillAppear()
     }
 }
 

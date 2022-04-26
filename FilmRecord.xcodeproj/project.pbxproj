@@ -77,6 +77,8 @@
 		A594B0F527EF5833001344A2 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = A594B0F427EF5833001344A2 /* Cosmos */; };
 		A5A3C8CB2817993C00376C46 /* MenuPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3C8CA2817993C00376C46 /* MenuPresenterTests.swift */; };
 		A5A3C8CD2817A2DA00376C46 /* MockMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3C8CC2817A2DA00376C46 /* MockMenuViewController.swift */; };
+		A5A3C8CF2817A4CD00376C46 /* CalendarPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3C8CE2817A4CD00376C46 /* CalendarPresenterTests.swift */; };
+		A5A3C8D12817B35900376C46 /* MockCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3C8D02817B35900376C46 /* MockCalendarViewController.swift */; };
 		A5AFFB0727F7E06900FA078D /* ToWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AFFB0627F7E06900FA078D /* ToWatchViewController.swift */; };
 		A5AFFB0927F7E09200FA078D /* ToWatchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AFFB0827F7E09200FA078D /* ToWatchPresenter.swift */; };
 		A5AFFB0C27F7E45E00FA078D /* ToWatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AFFB0B27F7E45E00FA078D /* ToWatchTableViewCell.swift */; };
@@ -195,6 +197,8 @@
 		A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeRowVerticalStackView.swift; sourceTree = "<group>"; };
 		A5A3C8CA2817993C00376C46 /* MenuPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenterTests.swift; sourceTree = "<group>"; };
 		A5A3C8CC2817A2DA00376C46 /* MockMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenuViewController.swift; sourceTree = "<group>"; };
+		A5A3C8CE2817A4CD00376C46 /* CalendarPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenterTests.swift; sourceTree = "<group>"; };
+		A5A3C8D02817B35900376C46 /* MockCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalendarViewController.swift; sourceTree = "<group>"; };
 		A5AFFB0627F7E06900FA078D /* ToWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToWatchViewController.swift; sourceTree = "<group>"; };
 		A5AFFB0827F7E09200FA078D /* ToWatchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToWatchPresenter.swift; sourceTree = "<group>"; };
 		A5AFFB0B27F7E45E00FA078D /* ToWatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToWatchTableViewCell.swift; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 		A519F8FA28142E9C00D73BE4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				A5A3C8CE2817A4CD00376C46 /* CalendarPresenterTests.swift */,
 				A583514D2815345100B3082B /* DetailPresenterTests.swift */,
 				A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */,
 				A579424027EDF3CC000F233A /* HomePresenterTests.swift */,
@@ -334,6 +339,7 @@
 		A519F8FB28142EA100D73BE4 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				A5A3C8D02817B35900376C46 /* MockCalendarViewController.swift */,
 				A5835151281539A400B3082B /* MockDetailViewController.swift */,
 				A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */,
 				A519F8FC28142EBE00D73BE4 /* MockHomeViewController.swift */,
@@ -959,12 +965,14 @@
 				A5835156281568F900B3082B /* MockMovieSearchManager.swift in Sources */,
 				A519F8FD28142EBE00D73BE4 /* MockHomeViewController.swift in Sources */,
 				A575A9EC2816B3E900ACD091 /* MockReviewWriteViewController.swift in Sources */,
+				A5A3C8CF2817A4CD00376C46 /* CalendarPresenterTests.swift in Sources */,
 				A575A9E82816ACE100ACD091 /* MockEnterRatingViewController.swift in Sources */,
 				A519F8FF28142EF100D73BE4 /* MockUserDefaultsManager.swift in Sources */,
 				A583514E2815345100B3082B /* DetailPresenterTests.swift in Sources */,
 				A5835152281539A400B3082B /* MockDetailViewController.swift in Sources */,
 				A5A3C8CB2817993C00376C46 /* MenuPresenterTests.swift in Sources */,
 				A5835154281568C500B3082B /* MockMovieSearchViewController.swift in Sources */,
+				A5A3C8D12817B35900376C46 /* MockCalendarViewController.swift in Sources */,
 				A5A3C8CD2817A2DA00376C46 /* MockMenuViewController.swift in Sources */,
 				A575A9E62816AA9100ACD091 /* EnterRatingPresenterTests.swift in Sources */,
 				A575A9EA2816AD5D00ACD091 /* ReviewWritePresenterTests.swift in Sources */,

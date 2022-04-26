@@ -25,8 +25,8 @@ final class CalendarPresenter: NSObject {
     private weak var viewController: CalendarProtocol?
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    private var events: [Date] = []
-    private var reviews: [Review] = []
+    var events: [Date] = []
+    var reviews: [Review] = []
 
     private var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -52,7 +52,7 @@ final class CalendarPresenter: NSObject {
         viewController?.moveToToday()
     }
 
-    func viewWillApper() {
+    func viewWillAppear() {
         events = setupEvents()
         getReview(date: Date())
         viewController?.applyFont()
@@ -93,11 +93,8 @@ extension CalendarPresenter: FSCalendarDataSource, FSCalendarDelegate {
 
     /// 달력 이벤트 표시
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if events.contains(date) {
-            return 1
-        } else {
-            return 0
-        }
+        guard events.contains(date) else { return 0 }
+        return 1
     }
 }
 
