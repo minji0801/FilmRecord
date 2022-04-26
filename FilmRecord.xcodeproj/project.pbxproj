@@ -31,6 +31,7 @@
 		A5419BEE281812550044EEB4 /* MockFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5419BED281812550044EEB4 /* MockFavoriteViewController.swift */; };
 		A5419BF02818128B0044EEB4 /* ToWatchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5419BEF2818128B0044EEB4 /* ToWatchPresenterTests.swift */; };
 		A5628E2028181C5B00A1D3D2 /* 고양체.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5628E1F28181C5B00A1D3D2 /* 고양체.otf */; };
+		A5628E2228181D8C00A1D3D2 /* 넥슨배찌체.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5628E2128181D8B00A1D3D2 /* 넥슨배찌체.otf */; };
 		A575A9E62816AA9100ACD091 /* EnterRatingPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */; };
 		A575A9E82816ACE100ACD091 /* MockEnterRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */; };
 		A575A9EA2816AD5D00ACD091 /* ReviewWritePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A9E92816AD5D00ACD091 /* ReviewWritePresenterTests.swift */; };
@@ -156,6 +157,7 @@
 		A5419BED281812550044EEB4 /* MockFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFavoriteViewController.swift; sourceTree = "<group>"; };
 		A5419BEF2818128B0044EEB4 /* ToWatchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToWatchPresenterTests.swift; sourceTree = "<group>"; };
 		A5628E1F28181C5B00A1D3D2 /* 고양체.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "고양체.otf"; sourceTree = "<group>"; };
+		A5628E2128181D8B00A1D3D2 /* 넥슨배찌체.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "넥슨배찌체.otf"; sourceTree = "<group>"; };
 		A575A9E52816AA9100ACD091 /* EnterRatingPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenterTests.swift; sourceTree = "<group>"; };
 		A575A9E72816ACE100ACD091 /* MockEnterRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEnterRatingViewController.swift; sourceTree = "<group>"; };
 		A575A9E92816AD5D00ACD091 /* ReviewWritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenterTests.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 		A5C6678027F3ED5B0090B617 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A5628E2128181D8B00A1D3D2 /* 넥슨배찌체.otf */,
 				A5628E1F28181C5B00A1D3D2 /* 고양체.otf */,
 				A575A9FD2816D28400ACD091 /* 봉숭아틴트.ttf */,
 				A575A9FB2816D0E900ACD091 /* 국립공원 꼬미.otf */,
@@ -786,6 +789,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A575A9F02816CA3300ACD091 /* 교보손글씨 2020 박도연.otf in Resources */,
+				A5628E2228181D8C00A1D3D2 /* 넥슨배찌체.otf in Resources */,
 				A575A9FC2816D0E900ACD091 /* 국립공원 꼬미.otf in Resources */,
 				A579423627EDF3CC000F233A /* LaunchScreen.storyboard in Resources */,
 				A575A9FE2816D28400ACD091 /* 봉숭아틴트.ttf in Resources */,
