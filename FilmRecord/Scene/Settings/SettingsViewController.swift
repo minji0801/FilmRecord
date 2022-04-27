@@ -113,7 +113,6 @@ extension SettingsViewController: SettingsProtocol {
         present(menuNavigationController, animated: true)
     }
 
-    // MARK: - 디스플레이 (다크 모드, 글꼴)
     /// 다크 모드 화면 push
     func pushToDarkModeViewController() {
         let darkModeViewController = DarkModeViewController()
@@ -126,7 +125,13 @@ extension SettingsViewController: SettingsProtocol {
         navigationController?.pushViewController(fontViewController, animated: true)
     }
 
-    // MARK: - 지원 (별점 남기기, 의견 보내기, 이용 방법, 버전 정보)
+    /// 암호 잠금 화면 push
+    func pushToLockViewController() {
+        let lockViewController = LockViewController()
+        navigationController?.pushViewController(lockViewController, animated: true)
+    }
+
+    // TODO: Touch/Face ID
 
     /// 별점 남기기: 앱스토어 리뷰 화면으로 이동
     func goToAppRating() {
@@ -162,8 +167,6 @@ extension SettingsViewController: SettingsProtocol {
     }
 
     // TODO: 이용 방법
-
-    // MARK: - © Minji Kim (Scoit, h:ours, 모닥이)
 
     /// 앱스토어로 이동
     func goToAppStore(_ appName: String) {

@@ -106,6 +106,8 @@
 		A5E9518A280AE92000748DCB /* SendMailFailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */; };
 		A5EBAA2D28104BBE00428454 /* DatePickerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBAA2C28104BBE00428454 /* DatePickerAlertViewController.swift */; };
 		A5EBAA2F28104BE600428454 /* DatePickerAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBAA2E28104BE600428454 /* DatePickerAlertPresenter.swift */; };
+		A5F3D2262819242D003F34C0 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3D2252819242D003F34C0 /* LockViewController.swift */; };
+		A5F3D22828192435003F34C0 /* LockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3D22728192435003F34C0 /* LockPresenter.swift */; };
 		A5FACB4527F0383700DAB3AA /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */; };
 		A5FACB4727F0384200DAB3AA /* ReviewWritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */; };
 		A5FACB4A27F03AA900DAB3AA /* TextFieldHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */; };
@@ -230,6 +232,8 @@
 		A5E95189280AE92000748DCB /* SendMailFailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailFailPresenter.swift; sourceTree = "<group>"; };
 		A5EBAA2C28104BBE00428454 /* DatePickerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertViewController.swift; sourceTree = "<group>"; };
 		A5EBAA2E28104BE600428454 /* DatePickerAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertPresenter.swift; sourceTree = "<group>"; };
+		A5F3D2252819242D003F34C0 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
+		A5F3D22728192435003F34C0 /* LockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockPresenter.swift; sourceTree = "<group>"; };
 		A5FACB4427F0383700DAB3AA /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		A5FACB4627F0384200DAB3AA /* ReviewWritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenter.swift; sourceTree = "<group>"; };
 		A5FACB4927F03AA900DAB3AA /* TextFieldHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHorizontalStackView.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 				A515753A2807F26D00D94EE4 /* SettingsTableViewCell.swift */,
 				A586E3DF280D7DAF001474BF /* DarkMode */,
 				A519F900281430E300D73BE4 /* Font */,
+				A5F3D2292819243A003F34C0 /* Lock */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -623,6 +628,15 @@
 			path = DatePickerAlert;
 			sourceTree = "<group>";
 		};
+		A5F3D2292819243A003F34C0 /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				A5F3D2252819242D003F34C0 /* LockViewController.swift */,
+				A5F3D22728192435003F34C0 /* LockPresenter.swift */,
+			);
+			path = Lock;
+			sourceTree = "<group>";
+		};
 		A5FACB4327F0381D00DAB3AA /* StackView */ = {
 			isa = PBXGroup;
 			children = (
@@ -916,9 +930,11 @@
 				A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */,
 				A579426A27EE0817000F233A /* SearchMovieRequestModel.swift in Sources */,
 				A586E3DE280D7DA9001474BF /* DarkModeViewController.swift in Sources */,
+				A5F3D2262819242D003F34C0 /* LockViewController.swift in Sources */,
 				A513E84327F9C9580084BD86 /* FavoritePresenter.swift in Sources */,
 				A5AFFB0727F7E06900FA078D /* ToWatchViewController.swift in Sources */,
 				A50E507F27F2BAA90079AFEB /* DetailViewController.swift in Sources */,
+				A5F3D22828192435003F34C0 /* LockPresenter.swift in Sources */,
 				A5C2A87927F69A9D00225640 /* MenuViewController.swift in Sources */,
 				A579422E27EDF3CC000F233A /* HomeViewController.swift in Sources */,
 				A579422A27EDF3CC000F233A /* AppDelegate.swift in Sources */,

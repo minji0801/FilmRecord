@@ -19,7 +19,7 @@ protocol SettingsProtocol: AnyObject {
 
     func pushToDarkModeViewController()
     func pushToFontViewController()
-
+    func pushToLockViewController()
     func goToAppRating()
     func sendMail()
     func goToAppStore(_ appName: String)
@@ -91,7 +91,7 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
         case [0, 1]:
             viewController?.pushToFontViewController()
         case [0, 2]:
-            print("암호 잠금")
+            viewController?.pushToLockViewController()
         case [0, 3]:
             print("터치/페이스 아이디")
 //        case [0, 4]:
