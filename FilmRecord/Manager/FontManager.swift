@@ -13,6 +13,7 @@ enum FontSize: CGFloat {
     case medium = 14
     case large = 16
     case extraLarge = 18
+    case twoExtraLarge = 20
 }
 
 enum Font: Int {
@@ -38,7 +39,7 @@ enum Font: Int {
         bandali
     ]
 
-    /// 아이폰 작은 글씨(size: 12)
+    /// 아이폰 글씨(size: 12)
     var smallFont: UIFont {
         switch self {
         case .kyobo:
@@ -62,7 +63,7 @@ enum Font: Int {
         }
     }
 
-    /// 아이폰 중간 글씨(size: 14)
+    /// 아이폰 글씨(size: 14)
     var mediumFont: UIFont {
         switch self {
         case .kyobo:
@@ -86,7 +87,7 @@ enum Font: Int {
         }
     }
 
-    /// 아이폰 큰 글씨(size: 16)
+    /// 아이폰 글씨(size: 16)
     var largeFont: UIFont {
         switch self {
         case .kyobo:
@@ -110,7 +111,7 @@ enum Font: Int {
         }
     }
 
-    /// 아이폰 더 큰 글씨(size: 18)
+    /// 아이폰 글씨(size: 18)
     var extraLargeFont: UIFont {
         switch self {
         case .kyobo:
@@ -131,6 +132,30 @@ enum Font: Int {
             return UIFont(name: "BazziOTFRegular", size: FontSize.extraLarge.rawValue)!
         case .bandali:
             return UIFont(name: "KNPSBandali-Regular", size: FontSize.extraLarge.rawValue)!
+        }
+    }
+
+    /// 아이폰 글씨(size: 20)
+    var twoExtraLargeFont: UIFont {
+        switch self {
+        case .kyobo:
+            return UIFont(name: "KyoboHandwriting2019", size: FontSize.twoExtraLarge.rawValue)!
+        case .kyobo2020:
+            return UIFont(name: "KyoboHandwriting2020", size: FontSize.twoExtraLarge.rawValue)!
+        case .leeseoyun:
+            return UIFont(name: "LeeSeoyun", size: FontSize.twoExtraLarge.rawValue)!
+        case .no703:
+            return UIFont(name: "establishRoomNo703OTF", size: FontSize.twoExtraLarge.rawValue)!
+        case .komi:
+            return UIFont(name: "KNPSKkomi-Regular", size: FontSize.twoExtraLarge.rawValue)!
+        case .balsamtint:
+            return UIFont(name: "777Balsamtint", size: FontSize.twoExtraLarge.rawValue)!
+        case .goyang:
+            return UIFont(name: "Goyang", size: FontSize.twoExtraLarge.rawValue)!
+        case .bazzi:
+            return UIFont(name: "BazziOTFRegular", size: FontSize.twoExtraLarge.rawValue)!
+        case .bandali:
+            return UIFont(name: "KNPSBandali-Regular", size: FontSize.twoExtraLarge.rawValue)!
         }
     }
 }

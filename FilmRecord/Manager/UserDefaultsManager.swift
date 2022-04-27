@@ -24,6 +24,9 @@ protocol UserDefaultsManagerProtocol {
     func getMovieToWatch() -> [Watch]            // 보고 싶은 영화 가져오기
     func setMovieToWatch(_ newValue: Watch)      // 보고 싶은 영화 저장하기
     func overwriteToWatch(_ value: [Watch])      // 보고 싶은 영화 덮어쓰기
+
+    func getPassword() -> String                // 화면 잠금 암호 가져오기
+    func setPassword(_ newValue: String)        // 화면 잠금 암호 저장하기
 }
 
 struct UserDefaultsManager: UserDefaultsManagerProtocol {
@@ -33,6 +36,7 @@ struct UserDefaultsManager: UserDefaultsManagerProtocol {
         case reviewid   // 리뷰 아이디
         case favorite   // 좋아하는 영화
         case towatch    // 보고 싶은 영화
+        case password   // 화면 잠금 암호
     }
 
     /// UserDefaults에서 영화 리뷰 가져오기
@@ -120,5 +124,16 @@ struct UserDefaultsManager: UserDefaultsManagerProtocol {
     /// UserDefaults에 보고 싶은 영화 덮어쓰기
     func overwriteToWatch(_ value: [Watch]) {
         UserDefaults.standard.setValue(try? PropertyListEncoder().encode(value), forKey: Key.towatch.rawValue)
+    }
+
+    /// UserDefaults에서 화면 잠금 암호 가져오기
+    func getPassword() -> String {
+        guard let password = UserDefaults.standard.string(forKey: Key.password.rawValue) else { return "" }
+        return password
+    }
+
+    /// UserDefaults에 화면 잠금 암호 저장하기
+    func setPassword(_ newValue: String) {
+        UserDefaults.standard.set(newValue, forKey: Key.password.rawValue)
     }
 }

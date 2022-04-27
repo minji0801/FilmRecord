@@ -89,6 +89,8 @@
 		A5AFFB0927F7E09200FA078D /* ToWatchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AFFB0827F7E09200FA078D /* ToWatchPresenter.swift */; };
 		A5AFFB0C27F7E45E00FA078D /* ToWatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AFFB0B27F7E45E00FA078D /* ToWatchTableViewCell.swift */; };
 		A5AFFB0E27F7E76600FA078D /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AFFB0D27F7E76600FA078D /* Watch.swift */; };
+		A5BE9EA028199F460082EC6C /* InputPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE9E9F28199F460082EC6C /* InputPasswordViewController.swift */; };
+		A5BE9EA228199F550082EC6C /* InputPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE9EA128199F550082EC6C /* InputPasswordPresenter.swift */; };
 		A5C2A87527F697D500225640 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = A5C2A87427F697D500225640 /* SideMenu */; };
 		A5C2A87727F6984D00225640 /* MenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87627F6984D00225640 /* MenuNavigationController.swift */; };
 		A5C2A87927F69A9D00225640 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2A87827F69A9D00225640 /* MenuViewController.swift */; };
@@ -217,6 +219,8 @@
 		A5AFFB0827F7E09200FA078D /* ToWatchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToWatchPresenter.swift; sourceTree = "<group>"; };
 		A5AFFB0B27F7E45E00FA078D /* ToWatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToWatchTableViewCell.swift; sourceTree = "<group>"; };
 		A5AFFB0D27F7E76600FA078D /* Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch.swift; sourceTree = "<group>"; };
+		A5BE9E9F28199F460082EC6C /* InputPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPasswordViewController.swift; sourceTree = "<group>"; };
+		A5BE9EA128199F550082EC6C /* InputPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPasswordPresenter.swift; sourceTree = "<group>"; };
 		A5C2A87627F6984D00225640 /* MenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationController.swift; sourceTree = "<group>"; };
 		A5C2A87827F69A9D00225640 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A5C2A87B27F6BE8300225640 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -563,6 +567,15 @@
 			path = ToWatch;
 			sourceTree = "<group>";
 		};
+		A5BE9EA328199F5C0082EC6C /* InputPassword */ = {
+			isa = PBXGroup;
+			children = (
+				A5BE9E9F28199F460082EC6C /* InputPasswordViewController.swift */,
+				A5BE9EA128199F550082EC6C /* InputPasswordPresenter.swift */,
+			);
+			path = InputPassword;
+			sourceTree = "<group>";
+		};
 		A5C2A87A27F6BE6A00225640 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +646,7 @@
 			children = (
 				A5F3D2252819242D003F34C0 /* LockViewController.swift */,
 				A5F3D22728192435003F34C0 /* LockPresenter.swift */,
+				A5BE9EA328199F5C0082EC6C /* InputPassword */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -953,6 +967,7 @@
 				A5828A6727F5547D00DC89D3 /* PopUpPresenter.swift in Sources */,
 				A5E95188280AE02600748DCB /* SendMailFailAlertViewController.swift in Sources */,
 				A511197927F15B5A0061BBAD /* Review.swift in Sources */,
+				A5BE9EA028199F460082EC6C /* InputPasswordViewController.swift in Sources */,
 				A51575382807EF3C00D94EE4 /* SettingsPresenter.swift in Sources */,
 				A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */,
 				A519F8F828141CD400D73BE4 /* NaverAPIKey.swift in Sources */,
@@ -969,6 +984,7 @@
 				A513E84127F9C94F0084BD86 /* FavoriteViewController.swift in Sources */,
 				A579427127EE08C8000F233A /* String+.swift in Sources */,
 				A579425B27EDF6FB000F233A /* HomePresenter.swift in Sources */,
+				A5BE9EA228199F550082EC6C /* InputPasswordPresenter.swift in Sources */,
 				A579426C27EE0822000F233A /* SearchMovieResponseModel.swift in Sources */,
 				A5EBAA2F28104BE600428454 /* DatePickerAlertPresenter.swift in Sources */,
 				A579425E27EDFB27000F233A /* MovieSearchViewController.swift in Sources */,

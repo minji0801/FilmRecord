@@ -10,7 +10,7 @@ import UIKit
 protocol LockProtocol: AnyObject {
     func setupAppearance()
     func setupNavigationBar()
-    func setupView()
+    func setupView(_ password: String)
 
     func applyFont()
     func popViewController()
@@ -18,19 +18,35 @@ protocol LockProtocol: AnyObject {
 
 final class LockPresenter: NSObject {
     private weak var viewController: LockProtocol?
+    private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    init(viewController: LockProtocol?) {
+    var password: String = ""
+
+    init(
+        viewController: LockProtocol?,
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()
+    ) {
         self.viewController = viewController
+        self.userDefaultsManager = userDefaultsManager
     }
 
     func viewDidLoad() {
+        password = userDefaultsManager.getPassword()
         viewController?.setupAppearance()
         viewController?.setupNavigationBar()
-        viewController?.setupView()
+        viewController?.setupView(password)
         viewController?.applyFont()
     }
 
     func didTappedLeftBarButton() {
         viewController?.popViewController()
+    }
+
+    func didTappedLockSwitch(isOn: Bool) {
+        if isOn {
+            // 암호 입력 화면 보여주기
+        } else {
+            // UserDefaults에 저장한 암호 지우기
+        }
     }
 }
