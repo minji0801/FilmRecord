@@ -37,7 +37,7 @@ final class LockViewController: UIViewController {
     /// 화면 잠금 라벨
     private lazy var lockLabel: UILabel = {
         let label = UILabel()
-        label.text = "암호 잠금"
+        label.text = "화면 잠금"
         label.textColor = .label
 
         return label
@@ -73,6 +73,15 @@ extension LockViewController: LockProtocol {
     /// 화면 Appearance 설정
     func setupAppearance() {
         DarkModeManager.applyAppearance(mode: DarkModeManager.getAppearance(), viewController: self)
+    }
+
+    func setupNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(cancelNotification(_:)),
+            name: NSNotification.Name("cancelInputPassword"),
+            object: nil
+        )
     }
 
     /// 네비게이션 바 구성
@@ -131,6 +140,18 @@ extension LockViewController: LockProtocol {
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
+
+    /// 암호 입력 화면 보여주기
+    func showInputPasswordViewController() {
+        let inputPasswordviewController = InputPasswordViewController()
+        inputPasswordviewController.modalPresentationStyle = .fullScreen
+        present(inputPasswordviewController, animated: true)
+    }
+
+    /// 화면 잠금 스위치 끄기
+    func switchOff() {
+        lockSwitch.setOn(false, animated: true)
+    }
 }
 
 // MARK: - @objc Function
@@ -143,5 +164,10 @@ extension LockViewController {
     /// 화면 잠금 스위치 클릭
     @objc func didTappedLockSwitch() {
         presenter.didTappedLockSwitch(isOn: lockSwitch.isOn)
+    }
+
+    /// 암호 입력 창으로부터 취소 노티 받은 후 -> 스위치 off
+    @objc func cancelNotification(_ notification: Notification) {
+        presenter.cancelNotification()
     }
 }

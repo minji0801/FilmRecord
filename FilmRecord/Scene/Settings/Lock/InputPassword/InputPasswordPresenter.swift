@@ -10,7 +10,9 @@ import Foundation
 protocol InputPasswordProtocol: AnyObject {
     func setupAppearance()
     func setupView()
+
     func applyFont()
+    func dismiss()
 }
 
 final class InputPasswordPresenter: NSObject {
@@ -24,5 +26,14 @@ final class InputPasswordPresenter: NSObject {
         viewController?.setupAppearance()
         viewController?.setupView()
         viewController?.applyFont()
+    }
+
+    func didTappedButton(_ tag: Int) {
+        switch tag {
+        case -1:
+            viewController?.dismiss()
+        default:
+            print(tag)
+        }
     }
 }

@@ -12,8 +12,8 @@ enum FontSize: CGFloat {
     case small = 12
     case medium = 14
     case large = 16
-    case extraLarge = 18
-    case twoExtraLarge = 20
+    case extraLarge = 20
+    case twoExtraLarge = 25
 }
 
 enum Font: Int {

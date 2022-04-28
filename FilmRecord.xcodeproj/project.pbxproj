@@ -81,6 +81,7 @@
 		A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */; };
 		A594B0F227EF4EAD001344A2 /* ThreeRowVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */; };
 		A594B0F527EF5833001344A2 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = A594B0F427EF5833001344A2 /* Cosmos */; };
+		A595D7AC281ADCEE00CBED12 /* threeButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595D7AB281ADCEE00CBED12 /* threeButtonsStackView.swift */; };
 		A5A3C8CB2817993C00376C46 /* MenuPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3C8CA2817993C00376C46 /* MenuPresenterTests.swift */; };
 		A5A3C8CD2817A2DA00376C46 /* MockMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3C8CC2817A2DA00376C46 /* MockMenuViewController.swift */; };
 		A5A3C8CF2817A4CD00376C46 /* CalendarPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3C8CE2817A4CD00376C46 /* CalendarPresenterTests.swift */; };
@@ -211,6 +212,7 @@
 		A594B0EA27EF3825001344A2 /* EnterRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRatingPresenter.swift; sourceTree = "<group>"; };
 		A594B0EF27EF4BA8001344A2 /* LabelHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHorizontalStackView.swift; sourceTree = "<group>"; };
 		A594B0F127EF4EAD001344A2 /* ThreeRowVerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeRowVerticalStackView.swift; sourceTree = "<group>"; };
+		A595D7AB281ADCEE00CBED12 /* threeButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = threeButtonsStackView.swift; sourceTree = "<group>"; };
 		A5A3C8CA2817993C00376C46 /* MenuPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenterTests.swift; sourceTree = "<group>"; };
 		A5A3C8CC2817A2DA00376C46 /* MockMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenuViewController.swift; sourceTree = "<group>"; };
 		A5A3C8CE2817A4CD00376C46 /* CalendarPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenterTests.swift; sourceTree = "<group>"; };
@@ -572,6 +574,7 @@
 			children = (
 				A5BE9E9F28199F460082EC6C /* InputPasswordViewController.swift */,
 				A5BE9EA128199F550082EC6C /* InputPasswordPresenter.swift */,
+				A595D7AB281ADCEE00CBED12 /* threeButtonsStackView.swift */,
 			);
 			path = InputPassword;
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 			files = (
 				A594B0F027EF4BA8001344A2 /* LabelHorizontalStackView.swift in Sources */,
 				A579426A27EE0817000F233A /* SearchMovieRequestModel.swift in Sources */,
+				A595D7AC281ADCEE00CBED12 /* threeButtonsStackView.swift in Sources */,
 				A586E3DE280D7DA9001474BF /* DarkModeViewController.swift in Sources */,
 				A5F3D2262819242D003F34C0 /* LockViewController.swift in Sources */,
 				A513E84327F9C9580084BD86 /* FavoritePresenter.swift in Sources */,

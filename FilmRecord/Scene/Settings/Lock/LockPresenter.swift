@@ -9,11 +9,14 @@ import Foundation
 import UIKit
 protocol LockProtocol: AnyObject {
     func setupAppearance()
+    func setupNotification()
     func setupNavigationBar()
     func setupView(_ password: String)
 
     func applyFont()
     func popViewController()
+    func showInputPasswordViewController()
+    func switchOff()
 }
 
 final class LockPresenter: NSObject {
@@ -33,6 +36,7 @@ final class LockPresenter: NSObject {
     func viewDidLoad() {
         password = userDefaultsManager.getPassword()
         viewController?.setupAppearance()
+        viewController?.setupNotification()
         viewController?.setupNavigationBar()
         viewController?.setupView(password)
         viewController?.applyFont()
@@ -44,9 +48,13 @@ final class LockPresenter: NSObject {
 
     func didTappedLockSwitch(isOn: Bool) {
         if isOn {
-            // 암호 입력 화면 보여주기
+            viewController?.showInputPasswordViewController()
         } else {
             // UserDefaults에 저장한 암호 지우기
         }
+    }
+
+    func cancelNotification() {
+        viewController?.switchOff()
     }
 }
