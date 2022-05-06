@@ -66,6 +66,12 @@ final class LockViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.viewWillAppear()
+    }
 }
 
 // MARK: - LockProtocol Function
@@ -96,8 +102,10 @@ extension LockViewController: LockProtocol {
 
         if password.isEmpty {
             lockSwitch.isOn = false
+            changeButton.isHidden = true
         } else {
             lockSwitch.isOn = true
+            changeButton.isHidden = false
         }
 
         let horizontalStackView = UIStackView(arrangedSubviews: [lockLabel, lockSwitch])
@@ -145,7 +153,7 @@ extension LockViewController: LockProtocol {
     func showInputPasswordViewController() {
         let inputPasswordviewController = InputPasswordViewController()
         inputPasswordviewController.modalPresentationStyle = .fullScreen
-        present(inputPasswordviewController, animated: true)
+        present(inputPasswordviewController, animated: false)
     }
 
     /// 화면 잠금 스위치 끄기

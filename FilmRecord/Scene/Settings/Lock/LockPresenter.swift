@@ -34,12 +34,16 @@ final class LockPresenter: NSObject {
     }
 
     func viewDidLoad() {
-        password = userDefaultsManager.getPassword()
         viewController?.setupAppearance()
         viewController?.setupNotification()
         viewController?.setupNavigationBar()
-        viewController?.setupView(password)
         viewController?.applyFont()
+    }
+
+    func viewWillAppear() {
+        password = userDefaultsManager.getPassword()
+        viewController?.setupView(password)
+        print("암호:", password)
     }
 
     func didTappedLeftBarButton() {
@@ -50,7 +54,8 @@ final class LockPresenter: NSObject {
         if isOn {
             viewController?.showInputPasswordViewController()
         } else {
-            // UserDefaults에 저장한 암호 지우기
+            userDefaultsManager.setPassword("")
+            viewWillAppear()
         }
     }
 

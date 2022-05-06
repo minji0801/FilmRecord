@@ -26,6 +26,7 @@ final class InputPasswordViewController: UIViewController {
         let label = UILabel()
         label.text = "암호를 입력해주세요."
         label.textColor = .secondaryLabel
+        label.numberOfLines = 0
 
         return label
     }()
@@ -220,14 +221,33 @@ extension InputPasswordViewController: InputPasswordProtocol {
         descriptionLabel.font = font.mediumFont
     }
 
+    /// 화면 닫기
     func dismiss() {
         NotificationCenter.default.post(name: NSNotification.Name("cancelInputPassword"), object: nil)
-        dismiss(animated: true)
+        dismiss(animated: false)
+    }
+
+    /// 암호 아이콘 업데이트
+    func updateDotsView(_ dotsRating: Double) {
+        dotsView.rating = dotsRating
+    }
+
+    /// 상단 스택뷰 UI 업데이트
+    func updateTopStackView(isConfirm: Bool) {
+        if isConfirm {
+            descriptionLabel.text = "확인을 위해 한 번 더 입력해주세요."
+        } else {
+            descriptionLabel.text = """
+                                    암호가 일치하지 않습니다.
+                                    처음부터 다시 시도해 주세요.
+                                    """
+        }
+        dotsView.rating = 0.0
     }
 }
 
 extension InputPasswordViewController {
     @objc func didTappedButton(_ sender: UIButton) {
-        presenter.didTappedButton(sender.tag)
+        presenter.didTappedButton(sender.tag, dotsView.rating)
     }
 }
