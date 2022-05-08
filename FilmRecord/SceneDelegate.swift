@@ -34,4 +34,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window?.makeKeyAndVisible()
     }
+
+    // MARK: - UISceneSession Lifecycle
+
+    /// InActive 될 때
+    func sceneWillResignActive(_ scene: UIScene) {
+        callBackgroundImage(true)
+    }
+
+    /// Active 될 때
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        callBackgroundImage(false)
+    }
+
+    /// 화면 가림
+    func callBackgroundImage(_ isShow: Bool) {
+        let tag = -101
+        let backgroundView = window?.rootViewController?.view.window?.viewWithTag(tag)
+
+        if isShow {
+            if backgroundView == nil {
+                let view = UIView()
+                view.tag = tag
+                view.frame = UIScreen.main.bounds
+
+                let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                blurEffectView.frame = view.bounds
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                view.addSubview(blurEffectView)
+
+                window?.rootViewController?.view.window?.addSubview(view)
+            }
+        } else {
+            if let backgroundView = backgroundView {
+                backgroundView.removeFromSuperview()
+            }
+        }
+    }
 }

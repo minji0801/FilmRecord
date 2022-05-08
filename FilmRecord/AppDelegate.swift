@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIInterfaceOrientationMask.portrait
     }
 
-    // MARK: UISceneSession Lifecycle
+    // MARK: - UISceneSession Lifecycle
 
     func application(
         _ application: UIApplication,
