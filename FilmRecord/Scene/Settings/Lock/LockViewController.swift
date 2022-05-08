@@ -57,6 +57,8 @@ final class LockViewController: UIViewController {
         let button = UIButton()
         button.setTitle("암호 변경", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
+        button.contentHorizontalAlignment = .leading
+        button.addTarget(self, action: #selector(didTappedChangeButton), for: .touchUpInside)
 
         return button
     }()
@@ -130,7 +132,8 @@ extension LockViewController: LockProtocol {
         }
 
         changeButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(spacing)
+            $0.leading.equalTo(horizontalStackView.snp.leading)
+            $0.trailing.equalTo(horizontalStackView.snp.trailing)
             $0.top.equalTo(horizontalStackView.snp.bottom).offset(spacing)
         }
     }
@@ -172,6 +175,11 @@ extension LockViewController {
     /// 화면 잠금 스위치 클릭
     @objc func didTappedLockSwitch() {
         presenter.didTappedLockSwitch(isOn: lockSwitch.isOn)
+    }
+
+    /// 암호 변경 버튼 클릭
+    @objc func didTappedChangeButton() {
+        presenter.didTappedChangeButton()
     }
 
     /// 암호 입력 창으로부터 취소 노티 받은 후 -> 스위치 off

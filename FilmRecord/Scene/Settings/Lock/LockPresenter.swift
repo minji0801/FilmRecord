@@ -59,6 +59,10 @@ final class LockPresenter: NSObject {
         }
     }
 
+    func didTappedChangeButton() {
+        viewController?.showInputPasswordViewController()
+    }
+
     func cancelNotification() {
         viewController?.switchOff()
     }
