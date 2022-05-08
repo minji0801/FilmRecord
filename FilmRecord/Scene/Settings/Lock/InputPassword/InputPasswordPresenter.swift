@@ -69,7 +69,7 @@ final class InputPasswordPresenter: NSObject {
 
         if isEntry && firstPassword.count == 4 {
             checkEntryPassword()
-        } else {
+        } else if !isEntry {
             checkSettingPassword()
         }
     }
@@ -107,6 +107,7 @@ final class InputPasswordPresenter: NSObject {
                 secondPassword = ""
                 isFirst = true
                 viewController?.updateTopStackView(1)
+                AudioServicesPlaySystemSound(4095)
             }
         }
     }

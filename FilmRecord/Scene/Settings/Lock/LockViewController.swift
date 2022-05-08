@@ -102,6 +102,9 @@ extension LockViewController: LockProtocol {
     func setupView(_ password: String) {
         view.backgroundColor = .systemBackground
 
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
+        view.addGestureRecognizer(swipeLeft)
+
         if password.isEmpty {
             lockSwitch.isOn = false
             changeButton.isHidden = true
