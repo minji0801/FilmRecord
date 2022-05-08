@@ -151,7 +151,7 @@ extension LockViewController: LockProtocol {
 
     /// 암호 입력 화면 보여주기
     func showInputPasswordViewController() {
-        let inputPasswordviewController = InputPasswordViewController()
+        let inputPasswordviewController = InputPasswordViewController(isEntry: false)
         inputPasswordviewController.modalPresentationStyle = .fullScreen
         present(inputPasswordviewController, animated: false)
     }

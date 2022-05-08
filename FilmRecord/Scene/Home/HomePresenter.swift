@@ -21,6 +21,7 @@ protocol HomeProtocol: AnyObject {
     func reloadCollectionView()
     func pushToDetailViewController(review: Review)
     func showToast(_ show: Bool)
+    func showInputPasswordViewController()
 }
 
 final class HomePresenter: NSObject {
@@ -39,6 +40,13 @@ final class HomePresenter: NSObject {
     }
 
     func viewDidLoad() {
+        let password = userDefaultsManager.getPassword()
+
+        if !password.isEmpty {
+            print("암호 있음", password)
+            // 암호 입력 화면 보여주기
+            viewController?.showInputPasswordViewController()
+        }
         viewController?.setupAppearance()
         viewController?.setupNavigationBar()
         viewController?.setupNoti()

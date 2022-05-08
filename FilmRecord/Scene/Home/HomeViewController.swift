@@ -69,13 +69,13 @@ final class HomeViewController: UIViewController {
 
         presenter.viewDidLoad()
         // 폰트 체크 하기
-        UIFont.familyNames.sorted().forEach { familyName in
-            print("*** \(familyName) ***")
-            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-                print("\(fontName)")
-            }
-            print("---------------------")
-        }
+//        UIFont.familyNames.sorted().forEach { familyName in
+//            print("*** \(familyName) ***")
+//            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+//                print("\(fontName)")
+//            }
+//            print("---------------------")
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -163,6 +163,13 @@ extension HomeViewController: HomeProtocol {
         } else {
             view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle(font))
         }
+    }
+
+    /// 암호 입력 화면 보여주기
+    func showInputPasswordViewController() {
+        let inputPasswordViewController = InputPasswordViewController(isEntry: true)
+        inputPasswordViewController.modalPresentationStyle = .fullScreen
+        present(inputPasswordViewController, animated: false)
     }
 }
 

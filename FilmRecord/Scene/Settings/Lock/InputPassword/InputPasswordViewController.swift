@@ -10,8 +10,17 @@ import SnapKit
 import UIKit
 
 final class InputPasswordViewController: UIViewController {
-    private lazy var presenter = InputPasswordPresenter(viewController: self)
+    private var presenter: InputPasswordPresenter!
 
+    init(isEntry: Bool) {
+        super.init(nibName: nil, bundle: nil)
+        presenter = InputPasswordPresenter(viewController: self, isEntry: isEntry)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     /// 제목 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -181,8 +190,14 @@ extension InputPasswordViewController: InputPasswordProtocol {
     }
 
     /// 뷰 구성
-    func setupView() {
+    func setupView(_ isEntry: Bool) {
         view.backgroundColor = .systemBackground
+
+        // 앱에 진입할 때면 취소 버튼 없애기
+        if isEntry {
+            cancelButton.setTitle("", for: .normal)
+            cancelButton.isEnabled = false
+        }
 
         let topStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel, dotsView])
         topStackView.axis = .vertical
@@ -233,14 +248,19 @@ extension InputPasswordViewController: InputPasswordProtocol {
     }
 
     /// 상단 스택뷰 UI 업데이트
-    func updateTopStackView(isConfirm: Bool) {
-        if isConfirm {
+    func updateTopStackView(_ tag: Int) {
+        switch tag {
+        case 0:
             descriptionLabel.text = "확인을 위해 한 번 더 입력해주세요."
-        } else {
+        case 1:
             descriptionLabel.text = """
                                     암호가 일치하지 않습니다.
                                     처음부터 다시 시도해 주세요.
                                     """
+        case 2:
+            descriptionLabel.text = "암호가 일치하지 않습니다."
+        default:
+            break
         }
         dotsView.rating = 0.0
     }
