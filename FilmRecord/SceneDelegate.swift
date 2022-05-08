@@ -21,7 +21,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
         window?.tintColor = .label
-        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+
+        let password = UserDefaultsManager().getPassword()
+
+        // 암호가 있을 때와 없을 때 구분
+        if password.isEmpty {
+            window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        } else {
+            window?.rootViewController = UINavigationController(
+                rootViewController: InputPasswordViewController(isEntry: true)
+            )
+        }
         window?.makeKeyAndVisible()
     }
 }

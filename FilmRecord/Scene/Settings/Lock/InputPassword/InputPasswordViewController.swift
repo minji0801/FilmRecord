@@ -264,6 +264,12 @@ extension InputPasswordViewController: InputPasswordProtocol {
         }
         dotsView.rating = 0.0
     }
+
+    /// 홈화면 보여주기
+    func showHomeViewController() {
+        let homeViewController = HomeViewController()
+        navigationController?.setViewControllers([homeViewController], animated: false)
+    }
 }
 
 extension InputPasswordViewController {

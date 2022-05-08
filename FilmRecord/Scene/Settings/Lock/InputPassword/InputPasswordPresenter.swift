@@ -16,6 +16,7 @@ protocol InputPasswordProtocol: AnyObject {
     func dismiss()
     func updateDotsView(_ dotsRating: Double)
     func updateTopStackView(_ tag: Int)
+    func showHomeViewController()
 }
 
 final class InputPasswordPresenter: NSObject {
@@ -78,8 +79,8 @@ final class InputPasswordPresenter: NSObject {
         let password = userDefaultsManager.getPassword()
 
         if password == firstPassword {
-            // 첫번째로 입력한 암호가 맞음
-            viewController?.dismiss()
+            // 첫번째로 입력한 암호가 맞음 -> 홈화면 보여주기
+            viewController?.showHomeViewController()
         } else {
             // 불일치하면 다시 입력해 달라고 하기.(진동울리기)
             firstPassword = ""

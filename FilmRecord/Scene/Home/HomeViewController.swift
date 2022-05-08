@@ -164,13 +164,6 @@ extension HomeViewController: HomeProtocol {
             view.makeToast("좋아하는 영화에서 삭제했어요", duration: 1.0, position: .bottom, style: Toast().toastStyle(font))
         }
     }
-
-    /// 암호 입력 화면 보여주기
-    func showInputPasswordViewController() {
-        let inputPasswordViewController = InputPasswordViewController(isEntry: true)
-        inputPasswordViewController.modalPresentationStyle = .fullScreen
-        present(inputPasswordViewController, animated: false)
-    }
 }
 
 // MARK: - @objc Function
