@@ -23,6 +23,7 @@ protocol SettingsProtocol: AnyObject {
     func goToAppRating()
     func sendMail()
     func goToAppStore(_ appName: String)
+    func checkID()
 }
 
 final class SettingsPresenter: NSObject {
@@ -93,7 +94,7 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
         case [0, 2]:
             viewController?.pushToLockViewController()
         case [0, 3]:
-            print("터치/페이스 아이디")
+            viewController?.checkID()
 //        case [0, 4]:
 //            print("별점 남기기")
         case [0, 4]:

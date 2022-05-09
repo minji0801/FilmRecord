@@ -5,6 +5,7 @@
 //  Created by 김민지 on 2022/04/14.
 //  설정 화면
 
+import LocalAuthentication
 import MessageUI
 import SideMenu
 import SnapKit
@@ -131,7 +132,16 @@ extension SettingsViewController: SettingsProtocol {
         navigationController?.pushViewController(lockViewController, animated: true)
     }
 
-    // TODO: Touch/Face ID
+    func checkID() {
+        let context = LAContext()
+        context.evaluatePolicy(
+            .deviceOwnerAuthenticationWithBiometrics,
+            localizedReason: "인증해야지"
+        ) { (success, error) in
+            print("인증결과", success, error)
+            // TODO: 성공하면 인증 내용 저장하기
+        }
+    }
 
     /// 별점 남기기: 앱스토어 리뷰 화면으로 이동
     func goToAppRating() {
