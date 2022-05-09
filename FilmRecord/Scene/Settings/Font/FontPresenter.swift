@@ -14,6 +14,7 @@ protocol FontProtocol: AnyObject {
     func setupView()
 
     func applyFont()
+    func reloadTableView()
     func popViewController()
 }
 
@@ -32,6 +33,7 @@ final class FontPresenter: NSObject {
 
     func viewWillAppear() {
         viewController?.applyFont()
+        viewController?.reloadTableView()
     }
 
     func didTappedLeftBarButton() {
@@ -57,7 +59,9 @@ extension FontPresenter: UITableViewDataSource, UITableViewDelegate {
             withIdentifier: FontTableViewCell.identifier
         ) as? FontTableViewCell else { return UITableViewCell() }
 
-        cell.update(indexPath.row)
+        let font = FontManager.getFont()
+        let selected = indexPath.row == font.rawValue ? true : false
+        cell.update(indexPath.row, selected)
         return cell
     }
 

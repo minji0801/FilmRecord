@@ -184,6 +184,11 @@ extension FontViewController: FontProtocol {
         reviewTextView.font = font.mediumFont
     }
 
+    /// 테이블 뷰 다시 로드하기
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+
     /// 현재 뷰 pop
     func popViewController() {
         navigationController?.popViewController(animated: true)
