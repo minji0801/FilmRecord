@@ -5,7 +5,6 @@
 //  Created by 김민지 on 2022/04/14.
 //  설정 화면
 
-import LocalAuthentication
 import MessageUI
 import SideMenu
 import SnapKit
@@ -132,17 +131,6 @@ extension SettingsViewController: SettingsProtocol {
         navigationController?.pushViewController(lockViewController, animated: true)
     }
 
-    func checkID() {
-        let context = LAContext()
-        context.evaluatePolicy(
-            .deviceOwnerAuthenticationWithBiometrics,
-            localizedReason: "인증해야지"
-        ) { (success, error) in
-            print("인증결과", success, error)
-            // TODO: 성공하면 인증 내용 저장하기
-        }
-    }
-
     /// 별점 남기기: 앱스토어 리뷰 화면으로 이동
     func goToAppRating() {
         let store = ""
@@ -164,10 +152,12 @@ extension SettingsViewController: SettingsProtocol {
     func sendMail() {
         if MFMailComposeViewController.canSendMail() {
             let composeViewController = MFMailComposeViewController()
+            composeViewController.overrideUserInterfaceStyle = DarkModeManager.getAppearance().rawValue == 0 ? .light : .dark
             composeViewController.mailComposeDelegate = self
             composeViewController.setToRecipients(["앱 이름.help@gmail.com"])   // TODO: 앱 이름 넣기
             composeViewController.setSubject("<앱 이름> 문의 및 의견")
             composeViewController.setMessageBody(commentsBodyString(), isHTML: false)
+            composeViewController.modalPresentationStyle = .fullScreen
             present(composeViewController, animated: true)
         } else {
             let sendMailFailAlertViewController = SendMailFailAlertViewController()
@@ -177,29 +167,6 @@ extension SettingsViewController: SettingsProtocol {
     }
 
     // TODO: 이용 방법
-
-    /// 앱스토어로 이동
-    func goToAppStore(_ appName: String) {
-        var store = ""
-        switch appName {
-        case "Scoit":
-            store = "https://apps.apple.com/kr/app/scoit/id1576850548"
-        case "h:ours":
-            store = "https://apps.apple.com/kr/app/h-ours/id1605524722"
-        case "모닥이":
-            store = "https://apps.apple.com/kr/app/%EB%AA%A8%EB%8B%A5%EC%9D%B4/id1596424726"
-        default:
-            break
-        }
-
-        if let url = URL(string: store), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
-    }
 }
 
 // MARK: - Etc. Function

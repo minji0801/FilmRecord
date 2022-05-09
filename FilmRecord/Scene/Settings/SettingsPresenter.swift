@@ -22,8 +22,6 @@ protocol SettingsProtocol: AnyObject {
     func pushToLockViewController()
     func goToAppRating()
     func sendMail()
-    func goToAppStore(_ appName: String)
-    func checkID()
 }
 
 final class SettingsPresenter: NSObject {
@@ -51,21 +49,9 @@ final class SettingsPresenter: NSObject {
 
 // MARK: - UITableView
 extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
-    /// 섹션 수
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    /// 섹션 타이틀
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionHeader = [""]
-        return sectionHeader[section]
-    }
-
     /// 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numRow = [7]
-        return numRow[section]
+        return 6
     }
 
     /// 셀 구성
@@ -86,27 +72,19 @@ extension SettingsPresenter: UITableViewDataSource, UITableViewDelegate {
 
     /// 셀 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath {
-        case [0, 0]:
+        switch indexPath.row {
+        case 0:
             viewController?.pushToDarkModeViewController()
-        case [0, 1]:
+        case 1:
             viewController?.pushToFontViewController()
-        case [0, 2]:
+        case 2:
             viewController?.pushToLockViewController()
-        case [0, 3]:
-            viewController?.checkID()
-//        case [0, 4]:
+//        case 3:
 //            print("별점 남기기")
-        case [0, 4]:
+        case 3:
             viewController?.sendMail()
-        case [0, 5]:
+        case 4:
             print("이용 방법")
-        case [1, 0]:
-            viewController?.goToAppStore("Scoit")
-        case [1, 1]:
-            viewController?.goToAppStore("모닥이")
-        case [1, 2]:
-            viewController?.goToAppStore("h:ours")
         default:
             break
         }
