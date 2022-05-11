@@ -90,7 +90,7 @@ final class ReviewWritePresenter: NSObject {
             with: with,
             review: content,
             rating: rating,
-            favorite: false
+            favorite: review.favorite
         )
         // isEditing 값 가져와서 편집 중이면 현재 review id에 덮어쓰고, 아니라면 새로 저장하기
 

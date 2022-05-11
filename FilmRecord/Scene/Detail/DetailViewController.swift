@@ -280,14 +280,17 @@ extension DetailViewController: DetailProtocol {
     }
 
     /// 영화 평점 입력 화면 push
-    func pushToEnterRatingViewController() {
-        let review = presenter.review
+    func pushToEnterRatingViewController(_ review: Review) {
         let enterRagingViewController = EnterRatingViewController(
             movie: review.movie,
             review: review,
             isEditing: true
         )
         navigationController?.pushViewController(enterRagingViewController, animated: true)
+    }
+
+    func showPopUpViewController(_ popoverContentController: PopUpViewController) {
+        present(popoverContentController, animated: true, completion: nil)
     }
 
     /// 삭제 Alert 창 보여주기
@@ -334,16 +337,7 @@ extension DetailViewController {
 
     /// ... 버튼 클릭 -> 수정/삭제 팝업 창 보여주기
     @objc func didTappedRightBarMenuButton(_ sender: UIBarButtonItem) {
-        let popoverContentController = PopUpViewController(review: presenter.review)
-        popoverContentController.modalPresentationStyle = .popover
-        popoverContentController.preferredContentSize = CGSize(width: 80, height: 100)
-
-        if let popoverPresentationController = popoverContentController.popoverPresentationController {
-            popoverPresentationController.permittedArrowDirections = .right
-            popoverPresentationController.barButtonItem = sender
-            popoverPresentationController.delegate = self
-            present(popoverContentController, animated: true, completion: nil)
-        }
+        presenter.didTappedRightBarMenuButton(sender)
     }
 
     /// 하트 버튼 클릭 -> 리뷰 favorite 값 변경
@@ -364,25 +358,5 @@ extension DetailViewController {
     /// 리뷰 삭제 노티 받은 후 -> 해당 리뷰 삭제하기
     @objc func deleteReviewNotification(_ notification: Notification) {
         presenter.deleteReviewNotification()
-    }
-}
-
-// MARK: - UIPopoverPresentationControllerDelegate
-extension DetailViewController: UIPopoverPresentationControllerDelegate {
-
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-
-    func popoverPresentationControllerDidDismissPopover(
-        _ popoverPresentationController: UIPopoverPresentationController
-    ) {
-
-    }
-
-    func popoverPresentationControllerShouldDismissPopover(
-        _ popoverPresentationController: UIPopoverPresentationController
-    ) -> Bool {
-        return true
     }
 }

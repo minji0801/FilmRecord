@@ -6,6 +6,7 @@
 //  리뷰 상세 Presenter
 
 import Foundation
+import UIKit
 
 protocol DetailProtocol: AnyObject {
     func setupAppearance()
@@ -16,7 +17,8 @@ protocol DetailProtocol: AnyObject {
 
     func applyFont()
     func popViewController()
-    func pushToEnterRatingViewController()
+    func pushToEnterRatingViewController(_ review: Review)
+    func showPopUpViewController(_ popoverContentController: PopUpViewController)
     func showDeleteAlert()
     func updateRightBarLikeButton(review: Review)
     func showToast(_ show: Bool)
@@ -26,7 +28,7 @@ final class DetailPresenter: NSObject {
     private weak var viewController: DetailProtocol?
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
-    var review: Review
+    private var review: Review
 
     init(
         viewController: DetailProtocol?,
@@ -53,6 +55,19 @@ final class DetailPresenter: NSObject {
         viewController?.popViewController()
     }
 
+    func didTappedRightBarMenuButton(_ sender: UIBarButtonItem) {
+        let popoverContentController = PopUpViewController(review: review)
+        popoverContentController.modalPresentationStyle = .popover
+        popoverContentController.preferredContentSize = CGSize(width: 80, height: 100)
+
+        if let popoverPresentationController = popoverContentController.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .right
+            popoverPresentationController.barButtonItem = sender
+            popoverPresentationController.delegate = self
+            viewController?.showPopUpViewController(popoverContentController)
+        }
+    }
+
     func didTappedRightBarLikeButton() {
         review.favorite = !review.favorite
         userDefaultsManager.editReview(id: review.id, newValue: review)
@@ -61,7 +76,7 @@ final class DetailPresenter: NSObject {
     }
 
     func editNotification() {
-        viewController?.pushToEnterRatingViewController()
+        viewController?.pushToEnterRatingViewController(review)
     }
 
     func deleteNotification() {
@@ -72,5 +87,25 @@ final class DetailPresenter: NSObject {
         let id = review.id
         userDefaultsManager.deleteReview(id: id)
         viewController?.popViewController()
+    }
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+extension DetailPresenter: UIPopoverPresentationControllerDelegate {
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    func popoverPresentationControllerDidDismissPopover(
+        _ popoverPresentationController: UIPopoverPresentationController
+    ) {
+
+    }
+
+    func popoverPresentationControllerShouldDismissPopover(
+        _ popoverPresentationController: UIPopoverPresentationController
+    ) -> Bool {
+        return true
     }
 }
