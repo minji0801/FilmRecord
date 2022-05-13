@@ -27,6 +27,7 @@ final class DarkModeViewController: UIViewController {
     /// 테이블 뷰
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = .secondarySystemBackground
         tableView.separatorStyle = .none
         tableView.dataSource = presenter
         tableView.delegate = presenter
@@ -61,8 +62,6 @@ extension DarkModeViewController: DarkModeProtocol {
 
     /// 뷰 구성
     func setupView() {
-        view.backgroundColor = .systemBackground
-
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)
 

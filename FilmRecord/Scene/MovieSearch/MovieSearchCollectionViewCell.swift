@@ -54,7 +54,6 @@ final class MovieSearchCollectionViewCell: UICollectionViewCell {
 private extension MovieSearchCollectionViewCell {
     /// 뷰 구성
     func setupView() {
-        backgroundColor = .systemBackground
 
         [thumbnailImageView, titleLabel, pubDateLabel].forEach {
             addSubview($0)

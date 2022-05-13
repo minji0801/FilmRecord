@@ -39,7 +39,7 @@ final class FavoriteViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .secondarySystemBackground
         collectionView.dataSource = presenter
         collectionView.delegate = presenter
 
@@ -98,7 +98,6 @@ extension FavoriteViewController: FavoriteProtocol {
 
     /// 뷰 구성
     func setupView() {
-        view.backgroundColor = .systemBackground
 
         [collectionView, coverView].forEach {
             view.addSubview($0)

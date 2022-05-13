@@ -43,10 +43,6 @@ final class FontPresenter: NSObject {
 
 // MARK: - UITableView
 extension FontPresenter: UITableViewDataSource, UITableViewDelegate {
-    /// 섹션 타이틀
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "글씨체"
-    }
 
     /// 행 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,6 +59,10 @@ extension FontPresenter: UITableViewDataSource, UITableViewDelegate {
         let selected = indexPath.row == font.rawValue ? true : false
         cell.update(indexPath.row, selected)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 
     /// 셀 클릭

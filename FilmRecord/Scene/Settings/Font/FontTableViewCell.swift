@@ -34,7 +34,6 @@ final class FontTableViewCell: UITableViewCell {
     func update(_ row: Int, _ selected: Bool) {
         setupView()
 
-        backgroundColor = .systemBackground
         textLabel?.text = title[row]
         textLabel?.font = Font(rawValue: row)?.largeFont
 
@@ -51,6 +50,7 @@ final class FontTableViewCell: UITableViewCell {
 private extension FontTableViewCell {
     /// 뷰 구성
     func setupView() {
+        backgroundColor = .secondarySystemBackground
         selectionStyle = .none
 
         addSubview(selectButton)

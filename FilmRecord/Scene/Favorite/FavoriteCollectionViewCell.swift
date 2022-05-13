@@ -60,7 +60,6 @@ final class FavoriteCollectionViewCell: UICollectionViewCell {
 private extension FavoriteCollectionViewCell {
     /// 뷰 구성
     func setupView() {
-        backgroundColor = .systemBackground
 
         [thumbnailImageView, ratingView, titleLabel].forEach {
             addSubview($0)

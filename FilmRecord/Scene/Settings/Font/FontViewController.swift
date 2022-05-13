@@ -97,8 +97,8 @@ final class FontViewController: UIViewController {
 
     /// 테이블 뷰
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
-        tableView.backgroundColor = .clear
+        let tableView = UITableView()
+        tableView.backgroundColor = .secondarySystemBackground
         tableView.dataSource = presenter
         tableView.delegate = presenter
 
@@ -158,7 +158,7 @@ extension FontViewController: FontProtocol {
 
         verticalStactView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(spacing)
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(spacing)
         }
 
         reviewTextView.snp.makeConstraints {
@@ -167,7 +167,7 @@ extension FontViewController: FontProtocol {
 
         tableView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(verticalStactView.snp.bottom)
+            $0.top.equalTo(verticalStactView.snp.bottom).offset(spacing)
         }
     }
 

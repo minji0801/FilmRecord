@@ -103,7 +103,6 @@ final class HomeCollectionViewCell: UICollectionViewCell {
 private extension HomeCollectionViewCell {
     /// 뷰 구성
     func setupView() {
-        backgroundColor = .systemBackground
 
         [thumbnailImageView, ratingView, titleLabel, heartButton].forEach {
             addSubview($0)

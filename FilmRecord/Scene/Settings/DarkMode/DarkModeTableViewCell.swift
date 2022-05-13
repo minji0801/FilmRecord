@@ -40,6 +40,7 @@ final class DarkModeTableViewCell: UITableViewCell {
 private extension DarkModeTableViewCell {
     /// 뷰 구성
     func setupView() {
+        backgroundColor = .secondarySystemBackground
         selectionStyle = .none
 
         addSubview(selectButton)

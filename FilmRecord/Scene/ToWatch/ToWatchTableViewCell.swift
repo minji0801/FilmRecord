@@ -62,7 +62,7 @@ final class ToWatchTableViewCell: UITableViewCell {
 private extension ToWatchTableViewCell {
     /// View 구성
     func setupView() {
-        backgroundColor = .systemBackground
+        backgroundColor = .secondarySystemBackground
         tintColor = .systemPink
 
         [thumbnailImageView, titleLabel, horizontalLineView].forEach { addSubview($0) }

@@ -58,7 +58,7 @@ final class CalendarTableViewCell: UITableViewCell {
 private extension CalendarTableViewCell {
     /// 뷰 구성
     func setupView() {
-        backgroundColor = .systemBackground
+        backgroundColor = .secondarySystemBackground
         selectionStyle = .none
 
         [thumbnailImageView, titleLabel, ratingView].forEach {

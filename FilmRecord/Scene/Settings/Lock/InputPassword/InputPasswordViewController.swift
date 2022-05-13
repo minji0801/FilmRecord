@@ -191,7 +191,7 @@ extension InputPasswordViewController: InputPasswordProtocol {
 
     /// 뷰 구성
     func setupView(_ isEntry: Bool) {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
 
         // 앱에 진입할 때면 취소 버튼 없애기
         if isEntry {

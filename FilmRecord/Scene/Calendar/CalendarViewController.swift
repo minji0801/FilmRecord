@@ -53,7 +53,7 @@ final class CalendarViewController: UIViewController {
         view.appearance.weekdayTextColor = .label
         view.appearance.todayColor = .systemGray
         view.appearance.titleWeekendColor = .systemRed
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .systemBackground
 
         view.dataSource = presenter
         view.delegate = presenter
@@ -64,7 +64,7 @@ final class CalendarViewController: UIViewController {
     /// 리뷰 테이블 뷰
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = .secondarySystemBackground
         tableView.dataSource = presenter
         tableView.delegate = presenter
 
@@ -124,7 +124,7 @@ extension CalendarViewController: CalendarProtocol {
 
     /// 뷰 구성
     func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
 
         [tableView, calendarView, coverView].forEach {
             view.addSubview($0)

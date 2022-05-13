@@ -100,7 +100,7 @@ extension LockViewController: LockProtocol {
 
     /// 뷰 구성
     func setupView(_ password: String) {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didTappedLeftBarButton))
         view.addGestureRecognizer(swipeLeft)

@@ -39,6 +39,7 @@ final class ToWatchViewController: UIViewController {
     /// Table View
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = .secondarySystemBackground
         tableView.dataSource = presenter
         tableView.delegate = presenter
 
@@ -98,7 +99,6 @@ extension ToWatchViewController: ToWatchProtocol {
 
     /// 뷰 구성
     func setupView() {
-        view.backgroundColor = .systemBackground
 
         [tableView, coverView].forEach {
             view.addSubview($0)

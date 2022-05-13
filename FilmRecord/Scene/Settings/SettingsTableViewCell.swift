@@ -39,6 +39,8 @@ final class SettingsTableViewCell: UITableViewCell {
 private extension SettingsTableViewCell {
     /// 셀 뷰 구성
     func setupView(_ row: Int) {
+        backgroundColor = .secondarySystemBackground
+
         imageView?.image = UIImage(systemName: image[row])
         textLabel?.text = title[row]
         detailTextLabel?.text = detail[row]
