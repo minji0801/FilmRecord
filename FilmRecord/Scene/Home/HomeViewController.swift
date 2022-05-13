@@ -39,11 +39,19 @@ final class HomeViewController: UIViewController {
         return rightBarButtonItem
     }()
 
+    /// 정렬 버튼
+    private lazy var sortButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("▾ 리뷰날짜최신순", for: .normal)
+
+        return button
+    }()
+
     /// Collection View
     private lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = .secondarySystemBackground
+        collectionView.backgroundColor = .clear
         collectionView.dataSource = presenter
         collectionView.delegate = presenter
 
@@ -111,13 +119,21 @@ extension HomeViewController: HomeProtocol {
 
     /// 뷰 구성
     func setupView() {
+        view.backgroundColor = .secondarySystemBackground
 
-        [collectionView, coverView].forEach {
+        [sortButton, collectionView, coverView].forEach {
             view.addSubview($0)
         }
 
+        sortButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.trailing.equalToSuperview().inset(16.0)
+            $0.height.equalTo(50.0)
+        }
+
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(sortButton.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
 
         coverView.snp.makeConstraints {
@@ -130,6 +146,7 @@ extension HomeViewController: HomeProtocol {
         navigationController?.navigationBar.titleTextAttributes = [
             .font: font.extraLargeFont
         ]
+        sortButton.titleLabel?.font = font.mediumFont
     }
 
     /// 메뉴 화면 push
